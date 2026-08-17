@@ -108,16 +108,19 @@ export const MOCK_PROJECTS: Project[] = databaseSeed.projects.map((prj: any) => 
   reference_number: prj.reference_number || `CRG/${prj.year}/084`,
 }));
 
-export const MOCK_STUDENTS: Student[] = databaseSeed.students.map((s: any) => ({
-  id: s.id,
-  department_id: s.department_id,
-  programme_id: s.programme_id,
-  name: s.name,
-  roll_number: s.roll_number,
-  email: s.email,
-  batch_year: Number(s.batch_year),
-  cgpa: 8.5,
-}));
+export const MOCK_STUDENTS: (Student & { programme_name?: string })[] =
+  databaseSeed.students.map((s: any) => ({
+    id: s.id,
+    department_id: s.department_id,
+    programme_id: s.programme_id,
+    programme_name: s.programme_name || "B.Tech CSE",
+    name: s.name,
+    roll_number: s.roll_number,
+    email: s.email,
+    batch_year: Number(s.admission_year) || 2024,
+    current_semester: Number(s.current_semester) || 1,
+    cgpa: 8.5,
+  }));
 
 export const MOCK_ANNOUNCEMENTS: Announcement[] = [
   {
@@ -157,10 +160,34 @@ export const MOCK_STAFF: Staff[] = [
   { id: "st2", department_id: "22222222-2222-2222-2222-222222222222", name: "Sh. Anil Kumar", designation: "Senior Lab Assistant (Networking & Cloud Lab)", email: "anil.lab@nith.ac.in", phone: "+91-1972-254121" },
 ];
 
-export const MOCK_PHD_SCHOLARS: PhdScholar[] = [
-  { id: "phd1", department_id: "22222222-2222-2222-2222-222222222222", name: "Vikas Malhotra", enrollment_number: "21PHDCSE01", topic: "Energy-Efficient Resource Allocation in Edge-Fog Architectures", supervisor_faculty_id: "f1", status: "pursuing", joining_date: "2021-08-10", completion_date: "" },
-  { id: "phd2", department_id: "22222222-2222-2222-2222-222222222222", name: "Aman Deep", enrollment_number: "22PHDCSE03", topic: "Deep Learning based Automated Volumetric Brain Tumor Segmentation", supervisor_faculty_id: "f2", status: "pursuing", joining_date: "2022-01-15", completion_date: "" },
-];
+export const MOCK_PHD_SCHOLARS: (PhdScholar & {
+  supervisor?: string;
+  co_supervisor?: string;
+  last_qualification?: string;
+  research_area?: string;
+  end_date?: string;
+  linkedin_url?: string;
+  google_scholar_url?: string;
+  scopus_url?: string;
+})[] = (databaseSeed.phd_scholars || []).map((phd: any) => ({
+  id: phd.id,
+  department_id: phd.department_id,
+  name: phd.name,
+  enrollment_number: phd.roll_number,
+  topic: phd.topic || "Computer Science & Engineering",
+  supervisor_faculty_id: "f1",
+  supervisor: phd.supervisor || "Faculty Supervisor",
+  co_supervisor: phd.co_supervisor || "",
+  status: phd.status || "pursuing",
+  joining_date: `${phd.registration_year || "2022"}-08-01`,
+  completion_date: phd.end_date || "",
+  last_qualification: phd.last_qualification || "M.Tech",
+  research_area: phd.research_area || phd.topic || "Computer Science",
+  end_date: phd.end_date || "",
+  linkedin_url: phd.linkedin_url || "",
+  google_scholar_url: phd.google_scholar_url || "",
+  scopus_url: phd.scopus_url || "",
+}));
 
 export const MOCK_DEPARTMENT_KPIS: DepartmentKPIs = {
   department_id: "22222222-2222-2222-2222-222222222222",
