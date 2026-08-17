@@ -26,7 +26,7 @@ export default function QualificationsPage() {
   };
 
   const handleDelete = (index: number) => {
-    setQualifications(qualifications.filter((_, i) => i !== index));
+    setQualifications(qualifications.filter((_: any, i: number) => i !== index));
     toast.success("Qualification removed");
   };
 
@@ -49,7 +49,7 @@ export default function QualificationsPage() {
       </div>
 
       <div className="rounded-2xl border border-border bg-card shadow-sm divide-y divide-border/60">
-        {qualifications.map((q, i) => (
+        {qualifications.map((q: any, i: number) => (
           <div key={i} className="flex items-center justify-between p-5 hover:bg-accent/20 transition">
             <div className="flex items-start gap-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">

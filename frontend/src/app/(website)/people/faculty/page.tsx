@@ -13,7 +13,7 @@ export default function FacultyDirectoryPage() {
   const filteredFaculty = MOCK_FACULTY.filter((f) => {
     const matchesSearch =
       f.full_name.toLowerCase().includes(search.toLowerCase()) ||
-      f.research_interests?.some((r) => r.toLowerCase().includes(search.toLowerCase())) ||
+      f.research_interests?.some((r: string) => r.toLowerCase().includes(search.toLowerCase())) ||
       f.email.toLowerCase().includes(search.toLowerCase());
 
     const matchesDesignation =

@@ -12,41 +12,35 @@ import {
   DepartmentKPIs,
 } from "./types";
 
-export const MOCK_FACULTY: (Faculty & {
-  email: string;
-  phone: string;
-  image_url: string;
-  experience_years: number;
-  qualifications: Array<{ degree: string; institute: string; year: number }>;
-  research_interests: string[];
-})[] = databaseSeed.faculty.map((f: any) => ({
+export const MOCK_FACULTY = databaseSeed.faculty.map((f: any) => ({
   id: f.id,
+  legacy_id: f.legacy_id,
   user_id: f.user_id,
   full_name: f.full_name,
   employee_code: f.employee_code,
   designation: f.designation,
-  is_active: f.is_active,
+  is_active: true,
   email: f.email,
   phone: f.phone ? `+91-1972-${f.phone}` : "+91-1972-254400",
   image_url: f.image_url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
-  experience_years: 15,
-  research_interests: (f.research_interests || "Computer Science & Engineering")
-    .split(",")
-    .map((s: string) => s.trim())
-    .filter(Boolean),
-  qualifications: [
-    { degree: "Ph.D. in Computer Science", institute: "IIT / NIT", year: 2012 },
-    { degree: "M.Tech CSE", institute: "NIT Hamirpur", year: 2006 },
-    { degree: "B.Tech CSE", institute: "State University", year: 2002 },
-  ],
+  research_interests: f.research_interests || ["Computer Science & Engineering"],
+  qualifications: f.qualifications || [],
+  teaching_experiences: f.teaching_experiences || [],
+  administrative_experiences: f.administrative_experiences || [],
+  honors: f.honors || [],
+  expert_talks: f.expert_talks || [],
+  exposures: f.exposures || [],
+  publications: f.publications || [],
+  patents: f.patents || [],
+  projects: f.projects || [],
   profile: {
     faculty_id: f.id,
-    specializations: f.research_interests || "Distributed Systems, Networks & AI",
-    google_scholar_id: "scholar_id",
-    scopus_id: "57193849100",
-    orcid: "0000-0002-1825-0097",
-    personal_website: `https://portfolios.nith.ac.in`,
-    bio: `${f.full_name} is a distinguished ${f.designation} in the Department of Computer Science & Engineering, NIT Hamirpur. Actively engaged in teaching and research in ${f.research_interests || 'computer systems'}.`,
+    specializations: (f.research_interests || []).join(", "),
+    google_scholar_id: f.google_scholar_url || "",
+    scopus_id: f.scopus_url || "",
+    orcid: f.orcid || "",
+    personal_website: f.portfolio_url || "https://portfolios.nith.ac.in",
+    bio: f.bio || `${f.full_name} is a faculty member at Department of CSE, NIT Hamirpur.`,
     profile_image_url: f.image_url || "",
   },
 }));
@@ -63,18 +57,19 @@ export const MOCK_PUBLICATIONS: Publication[] = databaseSeed.publications.map((p
   month: 1,
   doi: p.doi || "",
   issn_isbn: "",
-  impact_factor: p.indexing?.includes("SCI") ? 3.5 : 0,
-  is_sci: Boolean(p.indexing?.includes("SCI")),
-  is_scopus: Boolean(p.indexing?.includes("Scopus") || p.indexing?.includes("SCI")),
+  impact_factor: p.is_sci ? 3.5 : 0,
+  is_sci: Boolean(p.is_sci),
+  is_scopus: Boolean(p.is_scopus),
   is_peer_reviewed: true,
-  abstract_text: `Published research article in ${p.journal_or_conference_name || 'peer-reviewed venue'}. Authors: ${p.raw_authors || 'Faculty'}.`,
+  abstract_text: `Published research article. Authors: ${p.raw_authors || 'Faculty'}.`,
   publisher: "IEEE / Elsevier",
+  faculty_ids: p.faculty_ids || [],
   authors: (p.raw_authors || "Faculty")
     .split(",")
     .map((name: string, idx: number) => ({
       id: `a-${idx}`,
       publication_id: p.id,
-      faculty_id: null,
+      faculty_id: (p.faculty_ids && p.faculty_ids[idx]) || null,
       author_name: name.trim(),
       author_order: idx + 1,
       is_corresponding: idx === 0,
@@ -92,6 +87,7 @@ export const MOCK_PATENTS: Patent[] = databaseSeed.patents.map((pat: any) => ({
   country: pat.country || "India",
   patent_office: pat.patent_office || "Indian Patent Office (New Delhi)",
   abstract_text: `Patented technology developed by CSE department inventors: ${pat.raw_inventors || 'Faculty'}.`,
+  faculty_ids: pat.faculty_ids || [],
 }));
 
 export const MOCK_PROJECTS: Project[] = databaseSeed.projects.map((prj: any) => ({
@@ -106,6 +102,7 @@ export const MOCK_PROJECTS: Project[] = databaseSeed.projects.map((prj: any) => 
   total_amount_received: Number(prj.total_amount_received) || 2500000,
   scheme: "Core Research Grant",
   reference_number: prj.reference_number || `CRG/${prj.year}/084`,
+  faculty_ids: prj.faculty_ids || [],
 }));
 
 export const MOCK_STUDENTS: (Student & { programme_name?: string })[] =
@@ -121,6 +118,35 @@ export const MOCK_STUDENTS: (Student & { programme_name?: string })[] =
     current_semester: Number(s.current_semester) || 1,
     cgpa: 8.5,
   }));
+
+export const MOCK_PHD_SCHOLARS: (PhdScholar & {
+  supervisor?: string;
+  co_supervisor?: string;
+  last_qualification?: string;
+  research_area?: string;
+  end_date?: string;
+  linkedin_url?: string;
+  google_scholar_url?: string;
+  scopus_url?: string;
+})[] = (databaseSeed.phd_scholars || []).map((phd: any) => ({
+  id: phd.id,
+  department_id: phd.department_id,
+  name: phd.name,
+  enrollment_number: phd.roll_number,
+  topic: phd.topic || "Computer Science & Engineering",
+  supervisor_faculty_id: "f1",
+  supervisor: phd.supervisor || "Faculty Supervisor",
+  co_supervisor: phd.co_supervisor || "",
+  status: phd.status || "pursuing",
+  joining_date: `${phd.registration_year || "2022"}-08-01`,
+  completion_date: phd.end_date || "",
+  last_qualification: phd.last_qualification || "M.Tech",
+  research_area: phd.research_area || phd.topic || "Computer Science",
+  end_date: phd.end_date || "",
+  linkedin_url: phd.linkedin_url || "",
+  google_scholar_url: phd.google_scholar_url || "",
+  scopus_url: phd.scopus_url || "",
+}));
 
 export const MOCK_ANNOUNCEMENTS: Announcement[] = [
   {
@@ -159,35 +185,6 @@ export const MOCK_STAFF: Staff[] = [
   { id: "st1", department_id: "22222222-2222-2222-2222-222222222222", name: "Sh. Ramesh Chand", designation: "Technical Officer (System Admin)", email: "ramesh@nith.ac.in", phone: "+91-1972-254120" },
   { id: "st2", department_id: "22222222-2222-2222-2222-222222222222", name: "Sh. Anil Kumar", designation: "Senior Lab Assistant (Networking & Cloud Lab)", email: "anil.lab@nith.ac.in", phone: "+91-1972-254121" },
 ];
-
-export const MOCK_PHD_SCHOLARS: (PhdScholar & {
-  supervisor?: string;
-  co_supervisor?: string;
-  last_qualification?: string;
-  research_area?: string;
-  end_date?: string;
-  linkedin_url?: string;
-  google_scholar_url?: string;
-  scopus_url?: string;
-})[] = (databaseSeed.phd_scholars || []).map((phd: any) => ({
-  id: phd.id,
-  department_id: phd.department_id,
-  name: phd.name,
-  enrollment_number: phd.roll_number,
-  topic: phd.topic || "Computer Science & Engineering",
-  supervisor_faculty_id: "f1",
-  supervisor: phd.supervisor || "Faculty Supervisor",
-  co_supervisor: phd.co_supervisor || "",
-  status: phd.status || "pursuing",
-  joining_date: `${phd.registration_year || "2022"}-08-01`,
-  completion_date: phd.end_date || "",
-  last_qualification: phd.last_qualification || "M.Tech",
-  research_area: phd.research_area || phd.topic || "Computer Science",
-  end_date: phd.end_date || "",
-  linkedin_url: phd.linkedin_url || "",
-  google_scholar_url: phd.google_scholar_url || "",
-  scopus_url: phd.scopus_url || "",
-}));
 
 export const MOCK_DEPARTMENT_KPIS: DepartmentKPIs = {
   department_id: "22222222-2222-2222-2222-222222222222",
