@@ -21,7 +21,11 @@ import {
   LogOut,
 } from "lucide-react";
 
-const sidebarLinks = [
+type SidebarLink =
+  | { label: string; href: string; icon: any }
+  | { section: string; items: { label: string; href: string; icon: any }[] };
+
+const sidebarLinks: SidebarLink[] = [
   { label: "Dashboard", href: "/faculty", icon: LayoutDashboard },
   { label: "Profile", href: "/faculty/profile", icon: User },
   {

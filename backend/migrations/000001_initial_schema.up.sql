@@ -523,7 +523,7 @@ CREATE TABLE projects (
     raw_investigators TEXT,
     workflow_status workflow_statuses NOT NULL DEFAULT 'DRAFT',
     created_by UUID REFERENCES users(id) ON DELETE SET NULL,
-    updated_by REFERENCES users(id) ON DELETE SET NULL,
+    updated_by UUID REFERENCES users(id) ON DELETE SET NULL,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     deleted_at TIMESTAMP WITH TIME ZONE
