@@ -127,7 +127,7 @@ It also includes `institutions` from day one, but the initial application is con
 ### Database rules for the boilerplate
 
 - Use PostgreSQL 16+ and UUID primary keys.
-- Include `created_at`, `updated_at`, creator/updater identities, `status`, `published_at` and `archived_at` where applicable.
+- Use the standard lifecycle policy recorded in `InstituteArchitecture.md`: mutable base tables include `created_at`, trigger-maintained `updated_at`, `deleted_at`, and creator/updater identities; immutable history tables are append-only. Use `deleted_at`, never `archived_at`.
 - Do not hard-delete research or audit-relevant records.
 - DOI must be normalized and unique when present; missing/placeholder DOI is `NULL`, never `NA`, `-` or an empty string.
 - Faculty membership is through `faculty_appointments`; do not put a lone `department_id` on faculty.

@@ -62,7 +62,7 @@ Authorization must check the current appointment, not merely a `department_id` s
 
 ## 4. Database design
 
-All primary keys are UUIDs. Use `created_at`, `updated_at`, `created_by`, `updated_by`, `status`, and optional `published_at` consistently on editable records. Never delete research records permanently: use `archived_at` and preserve audit history.
+All primary keys are UUIDs. Every mutable base table uses the standard audit and lifecycle columns: `created_at`, `updated_at`, `deleted_at NULL`, `created_by`, and `updated_by`; a trigger maintains `updated_at`. Workflow-capable records also use `status` and optional `published_at`. `deleted_at` replaces the earlier `archived_at` term. Immutable history tables (for example audit logs, review history, and metric snapshots) retain the audit timestamps but are append-only rather than soft-deleted.
 
 ### Organisation and identity
 
@@ -71,8 +71,8 @@ All primary keys are UUIDs. Use `created_at`, `updated_at`, `created_by`, `updat
 | `institutions` | `id`, `name`, `slug UNIQUE`, `domain UNIQUE` |
 | `departments` | `institution_id FK`, `parent_department_id FK NULL`, `name`, `slug`; `UNIQUE(institution_id, slug)` |
 | `programmes` | `department_id FK`, `code`, `name`, `level`; `UNIQUE(department_id, code)` |
-| `faculty` | institute identity: name, official email, employee code, photo, designation, public slug; email/code unique per institution |
-| `faculty_appointments` | `faculty_id`, `department_id`, designation, `is_primary`, start/end dates; partial unique index for one current primary appointment |
+| `faculty` | institute identity: name, official email, employee code, photo, designation, public slug; official email and employee code are globally unique |
+| `faculty_appointments` | `faculty_id`, `department_id`, designation, `is_primary`, start/end dates; at most one active primary appointment per faculty member |
 | `users`, `user_roles`, `role_department_scopes` | authentication and scoped RBAC; roles are not hard-coded onto `faculty` |
 | `faculty_profiles` | 1:1 extended bio, research interests, ORCID, Scopus author ID, Google Scholar ID, URLs |
 
@@ -103,13 +103,13 @@ All primary keys are UUIDs. Use `created_at`, `updated_at`, `created_by`, `updat
 | `publication_metric_snapshots` | source-level citation count per publication and capture time |
 | `academic_years` | `institution_id`, `label`, start/end date, current flag; derived automatically |
 | `financial_years` | `institution_id`, `label`, start/end date, current flag; derived automatically |
-| `record_reviews` | record type/id, submitted/reviewed by, decision, comments, timestamp |
+| per-entity review tables | workflow history is stored in FK-backed tables such as `publication_reviews`, `project_reviews`, and `patent_reviews`; audit logs remain deliberately polymorphic |
 | `audit_logs` | actor, action, entity type/id, before/after JSON, request ID/IP |
 | `documents` | storage key, MIME type, size, visibility, malware scan state; research records reference it |
 
 ### Key invariants and indexes
 
-- DOI is normalized (lowercase, URL prefix removed) and uniquely indexed only when present.
+- DOI is normalized (lowercase, URL prefix removed) and globally unique only when present. PostgreSQL permits multiple `NULL` values in a unique index; this is intentional because a missing DOI is `NULL`, never a placeholder.
 - Patent application, publication and grant numbers are normalized and unique within their jurisdiction/issuer where relevant.
 - `amount_received <= total_sanctioned_amount` is validated at the service layer; grant totals are checked transactionally.
 - Use composite indexes on `(department_id, status)`, `(publication_type, published_on DESC)`, `(faculty_id, captured_at DESC)`, and join tables in both directions.
@@ -139,7 +139,7 @@ The calendar is configuration, not a free-text field on every record.
 
 ## 7. Dashboards that calculate automatically
 
-Create materialized views refreshed after approval/import jobs, plus an on-demand refresh for administrators:
+Use Option A: a nightly `pg_cron` job runs `REFRESH MATERIALIZED VIEW CONCURRENTLY` for KPI views. Each materialized view has a unique index solely to support concurrent refresh. An administrator may request the same refresh outside a write transaction, but writes never trigger a direct refresh because concurrent refresh cannot run inside that transaction.
 
 - `v_faculty_kpis`: publications by type, active/completed projects, grants, patents by status, current Scopus and Scholar metrics.
 - `v_department_kpis`: active faculty, output by type, funded projects, sanctioned/received amounts, patents, citations and metrics distributions.
@@ -182,3 +182,41 @@ All mutations generate audit events. Use optimistic locking (`version` number or
 2. Which source is authoritative for Scopus metrics and whether the institute has API access.
 3. Whether faculty publications need mandatory department-admin approval before appearing publicly.
 4. The institute’s official academic-year start month and which financial reporting fields (sanctioned, received, expenditure) are required.
+
+## 11. Locked DDL decisions
+
+These decisions are mandatory for the row/column matrix, migrations, ORM schema, seeds, and schema tests.
+
+### Identifier and naming policy
+
+- All base tables have a global, meaningless `id UUID PRIMARY KEY`.
+- Tables use plural `snake_case`; columns, constraints, indexes, enum types, and views use `snake_case`.
+- Each main human-readable identifier is tagged in the data dictionary as `GLOBALLY_UNIQUE`, `DEPT_SCOPED_UNIQUE`, or `NOT_UNIQUE` before its constraint is written.
+- A field named `code` is not globally unique merely because it is readable. It is normally unique within `department_id` among non-deleted records. Known exceptions are `faculty.employee_code` and `faculty.official_email`, both globally unique.
+- `students.roll_no` is unique per `(department_id, batch_year, roll_no)`, not globally. `programmes.code` and `courses.code` are unique per `(department_id, code)`.
+- `departments.slug` is unique per `(institution_id, slug)`. A course URL/search slug cannot be a generated column derived from a joined department row; if a globally addressable course route is needed, persist and maintain an institution-qualified route key (for example `institution_slug/department_slug/course_code`) in application logic or a trigger.
+- Any business uniqueness rule on a soft-deletable table is implemented as a partial unique index with `WHERE deleted_at IS NULL`.
+
+### Appointment integrity
+
+- The schema creates a partial unique index on `faculty_appointments(faculty_id)` where `is_primary = true`, `end_date IS NULL`, and `deleted_at IS NULL`. This permits historical primary appointments while preventing two departments from claiming an active primary appointment.
+- If appointment date ranges may overlap, the DDL also uses a GiST exclusion constraint to prohibit overlapping primary ranges for the same faculty member. This protects against incorrectly open or overlapping date intervals.
+
+### Lifecycle, review, and controlled values
+
+- The audit/lifecycle boilerplate is mandatory for mutable base tables. Association tables and immutable append-only history tables are exceptions; their retention is protected by permissions and foreign keys rather than soft deletion.
+- Reviews use per-entity FK-backed tables. A polymorphic `record_reviews(record_type, record_id)` table is deliberately not used because it cannot enforce referential integrity.
+- `publication_type` is a PostgreSQL enum with exactly `JOURNAL`, `CONFERENCE`, `BOOK`, and `BOOK_CHAPTER`. Workflow statuses use named per-domain PostgreSQL enums or named `CHECK` constraints; no unbounded free-text `status` field is permitted. RBAC roles remain rows in the `roles` table because they are operational configuration, not a closed workflow vocabulary.
+
+### Reporting correctness
+
+- `v_institute_kpis` counts canonical records, not department-attribution rows. Its SQL explicitly uses `COUNT(DISTINCT publication.id)` and `COUNT(DISTINCT project.id)` (with the real relation aliases used in the final query).
+- KPI materialized views refresh nightly through `pg_cron` with `CONCURRENTLY`; every one has a unique index that satisfies PostgreSQL's concurrent-refresh requirement.
+
+### CSE migration acceptance gate
+
+- The first PostgreSQL schema is not accepted until it can import the available `tempcsebase` CSE dataset into one seeded institution and CSE department, then satisfy the department backend's core read paths (directories, faculty portfolios, research catalogues, projects, patents, CMS content, documents, labs, equipment, placement, and reports).
+- This is a transformed migration, not a blind row copy: legacy integer IDs are retained in an import mapping table or source-reference column while the target uses UUIDs; every imported faculty receives a CSE appointment and every legacy research record receives CSE department attribution.
+- No legacy value may be discarded merely because the new normalized model lacks an exact field. Preserve it in an explicitly named raw/source field or import-review table until it is curated. In particular retain raw author/inventor/PI/supervisor/OIC text, legacy external media URLs, legacy document titles/types, and source row identifiers.
+- The phase-one department schema includes department-scoped destinations for `about_sections`, `programmes_offered`, `qna`, `syllabus_documents`, and `calendar_documents`; generic `documents` stores document metadata and a nullable `source_url` for existing externally hosted files.
+- Migration tests must assert row counts, link counts, required-field validity, duplicate/placeholder normalization, and public/backend query results against the imported CSE fixture. Known unavailable legacy course values are reported, not fabricated.
