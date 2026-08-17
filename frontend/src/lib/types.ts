@@ -1,0 +1,231 @@
+/**
+ * Shared TypeScript types matching the Go backend's data models.
+ * These are the API response shapes returned by the Go backend.
+ */
+
+// ─── Core ─────────────────────────────────────────────────────────────────
+export interface Institution {
+  id: string;
+  name: string;
+  slug: string;
+  domain: string;
+}
+
+export interface Department {
+  id: string;
+  institution_id: string;
+  name: string;
+  slug: string;
+  code: string;
+  contact_email: string;
+  about_text: string;
+}
+
+export interface Programme {
+  id: string;
+  department_id: string;
+  code: string;
+  name: string;
+  level: "UG" | "PG" | "DualDegree" | "PhD";
+  duration_years: number;
+}
+
+// ─── Identity ─────────────────────────────────────────────────────────────
+export interface User {
+  id: string;
+  email: string;
+  full_name: string;
+  is_active: boolean;
+  roles: string[];
+}
+
+export interface AuthTokens {
+  access_token: string;
+  user: User;
+}
+
+// ─── Faculty ──────────────────────────────────────────────────────────────
+export interface Faculty {
+  id: string;
+  user_id: string | null;
+  full_name: string;
+  employee_code: string;
+  designation: string;
+  is_active: boolean;
+  profile?: FacultyProfile;
+}
+
+export interface FacultyProfile {
+  faculty_id: string;
+  specializations: string;
+  google_scholar_id: string;
+  scopus_id: string;
+  orcid: string;
+  personal_website: string;
+  bio: string;
+  profile_image_url: string;
+}
+
+// ─── Research ─────────────────────────────────────────────────────────────
+export interface Publication {
+  id: string;
+  title: string;
+  publication_type: "JOURNAL" | "CONFERENCE" | "BOOK" | "BOOK_CHAPTER";
+  journal_or_conference_name: string;
+  volume: string;
+  issue: string;
+  pages: string;
+  year: number;
+  month: number;
+  doi: string;
+  issn_isbn: string;
+  impact_factor: number;
+  is_sci: boolean;
+  is_scopus: boolean;
+  is_peer_reviewed: boolean;
+  abstract_text: string;
+  publisher: string;
+  authors?: PublicationAuthor[];
+}
+
+export interface PublicationAuthor {
+  id: string;
+  publication_id: string;
+  faculty_id: string | null;
+  author_name: string;
+  author_order: number;
+  is_corresponding: boolean;
+}
+
+export interface Patent {
+  id: string;
+  title: string;
+  application_number: string;
+  patent_number: string;
+  status: "Filed" | "Published" | "Granted" | "Abandoned";
+  filing_date: string;
+  grant_date: string;
+  country: string;
+  patent_office: string;
+  abstract_text: string;
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  funding_agency: string;
+  status: "Ongoing" | "Completed" | "Submitted";
+  project_type: string;
+  start_date: string;
+  end_date: string;
+  total_sanctioned_amount: number;
+  total_amount_received: number;
+  scheme: string;
+  reference_number: string;
+}
+
+// ─── People ───────────────────────────────────────────────────────────────
+export interface Student {
+  id: string;
+  department_id: string;
+  programme_id: string;
+  name: string;
+  roll_number: string;
+  email: string;
+  batch_year: number;
+  cgpa: number;
+}
+
+export interface Staff {
+  id: string;
+  department_id: string;
+  name: string;
+  designation: string;
+  email: string;
+  phone: string;
+}
+
+export interface PhdScholar {
+  id: string;
+  department_id: string;
+  name: string;
+  enrollment_number: string;
+  topic: string;
+  supervisor_faculty_id: string;
+  status: "pursuing" | "passed";
+  joining_date: string;
+  completion_date: string;
+}
+
+// ─── CMS ──────────────────────────────────────────────────────────────────
+export interface Announcement {
+  id: string;
+  department_id: string | null;
+  title: string;
+  body: string;
+  publish_date: string;
+  expiry_date: string;
+  is_private: boolean;
+}
+
+export interface Post {
+  id: string;
+  department_id: string;
+  category: "Achievement" | "AcademicsNews" | "ResearchNews";
+  title: string;
+  slug: string;
+  body: string;
+  publish_date: string;
+}
+
+export interface HomeSlide {
+  id: string;
+  title: string;
+  link_url: string;
+  image_url: string;
+  sort_order: number;
+  is_active: boolean;
+}
+
+// ─── KPIs / Dashboard ────────────────────────────────────────────────────
+export interface FacultyKPIs {
+  faculty_id: string;
+  faculty_name: string;
+  total_publications: number;
+  journal_count: number;
+  conference_count: number;
+  patent_count: number;
+  ongoing_projects: number;
+  completed_projects: number;
+  total_funding: number;
+  total_supervisions: number;
+  total_events: number;
+  scopus_h_index: number;
+  scopus_citations: number;
+  scholar_h_index: number;
+  scholar_citations: number;
+}
+
+export interface DepartmentKPIs {
+  department_id: string;
+  department_name: string;
+  faculty_count: number;
+  staff_count: number;
+  total_students: number;
+  total_publications: number;
+  patent_count: number;
+  ongoing_projects: number;
+  total_sanctioned_amount: number;
+  event_count: number;
+}
+
+// ─── Pagination ───────────────────────────────────────────────────────────
+export interface PaginatedResponse<T> {
+  data: T[];
+  meta: {
+    page: number;
+    per_page: number;
+    total: number;
+    total_pages: number;
+  };
+}
