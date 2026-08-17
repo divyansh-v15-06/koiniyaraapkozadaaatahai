@@ -1,95 +1,144 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin, ExternalLink, Globe } from "lucide-react";
 
 export function PublicFooter() {
   return (
-    <footer className="border-t border-border bg-[hsl(220,25%,10%)] text-gray-300">
-      <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Department Info */}
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-white">
-              CSE Department
-            </h3>
-            <p className="text-sm leading-relaxed text-gray-400">
-              Department of Computer Science &amp; Engineering, National
-              Institute of Technology.
+    <footer className="bg-[#1c110c] text-white border-t-4 border-[#85261e] font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Col 1: Institute Branding */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="relative w-12 h-12 flex-shrink-0">
+                <Image
+                  src="/nitHamirpurLogo.png"
+                  alt="NIT Hamirpur Logo"
+                  fill
+                  className="object-contain filter brightness-110"
+                />
+              </div>
+              <div>
+                <h3 className="font-bold text-sm leading-tight text-neutral-100">
+                  Department of CSE
+                </h3>
+                <p className="text-xs text-neutral-400">NIT Hamirpur (HP), India</p>
+              </div>
+            </div>
+            <p className="text-xs text-neutral-300 leading-relaxed">
+              Empowering innovators and technical leaders through world-class computer science education, research, and industry collaboration.
             </p>
+            <div className="flex items-center gap-3 pt-2 text-neutral-400 text-xs">
+              <span className="bg-[#33110e] px-2.5 py-1 rounded text-amber-300 font-semibold">
+                NIRF Top Ranked
+              </span>
+              <span className="bg-[#33110e] px-2.5 py-1 rounded text-amber-300 font-semibold">
+                NBA Accredited
+              </span>
+            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Col 2: Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
+            <h4 className="font-bold text-sm tracking-wider uppercase text-amber-400 border-b border-neutral-800 pb-2">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-sm">
-              {[
-                { label: "Faculty", href: "/people/faculty" },
-                { label: "Publications", href: "/research/publications" },
-                { label: "Placements", href: "/placementpage" },
-                { label: "Announcements", href: "/news/announcements" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-1.5 text-xs text-neutral-300">
+              <li>
+                <Link href="/aboutus" className="hover:text-amber-300 transition">
+                  About Department
+                </Link>
+              </li>
+              <li>
+                <Link href="/academics/programsoffered" className="hover:text-amber-300 transition">
+                  Programmes Offered
+                </Link>
+              </li>
+              <li>
+                <Link href="/academics/syllabus" className="hover:text-amber-300 transition">
+                  Courses & Syllabus
+                </Link>
+              </li>
+              <li>
+                <Link href="/people/faculty" className="hover:text-amber-300 transition">
+                  Faculty Directory
+                </Link>
+              </li>
+              <li>
+                <Link href="/placementpage" className="hover:text-amber-300 transition">
+                  Placement Statistics
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Academics */}
+          {/* Col 3: Research & Portals */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-              Academics
+            <h4 className="font-bold text-sm tracking-wider uppercase text-amber-400 border-b border-neutral-800 pb-2">
+              Research & Portals
             </h4>
-            <ul className="space-y-2 text-sm">
-              {[
-                { label: "Programmes", href: "/academics/programsoffered" },
-                { label: "Syllabus", href: "/academics/syllabus" },
-                { label: "Labs", href: "/academics/labs" },
-                { label: "Students", href: "/people/students" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-1.5 text-xs text-neutral-300">
+              <li>
+                <Link href="/research/publications" className="hover:text-amber-300 transition">
+                  Research Publications (110+)
+                </Link>
+              </li>
+              <li>
+                <Link href="/research/patents" className="hover:text-amber-300 transition">
+                  Patents & Inventions
+                </Link>
+              </li>
+              <li>
+                <Link href="/research/projects" className="hover:text-amber-300 transition">
+                  Sponsored R&D Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/faculty/login" className="hover:text-amber-300 transition flex items-center gap-1">
+                  Faculty Login Portal <ExternalLink className="w-3 h-3 opacity-60" />
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/login" className="hover:text-amber-300 transition flex items-center gap-1">
+                  Admin Control Panel <ExternalLink className="w-3 h-3 opacity-60" />
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Col 4: Contact & Location */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
-              Contact
+            <h4 className="font-bold text-sm tracking-wider uppercase text-amber-400 border-b border-neutral-800 pb-2">
+              Contact Department
             </h4>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-gray-500" />
-                head.cse@nith.ac.in
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-gray-500" />
-                +91-XXXXX XXXXX
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-gray-500" />
-                NIT Campus, Hamirpur, HP 177005
-              </li>
-            </ul>
+            <div className="space-y-2 text-xs text-neutral-300">
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                <span>Department of Computer Science & Engineering, NIT Hamirpur, Himachal Pradesh – 177005, India</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span>head.cse@nith.ac.in</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span>+91-1972-254400 / 254420</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Globe className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <a href="https://nith.ac.in" target="_blank" rel="noreferrer" className="hover:underline">
+                  www.nith.ac.in
+                </a>
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
-          © {new Date().getFullYear()} Department of Computer Science &amp;
-          Engineering. All rights reserved.
+        <div className="mt-10 pt-6 border-t border-neutral-800 text-center text-xs text-neutral-400 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p>© {new Date().getFullYear()} National Institute of Technology Hamirpur. All Rights Reserved.</p>
+          <p className="text-[11px] text-neutral-500">
+            Maintained by Department of Computer Science & Engineering, NIT Hamirpur.
+          </p>
         </div>
       </div>
     </footer>

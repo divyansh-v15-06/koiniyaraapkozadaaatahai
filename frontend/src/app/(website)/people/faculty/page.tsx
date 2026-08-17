@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Search, Mail, Phone, ExternalLink, Award, BookOpen, FileText } from "lucide-react";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { Search, Mail, Phone, ExternalLink, BookOpen, GraduationCap, ChevronRight } from "lucide-react";
 
 export default function FacultyDirectoryPage() {
   const [search, setSearch] = useState("");
@@ -12,147 +13,129 @@ export default function FacultyDirectoryPage() {
   const filteredFaculty = MOCK_FACULTY.filter((f) => {
     const matchesSearch =
       f.full_name.toLowerCase().includes(search.toLowerCase()) ||
-      f.employee_code.toLowerCase().includes(search.toLowerCase()) ||
-      f.research_interests.some((r) => r.toLowerCase().includes(search.toLowerCase())) ||
-      f.profile?.specializations.toLowerCase().includes(search.toLowerCase());
+      f.research_interests?.some((r) => r.toLowerCase().includes(search.toLowerCase())) ||
+      f.email.toLowerCase().includes(search.toLowerCase());
 
     const matchesDesignation =
-      designationFilter === "ALL" || f.designation.includes(designationFilter);
+      designationFilter === "ALL" ||
+      f.designation.toLowerCase().includes(designationFilter.toLowerCase());
 
     return matchesSearch && matchesDesignation;
   });
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      {/* Header */}
-      <div className="mb-8">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">Department Members</span>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Faculty Directory
-        </h1>
-        <p className="mt-2 text-base text-muted-foreground">
-          Meet our distinguished faculty dedicated to world-class research, teaching, and technological innovation.
-        </p>
-      </div>
-
-      {/* Search & Filter Controls */}
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3.5 top-3 h-4 w-4 text-muted-foreground" />
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by name, research area, or faculty code..."
-            className="w-full rounded-xl border border-input bg-card py-2.5 pl-10 pr-4 text-sm shadow-sm transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-          />
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-6 bg-white min-h-[80vh]">
+      {/* Page Title Header */}
+      <div className="border-b border-[#eedfd8] pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-[#33110e] tracking-tight uppercase">
+            Faculty Directory
+          </h1>
+          <p className="text-xs text-neutral-600 mt-0.5">
+            Department of Computer Science & Engineering, NIT Hamirpur
+          </p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          {["ALL", "Professor", "Associate Professor", "Assistant Professor"].map((desig) => (
-            <button
-              key={desig}
-              onClick={() => setDesignationFilter(desig)}
-              className={`rounded-lg px-3.5 py-1.5 text-xs font-semibold transition ${
-                designationFilter === desig
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "border border-border bg-card text-muted-foreground hover:bg-accent hover:text-foreground"
-              }`}
-            >
-              {desig === "ALL" ? "All Faculty" : desig}
-            </button>
-          ))}
-        </div>
-      </div>
+        {/* Search & Filter Controls */}
+        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+          <div className="relative flex-1 md:w-64">
+            <Search className="w-4 h-4 text-neutral-400 absolute left-3 top-2.5" />
+            <input
+              type="text"
+              placeholder="Search faculty or research area..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-9 pr-3 py-1.5 text-xs rounded border border-[#eedfd8] bg-[#fff9f6] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
+            />
+          </div>
 
-      {/* Faculty Cards Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        {filteredFaculty.map((faculty) => (
-          <div
-            key={faculty.id}
-            className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md"
+          <select
+            value={designationFilter}
+            onChange={(e) => setDesignationFilter(e.target.value)}
+            className="px-3 py-1.5 text-xs rounded border border-[#eedfd8] bg-[#fff9f6] text-neutral-800 focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
           >
-            <div className="flex flex-col gap-5 sm:flex-row">
-              {/* Profile Image */}
-              <div className="relative h-28 w-28 flex-shrink-0 overflow-hidden rounded-xl border border-border/80 bg-muted">
-                <img
-                  src={faculty.image_url}
-                  alt={faculty.full_name}
-                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                />
-              </div>
+            <option value="ALL">All Designations</option>
+            <option value="Professor">Professor</option>
+            <option value="Associate">Associate Professor</option>
+            <option value="Assistant">Assistant Professor</option>
+          </select>
+        </div>
+      </div>
 
-              {/* Basic Info */}
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <span className="rounded-md bg-primary/10 px-2 py-0.5 font-mono text-xs font-semibold text-primary">
-                    {faculty.employee_code}
-                  </span>
-                  <span className="text-xs text-muted-foreground">{faculty.experience_years} yrs exp</span>
-                </div>
-                <h3 className="mt-1.5 text-lg font-bold text-foreground group-hover:text-primary transition">
-                  <Link href={`/people/faculty/${faculty.employee_code.toLowerCase()}`}>
-                    {faculty.full_name}
-                  </Link>
-                </h3>
-                <p className="text-xs font-medium text-muted-foreground">{faculty.designation}</p>
-
-                <div className="mt-3 flex flex-wrap gap-3 text-xs text-muted-foreground">
-                  <a
-                    href={`mailto:${faculty.email}`}
-                    className="flex items-center gap-1.5 hover:text-primary transition"
-                  >
-                    <Mail className="h-3.5 w-3.5 text-primary" /> {faculty.email}
-                  </a>
-                  <span className="flex items-center gap-1.5">
-                    <Phone className="h-3.5 w-3.5 text-muted-foreground" /> {faculty.phone}
-                  </span>
-                </div>
-              </div>
+      {/* Faculty Cards Grid (Replicating tempcse signature layout) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredFaculty.map((fac) => (
+          <div
+            key={fac.id}
+            className="bg-white rounded-lg border border-[#eedfd8] shadow-xs hover:shadow-md transition duration-200 flex flex-col items-center text-center p-5 hover:border-[#85261e]/40 group"
+          >
+            {/* Circular Profile Photo */}
+            <div className="w-32 h-32 rounded-full overflow-hidden border-3 border-[#eedfd8] group-hover:border-[#85261e] transition mb-3 shadow-xs bg-neutral-100 flex items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={fac.image_url || "/hod.jpg"}
+                alt={fac.full_name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400";
+                }}
+              />
             </div>
 
-            {/* Research Areas Tag Cloud */}
-            <div className="mt-5 border-t border-border/60 pt-4">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Research Areas
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {faculty.research_interests.map((interest) => (
-                  <span
-                    key={interest}
-                    className="rounded-md bg-secondary/80 px-2.5 py-1 text-xs font-medium text-secondary-foreground"
-                  >
-                    {interest}
-                  </span>
-                ))}
+            {/* Name & Designation */}
+            <h3 className="font-bold text-sm text-[#33110e] group-hover:text-[#85261e] transition leading-tight mb-1">
+              {fac.full_name}
+            </h3>
+            <span className="text-[11px] font-semibold text-[#85261e] bg-[#fff9f6] px-2 py-0.5 rounded-full border border-[#eedfd8] mb-3">
+              {fac.designation}
+            </span>
+
+            {/* Contact Details */}
+            <div className="w-full text-left space-y-1.5 text-[11px] text-neutral-600 border-t border-[#f4ece8] pt-3 flex-1">
+              <div className="flex items-center gap-1.5 truncate">
+                <Mail className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0" />
+                <a
+                  href={`mailto:${fac.email}`}
+                  className="hover:text-[#33110e] truncate"
+                >
+                  {fac.email}
+                </a>
               </div>
+              <div className="flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0" />
+                <span>{fac.phone}</span>
+              </div>
+              {fac.research_interests && fac.research_interests.length > 0 && (
+                <div className="pt-1.5">
+                  <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider">
+                    Research Area:
+                  </p>
+                  <p className="text-[11px] text-neutral-700 line-clamp-2 mt-0.5">
+                    {fac.research_interests.join(", ")}
+                  </p>
+                </div>
+              )}
             </div>
 
-            {/* Actions Bar */}
-            <div className="mt-5 flex items-center justify-between border-t border-border/60 pt-4">
-              <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                {faculty.profile?.google_scholar_id && (
-                  <span className="flex items-center gap-1 font-medium hover:text-primary">
-                    <BookOpen className="h-3.5 w-3.5" /> Scholar
-                  </span>
-                )}
-                {faculty.profile?.scopus_id && (
-                  <span className="flex items-center gap-1 font-medium hover:text-primary">
-                    <FileText className="h-3.5 w-3.5" /> Scopus
-                  </span>
-                )}
-              </div>
-
+            {/* Action Buttons */}
+            <div className="w-full pt-3 mt-2 border-t border-[#f4ece8] flex gap-2">
               <Link
-                href={`/people/faculty/${faculty.employee_code.toLowerCase()}`}
-                className="flex items-center gap-1 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+                href={`/people/faculty/${fac.id}`}
+                className="w-full bg-[#33110e] text-white text-[11px] font-semibold py-1.5 rounded hover:bg-[#85261e] transition flex items-center justify-center gap-1 shadow-xs"
               >
-                View Full Portfolio <ExternalLink className="h-3.5 w-3.5" />
+                View Profile <ChevronRight className="w-3 h-3" />
               </Link>
             </div>
           </div>
         ))}
       </div>
+
+      {filteredFaculty.length === 0 && (
+        <div className="text-center py-16 text-neutral-500 text-xs">
+          No faculty members found matching your search criteria.
+        </div>
+      )}
     </div>
   );
 }
