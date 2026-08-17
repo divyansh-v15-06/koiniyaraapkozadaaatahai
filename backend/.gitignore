@@ -1,0 +1,15 @@
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Environment variables
+.env
+.env.local
+
+# Test binaries and coverage
+*.out
+*.test

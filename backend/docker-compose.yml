@@ -1,0 +1,32 @@
+# Backend Docker Compose Environment for Development & Testing
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: institute_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: institute_portal
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations/000001_initial_schema.up.sql:/docker-entrypoint-initdb.d/01_initial_schema.sql:ro
+      - ./migrations/000002_materialized_views.up.sql:/docker-entrypoint-initdb.d/02_materialized_views.sql:ro
+      - ./migrations/000003_seed_data.up.sql:/docker-entrypoint-initdb.d/03_seed_data.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: institute_redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
