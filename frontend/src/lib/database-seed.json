@@ -16804,5 +16804,67 @@
       "pdf_url": "https://drive.google.com/file/d/19m4x2VMWvvB4S3ceb3-uHPVgKXOjhrb2/view?usp=drivesdk",
       "publish_date": "2025-06-10"
     }
+  ],
+  "announcements": [
+    {
+      "id": "22222222-aaaa-aaaa-aaaa-000000000001",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "Conference",
+      "title": "International Conference on Artificial Intelligence, Machine Learning & Intelligent Systems (ICAMS-2025)",
+      "body": "Department of CSE, NIT Hamirpur is organizing a two-day International Conference on Artificial Intelligence, Machine Learning and Intelligent Systems (ICAMS-2025). Researchers, scholars, and industry professionals are invited to submit papers.",
+      "link_url": "https://sites.google.com/nith.ac.in/icams2025",
+      "publish_date": "2025-02-07",
+      "is_new": true
+    },
+    {
+      "id": "22222222-aaaa-aaaa-aaaa-000000000002",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "Curriculum",
+      "title": "New Course Curriculum as per NEP-2020 for B.Tech in Computer Science and Engineering",
+      "body": "Department of CSE has implemented the updated NEP-2020 curriculum with multidisciplinary electives, industry internships, AI/ML core tracks, and flexible credit transfers w.e.f. Academic Session 2024-25.",
+      "link_url": "https://nith.ac.in/uploads/topics/new-nep-cse-syllabus17222307132912.pdf",
+      "publish_date": "2024-09-06",
+      "is_new": false
+    },
+    {
+      "id": "22222222-aaaa-aaaa-aaaa-000000000003",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "Curriculum",
+      "title": "Minor Degree Programme in Computer Science and Engineering for Non-CSE Branches",
+      "body": "Department of CSE has launched a Minor Degree in Computer Science and Engineering under NEP-2020 for students from other engineering disciplines desiring minors in software engineering and algorithms.",
+      "link_url": "https://nith.ac.in/uploads/topics/syllabus-cse-minor-degree17216260326071.pdf",
+      "publish_date": "2024-09-06",
+      "is_new": false
+    },
+    {
+      "id": "22222222-aaaa-aaaa-aaaa-000000000004",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "Curriculum",
+      "title": "Revised Curriculum for M.Tech CSE, M.Tech AI, and Dual Degree (B.Tech & M.Tech)",
+      "body": "Proposed specialized postgraduate curriculum for M.Tech in Computer Science & Engineering, M.Tech in Artificial Intelligence, and 5-Year Integrated Dual Degree with specialized thesis research.",
+      "link_url": "",
+      "publish_date": "2024-09-06",
+      "is_new": false
+    },
+    {
+      "id": "22222222-aaaa-aaaa-aaaa-000000000005",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "Admissions",
+      "title": "Call for Applications: Full-Time & Part-Time Ph.D. Admissions (Autumn 2026-2027)",
+      "body": "Applications are invited from prospective scholars for Ph.D. admissions across AI, Quantum Computing, Cryptography, Blockchain, Medical Imaging, and IoT. Institutional fellowships available for GATE-qualified candidates.",
+      "link_url": "https://nith.ac.in",
+      "publish_date": "2026-05-10",
+      "is_new": true
+    },
+    {
+      "id": "22222222-aaaa-aaaa-aaaa-000000000006",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "Academic",
+      "title": "Schedule for Final Year Major Project Demonstrations & Capstone Defense",
+      "body": "All final year B.Tech and M.Tech candidates must present their working prototypes, submit similarity reports (Turnitin), and undergo external panel evaluation in Lab 3.",
+      "link_url": "",
+      "publish_date": "2026-05-02",
+      "is_new": true
+    }
   ]
 }

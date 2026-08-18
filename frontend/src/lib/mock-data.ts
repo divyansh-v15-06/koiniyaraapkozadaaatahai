@@ -148,26 +148,19 @@ export const MOCK_PHD_SCHOLARS: (PhdScholar & {
   scopus_url: phd.scopus_url || "",
 }));
 
-export const MOCK_ANNOUNCEMENTS: Announcement[] = [
-  {
-    id: "ann1",
-    department_id: "22222222-2222-2222-2222-222222222222",
-    title: "Call for Applications: Ph.D. Admissions (Autumn Session 2026-2027)",
-    body: "Applications are invited from eligible candidates for full-time/part-time Ph.D. in Computer Science & Engineering. Written test & interviews scheduled for June 24-25, 2026.",
-    publish_date: "2026-05-10",
-    expiry_date: "2026-06-20",
+export const MOCK_ANNOUNCEMENTS: (Announcement & { category?: string; link_url?: string; is_new?: boolean })[] =
+  (databaseSeed.announcements || []).map((ann: any) => ({
+    id: ann.id,
+    department_id: ann.department_id,
+    category: ann.category || "General Notice",
+    title: ann.title,
+    body: ann.body,
+    publish_date: ann.publish_date,
+    expiry_date: ann.expiry_date || "2026-12-31",
+    link_url: ann.link_url || "",
+    is_new: ann.is_new || false,
     is_private: false,
-  },
-  {
-    id: "ann2",
-    department_id: "22222222-2222-2222-2222-222222222222",
-    title: "Schedule for B.Tech CSE Final Year Major Project Demonstrations",
-    body: "Final Year B.Tech students must submit their project reports and demonstrate working prototypes in Lab 3 from May 28 to May 30.",
-    publish_date: "2026-05-02",
-    expiry_date: "2026-06-05",
-    is_private: false,
-  },
-];
+  }));
 
 export const MOCK_ACHIEVEMENTS = (databaseSeed.achievements || []).map((ach: any) => ({
   id: ach.id,
