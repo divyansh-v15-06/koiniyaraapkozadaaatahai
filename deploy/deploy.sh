@@ -21,8 +21,15 @@ echo -e "${BLUE}================================================================
 echo -e "${GREEN}  🚀 Deploying NIT Hamirpur Multi-Department Portal             ${NC}"
 echo -e "${BLUE}================================================================${NC}"
 
+PREBUILT=false
+if [[ "${1:-}" == "--prebuilt" ]]; then
+    PREBUILT=true
+fi
+
 # 1. Pull latest git commits if inside a git repository
-if [ -d ".git" ]; then
+if [ "$PREBUILT" = true ]; then
+    echo -e "\n${YELLOW}[1/4] Using pre-compiled CI/CD build artifacts...${NC}"
+elif [ -d ".git" ]; then
     echo -e "\n${YELLOW}[1/4] Pulling latest code from origin/main...${NC}"
     git fetch origin main
     git reset --hard origin/main
