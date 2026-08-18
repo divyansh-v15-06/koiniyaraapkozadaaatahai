@@ -127,14 +127,14 @@ dept_staff AS (
 ),
 dept_students AS (
     SELECT 
-        department_id,
+        s.department_id,
         COUNT(*) AS total_students,
         COUNT(*) FILTER (WHERE p.level = 'UG') AS ug_students,
         COUNT(*) FILTER (WHERE p.level = 'PG') AS pg_students
     FROM students s
     JOIN programmes p ON p.id = s.programme_id
     WHERE s.deleted_at IS NULL
-    GROUP BY department_id
+    GROUP BY s.department_id
 ),
 dept_phd AS (
     SELECT 
