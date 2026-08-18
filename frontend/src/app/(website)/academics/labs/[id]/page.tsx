@@ -27,7 +27,7 @@ export default async function LabDetailPage({ params }) {
     return (
         <div className='max-w-5xl mx-auto px-6 py-10'>
             <Link
-                href="/academics/Labs"
+                href="/academics/labs"
                 className="flex items-center text-sm text-blue-600 hover:underline mb-6"
             >
                 <ArrowLeft className="w-4 h-4 mr-2" /> Back to Labs

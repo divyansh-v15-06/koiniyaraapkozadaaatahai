@@ -25,7 +25,7 @@ const AcademicsComponentList = [
             },
         ],
     },
-    { title: 'Labs', path: '/academics/Labs' },
+    { title: 'Labs', path: '/academics/labs' },
 ]
 
 export default function Academics({}: Props) {
