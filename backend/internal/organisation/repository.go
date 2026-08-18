@@ -65,7 +65,7 @@ func (r *pgRepository) ListDepartments(ctx context.Context, institutionID string
 	query := `
 		SELECT id, institution_id, parent_department_id, name, slug, code, contact_email, contact_phone, about_text, created_at, updated_at
 		FROM departments
-		WHERE (institution_id = $1 OR $1 = '') AND deleted_at IS NULL
+		WHERE ($1 = '' OR institution_id::text = $1) AND deleted_at IS NULL
 		ORDER BY name ASC
 	`
 	rows, err := r.pool.Query(ctx, query, institutionID)
@@ -163,7 +163,7 @@ func (r *pgRepository) ListAcademicYears(ctx context.Context, institutionID stri
 	query := `
 		SELECT id, institution_id, label, start_date::text, end_date::text, is_current, created_at, updated_at
 		FROM academic_years
-		WHERE (institution_id = $1 OR $1 = '')
+		WHERE ($1 = '' OR institution_id::text = $1)
 		ORDER BY start_date DESC
 	`
 	rows, err := r.pool.Query(ctx, query, institutionID)
@@ -187,7 +187,7 @@ func (r *pgRepository) ListFinancialYears(ctx context.Context, institutionID str
 	query := `
 		SELECT id, institution_id, label, start_date::text, end_date::text, is_current, created_at, updated_at
 		FROM financial_years
-		WHERE (institution_id = $1 OR $1 = '')
+		WHERE ($1 = '' OR institution_id::text = $1)
 		ORDER BY start_date DESC
 	`
 	rows, err := r.pool.Query(ctx, query, institutionID)
