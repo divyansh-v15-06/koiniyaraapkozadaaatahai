@@ -45,26 +45,41 @@ export const MOCK_FACULTY = databaseSeed.faculty.map((f: any) => ({
   },
 }));
 
-export const MOCK_PUBLICATIONS: Publication[] = databaseSeed.publications.map((p: any) => ({
+export const MOCK_PUBLICATIONS: (Publication & {
+  indexing?: string;
+  journal_quartile?: string;
+  academic_session?: string;
+  author_text?: string;
+  venue_name?: string;
+  page_range?: string;
+  faculty_legacy_ids?: number[];
+})[] = databaseSeed.publications.map((p: any) => ({
   id: p.id,
   title: p.title,
-  publication_type: (p.publication_type as any) || "JOURNAL",
-  journal_or_conference_name: p.journal_or_conference_name || "IEEE / ACM Conference",
+  publication_type: (p.publication_type as any) || "Journal",
+  journal_or_conference_name: p.journal_or_conference_name || p.venue_name || "Proceedings of Conference",
+  venue_name: p.venue_name || p.journal_or_conference_name || "",
   volume: p.volume || "",
   issue: p.issue || "",
-  pages: p.pages || "",
+  pages: p.pages || p.page_range || "",
+  page_range: p.page_range || p.pages || "",
   year: Number(p.year) || 2024,
-  month: 1,
+  month: p.month || 1,
+  academic_session: p.academic_session || `${p.year}-${Number(p.year) + 1}`,
   doi: p.doi || "",
-  issn_isbn: "",
+  issn_isbn: p.isbn || "",
+  indexing: p.indexing || "Other",
+  journal_quartile: p.journal_quartile || "T",
+  author_text: p.author_text || p.raw_authors || "Faculty",
   impact_factor: p.is_sci ? 3.5 : 0,
   is_sci: Boolean(p.is_sci),
   is_scopus: Boolean(p.is_scopus),
   is_peer_reviewed: true,
-  abstract_text: `Published research article. Authors: ${p.raw_authors || 'Faculty'}.`,
-  publisher: "IEEE / Elsevier",
+  abstract_text: `Published research article. Authors: ${p.author_text || p.raw_authors || 'Faculty'}.`,
+  publisher: "IEEE / Elsevier / Springer",
   faculty_ids: p.faculty_ids || [],
-  authors: (p.raw_authors || "Faculty")
+  faculty_legacy_ids: p.faculty_legacy_ids || [],
+  authors: (p.author_text || p.raw_authors || "Faculty")
     .split(",")
     .map((name: string, idx: number) => ({
       id: `a-${idx}`,
