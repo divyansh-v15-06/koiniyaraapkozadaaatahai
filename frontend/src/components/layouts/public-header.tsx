@@ -63,7 +63,6 @@ export function PublicHeader() {
         { label: "Courses", href: `/academics/courses?dept=${activeDepartment.slug}` },
         { label: "Syllabus", href: `/academics/syllabus?dept=${activeDepartment.slug}` },
         { label: "Academic Calendar", href: `/academics/calendar?dept=${activeDepartment.slug}` },
-        { label: "Laboratories", href: `/academics/labs?dept=${activeDepartment.slug}` },
       ],
     },
     {

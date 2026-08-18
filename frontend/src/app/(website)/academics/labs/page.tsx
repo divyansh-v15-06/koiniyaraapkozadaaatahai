@@ -1,3 +1,5 @@
-import LabsPage from "../../aboutus/labs/page";
+import { redirect } from "next/navigation";
 
-export default LabsPage;
+export default function AcademicsLabsRedirect() {
+  redirect("/aboutus/labs");
+}

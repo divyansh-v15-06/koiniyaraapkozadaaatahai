@@ -1,107 +1,176 @@
 "use client";
 
-import { useState } from "react";
-import { Search, BookOpen, Layers } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Search, BookOpen, Layers, Filter, CheckCircle2, RotateCcw } from "lucide-react";
 import { MOCK_COURSES } from "@/lib/mock-data";
+import { useDepartment } from "@/context/department-context";
 
 export default function CoursesPage() {
+  const { activeDepartment } = useDepartment();
   const [search, setSearch] = useState("");
   const [levelFilter, setLevelFilter] = useState("ALL");
+  const [semesterFilter, setSemesterFilter] = useState("ALL");
 
-  const filtered = MOCK_COURSES.filter((c) => {
-    const matchesSearch =
-      c.code.toLowerCase().includes(search.toLowerCase()) ||
-      c.name.toLowerCase().includes(search.toLowerCase());
+  const filtered = useMemo(() => {
+    return MOCK_COURSES.filter((c: any) => {
+      const q = search.toLowerCase();
+      const matchesSearch =
+        !search ||
+        c.code.toLowerCase().includes(q) ||
+        c.name.toLowerCase().includes(q) ||
+        c.description?.toLowerCase().includes(q);
 
-    const matchesLevel = levelFilter === "ALL" || c.level === levelFilter;
+      const matchesLevel = levelFilter === "ALL" || c.level === levelFilter;
+      const matchesSemester = semesterFilter === "ALL" || String(c.semester) === semesterFilter;
 
-    return matchesSearch && matchesLevel;
-  });
+      return matchesSearch && matchesLevel && matchesSemester;
+    });
+  }, [search, levelFilter, semesterFilter]);
+
+  const semesters = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">Curriculum</span>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Course Catalogue
-        </h1>
-        <p className="mt-2 text-base text-muted-foreground">
-          Undergraduate and postgraduate courses offered by the Department of Computer Science &amp; Engineering.
-        </p>
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-6 bg-white min-h-[85vh] font-sans">
+      {/* Title Header */}
+      <div className="border-b border-[#eedfd8] pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold text-[#33110e] tracking-tight uppercase flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-[#85261e]" />
+              Curriculum Course Catalogue
+            </h1>
+            <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-xs font-bold px-2 py-0.5 rounded uppercase">
+              {activeDepartment.code}
+            </span>
+          </div>
+          <p className="text-xs text-neutral-600 mt-0.5">
+            Complete catalogue of core subjects, program electives, open multidisciplinary electives, and lab courses for Department of {activeDepartment.name}.
+          </p>
+        </div>
       </div>
 
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3.5 top-3 h-4 w-4 text-muted-foreground" />
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by course code or title..."
-            className="w-full rounded-xl border border-input bg-card py-2.5 pl-10 pr-4 text-sm shadow-sm transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-          />
-        </div>
+      {/* Filter Bar */}
+      <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 shadow-xs space-y-3">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          {/* Search */}
+          <div className="relative w-full sm:w-80">
+            <Search className="w-4 h-4 text-neutral-400 absolute left-3 top-2.5" />
+            <input
+              type="text"
+              placeholder="Search course code or title..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-[#eedfd8] bg-white text-[#33110e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
+            />
+          </div>
 
-        <div className="flex gap-2">
-          {["ALL", "UG", "PG"].map((level) => (
-            <button
-              key={level}
-              onClick={() => setLevelFilter(level)}
-              className={`rounded-lg px-3.5 py-1.5 text-xs font-semibold transition ${
-                levelFilter === level
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "border border-border bg-card text-muted-foreground hover:bg-accent hover:text-foreground"
-              }`}
+          {/* Level Filter */}
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+            {["ALL", "UG", "PG"].map((level) => (
+              <button
+                key={level}
+                onClick={() => setLevelFilter(level)}
+                className={`px-3 py-1 text-xs font-semibold rounded-md transition cursor-pointer ${
+                  levelFilter === level
+                    ? "bg-[#33110e] text-white shadow-xs"
+                    : "border border-[#eedfd8] bg-white text-[#33110e] hover:bg-[#eedfd8]/40"
+                }`}
+              >
+                {level === "ALL" ? "All Levels" : `${level} Courses`}
+              </button>
+            ))}
+
+            {/* Semester Select */}
+            <select
+              value={semesterFilter}
+              onChange={(e) => setSemesterFilter(e.target.value)}
+              className="bg-white border border-[#eedfd8] rounded-lg px-2.5 py-1 text-xs font-semibold text-[#33110e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
             >
-              {level === "ALL" ? "All Courses" : `${level} Courses`}
-            </button>
-          ))}
+              <option value="ALL">All Semesters</option>
+              {semesters.map((s) => (
+                <option key={s} value={String(s)}>
+                  Semester {s}
+                </option>
+              ))}
+            </select>
+
+            {(search || levelFilter !== "ALL" || semesterFilter !== "ALL") && (
+              <button
+                onClick={() => {
+                  setSearch("");
+                  setLevelFilter("ALL");
+                  setSemesterFilter("ALL");
+                }}
+                className="px-2.5 py-1 text-xs font-semibold text-neutral-500 hover:text-[#33110e] transition flex items-center gap-1 cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" /> Reset
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
-            <thead className="border-b border-border bg-muted/40 text-xs font-semibold uppercase text-muted-foreground">
-              <tr>
-                <th className="px-6 py-4">Course Code</th>
-                <th className="px-6 py-4">Course Title</th>
-                <th className="px-6 py-4">Credits</th>
-                <th className="px-6 py-4">Semester</th>
-                <th className="px-6 py-4">Level</th>
-                <th className="px-6 py-4">Category</th>
+      {/* Courses Table */}
+      <div className="overflow-x-auto rounded-xl border border-[#eedfd8] shadow-xs">
+        <table className="w-full text-left border-collapse bg-white text-xs">
+          <thead>
+            <tr className="bg-[#1c110c] text-white text-xs font-bold uppercase tracking-wider">
+              <th className="py-3 px-4 border-r border-neutral-800 w-32">Course Code</th>
+              <th className="py-3 px-4 border-r border-neutral-800">Course Title</th>
+              <th className="py-3 px-4 text-center border-r border-neutral-800 w-28">Credits (L-T-P)</th>
+              <th className="py-3 px-4 text-center border-r border-neutral-800 w-28">Semester</th>
+              <th className="py-3 px-4 text-center border-r border-neutral-800 w-24">Level</th>
+              <th className="py-3 px-4 text-center w-28">Category</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[#eedfd8]">
+            {filtered.map((course: any) => (
+              <tr key={course.code} className="hover:bg-[#fff9f6] transition">
+                <td className="py-3 px-4 font-mono font-bold text-[#85261e] border-r border-[#eedfd8]">
+                  {course.code}
+                </td>
+                <td className="py-3 px-4 font-semibold text-[#1c110c] border-r border-[#eedfd8]">
+                  {course.name}
+                  {course.description && (
+                    <p className="text-[11px] text-neutral-500 font-normal mt-0.5">
+                      {course.description}
+                    </p>
+                  )}
+                </td>
+                <td className="py-3 px-4 text-center font-semibold text-neutral-700 border-r border-[#eedfd8]">
+                  {course.credits} Credits
+                </td>
+                <td className="py-3 px-4 text-center text-neutral-700 border-r border-[#eedfd8]">
+                  Sem {course.semester}
+                </td>
+                <td className="py-3 px-4 text-center border-r border-[#eedfd8]">
+                  <span className="bg-[#fff9f6] border border-[#eedfd8] text-[#33110e] text-[10px] font-bold px-2 py-0.5 rounded">
+                    {course.level}
+                  </span>
+                </td>
+                <td className="py-3 px-4 text-center">
+                  <span
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                      course.type === "Core"
+                        ? "bg-[#33110e] text-white"
+                        : "bg-amber-100 text-amber-900 border border-amber-300"
+                    }`}
+                  >
+                    {course.type}
+                  </span>
+                </td>
               </tr>
-            </thead>
-            <tbody className="divide-y divide-border/60">
-              {filtered.map((course) => (
-                <tr key={course.code} className="hover:bg-accent/40 transition">
-                  <td className="whitespace-nowrap px-6 py-4 font-mono font-bold text-primary">
-                    {course.code}
-                  </td>
-                  <td className="px-6 py-4 font-semibold text-foreground">{course.name}</td>
-                  <td className="px-6 py-4 text-muted-foreground">{course.credits} Credits</td>
-                  <td className="px-6 py-4 text-muted-foreground">Sem {course.semester}</td>
-                  <td className="px-6 py-4">
-                    <span className="rounded-md bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground">
-                      {course.level}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`rounded-md px-2.5 py-0.5 text-xs font-semibold ${
-                        course.type === "Core"
-                          ? "bg-primary/10 text-primary"
-                          : "bg-chart-3/10 text-chart-3"
-                      }`}
-                    >
-                      {course.type}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+
+            {filtered.length === 0 && (
+              <tr>
+                <td colSpan={6} className="py-12 text-center text-neutral-500 text-xs">
+                  No courses found matching the search criteria.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

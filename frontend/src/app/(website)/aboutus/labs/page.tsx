@@ -1,41 +1,214 @@
-import { Building2, Cpu, UserCheck } from "lucide-react";
-import { MOCK_LABS } from "@/lib/mock-data";
+"use client";
+
+import { useState, useMemo } from "react";
+import Link from "next/link";
+import {
+  Building2,
+  Cpu,
+  UserCheck,
+  Search,
+  Layers,
+  ArrowRight,
+  ShieldCheck,
+  Sparkles,
+  Server,
+  Monitor,
+  Database,
+  Network,
+} from "lucide-react";
+import { useDepartment } from "@/context/department-context";
 
 export default function LabsPage() {
+  const { activeDepartment } = useDepartment();
+  const [search, setSearch] = useState("");
+
+  const labs = [
+    {
+      id: "lab-1",
+      name: "High Performance Computing & GPU Research Lab",
+      location: "Lab Room 101, Ground Floor",
+      head: "Prof. Lalit Kumar Awasthi",
+      workstations: "35 High-End GPU Workstations",
+      hardware: "NVIDIA DGX Station, Tesla V100 GPU nodes, dual Intel Xeon processors, 128GB RAM per node.",
+      description: "Dedicated to parallel algorithms, large-scale deep learning model training, scientific simulations, and distributed cloud computing.",
+      icon: Cpu,
+    },
+    {
+      id: "lab-2",
+      name: "Artificial Intelligence & Robotics Lab",
+      location: "Lab Room 102, Ground Floor",
+      head: "Dr. Mohammad Khalid Pandit",
+      workstations: "30 AI Workstations + Robotic Kits",
+      hardware: "NVIDIA RTX 4090 Workstations, TurtleBot3 mobile robots, LiDAR sensors, and RealSense depth cameras.",
+      description: "Supports advanced research in computer vision, transformer architectures, reinforcement learning, and autonomous robotic navigation.",
+      icon: Sparkles,
+    },
+    {
+      id: "lab-3",
+      name: "Cyber Security & Cryptography Lab",
+      location: "Lab Room 201, First Floor",
+      head: "Dr. Kamlesh Dutta",
+      workstations: "32 Isolated Network Nodes",
+      hardware: "Isolated network racks, hardware security modules (HSM), Wireshark packet analyzers, and malware analysis sandboxes.",
+      description: "Focuses on network intrusion detection, blockchain protocols, zero-trust architectures, and cryptographic algorithm benchmarking.",
+      icon: ShieldCheck,
+    },
+    {
+      id: "lab-4",
+      name: "Cloud Computing & Internet of Things (IoT) Lab",
+      location: "Lab Room 202, First Floor",
+      head: "Dr. Naveen Chauhan",
+      workstations: "40 IoT Workstations & Sensor Nodes",
+      hardware: "OpenStack private cloud testbed, Raspberry Pi 5 clusters, ESP32 nodes, LoRaWAN gateways, and Zigbee sensor kits.",
+      description: "Hands-on testbed for smart healthcare systems, sensor fusion, edge-fog-cloud orchestration, and low-power communication.",
+      icon: Server,
+    },
+    {
+      id: "lab-5",
+      name: "Image Processing & Biometrics Lab",
+      location: "Lab Room 203, First Floor",
+      head: "Dr. Siddhartha Chauhan",
+      workstations: "28 Workstations",
+      hardware: "High-resolution iris scanners, multispectral fingerprint sensors, high-throughput medical image display monitors.",
+      description: "Specialized in medical image segmentation (MRI/CT), biometric authentication, facial recognition under varying lighting, and forensic imaging.",
+      icon: Monitor,
+    },
+    {
+      id: "lab-6",
+      name: "Data Analytics & Big Data Systems Lab",
+      location: "Lab Room 301, Second Floor",
+      head: "Dr. Arun Kumar Yadav",
+      workstations: "35 Enterprise Workstations",
+      hardware: "Apache Hadoop / Spark distributed cluster nodes, high-speed NVMe storage arrays, and enterprise DBMS servers.",
+      description: "Dedicated to large-scale data mining, NLP information retrieval, sentiment analysis of legal documents, and knowledge graph engineering.",
+      icon: Database,
+    },
+    {
+      id: "lab-7",
+      name: "Software Engineering & Systems Development Lab",
+      location: "Lab Room 302, Second Floor",
+      head: "Dr. T P Sharma",
+      workstations: "45 Development Workstations",
+      hardware: "CI/CD testing servers, automated code profiling testbeds, and cross-platform mobile development suites.",
+      description: "Facilitates undergraduate software design projects, agile software engineering, test-driven development, and enterprise architectures.",
+      icon: Layers,
+    },
+    {
+      id: "lab-8",
+      name: "Computer Networks & Wireless Communication Lab",
+      location: "Lab Room 303, Second Floor",
+      head: "Dr. Pardeep Singh",
+      workstations: "36 Network Stations",
+      hardware: "Cisco managed switches & routers, Software-Defined Networking (SDN) controllers, NS-3 and Mininet testbeds.",
+      description: "Covers routing protocol verification, 5G/6G network simulation, wireless ad-hoc networks (VANET/MANET), and QoS optimization.",
+      icon: Network,
+    },
+    {
+      id: "lab-9",
+      name: "Microprocessor & Embedded Systems Lab",
+      location: "Lab Room 104, Ground Floor",
+      head: "Dr. Rajeev Kumar",
+      workstations: "30 Embedded Kits & Oscilloscopes",
+      hardware: "ARM Cortex-M development boards, 8086/8051 microprocessor kits, FPGA development boards (Xilinx Artix-7), and digital storage oscilloscopes.",
+      description: "Embedded firmware development, hardware-software co-design, real-time operating systems (FreeRTOS), and VLSI interface prototyping.",
+      icon: Cpu,
+    },
+    {
+      id: "lab-10",
+      name: "PG & Doctoral Research Laboratory",
+      location: "Lab Room 401, Third Floor",
+      head: "Dr. Sangeeta Sharma",
+      workstations: "50 Dedicated Research Cubicles",
+      hardware: "Dual-monitor dedicated workstations for M.Tech and Ph.D. scholars with Gigabit LAN connectivity and central cluster access.",
+      description: "Dedicated full-time research environment for postgraduate dissertation work and doctoral research projects.",
+      icon: UserCheck,
+    },
+  ];
+
+  const filteredLabs = useMemo(() => {
+    return labs.filter((l) => {
+      const q = search.toLowerCase();
+      return (
+        !search ||
+        l.name.toLowerCase().includes(q) ||
+        l.head.toLowerCase().includes(q) ||
+        l.location.toLowerCase().includes(q) ||
+        l.description.toLowerCase().includes(q)
+      );
+    });
+  }, [search]);
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">Infrastructure &amp; Research</span>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Laboratories &amp; Facilities
-        </h1>
-        <p className="mt-2 text-base text-muted-foreground">
-          State-of-the-art specialized computing facilities, GPU clusters, and research labs.
-        </p>
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-6 bg-white min-h-[85vh] font-sans">
+      {/* Title Header */}
+      <div className="border-b border-[#eedfd8] pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold text-[#33110e] tracking-tight uppercase flex items-center gap-2">
+              <Building2 className="w-6 h-6 text-[#85261e]" />
+              Laboratories &amp; Research Facilities
+            </h1>
+            <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-xs font-bold px-2 py-0.5 rounded uppercase">
+              {activeDepartment.code}
+            </span>
+          </div>
+          <p className="text-xs text-neutral-600 mt-1">
+            Specialized computing facilities, GPU clusters, sensor testbeds, and research spaces of Department of {activeDepartment.name}.
+          </p>
+        </div>
       </div>
 
+      {/* Search & Stats Bar */}
+      <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="relative w-full sm:w-80">
+          <Search className="w-4 h-4 text-neutral-400 absolute left-3 top-2.5" />
+          <input
+            type="text"
+            placeholder="Search lab name, faculty in-charge, or area..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-[#eedfd8] bg-white text-[#33110e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
+          />
+        </div>
+
+        <span className="text-xs font-semibold text-neutral-600">
+          Showing {filteredLabs.length} of {labs.length} Research &amp; Teaching Labs
+        </span>
+      </div>
+
+      {/* Labs Grid */}
       <div className="grid gap-6 md:grid-cols-2">
-        {MOCK_LABS.map((lab) => (
+        {filteredLabs.map((lab) => (
           <div
             key={lab.id}
-            className="rounded-2xl border border-border bg-card p-6 shadow-sm transition hover:border-primary/40 hover:shadow-md"
+            className="bg-white border border-[#eedfd8] rounded-2xl p-6 shadow-xs hover:shadow-md hover:border-[#85261e]/40 transition space-y-3 flex flex-col justify-between"
           >
-            <div className="flex items-center justify-between">
-              <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-                <Building2 className="h-3.5 w-3.5 text-primary" /> {lab.location}
-              </span>
-              <span className="rounded-md bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground">
-                {lab.equipment_count} Workstations/Racks
-              </span>
+            <div>
+              <div className="flex items-center justify-between gap-2 border-b border-[#eedfd8]/60 pb-3">
+                <span className="flex items-center gap-1.5 font-mono text-[11px] text-neutral-500">
+                  <Building2 className="w-3.5 h-3.5 text-[#85261e]" /> {lab.location}
+                </span>
+                <span className="bg-[#fff9f6] border border-[#eedfd8] text-[#85261e] text-[10px] font-bold px-2 py-0.5 rounded">
+                  {lab.workstations}
+                </span>
+              </div>
+
+              <h2 className="text-base font-bold text-[#1c110c] mt-3 leading-snug">
+                {lab.name}
+              </h2>
+
+              <p className="text-xs text-neutral-700 leading-relaxed mt-2">
+                {lab.description}
+              </p>
+
+              <div className="mt-3 bg-[#fff9f6] border border-[#eedfd8]/80 rounded-lg p-2.5 text-[11px] text-neutral-600">
+                <strong className="text-[#33110e] font-bold">Key Hardware &amp; Toolkits:</strong> {lab.hardware}
+              </div>
             </div>
 
-            <h3 className="mt-3 text-lg font-bold text-foreground">{lab.name}</h3>
-
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{lab.description}</p>
-
-            <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3 text-xs">
-              <span className="flex items-center gap-1 text-muted-foreground">
-                <UserCheck className="h-3.5 w-3.5 text-primary" /> Lab In-Charge: <strong className="text-foreground">{lab.head}</strong>
+            <div className="pt-3 border-t border-[#eedfd8]/60 flex items-center justify-between text-xs">
+              <span className="flex items-center gap-1.5 text-neutral-600">
+                <UserCheck className="w-3.5 h-3.5 text-[#85261e]" /> Lab In-Charge: <strong className="text-[#1c110c]">{lab.head}</strong>
               </span>
             </div>
           </div>

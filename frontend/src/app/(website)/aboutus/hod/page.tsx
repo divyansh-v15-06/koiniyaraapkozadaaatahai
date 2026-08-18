@@ -1,50 +1,103 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowLeft, Mail, Phone, Quote } from "lucide-react";
-import { MOCK_FACULTY } from "@/lib/mock-data";
+import { ArrowLeft, Mail, Phone, Quote, Building2, Award, BookOpen, GraduationCap, MapPin } from "lucide-react";
+import { useDepartment } from "@/context/department-context";
 
 export default function HodMessagePage() {
-  const hod = MOCK_FACULTY[0];
+  const { activeDepartment } = useDepartment();
+
+  const hodData = {
+    name: "Dr. Siddhartha Chauhan",
+    designation: `Head of Department & Associate Professor`,
+    department: `Department of ${activeDepartment.name}`,
+    image: "/hod.jpg",
+    email: "siddhartha@nith.ac.in",
+    phone: "+91-1972-254424",
+    office: "Room 204, Department of CSE Building, NIT Hamirpur",
+    qualifications: "Ph.D. (NIT Hamirpur), M.Tech (CSE), B.Tech (CSE)",
+    message: [
+      `It is with great pleasure and pride that I welcome you to the Department of ${activeDepartment.name} at National Institute of Technology Hamirpur. Since its establishment, the department has been dedicated to cultivating an environment of intellectual curiosity, rigorous engineering disciplines, and innovative technological contributions.`,
+      `In an era characterized by rapid digital transformation, artificial intelligence, cyber-physical systems, and quantum breakthroughs, our curriculum is carefully curated to bridge core theoretical foundations with state-of-the-art technological practices as per NEP-2020.`,
+      `I extend my sincere gratitude to our accomplished faculty, hardworking staff, and talented students who continually uphold the highest academic and research standards of NIT Hamirpur. We warmly invite prospective students, academic collaborators, and industry partners to join us in advancing the frontiers of computing sciences.`,
+    ],
+  };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <Link
-        href="/aboutus"
-        className="mb-6 inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-primary transition"
-      >
-        <ArrowLeft className="h-4 w-4" /> Back to About Us
-      </Link>
+    <div className="max-w-5xl mx-auto px-4 sm:px-8 py-8 space-y-6 bg-white min-h-[85vh] font-sans">
+      {/* Back button */}
+      <div>
+        <Link
+          href="/aboutus"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#85261e] hover:underline"
+        >
+          <ArrowLeft className="w-4 h-4" /> Back to About Us
+        </Link>
+      </div>
 
-      <div className="overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-10">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-          <div className="relative h-36 w-36 flex-shrink-0 overflow-hidden rounded-2xl border-2 border-primary/20 shadow-md">
-            <img src={hod.image_url} alt={hod.full_name} className="h-full w-full object-cover" />
+      {/* Main HOD Message Card */}
+      <div className="bg-white border border-[#eedfd8] rounded-2xl p-6 sm:p-10 shadow-xs hover:border-[#85261e]/40 transition space-y-6">
+        {/* Profile Row */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 border-b border-[#eedfd8] pb-6">
+          <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-[#eedfd8] shadow-md flex-shrink-0 bg-[#fff9f6]">
+            <img
+              src={hodData.image}
+              alt={hodData.name}
+              className="w-full h-full object-cover"
+              onError={(e: any) => {
+                e.target.src = "/17059155995973.jpg";
+              }}
+            />
           </div>
 
-          <div className="space-y-1">
-            <span className="rounded-md bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+          <div className="space-y-1.5 text-center sm:text-left flex-1">
+            <span className="bg-[#33110e] text-white text-[10px] font-bold px-2.5 py-0.5 rounded uppercase tracking-wider">
               Head of Department
             </span>
-            <h1 className="text-2xl font-bold text-foreground sm:text-3xl">{hod.full_name}</h1>
-            <p className="text-sm font-medium text-muted-foreground">{hod.designation}</p>
-            <div className="pt-2 text-xs text-muted-foreground flex gap-4">
-              <span>{hod.email}</span>
-              <span>{hod.phone}</span>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#1c110c] tracking-tight">
+              {hodData.name}
+            </h1>
+            <p className="text-xs sm:text-sm font-semibold text-[#85261e]">
+              {hodData.designation}
+            </p>
+            <p className="text-xs text-neutral-600">
+              {hodData.department}
+            </p>
+            <p className="text-xs text-neutral-500 font-mono">
+              {hodData.qualifications}
+            </p>
+
+            <div className="pt-3 flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-neutral-700">
+              <span className="flex items-center gap-1 bg-[#fff9f6] border border-[#eedfd8] px-2.5 py-1 rounded-md">
+                <Mail className="w-3.5 h-3.5 text-[#85261e]" /> {hodData.email}
+              </span>
+              <span className="flex items-center gap-1 bg-[#fff9f6] border border-[#eedfd8] px-2.5 py-1 rounded-md">
+                <Phone className="w-3.5 h-3.5 text-[#85261e]" /> {hodData.phone}
+              </span>
             </div>
           </div>
         </div>
 
-        <div className="relative mt-8 border-t border-border/60 pt-6">
-          <Quote className="absolute -top-3 left-4 h-6 w-6 text-primary/20" />
-          <div className="space-y-4 text-sm leading-relaxed text-foreground/90">
-            <p>
-              Welcome to the Department of Computer Science &amp; Engineering at the National Institute of Technology. Since our inception, we have been committed to fostering an ecosystem of high-impact learning, rigorous scientific inquiry, and technological leadership.
-            </p>
-            <p>
-              Our academic programmes are designed to bridge fundamental theoretical foundations with rapidly advancing technologies including Artificial Intelligence, Cloud &amp; Distributed Systems, Cyber-Physical Security, and High-Performance Computing.
-            </p>
-            <p>
-              Our students consistently achieve top placement packages and secure admissions into prestigious research institutions globally. We encourage you to explore our research output and collaborate with our faculty.
-            </p>
+        {/* Message Content */}
+        <div className="relative pt-2 space-y-4">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase text-[#85261e] tracking-wider">
+            <Quote className="w-4 h-4 text-[#85261e]" /> Official Message &amp; Welcome Address
+          </div>
+
+          <div className="space-y-4 text-xs sm:text-sm text-neutral-800 leading-relaxed font-normal">
+            {hodData.message.map((paragraph, idx) => (
+              <p key={idx} className="leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          {/* Signature block */}
+          <div className="pt-6 border-t border-[#eedfd8]/60 flex flex-col items-end text-right">
+            <p className="text-sm font-bold text-[#1c110c]">{hodData.name}</p>
+            <p className="text-xs text-[#85261e] font-semibold">{hodData.designation}</p>
+            <p className="text-xs text-neutral-500">{hodData.department}</p>
+            <p className="text-xs text-neutral-500">National Institute of Technology Hamirpur</p>
           </div>
         </div>
       </div>
