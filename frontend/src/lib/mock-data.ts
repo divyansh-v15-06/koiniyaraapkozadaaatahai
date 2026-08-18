@@ -169,17 +169,26 @@ export const MOCK_ANNOUNCEMENTS: Announcement[] = [
   },
 ];
 
-export const MOCK_POSTS: Post[] = [
-  {
-    id: "post1",
-    department_id: "22222222-2222-2222-2222-222222222222",
-    category: "Achievement",
-    title: "CSE Student Team Wins 1st Prize at Smart India Hackathon (Hardware Edition)",
-    slug: "sih-first-prize-cse",
-    body: "A 6-member team led by B.Tech CSE students secured the 1st prize along with a cash award of ₹1,00,000 for their IoT-enabled Avalanche Warning System.",
-    publish_date: "2025-12-18",
-  },
-];
+export const MOCK_ACHIEVEMENTS = (databaseSeed.achievements || []).map((ach: any) => ({
+  id: ach.id,
+  department_id: ach.department_id,
+  category: ach.category || "achievement",
+  title: ach.title,
+  description: ach.description,
+  photo_url: ach.photo_url,
+  pdf_url: ach.pdf_url,
+  publish_date: ach.publish_date,
+}));
+
+export const MOCK_POSTS: Post[] = (databaseSeed.achievements || []).map((ach: any) => ({
+  id: ach.id,
+  department_id: ach.department_id,
+  category: ach.category || "Achievement",
+  title: ach.title,
+  slug: `post-${ach.legacy_id || ach.id}`,
+  body: ach.description,
+  publish_date: ach.publish_date,
+}));
 
 export const MOCK_STAFF: Staff[] = [
   { id: "st1", department_id: "22222222-2222-2222-2222-222222222222", name: "Sh. Ramesh Chand", designation: "Technical Officer (System Admin)", email: "ramesh@nith.ac.in", phone: "+91-1972-254120" },

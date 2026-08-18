@@ -16725,5 +16725,84 @@
       "google_scholar_url": "",
       "scopus_url": ""
     }
+  ],
+  "achievements": [
+    {
+      "id": "47244f0c-c642-542f-8309-427e74dbba46",
+      "legacy_id": "4",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "achievement",
+      "title": "5th International Conference on Machine Learning, Image Processing, Network Security, and Data Sciences (MIND 2023)",
+      "description": "Department of CSE, NIT Hamirpur has successfully orgainized 5th International Conference on Machine Learning, Image Processing, Network Security, and Data Sciences (MIND 2023) on 21st and 22nd of December 2023",
+      "photo_url": "https://res.cloudinary.com/dha8atrgz/image/upload/v1725899222/Screenshot_from_2024-09-09_21-56-30_cy3pch.png",
+      "pdf_url": "https://mind2023.nith.ac.in/",
+      "publish_date": "2024-09-06"
+    },
+    {
+      "id": "63abf832-f9f4-5ce3-bd9c-9f2c2acd9581",
+      "legacy_id": "5",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "achievement",
+      "title": "Recent Advancements in Artificial Intelligence and Internet of Things (RAAI-2024)",
+      "description": "Department of CSE, NIT Hamirpur has successfully orgainized 5 Days e-Workshop on Recent Advancements in Artificial Intelligence and Internet of Things (RAAI-2024) from 08-12 April 2024",
+      "photo_url": "https://res.cloudinary.com/dha8atrgz/image/upload/v1725899321/Screenshot_from_2024-09-09_21-58-05_qsx0pt.png",
+      "pdf_url": "https://nith.ac.in/uploads/topics/csed-workshop-ai17121269353999.pdf",
+      "publish_date": "2024-09-06"
+    },
+    {
+      "id": "09fd42a3-a311-5714-997c-f0d1629f3da8",
+      "legacy_id": "6",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "achievement",
+      "title": "Research Applications of Deep Learning",
+      "description": "Department of CSE, NIT Hamirpur has successfully orgainized 5 Days e-STC on Research Applications of Deep Learning from 01-05 July 2024",
+      "photo_url": "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1749014936/rgsiauf7yh1sy8aer5yo.jpg",
+      "pdf_url": "https://nith.ac.in/uploads/topics/estc-csed17177438577130.pdf",
+      "publish_date": "2025-06-04"
+    },
+    {
+      "id": "cb960667-e1e6-57d5-aee2-9636707928ae",
+      "legacy_id": "11",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "achievement",
+      "title": "2nd International Conference on Artificial Intelligence, Machine Learning & Intelligent Systems (ICAMS-2025)",
+      "description": "The 2nd International Conference on Artificial Intelligence, Machine Learning & Intelligent Systems (ICAMS 2025) was scheduled on February 7\u20138, 2025, at the National Institute of Technology (NIT) Hamirpur, Himachal Pradesh, India. Organized by the Department of Computer Science and Engineering at NIT Hamirpur. The Organising Chairman is Dr. Naveen Chauhan, DoCSE, NIT Hamirpur. The Organising Secretary is Dr. Mohammad Khalid Pradit and Dr. Ajay Kumar Mallick, DoCSE, NIT Hamirpur. The inaugural ceremony of ICAMS 2025 was held on February 7, 2025, at the National Institute of Technology (NIT) Hamirpur in presence of Prof. Hiralal Murlidhar Suryawanshi, Director of NIT Hamirpur, Prof. Archana Santosh Nanoty, Registrar, NIT Hamirpur, and other expert from reputed institutes. The Valedictory Ceremony of the ICAMS 2025 was held on 8th February 2025 at NIT Hamirpur, marking the successful conclusion of the two-day conference in the esteemed presence of Prof. H.M. Suryawanshi, Director, NIT Hamirpur, Prof. Archana Santosh Nanoty, Registrar and other delegates.",
+      "photo_url": "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1749015564/clbtxoenukldqigdws1e.jpg",
+      "pdf_url": "https://sites.google.com/nith.ac.in/icams2025/home",
+      "publish_date": "2025-06-13"
+    },
+    {
+      "id": "698e5bba-1737-540b-97b8-efe75c07d1a2",
+      "legacy_id": "12",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "achievement",
+      "title": "e-STC ON Mobile Device Security during 27-31 January 2025",
+      "description": "The primary objective of this short-term course is to equip participants with in-depth understanding of the latest trends and advancements in the field of Mobile Device Security. This short-term course aims to provide insights into advancements in mobile and wireless security. Key topics include reconnaissance, 5G security, malware analysis, cryptography, and machine learning applications. Participants will also explore opportunistic networks, device-to-device communication, and attack graphs. Led by experts, the course equips professionals and researchers with skills to address modern cybersecurity challenges.",
+      "photo_url": "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1749528583/bppbvfzidwo1jbxsp6gj.jpg",
+      "pdf_url": "https://drive.google.com/file/d/1uMg5gFGlNDoysiLSo8sBxpr_OmhxSDGH/view?usp=drivesdk",
+      "publish_date": "2025-06-10"
+    },
+    {
+      "id": "447e7103-5fb5-5954-b86e-fc503f0896c4",
+      "legacy_id": "13",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "achievement",
+      "title": "Faculty Updation Programme on Mobile Device Security during 24-28 Feb-2025",
+      "description": "'The aims this event is to enhance faculty and researchers\\' knowledge and skills in mobile device security",
+      "photo_url": "addressing both current challenges and technological advancements. It focuses on practical training in security technologies",
+      "pdf_url": "experiments",
+      "publish_date": "and simula"
+    },
+    {
+      "id": "a7d9d8f2-5ff2-5f3d-ab3e-d284a2b2d2ea",
+      "legacy_id": "14",
+      "department_id": "22222222-2222-2222-2222-222222222222",
+      "category": "achievement",
+      "title": "Bootcamp On Mobile Device Security during 6-7 March 2025",
+      "description": "This intensive bootcamp offers a comprehensive introduction to key areas in mobile and AI security. Participants will gain foundational knowledge in mobile security, explore recent mobile attack techniques, and learn practical skills like reverse engineering Android apps and performing mobile forensics. The bootcamp also delves into critical aspects of AI safety, including the causes and risks of LLM hallucinations, and methods to ensure trust and reliability in large language models. Designed for cybersecurity enthusiasts, developers, and researchers, the program blends hands-on learning with real-world case studies to build expertise in securing modern mobile and AI systems.",
+      "photo_url": "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1749528863/txuzds3wgeq0txltnl4j.jpg",
+      "pdf_url": "https://drive.google.com/file/d/19m4x2VMWvvB4S3ceb3-uHPVgKXOjhrb2/view?usp=drivesdk",
+      "publish_date": "2025-06-10"
+    }
   ]
 }
