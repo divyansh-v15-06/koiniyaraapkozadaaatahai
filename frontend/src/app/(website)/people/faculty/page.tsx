@@ -67,22 +67,6 @@ export default function FacultyDirectoryPage() {
             />
           </div>
 
-          {/* Department Switcher */}
-          <div className="flex items-center gap-1.5 bg-[#fff9f6] border border-[#eedfd8] rounded px-2 py-1">
-            <Building2 className="w-3.5 h-3.5 text-[#85261e]" />
-            <select
-              value={activeDepartment.slug}
-              onChange={(e) => selectDepartmentBySlug(e.target.value)}
-              className="text-xs bg-transparent text-[#33110e] font-semibold focus:outline-none cursor-pointer"
-            >
-              {departments.map((d) => (
-                <option key={d.id} value={d.slug}>
-                  {d.code} - {d.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
           {/* Designation Filter */}
           <select
             value={designationFilter}

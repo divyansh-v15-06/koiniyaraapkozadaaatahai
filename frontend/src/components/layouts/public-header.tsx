@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import {
   Menu,
@@ -14,12 +13,11 @@ import {
   Check,
   Search,
   Layers,
-  Sparkles,
 } from "lucide-react";
 import { useDepartment } from "@/context/department-context";
 
 export function PublicHeader() {
-  const { departments, activeDepartment, setActiveDepartment, selectDepartmentBySlug } = useDepartment();
+  const { departments, activeDepartment, setActiveDepartment } = useDepartment();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [deptModalOpen, setDeptModalOpen] = useState(false);
@@ -46,11 +44,6 @@ export function PublicHeader() {
     {
       label: "Home",
       href: `/?dept=${activeDepartment.slug}`,
-    },
-    {
-      label: "Departments",
-      href: "#",
-      isMegaMenu: true,
     },
     {
       label: "About Us",
@@ -110,7 +103,7 @@ export function PublicHeader() {
 
   return (
     <header className="w-full font-sans border-b border-[#eedfd8]">
-      {/* 1. Top Utility Bar (#33110e) with Department Switcher Shortcut */}
+      {/* 1. Top Utility Bar (#33110e) */}
       <div className="bg-[#33110e] text-neutral-100 text-xs py-1.5 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3 text-neutral-300">
@@ -143,20 +136,9 @@ export function PublicHeader() {
           </div>
 
           <div className="flex items-center space-x-3 text-neutral-300">
-            {/* Quick Switcher Button in Top Bar */}
-            <button
-              onClick={() => setDeptModalOpen(true)}
-              className="bg-[#4a1814] hover:bg-[#85261e] text-amber-300 hover:text-white px-2.5 py-0.5 rounded text-[11px] font-semibold flex items-center gap-1.5 transition border border-amber-400/30"
-            >
-              <Building2 className="w-3 h-3 text-amber-400" />
-              <span>Dept: {activeDepartment.code}</span>
-              <ChevronDown className="w-3 h-3 text-amber-300" />
-            </button>
-
-            <span className="text-neutral-500">|</span>
             <Link
               href="/faculty/login"
-              className="hover:text-white transition flex items-center gap-1 font-medium bg-[#4a1814] px-2 py-0.5 rounded text-[11px]"
+              className="hover:text-white transition flex items-center gap-1 font-medium bg-[#4a1814] px-2.5 py-0.5 rounded text-[11px]"
             >
               <UserCheck className="w-3 h-3 text-amber-400" />
               Faculty Portal
@@ -164,7 +146,7 @@ export function PublicHeader() {
             <span className="text-neutral-500">|</span>
             <Link
               href="/admin/login"
-              className="hover:text-white transition flex items-center gap-1 font-medium bg-[#4a1814] px-2 py-0.5 rounded text-[11px]"
+              className="hover:text-white transition flex items-center gap-1 font-medium bg-[#4a1814] px-2.5 py-0.5 rounded text-[11px]"
             >
               <Lock className="w-3 h-3 text-amber-400" />
               Admin Portal
@@ -173,50 +155,50 @@ export function PublicHeader() {
         </div>
       </div>
 
-      {/* 2. Main Institutional Brand Header with Dynamic Department Title */}
-      <div className="bg-white py-3 px-4 sm:px-8 border-b border-[#f4ece8]">
+      {/* 2. Main Institutional Brand Header with SINGLE Department Selector at the Right */}
+      <div className="bg-white py-3.5 px-4 sm:px-8 border-b border-[#f4ece8]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href={`/?dept=${activeDepartment.slug}`} className="flex items-center gap-3 sm:gap-4 group">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center">
+          <Link href={`/?dept=${activeDepartment.slug}`} className="flex items-center gap-3.5 sm:gap-5 group">
+            <div className="w-18 h-18 sm:w-22 sm:h-22 md:w-24 md:h-24 flex-shrink-0 flex items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/nitHamirpurLogo.png"
-                alt="NIT Hamirpur Official Logo"
-                className="w-full h-full object-contain"
+                src="/nith.png"
+                alt="NIT Hamirpur Official Emblem"
+                className="w-full h-full object-contain filter drop-shadow-xs"
               />
             </div>
             <div>
-              <p className="text-[11px] sm:text-[13px] font-semibold text-[#6b5c58] leading-tight">
+              <p className="text-[12px] sm:text-[14px] font-semibold text-[#6b5c58] leading-tight">
                 राष्ट्रीय प्रौद्योगिकी संस्थान हमीरपुर • {activeDepartment.hindi_name}
               </p>
-              <h1 className="text-base sm:text-xl md:text-2xl font-bold text-[#33110e] tracking-tight leading-tight group-hover:text-[#85261e] transition">
+              <h1 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-[#33110e] tracking-tight leading-tight group-hover:text-[#85261e] transition">
                 National Institute of Technology Hamirpur
               </h1>
-              <p className="text-xs sm:text-sm font-semibold text-[#85261e] tracking-wide flex items-center gap-2">
+              <p className="text-xs sm:text-base font-bold text-[#85261e] tracking-wide flex items-center gap-2 mt-0.5">
                 <span>Department of {activeDepartment.name}</span>
-                <span className="bg-[#fff9f6] text-[#33110e] border border-[#eedfd8] text-[10px] font-bold px-1.5 py-0.2 rounded uppercase">
+                <span className="bg-[#fff9f6] text-[#33110e] border border-[#eedfd8] text-[11px] font-extrabold px-2 py-0.5 rounded uppercase">
                   {activeDepartment.code}
                 </span>
               </p>
             </div>
           </Link>
 
-          {/* Quick Department Selector Trigger (Header Right) */}
+          {/* Dedicated Single Department Selector on the Right */}
           <div className="hidden lg:flex items-center gap-3 relative" ref={deptDropdownRef}>
             <button
               onClick={() => setDeptModalOpen(!deptModalOpen)}
-              className="flex items-center gap-2 bg-[#fff9f6] hover:bg-[#eedfd8]/50 text-[#33110e] border border-[#eedfd8] px-3.5 py-2 rounded-lg text-xs font-bold transition shadow-xs"
+              className="flex items-center gap-2.5 bg-[#fff9f6] hover:bg-[#eedfd8]/60 text-[#33110e] border-2 border-[#eedfd8] hover:border-[#85261e] px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs cursor-pointer"
             >
               <Building2 className="w-4 h-4 text-[#85261e]" />
               <div className="text-left">
-                <p className="text-[9px] uppercase tracking-wider text-neutral-500 font-semibold leading-none">
-                  Switch Department
+                <p className="text-[9px] uppercase tracking-wider text-neutral-500 font-bold leading-none">
+                  Select Department
                 </p>
-                <p className="text-xs font-bold text-[#33110e] leading-tight truncate max-w-[180px]">
+                <p className="text-xs font-extrabold text-[#33110e] leading-tight truncate max-w-[200px]">
                   {activeDepartment.name}
                 </p>
               </div>
-              <ChevronDown className={`w-3.5 h-3.5 text-neutral-500 transition-transform ${deptModalOpen ? "rotate-180" : ""}`} />
+              <ChevronDown className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${deptModalOpen ? "rotate-180" : ""}`} />
             </button>
 
             {/* Department Selector Dropdown Modal */}
@@ -254,7 +236,7 @@ export function PublicHeader() {
                           setActiveDepartment(d);
                           setDeptModalOpen(false);
                         }}
-                        className={`w-full text-left p-2 rounded-lg text-xs transition flex items-center justify-between ${
+                        className={`w-full text-left p-2 rounded-lg text-xs transition flex items-center justify-between cursor-pointer ${
                           isSelected
                             ? "bg-[#33110e] text-white font-bold"
                             : "hover:bg-[#fff9f6] text-neutral-800"
@@ -288,122 +270,42 @@ export function PublicHeader() {
         </div>
       </div>
 
-      {/* 3. Primary Navigation Bar (#1c110c) with Departments Mega Menu */}
+      {/* 3. Primary Navigation Bar (#1c110c) */}
       <nav className="bg-[#1c110c] text-white shadow-md hidden lg:block sticky top-0 z-40">
         <div className="max-w-7xl mx-auto flex items-center px-4">
           <div className="flex items-center space-x-1">
-            {navItems.map((item) => {
-              if (item.isMegaMenu) {
-                return (
-                  <div
-                    key={item.label}
-                    className="relative group"
-                    onMouseEnter={() => setOpenDropdown("Departments")}
-                    onMouseLeave={() => setOpenDropdown(null)}
-                  >
-                    <button
-                      className="px-3.5 py-3 text-[13px] font-semibold text-neutral-200 hover:text-white hover:bg-[#33110e] flex items-center gap-1 transition tracking-wide uppercase cursor-pointer"
-                    >
-                      <Building2 className="w-3.5 h-3.5 text-amber-400" />
-                      Departments
-                      <ChevronDown className="w-3.5 h-3.5 text-neutral-400 group-hover:rotate-180 transition duration-200" />
-                    </button>
-
-                    {/* Departments Mega Menu Panel */}
-                    {openDropdown === "Departments" && (
-                      <div className="absolute left-0 top-full w-[650px] bg-white text-[#1c110c] rounded-b-xl shadow-2xl border border-[#eedfd8] p-5 z-50 animate-in fade-in slide-in-from-top-1 duration-150 grid grid-cols-2 gap-4">
-                        <div>
-                          <h4 className="text-[11px] font-extrabold uppercase tracking-wider text-[#85261e] border-b border-[#eedfd8] pb-1.5 mb-2 flex items-center gap-1">
-                            <Sparkles className="w-3 h-3 text-amber-500" /> Engineering Departments
-                          </h4>
-                          <div className="space-y-1">
-                            {departments
-                              .filter((d) => ["CSE", "ECE", "EE", "ME", "CE", "CHE", "MSE"].includes(d.code))
-                              .map((dept) => (
-                                <button
-                                  key={dept.id}
-                                  onClick={() => {
-                                    setActiveDepartment(dept);
-                                    setOpenDropdown(null);
-                                  }}
-                                  className={`w-full text-left px-2.5 py-1.5 rounded text-xs transition flex items-center justify-between ${
-                                    dept.id === activeDepartment.id
-                                      ? "bg-[#33110e] text-white font-bold"
-                                      : "hover:bg-[#fff9f6] text-neutral-800 hover:text-[#33110e]"
-                                  }`}
-                                >
-                                  <span>{dept.name}</span>
-                                  <span className="text-[10px] opacity-75 font-mono">[{dept.code}]</span>
-                                </button>
-                              ))}
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="text-[11px] font-extrabold uppercase tracking-wider text-[#85261e] border-b border-[#eedfd8] pb-1.5 mb-2">
-                            Sciences, Architecture & Management
-                          </h4>
-                          <div className="space-y-1">
-                            {departments
-                              .filter((d) => !["CSE", "ECE", "EE", "ME", "CE", "CHE", "MSE"].includes(d.code))
-                              .map((dept) => (
-                                <button
-                                  key={dept.id}
-                                  onClick={() => {
-                                    setActiveDepartment(dept);
-                                    setOpenDropdown(null);
-                                  }}
-                                  className={`w-full text-left px-2.5 py-1.5 rounded text-xs transition flex items-center justify-between ${
-                                    dept.id === activeDepartment.id
-                                      ? "bg-[#33110e] text-white font-bold"
-                                      : "hover:bg-[#fff9f6] text-neutral-800 hover:text-[#33110e]"
-                                  }`}
-                                >
-                                  <span>{dept.name}</span>
-                                  <span className="text-[10px] opacity-75 font-mono">[{dept.code}]</span>
-                                </button>
-                              ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
-              return (
-                <div
-                  key={item.label}
-                  className="relative group"
-                  onMouseEnter={() => setOpenDropdown(item.label)}
-                  onMouseLeave={() => setOpenDropdown(null)}
+            {navItems.map((item) => (
+              <div
+                key={item.label}
+                className="relative group"
+                onMouseEnter={() => setOpenDropdown(item.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <Link
+                  href={item.href}
+                  className="px-3.5 py-3 text-[13px] font-semibold text-neutral-200 hover:text-white hover:bg-[#33110e] flex items-center gap-1 transition tracking-wide uppercase"
                 >
-                  <Link
-                    href={item.href}
-                    className="px-3.5 py-3 text-[13px] font-semibold text-neutral-200 hover:text-white hover:bg-[#33110e] flex items-center gap-1 transition tracking-wide uppercase"
-                  >
-                    {item.label}
-                    {item.children && (
-                      <ChevronDown className="w-3.5 h-3.5 text-neutral-400 group-hover:rotate-180 transition duration-200" />
-                    )}
-                  </Link>
-
-                  {item.children && openDropdown === item.label && (
-                    <div className="absolute left-0 top-full w-56 bg-white text-[#1c110c] rounded-b-md shadow-xl border border-[#eedfd8] py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block px-4 py-2 text-xs font-medium text-neutral-700 hover:bg-[#fff9f6] hover:text-[#33110e] hover:pl-5 transition-all border-b border-neutral-100 last:border-0"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
+                  {item.label}
+                  {item.children && (
+                    <ChevronDown className="w-3.5 h-3.5 text-neutral-400 group-hover:rotate-180 transition duration-200" />
                   )}
-                </div>
-              );
-            })}
+                </Link>
+
+                {item.children && openDropdown === item.label && (
+                  <div className="absolute left-0 top-full w-56 bg-white text-[#1c110c] rounded-b-md shadow-xl border border-[#eedfd8] py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        href={child.href}
+                        className="block px-4 py-2 text-xs font-medium text-neutral-700 hover:bg-[#fff9f6] hover:text-[#33110e] hover:pl-5 transition-all border-b border-neutral-100 last:border-0"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </nav>
@@ -418,7 +320,10 @@ export function PublicHeader() {
             </label>
             <select
               value={activeDepartment.slug}
-              onChange={(e) => selectDepartmentBySlug(e.target.value)}
+              onChange={(e) => {
+                const found = departments.find((d) => d.slug === e.target.value);
+                if (found) setActiveDepartment(found);
+              }}
               className="w-full text-xs p-1.5 rounded border border-[#eedfd8] bg-white text-[#33110e] font-semibold"
             >
               {departments.map((d) => (

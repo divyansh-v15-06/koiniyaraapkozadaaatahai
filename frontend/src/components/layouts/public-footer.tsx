@@ -10,19 +10,19 @@ export function PublicFooter() {
           {/* Col 1: Institute Branding */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-12 h-12 flex-shrink-0">
+              <div className="relative w-14 h-14 flex-shrink-0">
                 <Image
-                  src="/nitHamirpurLogo.png"
-                  alt="NIT Hamirpur Logo"
+                  src="/nith.png"
+                  alt="NIT Hamirpur Official Emblem"
                   fill
                   className="object-contain filter brightness-110"
                 />
               </div>
               <div>
                 <h3 className="font-bold text-sm leading-tight text-neutral-100">
-                  Department of CSE
+                  National Institute of Technology Hamirpur
                 </h3>
-                <p className="text-xs text-neutral-400">NIT Hamirpur (HP), India</p>
+                <p className="text-xs text-neutral-400">Himachal Pradesh - 177005, India</p>
               </div>
             </div>
             <p className="text-xs text-neutral-300 leading-relaxed">
