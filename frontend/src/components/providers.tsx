@@ -15,6 +15,8 @@ interface ProvidersProps {
  * - TanStack Query for server state management
  * - Sonner for toast notifications
  */
+import NextTopLoader from "nextjs-toploader";
+
 export function Providers({ children }: ProvidersProps) {
   const [queryClient] = useState(
     () =>
@@ -35,6 +37,19 @@ export function Providers({ children }: ProvidersProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <DepartmentProvider>
+        <NextTopLoader
+          color="#85261e"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #85261e,0 0 5px #85261e"
+          zIndex={1600}
+          showAtBottom={false}
+        />
         {children}
         <Toaster
           position="top-right"

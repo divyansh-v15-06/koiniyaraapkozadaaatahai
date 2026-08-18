@@ -15,6 +15,7 @@ import {
   Layers,
 } from "lucide-react";
 import { useDepartment } from "@/context/department-context";
+import { NavigationProgressBar } from "@/components/common/navigation-progress";
 
 export function PublicHeader() {
   const { departments, activeDepartment, setActiveDepartment } = useDepartment();
@@ -156,6 +157,9 @@ export function PublicHeader() {
 
       {/* 2 & 3. Sticky Header & Navbar Container */}
       <header className="sticky top-0 z-50 w-full bg-white shadow-md font-sans border-b border-[#eedfd8]">
+        {/* Dynamic Line Progress Loader Between Topbar and Header */}
+        <NavigationProgressBar />
+
         {/* Main Institutional Brand Header with SINGLE Department Selector at the Right */}
         <div className="bg-white py-3 px-4 sm:px-8 border-b border-[#f4ece8]">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
