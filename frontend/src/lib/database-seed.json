@@ -1906,8 +1906,59 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": ""
+      "supervisions": [
+        {
+          "id": 179,
+          "level": "Ph.D.",
+          "student_name": "Praveen Prakash",
+          "roll_number": "23RCS004",
+          "thesis_title": "Lightweight Security Model of Internet of Things System (Tentative)",
+          "status": "Ongoing",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 201,
+          "level": "Ph.D.",
+          "student_name": "Ishana Attri",
+          "roll_number": "21 RCS004",
+          "thesis_title": "Deep Learning based Framework for Early Detection of Diseases in Seasonal Crops",
+          "status": "Ongoing",
+          "year": 2021,
+          "co_supervisor": "Dr. Teek Parval Sharma"
+        },
+        {
+          "id": 202,
+          "level": "Ph.D.",
+          "student_name": "Rajesh Sharma",
+          "roll_number": "",
+          "thesis_title": "Energy Efficient Data Dissemination in WSNs",
+          "status": "Completed",
+          "year": 2013,
+          "co_supervisor": "Dr. Narottam Chand"
+        },
+        {
+          "id": 203,
+          "level": "Ph.D.",
+          "student_name": "Jawahar Thakur",
+          "roll_number": "",
+          "thesis_title": "Devising Checkpointing Protocol For Wireless Adhoc Networks",
+          "status": "Completed",
+          "year": 2013,
+          "co_supervisor": "Dr. Arvind Kalia"
+        }
+      ],
+      "linkedin_url": "",
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=example",
+        "scopus_url": "https://www.scopus.com/authid/detail.uri?authorId=123456",
+        "scopus_id": "123456",
+        "publons_url": "https://publons.com/researcher/123457",
+        "orcid": "0000-0002-1825-0097",
+        "research_gate_url": "https://www.researchgate.net/profile/Example",
+        "vidwan_url": "https://vidwan.inflibnet.ac.in/profile/123456",
+        "linkedin_url": null
+      }
     },
     {
       "id": "5e12253b-db56-5e31-9e51-19ab6edac297",
@@ -1929,19 +1980,16 @@
       "orcid": "",
       "qualifications": [
         {
-          "id": "d885f776-19e2-46cf-a437-6eb0e514f1bd",
           "degree": "MS",
           "institute": "Vladimir State Technical University (Russia)",
           "year": 1989
         },
         {
-          "id": "5af3735e-3e68-4b75-b10b-20d031d2bb50",
           "degree": "MTech",
           "institute": "Indian Institute of Technology, Delhi",
           "year": 2006
         },
         {
-          "id": "bf555c9a-e375-445f-99aa-232a920ae918",
           "degree": "PhD",
           "institute": "Guru Gobind Singh Indraprastha University, Delhi",
           "year": 2009
@@ -1966,304 +2014,219 @@
       ],
       "honors": [
         {
-          "id": "dceb5fd9-2c86-4ecd-9f9b-b66a70fa4fd2",
           "title": "Outstanding award for contribution to the Cisco Networking Academy Program",
-          "awarding_body": "Cisco Networking Academy Program",
+          "organization": "Cisco Networking Academy Program",
           "year": 2001
         },
         {
-          "id": "564b13d0-3eb3-4744-80fc-0615f8124625",
           "title": "Selected for Contributory paper for main presentation under the Theme \u201cImproving Quality through Attainment of Learning Outcomes\u201d in the 3rd World Summit on Accreditation (WOSA 2016) Theme: Quality Assurance through Outcome Based Accreditation",
-          "awarding_body": "WOSA 2016 18th- 20th March, 2016",
+          "organization": "WOSA 2016 18th- 20th March, 2016",
           "year": 2016
         },
         {
-          "id": "2ab35669-e9e9-45d7-a615-01dc26e48a62",
           "title": "Consolation prize for paper \u201cReputation Base Trust for Mobile Agents",
-          "awarding_body": "ADCON 2011 held during 16-18 Decempber, 2011 at NITK Surthkal",
+          "organization": "ADCON 2011 held during 16-18 Decempber, 2011 at NITK Surthkal",
           "year": 2011
         },
         {
-          "id": "801fb672-8fa9-44f5-ae14-311b19bf3a58",
           "title": "Best Paper Award for the paper \u201cAdoption of Video Confrencing in Technical Institutions \u2013 a Case Study of NIT Hamirpur\u201d,",
-          "awarding_body": "presented in the ISTE Section Annual Convention SAC-07 held during Novemeber 18-19, 2007 at NIT Hamirpur.",
+          "organization": "presented in the ISTE Section Annual Convention SAC-07 held during Novemeber 18-19, 2007 at NIT Hamirpur.",
           "year": 2007
         },
         {
-          "id": "652eafbc-e190-4836-8ee4-e075831b3231",
           "title": "Best Paper Award for Evaluating The Performance of Various Machine Learning Algorithms for Detecting DDoS Attacks in VANETS",
-          "awarding_body": "3rd International Conference on Innovations in Computing held on 12-13 December 2019 at CGC College of Engineering, Mohali, India",
+          "organization": "3rd International Conference on Innovations in Computing held on 12-13 December 2019 at CGC College of Engineering, Mohali, India",
           "year": 2019
         }
       ],
       "expert_talks": [
         {
-          "id": "1dec731a-0151-45db-bf7d-885986ba4f21",
           "title": "(Key note speaker ) Artificial Intelligence and Data Analytics: From Dawn till Dusk & Beyond",
           "venue": "Guru Jambheshwar University of Science and Technology, Hisar -125001, Haryana",
-          "start_date": "2024-03-18",
-          "end_date": "2024-03-23",
-          "session": "2023-2024",
+          "date": "2024-03-18",
           "description": "One Week Online Faculty Development Programme (FDP) on \u201cArtificial Intelligence and Data Analytics (AIDA-2024)\u201d from 18-03-2024 to 23-03-2024."
         },
         {
-          "id": "dac84dba-8cd1-4e32-84de-39aae480cd00",
           "title": "Artificial Intelligence powered Insight into Cyber Threat Intelligence: Challenges, Opportunities and Cyber Landscape",
           "venue": "NIT Hamirpur",
-          "start_date": "2024-09-23",
-          "end_date": "2024-09-28",
-          "session": "2024-2025",
+          "date": "2024-09-23",
           "description": "3rd Short Term Course on Recent Trends in Networks & Communication: Cyber Security Challenges. (RTNC-2024) 23-28 September, 2024"
         },
         {
-          "id": "e66be5a6-d85f-402a-aa2a-81c25b5eb95d",
           "title": "Cyber Security Awareness",
           "venue": "NIT Hamirpur",
-          "start_date": "2024-11-29",
-          "end_date": "2024-11-29",
-          "session": "2024-2025",
-          "description": "'Short Term Training Programme on Cyber Security and Procurement: Vigilance Awareness Week (VAW 2024"
+          "date": "2024-11-29",
+          "description": "Short Term Training Programme on Cyber Security and Procurement: Vigilance Awareness Week (VAW 2024), 29th November, 2024"
         },
         {
-          "id": "080fbfd2-a22a-4b51-9fa3-b88375ef77e6",
           "title": "Exploring Defect Detection Applications Leveraging Deep Learning Architectures",
           "venue": "NIT Kurukshetra",
-          "start_date": "2024-09-12",
-          "end_date": "2024-09-16",
-          "session": "2024-2025",
+          "date": "2024-09-12",
           "description": "STC on Machine Intelligence and Vision Algorithms (MIVA 2024) 12-16 September 2024"
         },
         {
-          "id": "53d6e44b-81fa-47bb-b498-4092d5eb9ae1",
           "title": "Fabric Defect Detection using Deep Learning",
           "venue": "NIT Jalandhar",
-          "start_date": "2024-02-19",
-          "end_date": "2024-02-23",
-          "session": "2023-2024",
+          "date": "2024-02-19",
           "description": "short-term course (STC) on \u201cIndustry 4.0 challenges and interdependencies\u201d sponsored by Agmatel Pvt ltd., during February 19th- 23rd, 2024."
         },
         {
-          "id": "3911bc3c-6c54-4237-a443-5d633a067472",
           "title": "Work Life Balance",
           "venue": "NIT Hamirpur",
-          "start_date": "2024-02-12",
-          "end_date": "2024-02-16",
-          "session": "2023-2024",
+          "date": "2024-02-12",
           "description": "STTP\" Advancing Pedagogical Practices and Teaching Excellence\", 12-16 February, 2024"
         },
         {
-          "id": "2d5f81e9-eec3-4eaa-81d6-bec75fb58e66",
           "title": "Android Security",
           "venue": "NIT Hamirpur",
-          "start_date": "2023-09-25",
-          "end_date": "2023-09-29",
-          "session": "2023-2024",
+          "date": "2023-09-25",
           "description": "Short Term Course on \u201cRecent Trends in Networks & Communication: Theory & Challenges (RTNC-2023)\u201d, 25th-29th September, 2023"
         },
         {
-          "id": "2156572a-604e-4d9c-a71d-d3f1fc7efaca",
           "title": "Artificial Intelligence powered Cyber Threat: Challenges, Opportunities and Cyber Landscape",
           "venue": "Jaypee Institute of Information Technology, Noida.",
-          "start_date": "2023-07-03",
-          "end_date": "2023-07-15",
-          "session": "2023-2024",
+          "date": "2023-07-03",
           "description": "2-week online summer school on Two Week Online Summer School on Cyber Threat Intelligence and Forensics organized by the Department of CSE &IT, Jaypee Institute of Information Technology, Noida. (July 3-15th , 2023)"
         },
         {
-          "id": "0bfe5709-9c26-4832-8a40-c52ade136f55",
           "title": "Artificial Intelligence: by the people, of the people, for the people",
           "venue": "NIT Kurukshetra",
-          "start_date": "2023-10-10",
-          "end_date": "2023-10-10",
-          "session": "2023-2024",
+          "date": "2023-10-10",
           "description": "CSE Department, NIT Kurukshetra, 10th October, 2023"
         },
         {
-          "id": "45983fd3-3474-407d-a317-82dd2fbd4640",
           "title": "Computer Vision for Fabric Defect Detection Employing Deep Learning Models",
           "venue": "NIT Kurukshetra",
-          "start_date": "2023-08-11",
-          "end_date": "2023-08-16",
-          "session": "2023-2024",
+          "date": "2023-08-11",
           "description": "Short Term Course on Computer Vision and Intelligent Applications (CVIA-23) during August 11-16, 2023, NIT Kurukshetra,"
         },
         {
-          "id": "e2938ba7-1f7c-4e2a-8510-ca33f4927d63",
           "title": "Machine Learning and it\u2019s Applications",
           "venue": "NIT Hamirpur",
-          "start_date": "2023-12-11",
-          "end_date": "2023-12-16",
-          "session": "2023-2024",
+          "date": "2023-12-11",
           "description": "e-STC on \u201cSoftware Tools for Academicians and Researchers (STAR-2023)\u201d, 11-16 December 2023, Electrical Engineering Department, NIT Hamirpur"
         },
         {
-          "id": "c794e70c-85a6-478f-a685-52b88878e027",
           "title": "Multilingual Approach to imparting Education recommended by NEP-2020: Issues and Challenges,",
           "venue": "Kurukshetra University",
-          "start_date": "2023-10-26",
-          "end_date": "2023-11-08",
-          "session": "2023-2024",
-          "description": "'UGC-Malavya Mission Teacher Training Centre (MM-TTC"
+          "date": "2023-10-26",
+          "description": "UGC-Malavya Mission Teacher Training Centre (MM-TTC), two-week online refresher course in Information Technology from October 26, 2023, to November 8, 2023, under the theme \"Bridging Horizons: Integrating IT Innovations across Disciplines.\""
         },
         {
-          "id": "b5a0ece7-9900-4165-8a2a-149159ea1de9",
           "title": "Deep Learning for Natural Language Processing",
           "venue": "NIT Jalandhar",
-          "start_date": "2020-09-21",
-          "end_date": "2020-09-25",
-          "session": "2020-2021",
-          "description": "'Recent advances in Data Science, Image and Natural Language Processing\u201d (RADSINP-2020"
+          "date": "2020-09-21",
+          "description": "Recent advances in Data Science, Image and Natural Language Processing\u201d (RADSINP-2020), September 21- 25, 2020)"
         },
         {
-          "id": "b1fa25a8-55b6-4c00-b716-dbd7f22bdc5e",
+          "title": "Deep Learning Tools and Techniques for Natural Language Processing,",
+          "venue": "Rajiv Gandhi National Institute of Youth Development (RGNIYD), Sriperumbudur, Tamil Nadu in collaboration with the National Institute of Technology, Jalandhar (NITJ)",
+          "date": "2020-09-28",
+          "description": "Short-term Certificate Course on Artificial Intelligence and Machine Learning held from September 28 - October 02, 2020"
+        },
+        {
           "title": "Deep Learning Tools for Natural Language Processing",
           "venue": "NIT Jalandhar",
-          "start_date": "2020-09-22",
-          "end_date": "2020-09-26",
-          "session": "2020-2021",
+          "date": "2020-09-22",
           "description": "e-STC tilted \"Data Analytics Tools and Techniques\", 22th-26th September 2020"
         },
         {
-          "id": "4b9910d2-b266-4994-932d-ee7d2abcad07",
           "title": "Latest Machine Learning Trends in Natural Language Processing",
           "venue": "NIT Hamirpur",
-          "start_date": "2020-10-12",
-          "end_date": "2020-10-17",
-          "session": "2020-2021",
+          "date": "2020-10-12",
           "description": "e-STC on Machine Learning for Natural Language Processing 12-17, October, 2020"
         },
         {
-          "id": "7dae67d0-4563-445a-ac7c-d8c6241eaad3",
           "title": "Natural Language processing an AI Application",
           "venue": "Manav Rachna International Institute of Research & Studies, CSE, FET, Faridabad",
-          "start_date": "2020-08-24",
-          "end_date": "2020-08-29",
-          "session": "2020-2021",
+          "date": "2020-08-24",
           "description": "Online One Week STTP on AI & Machine Learning, 24th to 29th August 2020"
         },
         {
-          "id": "7b93558a-34bb-43c5-a597-c4285e9bf86a",
           "title": "Recent Trends in Natural Language Processing,",
           "venue": "Panipat Institute of Engineering and Technology",
-          "start_date": "2020-10-20",
-          "end_date": "2020-10-20",
-          "session": "2020-2021",
+          "date": "2020-10-20",
           "description": "October 20, 2020, Expert talk"
         },
         {
-          "id": "3a7ffc3e-b69b-42a5-9051-1b44a857a8fa",
           "title": "Anaphora Resolution: Why is it so important for NLP Application 2019",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "FDP Recent Trends in Artificial Intelligence and Mobile Systems RTAIMS- 2019"
         },
         {
-          "id": "b3ffa70a-53f6-4615-a2f6-a6e3ee68f6bf",
           "title": "Blockchain Technology and Artificial Intelligence 2019",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "FDP on \"Blockchain Technology and its Applications\" BCTA-2019"
         },
         {
-          "id": "45d9fc4a-51e0-45b8-8e35-84b8d9d6012b",
           "title": "Cloud Computing: Innovation Enabler 2019",
           "venue": "NIT Jalandhar",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "TEQIP-III sponsored short-term course (STC) on \u201cResearch Trends in Cloud, Fog and Edge Computing (RTCC-2019)"
         },
         {
-          "id": "d51e5fd9-524c-4a09-8f68-4ea89bc81ef4",
           "title": "Machine Learning Algorithms and Evaluation Metrics",
           "venue": "NIT Jalandhar",
-          "start_date": "2019-08-09",
-          "end_date": "2019-08-13",
-          "session": "2019-2020",
+          "date": "2019-08-09",
           "description": "TEQIP III Sponsored Short Term Course on Machine and Deep Learning in Computer Vision, August 09-13, 2019"
         },
         {
-          "id": "1d938059-d9f0-4aa3-869a-03d934b2788b",
           "title": "Video Conferencing System 2008",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "workshop on \u201cICT Infrastructure Awareness\u201d"
         },
         {
-          "id": "6808be7b-1196-42d7-9c3f-4f4d563f776d",
           "title": "Fundamentals of VHDL 2007",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "HDL & VLSI EDA Tools"
         },
         {
-          "id": "4012473c-9667-453f-b7aa-e72585578472",
           "title": "Introduction to VHDL 2007",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "short term course on \u201cVLSI Design & Tools-VLSI-07\u201d"
         },
         {
-          "id": "4ceb88d4-2551-4b43-908e-ff8a9f5f7d46",
           "title": "Algorithmic approaches for VLSI design 2006",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "Short term course on VLSI design"
         },
         {
-          "id": "290e798e-2311-49a4-b2d6-e7e1f55cd807",
           "title": "Personality assessment 2006",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "workshop on personal and professional roles for women"
         },
         {
-          "id": "02550708-5a5a-4e5e-8c02-017032dd9b85",
           "title": "Security issues in wireless network 2006",
           "venue": "NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "Short term course on Mobile computing"
         }
       ],
       "exposures": [
         {
-          "id": "49cc95a0-e66d-451d-a03f-c866e1450833",
           "title": "Cisco Networking Academy Training Programme visited Singapore 1999",
           "description": "Supported by Cisco Networking Academy and UNDP"
         },
         {
-          "id": "167ad22d-a972-451c-91cf-1521fbe22275",
           "title": "Cisco Networking Academy Training Programme visited Melbourne, Australia 2001",
           "description": "Supported by Cisco Networking Academy and UNDP"
         },
         {
-          "id": "e58da77d-5b07-4e10-8b2a-71f18684beaf",
           "title": "Understanding Environmental Processes using Visualization Tools, South-Asian Countries conference on CACE, April 7-9 1999, Kathmandu, Nepal",
           "description": "Paper presentation"
         },
         {
-          "id": "30e18d40-33c6-40d0-b9d1-e8fe8f3d9884",
           "title": "Hybrid Framework for Information Extraction For Geographical Terms In Hindi Language Texts, IEEE NLP-KE 2005, 30th Oct to 1st Nov. 2005 Wuhan China",
           "description": "Paper presentation"
         },
         {
-          "id": "59abfb23-279d-4c85-87b9-8d246a8ad91a",
           "title": "MS from Vladimimir State University , Russia (erstwhile USSR)",
           "description": "Widely traveled European countries and various cities"
         }
@@ -2354,7 +2317,25 @@
           ]
         }
       ],
-      "supervisions": []
+      "supervisions": [],
+      "admin_experiences": [
+        {
+          "position": "Head of the Department",
+          "organization": "Computer Science & Enngineering Department, NIT Hamirpur",
+          "start_date": "2011",
+          "end_date": "2013",
+          "full_start": "2011-10-02",
+          "full_end": "2013-05-14"
+        },
+        {
+          "position": "Head of the Department",
+          "organization": "Computer Science & Enngineering Department, NIT Hamirpur",
+          "start_date": "2018",
+          "end_date": "2020",
+          "full_start": "2018-04-24",
+          "full_end": "2020-04-21"
+        }
+      ]
     },
     {
       "id": "c17e0191-445a-5f4d-961b-fb830ce9136c",
@@ -2378,19 +2359,16 @@
       "orcid": "0000-0002-6324-5457",
       "qualifications": [
         {
-          "id": "ff55f8d2-69b2-43b2-9655-5c250017262d",
           "degree": "B.Tech.(CSE)",
           "institute": "TPCT College of Engineering (Marathwada University)",
           "year": 1994
         },
         {
-          "id": "d6cbd9b0-9405-4a3b-a55a-928af9b74def",
           "degree": "M.Tech.(CSE)",
           "institute": "Kurukshetra University, Kurukshetra (University Campus)",
           "year": 2000
         },
         {
-          "id": "db2187d3-2062-4454-9aca-0992435457c9",
           "degree": "Ph.D(CSE)",
           "institute": "Indian Institute of Technology, Roorkee, India",
           "year": 2010
@@ -2487,37 +2465,30 @@
       "expert_talks": [],
       "exposures": [
         {
-          "id": "cc7da93b-c9ff-4d74-b175-c104088cab00",
           "title": "London, UK International Conference on Computer and Information Technology (ICCIT 2014) at Toronto",
           "description": "Visited Oxford University while presenting paper at International Conference on Computer and Information Technology (ICCIT 2014) at Toronto"
         },
         {
-          "id": "81c27643-7938-4812-ad25-282e584847f4",
           "title": "Austin, Texas, US for presenting paper in 27th IEEE International Performance Computing and Communications Conference",
           "description": "Best Paper Award, Paper presentation:: T.P. Sharma, R.C. Joshi, Manoj Misra, \u201cTuning Data Reporting and Sensing for Continuous Monitoring in Wireless Sensor Networks,\u201d"
         },
         {
-          "id": "82824c0a-d093-411d-be71-a3ca11dba578",
           "title": "Madrid, Spain for presenting paper in International Conference on Computer, Electrical, and Systems Sciences, and Engineering (ICCESSE 2012)",
           "description": "Paper presentation and Session Chair: T.P. Sharma, \u201cHandling Mobility Using Virtual Grid in Static Wireless Sensor Networks\u201d, International Conference on Computer, Electrical, and Systems Sciences, and Engineering (ICCESSE 2012)"
         },
         {
-          "id": "1f1f85ea-efad-4b25-ba3f-92355667534f",
           "title": "Perth, Australia for presenting paper in International Conference on Communications, Networking and Mobile Computing",
           "description": "Paper presentation and Session Chair: Vipan Arora, T.P. Sharma, K. Raj, \u201cAn Optimal Storage Node Placement in Wireless Sensor Networks,\u201d International Conference on Communications, Networking and Mobile Computing, Perth, Australia, December 6-7, 2012."
         },
         {
-          "id": "49233026-cc11-4ca5-84dd-9e6f81f61e2b",
           "title": "Toronto, Canada for presenting paper in International Conference on Computer and Information Technology (ICCIT 2014)",
           "description": "Paper presentation: K.P. Sharma, T.P. Sharma, \u201cLoad-Enabled Deployment and Sensing Range Optimization for Lifetime Enhancement of WSNs\u201d, International Conference on Computer and Information Technology (ICCIT 2014)"
         },
         {
-          "id": "8991e8ec-7922-40f2-8a2c-3c9daa8af58d",
           "title": "New York, US for presenting paper in International Conference on Computer Networks and Systems Security (ICCNSS 2013)",
-          "description": "'Paper presentation: Kulwardhan Singh, T.P. Sharma, \u201cREDD: Reliable Energy-efficient Data dissemination in wireless sensor network\u201d, International Conference on Computer Networks and Systems Security (ICCNSS 2013"
+          "description": "Paper presentation: Kulwardhan Singh, T.P. Sharma, \u201cREDD: Reliable Energy-efficient Data dissemination in wireless sensor network\u201d, International Conference on Computer Networks and Systems Security (ICCNSS 2013), 05-06 June, 2013."
         },
         {
-          "id": "90ba7610-06b1-46cd-a1d0-e8c71a75092e",
           "title": "Melbourne, Australia for presenting paper in International Conference on Computer and Automation Engineering (ICCAE)",
           "description": "Rakhi, T.P. Sharma \" [PDF] from ieee.org A Review of Adaptive Hierarchical Data Dissemination Method in Mobile Wireless Sensor Network,\" International Conference on Computer and Automation Engineering (ICCAE)"
         }
@@ -2651,8 +2622,437 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": "https://www.linkedin.com/in/dr-t-p-sharma-0a0978b8/"
+      "supervisions": [
+        {
+          "id": 122,
+          "level": "M.Tech / PG",
+          "student_name": "Amarjeet Kaur",
+          "roll_number": "",
+          "thesis_title": "AFDEP: Agreement based Cluster Head Failure Detection and Election Protocol for a WSN",
+          "status": "Completed",
+          "year": 2010,
+          "co_supervisor": null
+        },
+        {
+          "id": 123,
+          "level": "M.Tech / PG",
+          "student_name": "Mukesh Jha",
+          "roll_number": "",
+          "thesis_title": "Efficient and Secure Data Aggregation Protocol for a WSN",
+          "status": "Completed",
+          "year": 2010,
+          "co_supervisor": null
+        },
+        {
+          "id": 124,
+          "level": "M.Tech / PG",
+          "student_name": "T. Roopesh",
+          "roll_number": "",
+          "thesis_title": "Energy Efficient Routing Using Query and Event Flooding in WSNs",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 125,
+          "level": "M.Tech / PG",
+          "student_name": "Gopal Chand Gautam",
+          "roll_number": "",
+          "thesis_title": "Energy efficient Time Synchronization Protocol for Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 126,
+          "level": "M.Tech / PG",
+          "student_name": "Urvashi Rao",
+          "roll_number": "",
+          "thesis_title": "Improving Quality of Service of Live Peer-to-Peer Live Video Streaming",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 127,
+          "level": "M.Tech / PG",
+          "student_name": "Pratap Singh",
+          "roll_number": "",
+          "thesis_title": "Geographically Aware Virtual Grid for Wireless Sensor networks",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 128,
+          "level": "M.Tech / PG",
+          "student_name": "Anuj Yadav",
+          "roll_number": "",
+          "thesis_title": "In-Network Data Management for Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 129,
+          "level": "M.Tech / PG",
+          "student_name": "Vikram Singh",
+          "roll_number": "",
+          "thesis_title": "Fault Tolerant Time Synchronization for Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 130,
+          "level": "M.Tech / PG",
+          "student_name": "Satyender Jumar Sharma",
+          "roll_number": "",
+          "thesis_title": "Redeployment of Mobile Sensor Nodes in Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 131,
+          "level": "M.Tech / PG",
+          "student_name": "T. Priyanka",
+          "roll_number": "",
+          "thesis_title": "A Clustering Algorithm for Stable Cluster Formation in Vehicular Area Networks",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 132,
+          "level": "M.Tech / PG",
+          "student_name": "Krishna Joshi",
+          "roll_number": "",
+          "thesis_title": "Topology Management in WSNs",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 133,
+          "level": "M.Tech / PG",
+          "student_name": "Abhiram Singh",
+          "roll_number": "",
+          "thesis_title": "Full Coverage Control in WSNs",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 134,
+          "level": "M.Tech / PG",
+          "student_name": "Vishakha Dhiman",
+          "roll_number": "",
+          "thesis_title": "Fault Tolerance in WSNs",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 135,
+          "level": "M.Tech / PG",
+          "student_name": "Varsha Chaudhary",
+          "roll_number": "",
+          "thesis_title": "Collecting Global State in WSNs",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 136,
+          "level": "M.Tech / PG",
+          "student_name": "Pankaj Kumar",
+          "roll_number": "",
+          "thesis_title": "Energy Aware Recovery from Network Partitioning in WSNs",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 137,
+          "level": "M.Tech / PG",
+          "student_name": "Bheri Srihari",
+          "roll_number": "",
+          "thesis_title": "Performance Improvement in Web Caching along with prefetching",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 138,
+          "level": "M.Tech / PG",
+          "student_name": "Pankaj Azad",
+          "roll_number": "",
+          "thesis_title": "Energy Efficient Distributed Global Snapshot Algorithm for WSN",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 139,
+          "level": "M.Tech / PG",
+          "student_name": "Nancy",
+          "roll_number": "",
+          "thesis_title": "Fault Tolerant Time Synchronization Protocol for WSN",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 140,
+          "level": "M.Tech / PG",
+          "student_name": "Surbhi Sharma",
+          "roll_number": "",
+          "thesis_title": "Global Snapshot for Large WSNs",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 141,
+          "level": "M.Tech / PG",
+          "student_name": "Kamal Singh",
+          "roll_number": "",
+          "thesis_title": "Finding Location of Wireless Sensor Nodes without using GPS",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 142,
+          "level": "M.Tech / PG",
+          "student_name": "Shivangi Gupta",
+          "roll_number": "",
+          "thesis_title": "Parameter Based Cooperative Caching for WSN",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 143,
+          "level": "Ph.D.",
+          "student_name": "Rajiv Singh",
+          "roll_number": "",
+          "thesis_title": "Enhancing Security in Wireless Local Area Networks",
+          "status": "Completed",
+          "year": 2014,
+          "co_supervisor": null
+        },
+        {
+          "id": 144,
+          "level": "Ph.D.",
+          "student_name": "Krishan Pal Sharma",
+          "roll_number": "",
+          "thesis_title": "Minimizing Network Partitioning and Improving Data Availability in Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2016,
+          "co_supervisor": null
+        },
+        {
+          "id": 145,
+          "level": "Ph.D.",
+          "student_name": "Kulwardhan Singh",
+          "roll_number": "",
+          "thesis_title": "Optimizing Route Discovery and Handling Mobility in Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2016,
+          "co_supervisor": null
+        },
+        {
+          "id": 146,
+          "level": "Ph.D.",
+          "student_name": "Vipan Arora",
+          "roll_number": "",
+          "thesis_title": "Reducing Inter-node Transmissions in a Wireless Sensor Network using Dynamic Sensing and Cooperative Caching",
+          "status": "Completed",
+          "year": 2017,
+          "co_supervisor": null
+        },
+        {
+          "id": 147,
+          "level": "Ph.D.",
+          "student_name": "Richa",
+          "roll_number": "",
+          "thesis_title": "Improving Connectivity and Data Availability in VANETs",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": "Prof. Ajay Sharma"
+        },
+        {
+          "id": 148,
+          "level": "Ph.D.",
+          "student_name": "Mohammad Ahsan",
+          "roll_number": "",
+          "thesis_title": "Sentiment Based Information Diffusion in Online Social Networks",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 149,
+          "level": "M.Tech / PG",
+          "student_name": "Pranit Verma",
+          "roll_number": "22MCS112",
+          "thesis_title": "ADeepLearning Based Hybrid Structure for the Intrusion Detection",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 150,
+          "level": "M.Tech / PG",
+          "student_name": "Ashish Kundal",
+          "roll_number": "22MCS014",
+          "thesis_title": "Detection of Plant Diseases in Hydroponics Farming Using Deep Learning Techniques",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 151,
+          "level": "M.Tech / PG",
+          "student_name": "Aleena Ariz",
+          "roll_number": "22MCS003",
+          "thesis_title": "Energy Optimization in Wireless Body Sensor Networks using Hybrid WOA-BAT Algorithm",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 160,
+          "level": "Ph.D.",
+          "student_name": "Pranit Verma",
+          "roll_number": "25RCS002",
+          "thesis_title": "Research Thesis",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 201,
+          "level": "Ph.D.",
+          "student_name": "Ishana Attri",
+          "roll_number": "21 RCS004",
+          "thesis_title": "Deep Learning based Framework for Early Detection of Diseases in Seasonal Crops",
+          "status": "Ongoing",
+          "year": 2021,
+          "co_supervisor": "Dr. Teek Parval Sharma"
+        }
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/dr-t-p-sharma-0a0978b8/",
+      "admin_experiences": [
+        {
+          "position": "Assistant Director",
+          "organization": "Directorate of Technical Education, Vocational & Industrial Training, HP",
+          "start_date": "1995",
+          "end_date": "1996",
+          "full_start": "1995-01-30",
+          "full_end": "1996-08-13"
+        },
+        {
+          "position": "Deputy Director",
+          "organization": "HP State Electricity Regulatory Commission, Shimla",
+          "start_date": "2002",
+          "end_date": "2003",
+          "full_start": "2002-01-11",
+          "full_end": "2003-08-13"
+        },
+        {
+          "position": "Chairman cum Center In-charge, Central Counseling Board12 (CCB-12) and Central seat allocation Board-13 (CSAB-13)",
+          "organization": "National Institute of Technology Hamirpur",
+          "start_date": "2012",
+          "end_date": "2014",
+          "full_start": "2012-01-01",
+          "full_end": "2014-12-31"
+        },
+        {
+          "position": "Chairman, Senate for Undergraduate Studies (SUGC)",
+          "organization": "National Institute of Technology Hamirpur",
+          "start_date": "2012",
+          "end_date": "2014",
+          "full_start": "2012-10-08",
+          "full_end": "2014-01-07"
+        },
+        {
+          "position": "Program Incharge",
+          "organization": "IGNOU Program Study Centre, NIT Hamirpur",
+          "start_date": "2012",
+          "end_date": "2018",
+          "full_start": "2012-10-29",
+          "full_end": "2018-10-08"
+        },
+        {
+          "position": "Head of Department",
+          "organization": "Computer Science & Engineering Department, NIT Hamirpur",
+          "start_date": "2013",
+          "end_date": "2015",
+          "full_start": "2013-05-21",
+          "full_end": "2015-07-30"
+        },
+        {
+          "position": "Chairman, Committee for implementation of eOffice at NITH",
+          "organization": "National Institute of Technology Hamirpur",
+          "start_date": "2016",
+          "end_date": "Present",
+          "full_start": "2016-05-04",
+          "full_end": "Present"
+        },
+        {
+          "position": "Nodal Officer, National Knowledge Network (NKN)",
+          "organization": "National Institute of Technology Hamirpur",
+          "start_date": "2016",
+          "end_date": "Present",
+          "full_start": "2016-10-05",
+          "full_end": "Present"
+        },
+        {
+          "position": "Head of Department",
+          "organization": "Computer Centre, National Institute of Technology Hamirpur",
+          "start_date": "2016",
+          "end_date": "2018",
+          "full_start": "2016-10-05",
+          "full_end": "2018-10-08"
+        },
+        {
+          "position": "Deputy Registrar (Audit & Accounts) cum Deputy Registrar (Consultancy & Testing)",
+          "organization": "National Institute of Technology Hamirpur",
+          "start_date": "2018",
+          "end_date": "2019",
+          "full_start": "2018-11-06",
+          "full_end": "2019-02-13"
+        },
+        {
+          "position": "Associate Dean (Consultancy Projects & Testing)",
+          "organization": "National Institute of Technology Hamirpur",
+          "start_date": "2019",
+          "end_date": "2020",
+          "full_start": "2019-05-02",
+          "full_end": "2020-04-30"
+        },
+        {
+          "position": "Head of Department",
+          "organization": "Computer Science & Engineering Department, NIT Hamirpur",
+          "start_date": "2020",
+          "end_date": "Present",
+          "full_start": "2020-04-22",
+          "full_end": "Present"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=0ycxKQsAAAAJ&hl=en",
+        "scopus_url": "https://www.scopus.com/authid/detail.uri?authorId=55922678900",
+        "scopus_id": "55922678900",
+        "publons_url": "https://publons.com/researcher/4804912/teek-sharma/",
+        "orcid": "0000-0002-6324-5457",
+        "research_gate_url": null,
+        "vidwan_url": "https://vidwan.inflibnet.ac.in/profile/18381",
+        "linkedin_url": "https://www.linkedin.com/in/dr-t-p-sharma-0a0978b8/"
+      }
     },
     {
       "id": "6c4f2340-35a3-5b21-b580-081dad7f5ab1",
@@ -2674,19 +3074,16 @@
       "orcid": "0000-0001-7851-7657",
       "qualifications": [
         {
-          "id": "8b867ad9-821e-4db5-8eef-296d427ad585",
           "degree": "B.Tech. Computer Science and Engineering",
           "institute": "Dr. Babasaheb Ambedkar Marathwada University",
           "year": 1996
         },
         {
-          "id": "30102722-5039-4603-9ab5-f22c8eb93f7b",
           "degree": "M.Tech. Computer Science and Engineering",
           "institute": "Indian Institute of Technology Roorkee",
           "year": 2003
         },
         {
-          "id": "5734ff4b-f80c-4ed6-9729-5f1538befa81",
           "degree": "Ph.D Computer Science and Engineering",
           "institute": "National Institute of Technology Hamirpur",
           "year": 2013
@@ -2694,32 +3091,40 @@
       ],
       "teaching_experiences": [
         {
-          "id": "55f58bca-045d-4602-bebe-b00f93aeb76b",
           "position": "Associate Professor",
-          "organization": "Computer Science and Engineering Department , NIT Hamirpur",
-          "start_date": "2019-05-06",
-          "end_date": "Present"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering Department , NIT Hamirpur",
+          "start_date": "2019",
+          "end_date": "Present",
+          "full_start": "2019-05-06",
+          "full_end": "Present"
         },
         {
-          "id": "437e8813-5c26-40b0-bfd9-bfd63b9ef887",
           "position": "Assistant Professor",
-          "organization": "Computer Science and Engineering Department , NIT Hamirpur",
-          "start_date": "2012-07-27",
-          "end_date": "2019-05-05"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering Department , NIT Hamirpur",
+          "start_date": "2012",
+          "end_date": "2019",
+          "full_start": "2012-07-27",
+          "full_end": "2019-05-05"
         },
         {
-          "id": "d53356a9-fbf8-43e1-91d5-2bb9184eacf7",
           "position": "Sr.Lecturer",
-          "organization": "Computer Science and Engineering Department , NIT Hamirpur",
-          "start_date": "2007-07-27",
-          "end_date": "2012-07-26"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering Department , NIT Hamirpur",
+          "start_date": "2007",
+          "end_date": "2012",
+          "full_start": "2007-07-27",
+          "full_end": "2012-07-26"
         },
         {
-          "id": "e1be3216-23dc-447e-a959-18c52cb6a7ab",
           "position": "Lecturer",
-          "organization": "Computer Science and Engineering Department , Formerly REC Hamirpur,currently NIT Hamirpur",
-          "start_date": "1997-09-06",
-          "end_date": "2007-07-26"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering Department , Formerly REC Hamirpur,currently NIT Hamirpur",
+          "start_date": "1997",
+          "end_date": "2007",
+          "full_start": "1997-09-06",
+          "full_end": "2007-07-26"
         }
       ],
       "administrative_experiences": [
@@ -2930,8 +3335,685 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": "https://in.linkedin.com/in/dr-siddhartha-chauhan-79846616"
+      "supervisions": [
+        {
+          "id": 264,
+          "level": "Ph.D.",
+          "student_name": "Arvind Dhaka",
+          "roll_number": "15RCS295",
+          "thesis_title": "Characterization and Statistical Optimization of Fading Impairments in a MIMO Channel",
+          "status": "Completed",
+          "year": 2018,
+          "co_supervisor": "Dr. vidhyacharan Bhaskar"
+        },
+        {
+          "id": 265,
+          "level": "Ph.D.",
+          "student_name": "Shashi Gurung",
+          "roll_number": "14RCS274",
+          "thesis_title": "Security in Wireless Mobile Ad Hoc Network",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 266,
+          "level": "Ph.D.",
+          "student_name": "Deepshikha",
+          "roll_number": "14RCS265",
+          "thesis_title": "Body Area Networks",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 267,
+          "level": "Ph.D.",
+          "student_name": "Anamika Sharma",
+          "roll_number": "14RCS264",
+          "thesis_title": "Surveillance Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 268,
+          "level": "Ph.D.",
+          "student_name": "Nilanshi Chauhan",
+          "roll_number": "17RCS361",
+          "thesis_title": "Energy Efficient Protocols in Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 269,
+          "level": "Ph.D.",
+          "student_name": "Piyush Rawat",
+          "roll_number": "18RCS398",
+          "thesis_title": "Lifetime Enhancement of Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 270,
+          "level": "Ph.D.",
+          "student_name": "Pranjal",
+          "roll_number": "19RCS468",
+          "thesis_title": "IOT",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": "Prof Lalit Kumar Awasthi"
+        },
+        {
+          "id": 272,
+          "level": "M.Tech / PG",
+          "student_name": "Varsha Katre",
+          "roll_number": "16M527",
+          "thesis_title": "Cluster Head Failure Detection and Correction Algorithm for WSN",
+          "status": "Completed",
+          "year": 2018,
+          "co_supervisor": null
+        },
+        {
+          "id": 273,
+          "level": "M.Tech / PG",
+          "student_name": "Piyush Rawat",
+          "roll_number": "16M512",
+          "thesis_title": "An Energy Efficient Random Number Clustering in Wireless Sensor Network",
+          "status": "Completed",
+          "year": 2018,
+          "co_supervisor": null
+        },
+        {
+          "id": 274,
+          "level": "M.Tech / PG",
+          "student_name": "Supriya Shakya",
+          "roll_number": "15M526",
+          "thesis_title": "Utility Based Cluster Head Selection Protocol for Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2017,
+          "co_supervisor": null
+        },
+        {
+          "id": 275,
+          "level": "M.Tech / PG",
+          "student_name": "Himani Sikarwar",
+          "roll_number": "15M531",
+          "thesis_title": "Decision Algorithm for Faulty Node Identification",
+          "status": "Completed",
+          "year": 2017,
+          "co_supervisor": null
+        },
+        {
+          "id": 276,
+          "level": "M.Tech / PG",
+          "student_name": "Amit Tiwari",
+          "roll_number": "14M513",
+          "thesis_title": "Sinkhole Intrusion Detection in wireless Sensor Network",
+          "status": "Completed",
+          "year": 2016,
+          "co_supervisor": null
+        },
+        {
+          "id": 277,
+          "level": "M.Tech / PG",
+          "student_name": "Prashant Wankhede",
+          "roll_number": "14M507",
+          "thesis_title": "Adaptive Probabilistic Routing Algorithm for Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2016,
+          "co_supervisor": null
+        },
+        {
+          "id": 278,
+          "level": "M.Tech / PG",
+          "student_name": "Obulapu Hitesh Reddy",
+          "roll_number": "14M526",
+          "thesis_title": "Energy Efficient Cluster Based Routing Protocol for Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2016,
+          "co_supervisor": null
+        },
+        {
+          "id": 279,
+          "level": "M.Tech / PG",
+          "student_name": "Amit Kumar",
+          "roll_number": "14M511",
+          "thesis_title": "Energy-Efficient Private Data Aggregation in wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2016,
+          "co_supervisor": null
+        },
+        {
+          "id": 280,
+          "level": "M.Tech / PG",
+          "student_name": "Shiv Kumar",
+          "roll_number": "13M531",
+          "thesis_title": "Distributed Clustering Protocol for Wireless Sensor Network",
+          "status": "Completed",
+          "year": 2015,
+          "co_supervisor": null
+        },
+        {
+          "id": 281,
+          "level": "M.Tech / PG",
+          "student_name": "Ashsih",
+          "roll_number": "13M539",
+          "thesis_title": "Multilevel Clustering based Time Synchronization Protocol for Wireless Sensor Network",
+          "status": "Completed",
+          "year": 2015,
+          "co_supervisor": null
+        },
+        {
+          "id": 282,
+          "level": "M.Tech / PG",
+          "student_name": "Arpit Gupta",
+          "roll_number": "13M532",
+          "thesis_title": "Distributed Range Based Localization in Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2015,
+          "co_supervisor": null
+        },
+        {
+          "id": 283,
+          "level": "M.Tech / PG",
+          "student_name": "Pushpendra Bansal",
+          "roll_number": "13M514",
+          "thesis_title": "Confidentiality in Cloud Computing",
+          "status": "Completed",
+          "year": 2015,
+          "co_supervisor": null
+        },
+        {
+          "id": 284,
+          "level": "M.Tech / PG",
+          "student_name": "Nitin Kumar Kotania",
+          "roll_number": "12M527",
+          "thesis_title": "Location Based Clustering: An Energy Efficient Location Based Clustering Data Gathering Scheme for Heterogeneous WSN",
+          "status": "Completed",
+          "year": 2014,
+          "co_supervisor": null
+        },
+        {
+          "id": 285,
+          "level": "M.Tech / PG",
+          "student_name": "Monica Rathee",
+          "roll_number": "12M509",
+          "thesis_title": "Forest Fire Detection & Monitoring Frame Work: Using Wireless Sensor Network",
+          "status": "Completed",
+          "year": 2014,
+          "co_supervisor": null
+        },
+        {
+          "id": 286,
+          "level": "M.Tech / PG",
+          "student_name": "Ishwar Chand",
+          "roll_number": "10M529",
+          "thesis_title": "Optimum minimum separation distance based clustering in wireless sensor networks",
+          "status": "Completed",
+          "year": 2012,
+          "co_supervisor": null
+        },
+        {
+          "id": 287,
+          "level": "M.Tech / PG",
+          "student_name": "Mukul Jain",
+          "roll_number": "21MCS017",
+          "thesis_title": "Design And Evaluation For Session Based Recommendation For Improvised TAGNN",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 288,
+          "level": "M.Tech / PG",
+          "student_name": "Abhinav",
+          "roll_number": "21MCS027",
+          "thesis_title": "SENTIMENT ANALYSIS OF TWITTER TEXT",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 289,
+          "level": "M.Tech / PG",
+          "student_name": "Ritesh Kumar",
+          "roll_number": "21MCS009",
+          "thesis_title": "PERFORMANCE ANALYSIS OF SQL VS NOSQL DATABASES FOR MICROSERVICE",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 290,
+          "level": "M.Tech / PG",
+          "student_name": "Kashish Kumar",
+          "roll_number": 185538,
+          "thesis_title": "HATE SPEECH DETECTION IN ENGLISH MEMES",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 291,
+          "level": "M.Tech / PG",
+          "student_name": "Virendra Khorwal",
+          "roll_number": 195552,
+          "thesis_title": "BLOCKCHAIN-BASED OFFLOADING OPTIMIZATION AND TASK PARTITIONING IN JOINT COVERAGE SCENARIOS WITH MULTIPLE VECs",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 292,
+          "level": "M.Tech / PG",
+          "student_name": "Aashish",
+          "roll_number": 195529,
+          "thesis_title": "PLANT DISEASE CLASSIFICATION USING DEEP LEARNING",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 293,
+          "level": "M.Tech / PG",
+          "student_name": "Kailash Rana",
+          "roll_number": 195525,
+          "thesis_title": "IDENTIFICATION OF PNEUMONIA IN CHEST X-RAYS VIA TRANSFER LEARNING",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 294,
+          "level": "M.Tech / PG",
+          "student_name": "Deepanshu Sharma",
+          "roll_number": 195520,
+          "thesis_title": "HEART DISEASE PREDICTION WITH DATA MINING CLASSIFICATION ALGORITHMS",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 295,
+          "level": "M.Tech / PG",
+          "student_name": "Shama Devi",
+          "roll_number": 195518,
+          "thesis_title": "Enhanced Alzheimer's Disease Progression Prediction via Combined MRI and PET Imaging with 3D CNN",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 296,
+          "level": "M.Tech / PG",
+          "student_name": "Shorya Rajput",
+          "roll_number": 195561,
+          "thesis_title": "Understanding and Reducing Hallucinations in Neural Machine Translation",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 297,
+          "level": "M.Tech / PG",
+          "student_name": "Vasvi Sharma",
+          "roll_number": "22MCS001",
+          "thesis_title": "WEB Bot Detection Using Keyboard Behavioural Analysis",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 298,
+          "level": "M.Tech / PG",
+          "student_name": "Akhil Sharma",
+          "roll_number": "22MCS008",
+          "thesis_title": "HEAT : A Hybridized Methodology to Augment Explainability in Brain Tumor Detection using Deep Learning Technique",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 299,
+          "level": "M.Tech / PG",
+          "student_name": "Aryan Pal Singh",
+          "roll_number": "22MCS004",
+          "thesis_title": "Smart Wearable for Quick Identification of Cardiac Arrest",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 300,
+          "level": "Ph.D.",
+          "student_name": "Aschalew Tirulo Abiko",
+          "roll_number": "21RCS002",
+          "thesis_title": "Detection and Mitigation of Cyberattacks in IOT-Enabled Smart Grids",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 301,
+          "level": "M.Tech / PG",
+          "student_name": "Ashutosh Sharma",
+          "roll_number": "23MCS114",
+          "thesis_title": "Melanoma Detection Using an Ensemble Model of EfficientNet and vision Transformer with GLCM for feature Extraction",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 302,
+          "level": "M.Tech / PG",
+          "student_name": "Aman Gupta",
+          "roll_number": "23MCS004",
+          "thesis_title": "Scalability and Performance Optimization of Graph Attention Networks for Large-Scale Graph Learning",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 303,
+          "level": "M.Tech / PG",
+          "student_name": "Aman Sharma",
+          "roll_number": "23MCS018",
+          "thesis_title": "A Cross-lingual Neural Pipeline for Multilingual Aspect-Based Sentiment Analysis Quadruple Extraction",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 304,
+          "level": "M.Tech / PG",
+          "student_name": "Milindra Pratap Singh",
+          "roll_number": "14MI533",
+          "thesis_title": "Distributed Security in Wireless Sensor Network",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 305,
+          "level": "M.Tech / PG",
+          "student_name": "Ishita Parmar",
+          "roll_number": "14MI505",
+          "thesis_title": "Energy-Efficient Self-Decisive Clustering Based Routing Protocol For WSN",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 306,
+          "level": "M.Tech / PG",
+          "student_name": "Shweta Arya",
+          "roll_number": "20MCS014",
+          "thesis_title": "Lung Cancer Detection using Image Processing",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 307,
+          "level": "M.Tech / PG",
+          "student_name": "Aditya Thakur",
+          "roll_number": "14MI521",
+          "thesis_title": "An Energy Efficient Time Synchronization Protocol For Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 308,
+          "level": "M.Tech / PG",
+          "student_name": "Aarti Ramoul",
+          "roll_number": "14MI547",
+          "thesis_title": "A Data Aggregation Algorithm For Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 309,
+          "level": "M.Tech / PG",
+          "student_name": "Vedant Khachi",
+          "roll_number": "14MI527",
+          "thesis_title": "Mitigation of The Effects Of The Grey Hole Attack In MANET Using Artificial Technique",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 310,
+          "level": "M.Tech / PG",
+          "student_name": "Juri Kalita",
+          "roll_number": "17M529",
+          "thesis_title": "An Energy Efficient Routing Protocol for Heterogeneous WSN",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 311,
+          "level": "M.Tech / PG",
+          "student_name": "Saurabh Kumar",
+          "roll_number": "14MI539",
+          "thesis_title": "Selfish Node Detection in MANETs using a Bayesian Game Model",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 312,
+          "level": "M.Tech / PG",
+          "student_name": "Sherish Saxena",
+          "roll_number": "14MI523",
+          "thesis_title": "Facial Emotion Recognition using Deep Learning",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 313,
+          "level": "M.Tech / PG",
+          "student_name": "Piyush Dangayach",
+          "roll_number": "17MI527",
+          "thesis_title": "Intrusion Classification And Detection Using Deep Learning For IOT",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 314,
+          "level": "M.Tech / PG",
+          "student_name": "Komal Negi",
+          "roll_number": "17MI530",
+          "thesis_title": "Energy Aware WSN Deployed using Hierarchical Routing Protocol",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 315,
+          "level": "M.Tech / PG",
+          "student_name": "Rohit Hill",
+          "roll_number": "17MI526",
+          "thesis_title": "VGT: A Load Balancing Algorithm using Virtual Grid Technique for Mobile Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2018,
+          "co_supervisor": null
+        },
+        {
+          "id": 316,
+          "level": "M.Tech / PG",
+          "student_name": "Rachana Umaraniya",
+          "roll_number": "20MCS009",
+          "thesis_title": "Energy Conservation In Smart Agriculture using Caching in FOG Framework",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 317,
+          "level": "M.Tech / PG",
+          "student_name": "Kuldeep Goswami",
+          "roll_number": "08M516",
+          "thesis_title": "A Protocol To Reduce Energy Consumption in Transmission and Reception of Temporally Correlated Data of A Sensor Node In Sensor Network",
+          "status": "Completed",
+          "year": 2010,
+          "co_supervisor": null
+        },
+        {
+          "id": 318,
+          "level": "M.Tech / PG",
+          "student_name": "Prateek Gupta",
+          "roll_number": "09M511",
+          "thesis_title": "Event And Query Based Data Dissemination Protocol for Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 319,
+          "level": "M.Tech / PG",
+          "student_name": "Manthan Jain",
+          "roll_number": "20DCS003",
+          "thesis_title": "Enhancing Packet Delivery in Underwater Wireless Sensor Networks Using spare semi-oblivious routing and particle swarm optimization",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 320,
+          "level": "M.Tech / PG",
+          "student_name": "Kinshuk Sharely",
+          "roll_number": "20DCS024",
+          "thesis_title": "Enhanced Energy Optimization in Underwater Wireless Sensor Networks Using Honey Bee and Genetic Algorithm",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "https://in.linkedin.com/in/dr-siddhartha-chauhan-79846616",
+      "admin_experiences": [
+        {
+          "position": "Warden Dhauladhar Boys Hostel",
+          "organization": "National Institute of Technology , Hamirpur",
+          "start_date": "2019",
+          "end_date": "2020",
+          "full_start": "2019-03-25",
+          "full_end": "2020-06-01"
+        },
+        {
+          "position": "Warden In charge(Boys Hostels)",
+          "organization": "National Institute of Technology , Hamirpur",
+          "start_date": "2020",
+          "end_date": "2020",
+          "full_start": "2020-06-01",
+          "full_end": "2020-08-08"
+        },
+        {
+          "position": "Faculty Incharge(Computer Centre)",
+          "organization": "Computer Centre , NIT Hamirpur",
+          "start_date": "2020",
+          "end_date": "2022",
+          "full_start": "2020-09-15",
+          "full_end": "2022-09-26"
+        },
+        {
+          "position": "Convener DDPC",
+          "organization": "Computer Science and Engineering , NIT Hamirpur",
+          "start_date": "2021",
+          "end_date": "2023",
+          "full_start": "2021-08-11",
+          "full_end": "2023-09-08"
+        },
+        {
+          "position": "Member SDPC",
+          "organization": "NIT Hamirpur",
+          "start_date": "2021",
+          "end_date": "2023",
+          "full_start": "2021-08-11",
+          "full_end": "2023-09-08"
+        },
+        {
+          "position": "Nodal Officer Digital India",
+          "organization": "NIT Hamirpur",
+          "start_date": "2018",
+          "end_date": "2019",
+          "full_start": "2018-05-03",
+          "full_end": "2019-05-01"
+        },
+        {
+          "position": "Warden Shivalik Boys Hostel",
+          "organization": "NIT Hamirpur",
+          "start_date": "2017",
+          "end_date": "2019",
+          "full_start": "2017-09-01",
+          "full_end": "2019-05-28"
+        },
+        {
+          "position": "Convener Departmental Post Graduate Committee(DPGC),CSED",
+          "organization": "NIT Hamirpur",
+          "start_date": "2018",
+          "end_date": "2020",
+          "full_start": "2018-07-16",
+          "full_end": "2020-02-16"
+        },
+        {
+          "position": "Coordinator Institute Website",
+          "organization": "NIT Hamirpur",
+          "start_date": "2012",
+          "end_date": "2014",
+          "full_start": "2012-10-18",
+          "full_end": "2014-01-07"
+        },
+        {
+          "position": "Coordinator Sports",
+          "organization": "NIT Hamirpur",
+          "start_date": "2014",
+          "end_date": "2025",
+          "full_start": "2014-01-07",
+          "full_end": "2025-07-27"
+        },
+        {
+          "position": "Coordinator (Administration)",
+          "organization": "IIIT,Una",
+          "start_date": "2014",
+          "end_date": "2016",
+          "full_start": "2014-07-21",
+          "full_end": "2016-03-01"
+        },
+        {
+          "position": "Faculty In-Charge GLUG",
+          "organization": "NIT Hamirpur",
+          "start_date": "2011",
+          "end_date": "Present",
+          "full_start": "2011-11-08",
+          "full_end": "Present"
+        },
+        {
+          "position": "Lab in charge Microprocessor Lab ,CSED",
+          "organization": "NIT Hamirpur",
+          "start_date": "2008",
+          "end_date": "Present",
+          "full_start": "2008-05-01",
+          "full_end": "Present"
+        }
+      ],
+      "profile": {
+        "scholar_url": "http://scholar.google.co.in/citations?user=ecm-wIgAAAAJ",
+        "scopus_url": "http://www.scopus.com/authid/detail.url?authorId=37048596000",
+        "scopus_id": "37048596000",
+        "publons_url": "https://www.webofscience.com/wos/author/record/ABD-4838-2021",
+        "orcid": "0000-0001-7851-7657",
+        "research_gate_url": "https://www.researchgate.net/profile/Siddhartha-Chauhan",
+        "vidwan_url": 18382,
+        "linkedin_url": "https://in.linkedin.com/in/dr-siddhartha-chauhan-79846616"
+      }
     },
     {
       "id": "853a73f2-13a5-5c4f-a25f-21fd5d695f93",
@@ -2955,19 +4037,16 @@
       "orcid": "0000-0001-9347-9345",
       "qualifications": [
         {
-          "id": "f5873024-0815-49b0-a734-7cb4bad16e05",
           "degree": "B.Tech",
           "institute": "Maharishi Dayanand University Rohtak",
           "year": 1999
         },
         {
-          "id": "ae97a9af-bfa9-4b1b-ae18-0020871cb06c",
           "degree": "M.Tech",
           "institute": "Punjab Engineering College Chandigarh",
           "year": 2005
         },
         {
-          "id": "458062da-0e05-4ba0-acc5-07eb9fe87578",
           "degree": "Ph.D (Computer Science & Engineering)",
           "institute": "National Institute of Technology Hamirpur",
           "year": 2012
@@ -3358,8 +4437,191 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": ""
+      "supervisions": [
+        {
+          "id": 118,
+          "level": "Ph.D.",
+          "student_name": "Brij Bihari Dubey",
+          "roll_number": "",
+          "thesis_title": "Improving Data Availability in Vehiular Ad Hoc Networks",
+          "status": "Completed",
+          "year": 2017,
+          "co_supervisor": null
+        },
+        {
+          "id": 119,
+          "level": "Ph.D.",
+          "student_name": "Rajesh Sharma",
+          "roll_number": "",
+          "thesis_title": "Energy Efficient Data Dissemination in Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2017,
+          "co_supervisor": null
+        },
+        {
+          "id": 120,
+          "level": "Ph.D.",
+          "student_name": "Prashant Kumar",
+          "roll_number": "",
+          "thesis_title": "Resource Optimization in Opportunistic Networks",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 121,
+          "level": "Ph.D.",
+          "student_name": "Rajeev Kumar",
+          "roll_number": "",
+          "thesis_title": "Improving Peformance of Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 161,
+          "level": "Ph.D.",
+          "student_name": "Nishant Sharma",
+          "roll_number": "",
+          "thesis_title": "Improving Data Availability in Internet of Vehicles Environment",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 162,
+          "level": "Ph.D.",
+          "student_name": "Himanshu Verma",
+          "roll_number": "",
+          "thesis_title": "Internet of Healthcare Things",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 163,
+          "level": "Ph.D.",
+          "student_name": "Rangu Manjula",
+          "roll_number": "20RCS005",
+          "thesis_title": "Blockchain in Agriculture Supply Management",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 164,
+          "level": "Ph.D.",
+          "student_name": "Md. Ataullah",
+          "roll_number": "23RCS001",
+          "thesis_title": "Security and Privacy in IoT",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 165,
+          "level": "Ph.D.",
+          "student_name": "Subeesh. A",
+          "roll_number": "23RCS003",
+          "thesis_title": "Machine Learning and IoT in agriculture",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "",
+      "admin_experiences": [
+        {
+          "position": "Associate Dean",
+          "organization": "Examination & Evaluation",
+          "start_date": "2020",
+          "end_date": "2021",
+          "full_start": "2020-04-30",
+          "full_end": "2021-12-27"
+        },
+        {
+          "position": "Associate Dean",
+          "organization": "Research Projects & Collaborations, Startup",
+          "start_date": "2021",
+          "end_date": "2022",
+          "full_start": "2021-12-28",
+          "full_end": "2022-01-07"
+        },
+        {
+          "position": "Coodinator",
+          "organization": "ISTE",
+          "start_date": "2006",
+          "end_date": "2008",
+          "full_start": "2006-08-02",
+          "full_end": "2008-08-03"
+        },
+        {
+          "position": "Cordinator",
+          "organization": "Video Conferencing",
+          "start_date": "2012",
+          "end_date": "2018",
+          "full_start": "2012-11-20",
+          "full_end": "2018-04-10"
+        },
+        {
+          "position": "Facuty In-Charge",
+          "organization": "Computre Centre",
+          "start_date": "2018",
+          "end_date": "2020",
+          "full_start": "2018-07-04",
+          "full_end": "2020-09-15"
+        },
+        {
+          "position": "Facuty In-Charge",
+          "organization": "Outsourced Multitasking Services",
+          "start_date": "2020",
+          "end_date": "2023",
+          "full_start": "2020-05-01",
+          "full_end": "2023-09-30"
+        },
+        {
+          "position": "HoD",
+          "organization": "Computer Science & Engineering",
+          "start_date": "2022",
+          "end_date": "2024",
+          "full_start": "2022-09-06",
+          "full_end": "2024-09-25"
+        },
+        {
+          "position": "Nodal Officer",
+          "organization": "IIIT Una",
+          "start_date": "2015",
+          "end_date": "2018",
+          "full_start": "2015-09-16",
+          "full_end": "2018-07-24"
+        },
+        {
+          "position": "OIC",
+          "organization": "Aravali Trainees Hostel",
+          "start_date": "2010",
+          "end_date": "2017",
+          "full_start": "2010-09-13",
+          "full_end": "2017-05-04"
+        },
+        {
+          "position": "Warden",
+          "organization": "Dhauladhar Boys Hostel",
+          "start_date": "2006",
+          "end_date": "2009",
+          "full_start": "2006-01-08",
+          "full_end": "2009-06-29"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=C6TO36cAAAAJ&hl=en",
+        "scopus_url": "https://www.scopus.com/authid/detail.uri?authorId=35218687800",
+        "scopus_id": "35218687800",
+        "publons_url": null,
+        "orcid": "0000-0001-9347-9345",
+        "research_gate_url": "https://www.researchgate.net/profile/Naveen-Chauhan-5",
+        "vidwan_url": null,
+        "linkedin_url": null
+      }
     },
     {
       "id": "975a3e83-a789-559f-91c9-65395cb5bbdc",
@@ -3382,13 +4644,11 @@
       "orcid": "0000-0002-4019-604X",
       "qualifications": [
         {
-          "id": "8a8df22d-9f84-4ba7-ba8d-f3fa6ff08fae",
           "degree": "PhD",
           "institute": "NIT Hamirpur",
           "year": 2016
         },
         {
-          "id": "65080024-5319-4b4e-8e4e-b67091e20f33",
           "degree": "B Tech",
           "institute": "GNDU Amritsar",
           "year": 2001
@@ -3466,7 +4726,17 @@
       ],
       "projects": [],
       "supervisions": [],
-      "linkedin_url": "https://www.linkedin.com/in/dr-pardeep-singh-b3861519/"
+      "linkedin_url": "https://www.linkedin.com/in/dr-pardeep-singh-b3861519/",
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?hl=en&user=VRCMwpcAAAAJ&view_op=list_works",
+        "scopus_url": "https://www.scopus.com/authid/detail.uri?authorId=55463318900",
+        "scopus_id": "55463318900",
+        "publons_url": "https://www.webofscience.com/wos/author/rid/AAZ-9884-2021",
+        "orcid": "0000-0002-4019-604X",
+        "research_gate_url": "https://www.researchgate.net/profile/Pardeep-Singh-2",
+        "vidwan_url": "https://vidwan.inflibnet.ac.in/profile/49071",
+        "linkedin_url": "https://www.linkedin.com/in/dr-pardeep-singh-b3861519/"
+      }
     },
     {
       "id": "dbb4d23e-e5e3-5f8e-8bb1-d0a790099800",
@@ -3490,32 +4760,48 @@
       "orcid": "",
       "qualifications": [
         {
-          "id": "c8b19666-a776-44c1-a4c2-46965e74b3f9",
           "degree": "BE",
           "institute": "NITK Surathkal",
           "year": 2005
         },
         {
-          "id": "d9bb117a-b693-4a27-bff9-d803a66e4c17",
           "degree": "MTech",
           "institute": "NIT Hamirpur",
           "year": 2011
+        },
+        {
+          "degree": "PhD",
+          "institute": "NIT Hamirpur",
+          "year": 2021
         }
       ],
       "teaching_experiences": [
         {
-          "id": "6914cf89-d044-400a-95bd-b4872725f97b",
           "position": "Lecturer (On Contract)",
-          "organization": "Computer Science & Engineering NIT Hamirpur",
-          "start_date": "2005-08-17",
-          "end_date": "2006-08-02"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science & Engineering NIT Hamirpur",
+          "start_date": "2005",
+          "end_date": "2006",
+          "full_start": "2005-08-17",
+          "full_end": "2006-08-02"
         },
         {
-          "id": "6f363e1c-8e93-4c25-90cf-f2e5d678daba",
           "position": "Assistant Professor Grade-I",
-          "organization": "Computer Science & Engineering NIT Hamirpur",
-          "start_date": "2006-08-03",
-          "end_date": "2023-09-22"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science & Engineering NIT Hamirpur",
+          "start_date": "2006",
+          "end_date": "2023",
+          "full_start": "2006-08-03",
+          "full_end": "2023-09-22"
+        },
+        {
+          "position": "Assistant Professor Grade-II",
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science & Engineering NIT Hamirpur",
+          "start_date": "2023",
+          "end_date": "Present",
+          "full_start": "2023-09-22",
+          "full_end": "Present"
         }
       ],
       "administrative_experiences": [
@@ -3602,7 +4888,144 @@
           ]
         }
       ],
-      "supervisions": []
+      "supervisions": [
+        {
+          "id": 321,
+          "level": "Ph.D.",
+          "student_name": "Tanuj",
+          "roll_number": "2K17-Ph.D.-CSE-338",
+          "thesis_title": "Efficient Handling of Big Data in lnternet of Things",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": "Dr Ajay Kumar Sharma"
+        },
+        {
+          "id": 322,
+          "level": "Ph.D.",
+          "student_name": "Deepa Rani",
+          "roll_number": "21RCS003",
+          "thesis_title": "Energy Efficient and Secure Framework for IoT-based Healthcare",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 323,
+          "level": "Ph.D.",
+          "student_name": "Samridhi Singh",
+          "roll_number": "22RCS005",
+          "thesis_title": "AI Enabled Prognosis and Detection of Overian Cancer using Histopathological Imaging Modality",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": "Dr N.P. Singh"
+        },
+        {
+          "id": 324,
+          "level": "M.Tech / PG",
+          "student_name": "Rishi Raj Dutta",
+          "roll_number": "23MCS110",
+          "thesis_title": "Balancing Plasticity and Stability in Continual Learning with UPGD and continuous Activations",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 325,
+          "level": "M.Tech / PG",
+          "student_name": "Grijesh Nemiwal",
+          "roll_number": "23MCS014",
+          "thesis_title": "Transformer based Network intrusion Detection: A Multidata set Analysis",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 326,
+          "level": "M.Tech / PG",
+          "student_name": "Akshat",
+          "roll_number": "20DCS027",
+          "thesis_title": "Enhancing Malware Detection Accuracy Exploring Advanced Machine Learning Strategies",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 327,
+          "level": "M.Tech / PG",
+          "student_name": "Yogesh Kumar Sharma",
+          "roll_number": "20DCS002",
+          "thesis_title": "Deep Learning based Framework for Detection of Overian Cancer using Histopathological Images",
+          "status": "Completed",
+          "year": 2025,
+          "co_supervisor": null
+        }
+      ],
+      "admin_experiences": [
+        {
+          "position": "Faculty-Incharge (Cultural Activities & Clubs)",
+          "organization": "Office of Dean (Student Welfare)",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-09-01",
+          "full_end": "Present"
+        },
+        {
+          "position": "Convenor, DDPC",
+          "organization": "Computer Science & Engineering",
+          "start_date": "2023",
+          "end_date": "Present",
+          "full_start": "2023-08-08",
+          "full_end": "Present"
+        },
+        {
+          "position": "Nodal Officer (Rashtriya Abhiskar Abhiyaan)",
+          "organization": "National Institute of Technology, Hamirpur",
+          "start_date": "2023",
+          "end_date": "Present",
+          "full_start": "2023-08-11",
+          "full_end": "Present"
+        },
+        {
+          "position": "Faculty-Incharge (NCC Air Wing)",
+          "organization": "Office of Dean (Student Welfare)",
+          "start_date": "2021",
+          "end_date": "2025",
+          "full_start": "2021-07-20",
+          "full_end": "2025-02-10"
+        },
+        {
+          "position": "Convenor, DBPC",
+          "organization": "Computer Science & Engineering",
+          "start_date": "2021",
+          "end_date": "2023",
+          "full_start": "2021-08-12",
+          "full_end": "2023-08-08"
+        },
+        {
+          "position": "Faculty-Incharge (Examination)",
+          "organization": "Office of Dean (Academics)",
+          "start_date": "2021",
+          "end_date": "2023",
+          "full_start": "2021-06-21",
+          "full_end": "2023-06-21"
+        },
+        {
+          "position": "Assistant Faculty-Incharge (Examination and Evaluation)",
+          "organization": "Office of Dean (Academics)",
+          "start_date": "2018",
+          "end_date": "2021",
+          "full_start": "2018-07-03",
+          "full_end": "2021-08-12"
+        },
+        {
+          "position": "Center In-charge (CSAB 2025)",
+          "organization": "Office of Dean (Academics)",
+          "start_date": "2025",
+          "end_date": "Present",
+          "full_start": "2025-03-19",
+          "full_end": "Present"
+        }
+      ]
     },
     {
       "id": "fa8f838f-1d0f-5506-9c25-961dd6458f00",
@@ -3629,19 +5052,16 @@
       "orcid": "",
       "qualifications": [
         {
-          "id": "2825df4f-2054-4af0-9860-4dd7c5c57af1",
           "degree": "B.E. (Computer Engineering)",
           "institute": "MDU Rohtak",
           "year": 2004
         },
         {
-          "id": "154127d5-5b1e-4eb5-b361-9fe9cc53f9a0",
           "degree": "M.Tech (Computer Engineering)",
           "institute": "Kurukshetra University",
           "year": 2006
         },
         {
-          "id": "c1d1525c-51ba-441c-b460-f2dfa1157362",
           "degree": "Ph.D. (Computer Engineering)",
           "institute": "NSIT, University of Delhi",
           "year": 2021
@@ -3652,66 +5072,45 @@
       "honors": [],
       "expert_talks": [
         {
-          "id": "8f219e7b-6300-4459-8bd0-e9f1aab5ed82",
           "title": "Adapting generic network algorithms to MANETs",
           "venue": "DoCSE, NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "2013-2014",
+          "date": "",
           "description": "TEQIP sponsored winter school on Mobile and distributed systems MDS-13"
         },
         {
-          "id": "45d85578-9a4c-44ba-80f1-16d0c2b21b69",
           "title": "Algorithm Analysis",
           "venue": "Shiva Institute of Technology, Bilaspur, Himachal Pradesh",
-          "start_date": "",
-          "end_date": "",
-          "session": "2018-2019",
+          "date": "",
           "description": "Special Lecture Series for B.Tech Students"
         },
         {
-          "id": "b669feb2-f49f-4c0c-96e3-43a9e439c59e",
           "title": "Introduction to Cognitive Radio Network Based Internet of Things for Cloud Computing",
           "venue": "Online, Organized by DRIEMS Autonomous Engineering College, Tangi, Cuttak, Odisha",
-          "start_date": "2021-06-09",
-          "end_date": "2021-12-09",
-          "session": "2021-2022",
+          "date": "2021-06-09",
           "description": "AICTE-ISTE sponsored 6 days FDP on \"Recent Trends in Cloud Computing (Phase-III)\""
         },
         {
-          "id": "e3624808-506e-44d2-b681-21117880a50c",
           "title": "Network Algorithms",
           "venue": "DoCSE, NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "AICTE sponsored Short term course on Internet Technologies"
         },
         {
-          "id": "49b93a3e-8996-4659-8729-cd43c160cc92",
           "title": "Overview of Cognitive Radio Based IEEE 802.22Wireless Regional Area Networks : Issues in Channel Assignment",
           "venue": "Department of Computer Engineering, NIT Kurukshetra",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "Delivered lecture in a One week workshop on Next Generation Computing (NGC16)"
         },
         {
-          "id": "ba1a55bd-abd6-4a82-a999-b1ac6b41e4f7",
           "title": "Routing Algorithms",
           "venue": "DoCSE, NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "Community Development Program on Network Fundamentals"
         },
         {
-          "id": "6514ced4-279d-4729-b3fc-70e90379e91e",
           "title": "Writing a Research Paper in LaTeX",
           "venue": "DoEE, NIT Hamirpur",
-          "start_date": "",
-          "end_date": "",
-          "session": "",
+          "date": "",
           "description": "Short term course on Software Tools for Academicians and Researchers (STAR)"
         }
       ],
@@ -3756,8 +5155,409 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": ""
+      "supervisions": [
+        {
+          "id": 209,
+          "level": "M.Tech / PG",
+          "student_name": "Judhister Mahapatro",
+          "roll_number": "",
+          "thesis_title": "Energy Efficient Base Station- Assisted Cluster Based Approach to routing in wireless sensor networks",
+          "status": "Completed",
+          "year": 2009,
+          "co_supervisor": null
+        },
+        {
+          "id": 210,
+          "level": "M.Tech / PG",
+          "student_name": "Rakesh singh Sambyal",
+          "roll_number": "",
+          "thesis_title": "QOS-Aware Model for Wimax",
+          "status": "Completed",
+          "year": 2009,
+          "co_supervisor": null
+        },
+        {
+          "id": 211,
+          "level": "M.Tech / PG",
+          "student_name": "Sahabul Alam",
+          "roll_number": "",
+          "thesis_title": "A Spanning Tree Based Energy Efficient K-Means Clustering Approach in Wireless Sensor Network",
+          "status": "Completed",
+          "year": 2010,
+          "co_supervisor": null
+        },
+        {
+          "id": 212,
+          "level": "M.Tech / PG",
+          "student_name": "Shiv Shakti Shrivastava",
+          "roll_number": "",
+          "thesis_title": "A model of Cryptographic System Optimizing the Playfair Cipher",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 213,
+          "level": "M.Tech / PG",
+          "student_name": "Kiran Maraiya",
+          "roll_number": "",
+          "thesis_title": "Efficient Cluster Head Selection Scheme for Data Aggregation in Wireless Sensor Network",
+          "status": "Completed",
+          "year": 2011,
+          "co_supervisor": null
+        },
+        {
+          "id": 214,
+          "level": "M.Tech / PG",
+          "student_name": "Raj Kumar",
+          "roll_number": "",
+          "thesis_title": "Enhanced, Efficient and novel access control in WSN",
+          "status": "Completed",
+          "year": 2012,
+          "co_supervisor": null
+        },
+        {
+          "id": 215,
+          "level": "M.Tech / PG",
+          "student_name": "Ankur Srivastava",
+          "roll_number": "",
+          "thesis_title": "Localization in WSN using Angle of signal propagation.",
+          "status": "Completed",
+          "year": 2012,
+          "co_supervisor": null
+        },
+        {
+          "id": 216,
+          "level": "M.Tech / PG",
+          "student_name": "Uttam Vijay",
+          "roll_number": "",
+          "thesis_title": "Minimum Spanning Tree Based Clustering in wireless sensor network using Divide and Conquer Approach.",
+          "status": "Completed",
+          "year": 2013,
+          "co_supervisor": null
+        },
+        {
+          "id": 217,
+          "level": "M.Tech / PG",
+          "student_name": "Neelam",
+          "roll_number": "",
+          "thesis_title": "Optimal cache placement by identifying potential congestion nodes in WSN.",
+          "status": "Completed",
+          "year": 2014,
+          "co_supervisor": null
+        },
+        {
+          "id": 218,
+          "level": "M.Tech / PG",
+          "student_name": "Rajiv Kumar V",
+          "roll_number": "",
+          "thesis_title": "Heterogeneous computing with GPGPU for time complexity reduction in DALI structure alignment.",
+          "status": "Completed",
+          "year": 2014,
+          "co_supervisor": null
+        },
+        {
+          "id": 219,
+          "level": "M.Tech / PG",
+          "student_name": "Harpreet Kaur",
+          "roll_number": "",
+          "thesis_title": "Localized algorithm for channel assignment in Cognitive Radio Networks.",
+          "status": "Completed",
+          "year": 2015,
+          "co_supervisor": null
+        },
+        {
+          "id": 220,
+          "level": "M.Tech / PG",
+          "student_name": "Parveen Kumar",
+          "roll_number": "",
+          "thesis_title": "Algorithm for Steiner Tree Problem Using Fixed Dimension Grid Topology",
+          "status": "Completed",
+          "year": 2015,
+          "co_supervisor": null
+        },
+        {
+          "id": 221,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Kumar",
+          "roll_number": "",
+          "thesis_title": "Malicious Nodes Detection in CRN",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 222,
+          "level": "M.Tech / PG",
+          "student_name": "Danish Pachyala",
+          "roll_number": "",
+          "thesis_title": "Cournot Game Based Power Allocation Scheme for CRN",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 223,
+          "level": "M.Tech / PG",
+          "student_name": "Shreya Shrivastav",
+          "roll_number": "",
+          "thesis_title": "Target Channel Selection for Spectrum Handoff in CRN",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 224,
+          "level": "M.Tech / PG",
+          "student_name": "Arun K Sharma",
+          "roll_number": "",
+          "thesis_title": "Hypergraph Theory Based Channel Assignment in CRN",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 225,
+          "level": "M.Tech / PG",
+          "student_name": "Pranav Solanki",
+          "roll_number": "",
+          "thesis_title": "A Clustering Scheme for Cognitive Radio Networks Based Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 226,
+          "level": "M.Tech / PG",
+          "student_name": "Mohammad Aziz",
+          "roll_number": "",
+          "thesis_title": "Efficient clustering Scheme in CRNWSN",
+          "status": "Completed",
+          "year": 2019,
+          "co_supervisor": null
+        },
+        {
+          "id": 227,
+          "level": "M.Tech / PG",
+          "student_name": "Archit Jain",
+          "roll_number": "",
+          "thesis_title": "Permissioned Blockchain-Based Incentive Distribution Scheme for Cooperative Sensing in CRN",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 228,
+          "level": "M.Tech / PG",
+          "student_name": "Riya",
+          "roll_number": "",
+          "thesis_title": "Efficient Caching Method in Fog Computing for Internet of Things Network",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 229,
+          "level": "M.Tech / PG",
+          "student_name": "Sushant Sharma",
+          "roll_number": "",
+          "thesis_title": "Federated Learning Based Caching Scheme for Fog Computing",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 230,
+          "level": "M.Tech / PG",
+          "student_name": "Mohit Patyal",
+          "roll_number": "",
+          "thesis_title": "Optimal Cache Placement using Gradient Descent method in Wireless Sensor Networks",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 231,
+          "level": "M.Tech / PG",
+          "student_name": "Akshita Doad",
+          "roll_number": "",
+          "thesis_title": "Profit Enhancing Resource Allocation in Fog Computing",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 232,
+          "level": "M.Tech / PG",
+          "student_name": "Kartik Saxena",
+          "roll_number": "",
+          "thesis_title": "Drone Trajectory Optimization for Data Collection in WSN",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 233,
+          "level": "M.Tech / PG",
+          "student_name": "Robin Singh Rana",
+          "roll_number": "",
+          "thesis_title": "Effective Task Scheduling in Cloud Environment",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 234,
+          "level": "M.Tech / PG",
+          "student_name": "Shruti Meshram",
+          "roll_number": "",
+          "thesis_title": "Data Analytics Based Caching for Fog Computing",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 235,
+          "level": "M.Tech / PG",
+          "student_name": "Ankit Gunavat",
+          "roll_number": "",
+          "thesis_title": "Comparative Study of Task Scheduling Algorithms for Cloud Computing",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 236,
+          "level": "M.Tech / PG",
+          "student_name": "Jahnvi Gupta",
+          "roll_number": "",
+          "thesis_title": "An IoT and Deep Learning based Aid for Monitoring Hallucinations and Assisting in Cognitive Rehabilitation of Schizophrenia Patients",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 237,
+          "level": "M.Tech / PG",
+          "student_name": "Mukesh Kumar",
+          "roll_number": "",
+          "thesis_title": "T-AES and ECC Based Secure Data Communication in Peer to Peer networks",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 238,
+          "level": "M.Tech / PG",
+          "student_name": "Saikat Datta",
+          "roll_number": "",
+          "thesis_title": "Tea Leaf Disease Detection and Classification Using Deep Neural Network",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 239,
+          "level": "M.Tech / PG",
+          "student_name": "Kharanshu Sharma",
+          "roll_number": "",
+          "thesis_title": "Auto Text Generation using Recurrent Neural Network",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 240,
+          "level": "M.Tech / PG",
+          "student_name": "Gollamandala Sanjay",
+          "roll_number": "",
+          "thesis_title": "Bayesian Optimization and Neural Network Based Opportunistic Routing in WSN",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 241,
+          "level": "M.Tech / PG",
+          "student_name": "Ritwik Duggal",
+          "roll_number": "",
+          "thesis_title": "Contactless Biometric Verification using Recognition and Detection of Bracelet Lines",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 242,
+          "level": "M.Tech / PG",
+          "student_name": "Moulik",
+          "roll_number": "",
+          "thesis_title": "Privacy Aware Routing in Opportunistic Networks with Federated Learning",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 243,
+          "level": "M.Tech / PG",
+          "student_name": "Himanshi",
+          "roll_number": "",
+          "thesis_title": "Design and Implementation of a Refreshable Braille Display Watch for Enhancing Multilingual Communication Between Deaf-Blind Individuals and the General Population",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 244,
+          "level": "M.Tech / PG",
+          "student_name": "Akshay Thakur",
+          "roll_number": "",
+          "thesis_title": "Multidimensional Community Correlation Based Routing for Data Transmission in VANETs",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 245,
+          "level": "Ph.D.",
+          "student_name": "M. Sreenu Maloth",
+          "roll_number": "",
+          "thesis_title": "Blockchain for efficient Vaccine Distribution",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Chandrashekar Jatoth, NIT Raipur"
+        },
+        {
+          "id": 246,
+          "level": "Ph.D.",
+          "student_name": "Kuldeep Singh Jadon",
+          "roll_number": "",
+          "thesis_title": "IoT for Sustainable Computing",
+          "status": "Ongoing",
+          "year": 2021,
+          "co_supervisor": "Prof. Lalit Awasthi, VC, SPU Mandi (H.P)"
+        },
+        {
+          "id": 247,
+          "level": "Ph.D.",
+          "student_name": "Smriti Guleria",
+          "roll_number": "",
+          "thesis_title": "Edge Computing",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "",
+      "profile": {
+        "scholar_url": null,
+        "scopus_url": null,
+        "scopus_id": "",
+        "publons_url": null,
+        "orcid": null,
+        "research_gate_url": null,
+        "vidwan_url": null,
+        "linkedin_url": null
+      }
     },
     {
       "id": "56a64caf-d814-5fc7-a9e1-3d12a6cd9d76",
@@ -3779,22 +5579,24 @@
       "orcid": "",
       "qualifications": [
         {
-          "id": "d22673dd-ecc6-4494-bbe3-988011a0d69a",
           "degree": "Postdoc",
           "institute": "Ton Duc Thang University, Ho Chi Minh City, Vietnam",
           "year": 2021
         },
         {
-          "id": "5c1522ac-9fd4-4693-acdd-c052ef94567a",
           "degree": "Ph.D.",
           "institute": "Indian Institute of Technology Banaras Hindu University Varanasi, UP, India",
           "year": 2018
         },
         {
-          "id": "a3fef144-8150-4725-95dc-9bd231a8ca9e",
           "degree": "Master of Technology",
           "institute": "Atal Bihari Vajpayee-Indian Institute of Information Technology and Management Gwalior, Madhya Pradesh, India",
           "year": 2013
+        },
+        {
+          "degree": "Associate Member of The Institution of Electronics and Telecommunication Engineers (AMIETE)",
+          "institute": "The Institution of Electronics and Telecommunication Engineers (IETE), New Delhi, India",
+          "year": 2011
         }
       ],
       "teaching_experiences": [],
@@ -3806,7 +5608,17 @@
       "patents": [],
       "projects": [],
       "supervisions": [],
-      "linkedin_url": ""
+      "linkedin_url": "",
+      "profile": {
+        "scholar_url": null,
+        "scopus_url": null,
+        "scopus_id": "",
+        "publons_url": null,
+        "orcid": null,
+        "research_gate_url": null,
+        "vidwan_url": null,
+        "linkedin_url": null
+      }
     },
     {
       "id": "edbab47f-a36c-5216-9914-5b5561bc8137",
@@ -3830,7 +5642,6 @@
       "orcid": "0000-0001-9774-7917",
       "qualifications": [
         {
-          "id": "225ab710-dff6-40dc-90c9-2207d7c8b619",
           "degree": "PH.D",
           "institute": "UTU, DEHRADUN",
           "year": 2016
@@ -3838,18 +5649,22 @@
       ],
       "teaching_experiences": [
         {
-          "id": "4486c313-5490-4996-a565-414fb0c97614",
           "position": "Assistant Professor GR-II",
-          "organization": "Computer Science and Engineering, NIT HAMIRPUR",
-          "start_date": "2019-09-23",
-          "end_date": "2023-08-22"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering, NIT HAMIRPUR",
+          "start_date": "2019",
+          "end_date": "2023",
+          "full_start": "2019-09-23",
+          "full_end": "2023-08-22"
         },
         {
-          "id": "de71b1f9-1510-48aa-aa90-4d6bf275d9d5",
           "position": "Assistant Professor GR-I",
-          "organization": "Computer Science and Engineering, NIT HAMIRPUR",
-          "start_date": "2023-08-23",
-          "end_date": "Present"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering, NIT HAMIRPUR",
+          "start_date": "2023",
+          "end_date": "Present",
+          "full_start": "2023-08-23",
+          "full_end": "Present"
         }
       ],
       "administrative_experiences": [
@@ -4497,8 +6312,307 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": ""
+      "supervisions": [
+        {
+          "id": 12,
+          "level": "Ph.D.",
+          "student_name": "Akash Verma",
+          "roll_number": "22RCS006",
+          "thesis_title": "Deep Learning based Brain Tumor Segmentation and Classification from MRI Images",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 19,
+          "level": "M.Tech / PG",
+          "student_name": "Akash Verma",
+          "roll_number": "19M520",
+          "thesis_title": "Image Caption Generation Using Deep Learning",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 20,
+          "level": "M.Tech / PG",
+          "student_name": "Sanjeevani",
+          "roll_number": "19MCS519",
+          "thesis_title": "Retinal Blood Vessel Segmentation Using Deep Learning Concepts Based on U-NET Architecture of CNN",
+          "status": "Completed",
+          "year": 2020,
+          "co_supervisor": null
+        },
+        {
+          "id": 26,
+          "level": "M.Tech / PG",
+          "student_name": "Shubham Bharti",
+          "roll_number": "19MCS506",
+          "thesis_title": "Cyberbullying Detection in social media Text",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 28,
+          "level": "M.Tech / PG",
+          "student_name": "Shweta Kushwaha",
+          "roll_number": "19MCS527",
+          "thesis_title": "Detection Distributed Denial service attacks in IoT devices using Network Traffic Capture",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 30,
+          "level": "M.Tech / PG",
+          "student_name": "Ashish Dhiman",
+          "roll_number": "19M538",
+          "thesis_title": "Sentimental Classification in Hindi Text using Hybrid Deep Learning Mode",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 32,
+          "level": "M.Tech / PG",
+          "student_name": "Kartikey Tiwari",
+          "roll_number": "19M551",
+          "thesis_title": "Multi Document Extractive Text Summarization using Statistical Approach",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 34,
+          "level": "M.Tech / PG",
+          "student_name": "Mohammed Usman Syed",
+          "roll_number": "20MCS109",
+          "thesis_title": "Skin Cancer Classification using Deep Learning",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 36,
+          "level": "M.Tech / PG",
+          "student_name": "Krishan Kumar",
+          "roll_number": "17M518",
+          "thesis_title": "Fingerprint Detection and Matching using Deep Learning and Gabor Features",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 38,
+          "level": "M.Tech / PG",
+          "student_name": "Manoj Kumar",
+          "roll_number": "17M537",
+          "thesis_title": "Bird Species Classification and Detection using Deep Learning",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 40,
+          "level": "Ph.D.",
+          "student_name": "Vandana",
+          "roll_number": "24RCS004",
+          "thesis_title": "Application of Machine Learning and Natural Language Processing in Low Resource Language",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": ". ."
+        },
+        {
+          "id": 42,
+          "level": "M.Tech / PG",
+          "student_name": "Shivani",
+          "roll_number": 185504,
+          "thesis_title": "Underwater Image Enhancement using Convolutional Neural Networks",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 44,
+          "level": "M.Tech / PG",
+          "student_name": "Rajan Kumar",
+          "roll_number": "21MCS110",
+          "thesis_title": "Scientific Document Text Summarization using Deep Learning",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 46,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Kumar",
+          "roll_number": 185540,
+          "thesis_title": "Word Vectorization in Bhojpuri and Maithili using Deep Learning Methods",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 48,
+          "level": "M.Tech / PG",
+          "student_name": "Divya Rathod",
+          "roll_number": "21MCS106",
+          "thesis_title": "Neural Machine Translation for Hindi-English using Character-Level Encoding",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 50,
+          "level": "M.Tech / PG",
+          "student_name": "Saurya Pandey",
+          "roll_number": 185537,
+          "thesis_title": "Skin Cancer Detection using Squeeze-and -Extractive Network",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 52,
+          "level": "M.Tech / PG",
+          "student_name": "Rahul Kumar",
+          "roll_number": "21MCS008",
+          "thesis_title": "Brain Tumor Segmentation Using Deep Learning",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 54,
+          "level": "M.Tech / PG",
+          "student_name": "Anant Ranghi",
+          "roll_number": "21MCS119",
+          "thesis_title": "Hate Speech Detection in Dravidian Languages using Character-Level Deep Learning Framework",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 56,
+          "level": "M.Tech / PG",
+          "student_name": "Kunal Shay",
+          "roll_number": "21MCS006",
+          "thesis_title": "Classification of Cancer type using Geometrical Deep Learning Models",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 58,
+          "level": "M.Tech / PG",
+          "student_name": "Harsh Sharma",
+          "roll_number": 195548,
+          "thesis_title": "Efficient Net and Cross-Attention Based Multimodal Emotion Detection from Audio-Visual Data.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 68,
+          "level": "M.Tech / PG",
+          "student_name": "Tushar Gupta",
+          "roll_number": "22MCS010",
+          "thesis_title": "Improving Topic Modeling through a Hybrid Approach Utilizing LDA, BERT and Clustering Technique.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 70,
+          "level": "M.Tech / PG",
+          "student_name": "Rishabh Deo Singh",
+          "roll_number": 195553,
+          "thesis_title": "A Multimodal approach for cyberbullying detection in Social-Media Posts.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 72,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Suraj",
+          "roll_number": 195541,
+          "thesis_title": "Instagram Fake Profile Detection Using Deep Learning.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 74,
+          "level": "M.Tech / PG",
+          "student_name": "Vijay Kumar",
+          "roll_number": 195538,
+          "thesis_title": "Machine Translation for Low-Resource and Morphologically Rich Languages: Focusing on the Hindi-Kangri Pair.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 76,
+          "level": "M.Tech / PG",
+          "student_name": "Akshay Kumar",
+          "roll_number": 195505,
+          "thesis_title": "A Multimodal Approach for Early Autism Spectrum Disorder Detection in Young Children",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 78,
+          "level": "M.Tech / PG",
+          "student_name": "Shahil Sharma",
+          "roll_number": "22MCS111",
+          "thesis_title": "Landslide Detection using Deep Learning.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 263,
+          "level": "M.Tech / PG",
+          "student_name": "Anant Verma",
+          "roll_number": 195544,
+          "thesis_title": "Cyberbullying Detection in Hindi Text Using Multimodal Deep Learning Approach.",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "",
+      "admin_experiences": [
+        {
+          "position": "FI(NAD)",
+          "organization": "NATIONAL INSTITUTE OF TECHNOLOGY HAMIRPUR",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-02-29",
+          "full_end": "Present"
+        },
+        {
+          "position": "Nodal Officer-NITH EOC",
+          "organization": "NATIONAL INSTITUTE OF TECHNOLOGY HAMIRPUR",
+          "start_date": "2020",
+          "end_date": "Present",
+          "full_start": "2020-02-12",
+          "full_end": "Present"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=example",
+        "scopus_url": "https://www.scopus.com/authid/detail.uri?authorId=37103209800",
+        "scopus_id": "37103209800",
+        "publons_url": "https://www.webofscience.com/wos/author/record/AAS-6212-2021",
+        "orcid": "0000-0001-9774-7917",
+        "research_gate_url": "https://www.reseaate.net/profile/Example_Name",
+        "vidwan_url": "https://vidwan.inflibnet.ac.in/profile/105471",
+        "linkedin_url": null
+      }
     },
     {
       "id": "b638c21f-609f-57d2-8a24-b133e03ad4ea",
@@ -4663,8 +6777,49 @@
         }
       ],
       "projects": [],
-      "supervisions": [],
-      "linkedin_url": ""
+      "supervisions": [
+        {
+          "id": 255,
+          "level": "Ph.D.",
+          "student_name": "Geetanjali",
+          "roll_number": "22RCS002",
+          "thesis_title": "Hate Speech Detection in Hindi Language",
+          "status": "Ongoing",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 256,
+          "level": "Ph.D.",
+          "student_name": "Ranjeet Chaudhary",
+          "roll_number": "24RCS002",
+          "thesis_title": "Cyberbullying detection in low resource languages",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 257,
+          "level": "Ph.D.",
+          "student_name": "Neha Sharma",
+          "roll_number": "24RCS014",
+          "thesis_title": "Sentiment analysis for low resource languages",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "",
+      "profile": {
+        "scholar_url": null,
+        "scopus_url": null,
+        "scopus_id": "",
+        "publons_url": null,
+        "orcid": null,
+        "research_gate_url": null,
+        "vidwan_url": null,
+        "linkedin_url": null
+      }
     },
     {
       "id": "4144f97d-26c3-588f-a81b-f9c7c0740347",
@@ -4687,19 +6842,16 @@
       "orcid": "",
       "qualifications": [
         {
-          "id": "71063e7a-fb71-4809-b3e1-c95ede210586",
           "degree": "B.Tech",
           "institute": "Uttar Pradesh Technical University, Lucknow, Uttar Pradesh",
           "year": 2006
         },
         {
-          "id": "f5fd886b-0f2d-4166-8ab4-b0a87d4619f0",
           "degree": "M.Tech",
           "institute": "Indian Institute of Information Technology, Allahabad, Uttar Pradesh",
           "year": 2009
         },
         {
-          "id": "712ac5d5-4aec-4194-9260-8b91fe3cb302",
           "degree": "Ph.D.",
           "institute": "Indian Institute of Information Technology, Allahabad, Uttar Pradesh",
           "year": 2018
@@ -4766,35 +6918,27 @@
       ],
       "honors": [
         {
-          "id": "af4d58c1-fbab-4827-8bfb-a7b9ef76b891",
           "title": "Mahindra All India Talent Scholarship",
-          "awarding_body": "Mahindra & Mahindra Ltd.",
+          "organization": "Mahindra & Mahindra Ltd.",
           "year": 1998
         },
         {
-          "id": "6ab872a7-e3d0-4c48-a085-9adf1ceb1e93",
           "title": "TCS Research Fellowship",
-          "awarding_body": "Tata Consultancy Services",
+          "organization": "Tata Consultancy Services",
           "year": 1998
         }
       ],
       "expert_talks": [
         {
-          "id": "017eff3a-dd45-4e75-b705-7c2a64166c7e",
           "title": "Introduction to Natural Language Processing",
           "venue": "NIT Hamirpur",
-          "start_date": "2020-10-12",
-          "end_date": "2020-10-17",
-          "session": "2020-2021",
+          "date": "2020-10-12",
           "description": "Machine Learning for Natural Language Processing (MNLP-2020)"
         },
         {
-          "id": "ec926240-48ec-4c74-85fa-c77d9e9e6476",
           "title": "Machine Learning for Natural Language Processing",
           "venue": "Department of Computer Science & Engineering, at ITS Engineering College, Greater Noida",
-          "start_date": "2021-02-22",
-          "end_date": "2021-02-26",
-          "session": "2020-2021",
+          "date": "2021-02-22",
           "description": "ML-FDP'21 Program (MACHINE LEARNING)"
         }
       ],
@@ -4835,8 +6979,215 @@
         }
       ],
       "projects": [],
-      "supervisions": [],
-      "linkedin_url": "https://in.linkedin.com/in/jyoti-srivastava-53973323"
+      "supervisions": [
+        {
+          "id": 105,
+          "level": "M.Tech / PG",
+          "student_name": "ARUN SHARMA",
+          "roll_number": "",
+          "thesis_title": "Trend prediction of stock price using Financial News and Technical Indicator",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 106,
+          "level": "M.Tech / PG",
+          "student_name": "NAVAM SHARMA",
+          "roll_number": "",
+          "thesis_title": "Graph Based Extractive Text Summarizer",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 107,
+          "level": "M.Tech / PG",
+          "student_name": "MANICK",
+          "roll_number": "",
+          "thesis_title": "Cassava Leaf Disease Detection Using Deep Learning",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 108,
+          "level": "M.Tech / PG",
+          "student_name": "TANVI MAHAJAN",
+          "roll_number": "",
+          "thesis_title": "Early-Stage Dementia Detection by Optimize Feature Weights with Ensemble Learning",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 109,
+          "level": "M.Tech / PG",
+          "student_name": "AMIT KUMAR",
+          "roll_number": "",
+          "thesis_title": "Hate Speech Detection Using Twitter Dataset",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 110,
+          "level": "M.Tech / PG",
+          "student_name": "HARSHA VARDHAN SAHOO",
+          "roll_number": "",
+          "thesis_title": "An Explainable NLP Framework for Sentiment Analysis using Interpretable ML and XAI",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 111,
+          "level": "M.Tech / PG",
+          "student_name": "Johan Anish",
+          "roll_number": "",
+          "thesis_title": "Exploring the Effectiveness of Combined Cosine Similarity and Convolutional Neural Networks for Text Similarity Analysis",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 112,
+          "level": "M.Tech / PG",
+          "student_name": "Varun Malik",
+          "roll_number": "",
+          "thesis_title": "Automatic text summary evaluation metric",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 113,
+          "level": "M.Tech / PG",
+          "student_name": "Abhay Maurya",
+          "roll_number": "",
+          "thesis_title": "Abstractive Text Summarization using Reinforcement Learning For Sequence to Sequence",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 114,
+          "level": "M.Tech / PG",
+          "student_name": "Shubhiv Dogra",
+          "roll_number": "",
+          "thesis_title": "Sentiment analysis using the Bi-LSTM model on the Amazon Unlocked Mobile dataset",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 115,
+          "level": "M.Tech / PG",
+          "student_name": "Rishabh Dhenkawat",
+          "roll_number": "",
+          "thesis_title": "Deep Learning Architectures Ensembling via Liquid State Network for Ovarian Cancer Identification from Histopathology Images",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 116,
+          "level": "M.Tech / PG",
+          "student_name": "Abhijit Boban",
+          "roll_number": "",
+          "thesis_title": "Neural Machine Translation for English to Hindi",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 117,
+          "level": "M.Tech / PG",
+          "student_name": "Shashank Bhushan",
+          "roll_number": "",
+          "thesis_title": "An Integrated Deep Learning Approach for Teeth Disease Classification",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "https://in.linkedin.com/in/jyoti-srivastava-53973323",
+      "admin_experiences": [
+        {
+          "position": "Assistant Faculty In-charge (Technical Activities & Clubs)",
+          "organization": "NIT Hamirpur",
+          "start_date": "2019",
+          "end_date": "2020",
+          "full_start": "2019-12-03",
+          "full_end": "2020-08-10"
+        },
+        {
+          "position": "Assistant Nodal Officer (NIRF)",
+          "organization": "NIT Hamirpur",
+          "start_date": "2019",
+          "end_date": "2020",
+          "full_start": "2019-12-03",
+          "full_end": "2020-08-10"
+        },
+        {
+          "position": "Assistant Warden",
+          "organization": "AGH & PGH",
+          "start_date": "2020",
+          "end_date": "2020",
+          "full_start": "2020-05-08",
+          "full_end": "2020-08-08"
+        },
+        {
+          "position": "Departmental Counselor (DoCSE)",
+          "organization": "DoCSE, NIT Hamirpur",
+          "start_date": "2019",
+          "end_date": "2020",
+          "full_start": "2019-12-18",
+          "full_end": "2020-12-18"
+        },
+        {
+          "position": "FI(Result Processing)",
+          "organization": "NIT Hamirpur",
+          "start_date": "2023",
+          "end_date": "2024",
+          "full_start": "2023-10-13",
+          "full_end": "2024-10-13"
+        },
+        {
+          "position": "OIC (Artificial Intelligence and Robotics Lab)",
+          "organization": "DoCSE, NIT Hamirpur",
+          "start_date": "2020",
+          "end_date": "Present",
+          "full_start": "2020-02-17",
+          "full_end": "Present"
+        },
+        {
+          "position": "OIC (CSEC Departmental Society)",
+          "organization": "DoCSE, NIT Hamirpur",
+          "start_date": "2020",
+          "end_date": "Present",
+          "full_start": "2020-02-19",
+          "full_end": "Present"
+        },
+        {
+          "position": "OIC (Hindi)",
+          "organization": "DoCSE, NIT Hamirpur",
+          "start_date": "2022",
+          "end_date": "Present",
+          "full_start": "2022-05-23",
+          "full_end": "Present"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.co.in/citations?user=HE8DDFQAAAAJ&hl=en",
+        "scopus_url": null,
+        "scopus_id": "",
+        "publons_url": null,
+        "orcid": null,
+        "research_gate_url": "https://www.researchgate.net/profile/Jyoti-Srivastava-4",
+        "vidwan_url": null,
+        "linkedin_url": "https://in.linkedin.com/in/jyoti-srivastava-53973323"
+      }
     },
     {
       "id": "48004e0f-8ca0-5f45-85e1-2c6cf4eada17",
@@ -4861,19 +7212,16 @@
       "orcid": "",
       "qualifications": [
         {
-          "id": "c609184f-e958-43bb-9f35-5e63b593f2d9",
           "degree": "BTech",
           "institute": "Maharashi Dayanand University, Rohtak, Haryana",
           "year": 2008
         },
         {
-          "id": "06add25c-c513-49e9-ade0-9d9545a46860",
           "degree": "MTech",
           "institute": "Kurukshetra University, Haryana",
           "year": 2011
         },
         {
-          "id": "f37be845-0361-4d55-92a7-e4e4561b36e5",
           "degree": "PhD",
           "institute": "Guru Jambheshwar University of Science & Technology, Hisar, Haryana",
           "year": 2018
@@ -4881,38 +7229,51 @@
       ],
       "teaching_experiences": [
         {
-          "id": "8c167e28-3ced-4ad7-bd8c-55ba53fb2b66",
           "position": "Assistant Professor (Adhoc)",
-          "organization": "SPMC, University of Delhi",
-          "start_date": "2016-07-25",
-          "end_date": "2018-01-04"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "SPMC, University of Delhi",
+          "start_date": "2016",
+          "end_date": "2018",
+          "full_start": "2016-07-25",
+          "full_end": "2018-01-04"
         },
         {
-          "id": "4b84dd26-89a9-4625-a025-08e914a3f0b8",
           "position": "Assistant Professor (Adhoc)",
-          "organization": "BNC, University of Delhi",
-          "start_date": "2018-02-06",
-          "end_date": "2018-05-20"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "BNC, University of Delhi",
+          "start_date": "2018",
+          "end_date": "2018",
+          "full_start": "2018-02-06",
+          "full_end": "2018-05-20"
         },
         {
-          "id": "3fd5c968-aacc-40fb-a5ac-40c6c611b4be",
           "position": "Assistant Professor (Adhoc)",
-          "organization": "Department of Computer Science, University of Delhi",
-          "start_date": "2018-06-20",
-          "end_date": "2019-09-23"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Department of Computer Science, University of Delhi",
+          "start_date": "2018",
+          "end_date": "2019",
+          "full_start": "2018-06-20",
+          "full_end": "2019-09-23"
         },
         {
-          "id": "ea992222-d030-4c68-9179-53fbe05415a7",
           "position": "Assistant Professor",
-          "organization": "DoCSE, National Institute of Technology, Hamirpur (H.P)",
-          "start_date": "2019-09-24",
-          "end_date": "Present"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "DoCSE, National Institute of Technology, Hamirpur (H.P)",
+          "start_date": "2019",
+          "end_date": "Present",
+          "full_start": "2019-09-24",
+          "full_end": "Present"
         }
       ],
       "administrative_experiences": [],
       "honors": [],
       "expert_talks": [],
-      "exposures": [],
+      "exposures": [
+        {
+          "title": "Chairperson, IEEE Young Professionals, Delhi Section",
+          "description": "This position and opportunity gives me an exposure on national and international platform in terms of International collaboration"
+        }
+      ],
       "publications": [
         {
           "id": "e6f12dfa-0d99-5288-9478-0dcbeeb9ba77",
@@ -4946,7 +7307,278 @@
       ],
       "patents": [],
       "projects": [],
-      "supervisions": []
+      "supervisions": [
+        {
+          "id": 166,
+          "level": "M.Tech / PG",
+          "student_name": "Mahima Dubey",
+          "roll_number": "19M515",
+          "thesis_title": "Energy Conservation Optimal Path Algorithm in Wireless Body Area Network",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 167,
+          "level": "M.Tech / PG",
+          "student_name": "Saurabh Katoch",
+          "roll_number": "19M505",
+          "thesis_title": "Using Genetic Algorithms for Deployment of Electric Vehicle Charging Stations",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 168,
+          "level": "M.Tech / PG",
+          "student_name": "Rakesh Arya",
+          "roll_number": "19M512",
+          "thesis_title": "Junction cross link removal in Vehicular Adhoc Networks",
+          "status": "Completed",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 169,
+          "level": "M.Tech / PG",
+          "student_name": "Prashant Kumar",
+          "roll_number": "20MCS008",
+          "thesis_title": "Intelligent Traffic Management for High-Priority Vehicles",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 170,
+          "level": "M.Tech / PG",
+          "student_name": "Mahesh Rajendra Shirsath",
+          "roll_number": "20MCS006",
+          "thesis_title": "A Novel Deep Neural Network based Classification of Arrhythmia",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 171,
+          "level": "M.Tech / PG",
+          "student_name": "Vineet Sharma",
+          "roll_number": "17MI514",
+          "thesis_title": "Real-Time Decision Making Preemptive Service Based CS Recommendation and Reservation System For Electric Vehicles",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 172,
+          "level": "M.Tech / PG",
+          "student_name": "Aakanksha",
+          "roll_number": "17MI549",
+          "thesis_title": "Efficient Workflow Scheduling in Cloud Computing using Hybrid Algorithm",
+          "status": "Completed",
+          "year": 2022,
+          "co_supervisor": null
+        },
+        {
+          "id": 174,
+          "level": "M.Tech / PG",
+          "student_name": "Sourav Kumar Tanwar",
+          "roll_number": "21MCS013",
+          "thesis_title": "Automated classification of Fatal Ultrasound Images with Hybrid Capsule Network",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 175,
+          "level": "M.Tech / PG",
+          "student_name": "Yogesh Nimalkar",
+          "roll_number": "21MCS015",
+          "thesis_title": "Exploring the efficacy of NLP and Deep learning Technique for depression detection",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 176,
+          "level": "M.Tech / PG",
+          "student_name": "Gudala Laya",
+          "roll_number": 185557,
+          "thesis_title": "Efficient WBAN Routing by MultiObjective Optimization Genetic Algorithm",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 177,
+          "level": "M.Tech / PG",
+          "student_name": "Nakshatra Goyal",
+          "roll_number": 185531,
+          "thesis_title": "Content Based Image retrieval for Retinal images using SIFT",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 178,
+          "level": "M.Tech / PG",
+          "student_name": "Ankush",
+          "roll_number": 185508,
+          "thesis_title": "Skin cancer detection using deep learning approach",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 179,
+          "level": "Ph.D.",
+          "student_name": "Praveen Prakash",
+          "roll_number": "23RCS004",
+          "thesis_title": "Lightweight Security Model of Internet of Things System (Tentative)",
+          "status": "Ongoing",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 180,
+          "level": "Ph.D.",
+          "student_name": "Azmeera Chandu Naik",
+          "roll_number": "21RCS006",
+          "thesis_title": "Development of a Trust Aware Secure Routing Strategy for the Internet of Things (IOT) Network",
+          "status": "Ongoing",
+          "year": 2021,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 181,
+          "level": "Ph.D.",
+          "student_name": "Sourav Mondal",
+          "roll_number": "21RCS005",
+          "thesis_title": "Brain Stroke Prediction using Machine Learning",
+          "status": "Ongoing",
+          "year": 2021,
+          "co_supervisor": null
+        },
+        {
+          "id": 182,
+          "level": "M.Tech / PG",
+          "student_name": "Harsh Seth",
+          "roll_number": 185560,
+          "thesis_title": "Augmentation of Medical Image dataset using GAN",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 183,
+          "level": "M.Tech / PG",
+          "student_name": "Karan Bharadwaj",
+          "roll_number": 185544,
+          "thesis_title": "Routing scheduling for Drone Delivery System using Deep Reinforcement learning",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 184,
+          "level": "M.Tech / PG",
+          "student_name": "Kritarth Kapoor",
+          "roll_number": 185510,
+          "thesis_title": "Bell-pepper leaf bacterial spot detection using Deep Learning approach",
+          "status": "Completed",
+          "year": 2023,
+          "co_supervisor": null
+        },
+        {
+          "id": 185,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Kapoor",
+          "roll_number": "22MCS012",
+          "thesis_title": "Energy Efficient Cluster Head Replacement algorithm in Wireless sensor networks",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Robin Singh Bhadoria"
+        },
+        {
+          "id": 186,
+          "level": "M.Tech / PG",
+          "student_name": "Anshul",
+          "roll_number": "22MCS005",
+          "thesis_title": "Relay Node placement in wireless body area Network using Ant colony Optimization with Game Theory",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Robin Singh Bhadoria"
+        },
+        {
+          "id": 187,
+          "level": "M.Tech / PG",
+          "student_name": "Kishan Kumar",
+          "roll_number": 195568,
+          "thesis_title": "BERT- based Meta-Stacked Ensemble Learning in Sentiment analysis and Prediction",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Robin Singh Bhadoria"
+        },
+        {
+          "id": 204,
+          "level": "M.Tech / PG",
+          "student_name": "Arpita Naval",
+          "roll_number": "",
+          "thesis_title": "Image Steganography using Discrete Wavelet Transform",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 205,
+          "level": "M.Tech / PG",
+          "student_name": "Kishan Kumar",
+          "roll_number": "",
+          "thesis_title": "Feature Based Sentiment Analysis Using Stacked Meta- Ensemble Learner",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 206,
+          "level": "M.Tech / PG",
+          "student_name": "Abhijeet Gupta",
+          "roll_number": "",
+          "thesis_title": "Face Recognition Captcha",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 207,
+          "level": "M.Tech / PG",
+          "student_name": "Anshul Kumar",
+          "roll_number": "",
+          "thesis_title": "Combining Ant colony optimization with game theory for optimal placement of relay nodes in WBAN",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 208,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Kapoor",
+          "roll_number": "",
+          "thesis_title": "Enhancing Energy Efficiency in IoT Networks",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?hl=en&user=78gb3g8AAAAJ",
+        "scopus_url": null,
+        "scopus_id": "",
+        "publons_url": "https://publons.com/researcher/4805095/dr-priyanka-rathee/",
+        "orcid": null,
+        "research_gate_url": null,
+        "vidwan_url": "https://portfolios.nith.ac.in/index.php?/nith/dr-priyanka",
+        "linkedin_url": null
+      }
     },
     {
       "id": "cfcbebac-52f4-5195-b732-d21e74137122",
@@ -4969,19 +7601,16 @@
       "orcid": "",
       "qualifications": [
         {
-          "id": "350c0aa2-8120-4d13-ac8b-a2e7c007fb8c",
           "degree": "BE",
           "institute": "RGPV, BHOPAL",
           "year": 2006
         },
         {
-          "id": "4a08e440-ccc8-4556-a4a1-0795dac233f0",
           "degree": "MTech",
           "institute": "MANIT, BHOPAL",
           "year": 2011
         },
         {
-          "id": "b1a8b13d-f0db-4946-96c3-0ed4c5cd44e5",
           "degree": "PhD",
           "institute": "MANIT, BHOPAL",
           "year": 2017
@@ -5289,19 +7918,16 @@
       "orcid": "0000-0002-3755-3245",
       "qualifications": [
         {
-          "id": "316d04aa-a97b-4a43-b6cb-561c09b1d75a",
           "degree": "B.E CSE",
           "institute": "Annamalai University",
           "year": 2011
         },
         {
-          "id": "8c6db363-123e-4e9e-8b48-6bcb00cd463e",
           "degree": "M.E CSE",
           "institute": "Anna University",
           "year": 2013
         },
         {
-          "id": "9c2ee295-f223-461a-aa56-c13b63e33cb8",
           "degree": "Ph.D.",
           "institute": "National Institute of Technology Srinagar",
           "year": 2021
@@ -5730,8 +8356,79 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": "https://www.linkedin.com/in/mohammad-khalid-pandit-5b0a8a24/?originalSubdomain=in"
+      "supervisions": [
+        {
+          "id": 68,
+          "level": "M.Tech / PG",
+          "student_name": "Tushar Gupta",
+          "roll_number": "22MCS010",
+          "thesis_title": "Improving Topic Modeling through a Hybrid Approach Utilizing LDA, BERT and Clustering Technique.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 70,
+          "level": "M.Tech / PG",
+          "student_name": "Rishabh Deo Singh",
+          "roll_number": 195553,
+          "thesis_title": "A Multimodal approach for cyberbullying detection in Social-Media Posts.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 72,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Suraj",
+          "roll_number": 195541,
+          "thesis_title": "Instagram Fake Profile Detection Using Deep Learning.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 74,
+          "level": "M.Tech / PG",
+          "student_name": "Vijay Kumar",
+          "roll_number": 195538,
+          "thesis_title": "Machine Translation for Low-Resource and Morphologically Rich Languages: Focusing on the Hindi-Kangri Pair.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 76,
+          "level": "M.Tech / PG",
+          "student_name": "Akshay Kumar",
+          "roll_number": 195505,
+          "thesis_title": "A Multimodal Approach for Early Autism Spectrum Disorder Detection in Young Children",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 78,
+          "level": "M.Tech / PG",
+          "student_name": "Shahil Sharma",
+          "roll_number": "22MCS111",
+          "thesis_title": "Landslide Detection using Deep Learning.",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/mohammad-khalid-pandit-5b0a8a24/?originalSubdomain=in",
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=Iin9bCsAAAAJ&hl=en&authuser=2",
+        "scopus_url": null,
+        "scopus_id": "",
+        "publons_url": null,
+        "orcid": "0000-0002-3755-3245",
+        "research_gate_url": "https://www.researchgate.net/profile/Mohammad-Khalid-Pandit",
+        "vidwan_url": null,
+        "linkedin_url": "https://www.linkedin.com/in/mohammad-khalid-pandit-5b0a8a24/?originalSubdomain=in"
+      }
     },
     {
       "id": "4f0ed2a0-960b-5ba1-bbee-6723c562a1da",
@@ -5756,26 +8453,39 @@
       "orcid": "0000-0002-4770-9506",
       "qualifications": [
         {
-          "id": "c5fe0bac-bfe2-4750-9d0d-834797bcdedb",
           "degree": "B.E",
           "institute": "University Institute of Technology, Burdwan",
           "year": 2013
+        },
+        {
+          "degree": "M.Tech",
+          "institute": "Indian Institute of Technology (Indian School of Mines), Dhanbad",
+          "year": 2015
+        },
+        {
+          "degree": "Ph.D",
+          "institute": "Indian Institute of Technology (Indian School of Mines), Dhanbad",
+          "year": 2022
         }
       ],
       "teaching_experiences": [
         {
-          "id": "dcbfbb7d-c589-4ed6-a3f3-6e1237626486",
           "position": "Assistant Professor",
-          "organization": "School of Computer Science and Engineering, VIT-AP University",
-          "start_date": "2022-07-09",
-          "end_date": "2023-05-31"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "School of Computer Science and Engineering, VIT-AP University",
+          "start_date": "2022",
+          "end_date": "2023",
+          "full_start": "2022-07-09",
+          "full_end": "2023-05-31"
         },
         {
-          "id": "64e3fcb3-4f96-40b8-b6f1-da508293eefd",
           "position": "Assistant Professor",
-          "organization": "Department of Computer Science and Engineering, National institute of Technology Hamirpur",
-          "start_date": "2023-09-04",
-          "end_date": "Present"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Department of Computer Science and Engineering, National institute of Technology Hamirpur",
+          "start_date": "2023",
+          "end_date": "Present",
+          "full_start": "2023-09-04",
+          "full_end": "Present"
         }
       ],
       "administrative_experiences": [
@@ -5809,13 +8519,209 @@
         }
       ],
       "honors": [],
-      "expert_talks": [],
+      "expert_talks": [
+        {
+          "title": "AI and its Applications in Architecture and Planning",
+          "venue": "Department of Architecture, National Institute of Technology, Hamirpur (H.P), India.",
+          "date": "2024-10-14",
+          "description": "e-Short Term Course (e-STC) on Information Science for Building Design and Urban Planning (ISBDUP), Dated 14th-18th October 2024."
+        },
+        {
+          "title": "Handcrafted and Deep Feature Based Image and Video Retrieval",
+          "venue": "Department of Computer Science and Engineering, National Institute of Technology, Hamirpur (H.P), India.",
+          "date": "2024-07-01",
+          "description": "Online Short Term Course (eSTC) titled \"Research Applications of Deep Learning\" 2024 organised during 01-05 July 2024 by Department of Computer Science and Engineering, NIT Hamirpur"
+        }
+      ],
       "exposures": [],
       "publications": [],
       "patents": [],
       "projects": [],
-      "supervisions": [],
-      "linkedin_url": "https://www.linkedin.com/feed/?trk=sem-ga_campid.14650114788_asid.151761418307_crid.657403558721_kw.linkedin%20login_d.c_tid.kwd-12704335873_n.g_mt.e_geo.9297884"
+      "supervisions": [
+        {
+          "id": 152,
+          "level": "M.Tech / PG",
+          "student_name": "Malika Sood",
+          "roll_number": 195562,
+          "thesis_title": "Revolutionizing Tomato Agriculture: Leaf Disease Detection using CNN and its Variants",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Jyoti Srivastava"
+        },
+        {
+          "id": 153,
+          "level": "M.Tech / PG",
+          "student_name": "Ajay Kumar",
+          "roll_number": "22MCS019",
+          "thesis_title": "Enhancing Hindi Named Entity Recognition using XLM-RoBERTa",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Jyoti Srivastava"
+        },
+        {
+          "id": 154,
+          "level": "M.Tech / PG",
+          "student_name": "Sakshi",
+          "roll_number": "22MCS113",
+          "thesis_title": "Deep Learning Based Watermarking for Electronic Health Records",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Mohit Kumar"
+        },
+        {
+          "id": 155,
+          "level": "M.Tech / PG",
+          "student_name": "Nidhi Singh",
+          "roll_number": "22MCS109",
+          "thesis_title": "Fine-Grained Birds Classification",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Mohit Kumar"
+        },
+        {
+          "id": 156,
+          "level": "M.Tech / PG",
+          "student_name": "Sourabh Sharma",
+          "roll_number": "23MCS021",
+          "thesis_title": "Deep Convolutional Networks and Handcrafted Multi-Feature Fusion based Image Retrieval",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 157,
+          "level": "M.Tech / PG",
+          "student_name": "Atul Sharma",
+          "roll_number": "23MCS109",
+          "thesis_title": "Attention-Based Deep Learning Approach for Fingerprint Liveness Detection",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 158,
+          "level": "M.Tech / PG",
+          "student_name": "Sameer Mirza",
+          "roll_number": "23MCS120",
+          "thesis_title": "Enhanced Small Object Detection in Aerial Imagery using Deep Cross Block and YOLOv9 Fusion",
+          "status": "Ongoing",
+          "year": 2024,
+          "co_supervisor": null
+        },
+        {
+          "id": 159,
+          "level": "Ph.D.",
+          "student_name": "Shorav Verma",
+          "roll_number": "25RCS010",
+          "thesis_title": "Development of Deep learning Approach for Image Enhancement in Adverse Visual Conditions",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 250,
+          "level": "M.Tech / PG",
+          "student_name": "Vaishali Thakur",
+          "roll_number": "21DCS021",
+          "thesis_title": "Reinforcement Technique for Image Enhancement",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 251,
+          "level": "M.Tech / PG",
+          "student_name": "Tanmay Patel",
+          "roll_number": "22DCS001",
+          "thesis_title": "Techniques to Solve Data Imbalance problems for medical Images",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 252,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Badwaik",
+          "roll_number": "24MCS101",
+          "thesis_title": "Challenges for robotics Vision",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 253,
+          "level": "M.Tech / PG",
+          "student_name": "Archish",
+          "roll_number": "24MCS106",
+          "thesis_title": "Deep Supervised Image Enhancement Approaches",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 254,
+          "level": "M.Tech / PG",
+          "student_name": "Deepanshu",
+          "roll_number": "24MCS016",
+          "thesis_title": "Deep Semantic Learning Approaches for Content based Image Retrieval",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "https://www.linkedin.com/feed/?trk=sem-ga_campid.14650114788_asid.151761418307_crid.657403558721_kw.linkedin%20login_d.c_tid.kwd-12704335873_n.g_mt.e_geo.9297884",
+      "admin_experiences": [
+        {
+          "position": "Assistant Faculty In-charge (AFI):Cultural Activities and Clubs- (Sangeet)",
+          "organization": "Department of Computer Science and Engineering, NIT Hamirpur",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-08-09",
+          "full_end": "Present"
+        },
+        {
+          "position": "Officer In-Charge (OIC) : Department Research Laboratory",
+          "organization": "Department of Computer Science and Engineering, NIT Hamirpur",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-02-23",
+          "full_end": "Present"
+        },
+        {
+          "position": "Officer In-Charge (OIC) :Department Infrastructure",
+          "organization": "Department of Computer Science and Engineering, NIT Hamirpur",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-02-23",
+          "full_end": "Present"
+        },
+        {
+          "position": "Single Point of Contact (SPOC)",
+          "organization": "Smart India Hackathon 2025, NIT Hamirpur",
+          "start_date": "2025",
+          "end_date": "Present",
+          "full_start": "2025-08-28",
+          "full_end": "Present"
+        },
+        {
+          "position": "Assistant Faculty In-charge (AFI):Google Developer Group",
+          "organization": "Technical Activities and Clubs",
+          "start_date": "2025",
+          "end_date": "Present",
+          "full_start": "2025-11-21",
+          "full_end": "Present"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=tNA_6VYAAAAJ&hl=en&oi=ao",
+        "scopus_url": "https://www.scopus.com/authid/detail.uri?authorId=57190793824",
+        "scopus_id": "57190793824",
+        "publons_url": "https://www.webofscience.com/wos/author/record/AAM-1260-2021",
+        "orcid": "0000-0002-4770-9506",
+        "research_gate_url": "https://www.researchgate.net/profile/Ajay-Mallick-3?ev=hdr_xprf",
+        "vidwan_url": "https://vidwan.inflibnet.ac.in/profile/463097",
+        "linkedin_url": "https://www.linkedin.com/feed/?trk=sem-ga_campid.14650114788_asid.151761418307_crid.657403558721_kw.linkedin%20login_d.c_tid.kwd-12704335873_n.g_mt.e_geo.9297884"
+      }
     },
     {
       "id": "c6b9e423-ae53-563f-afb8-8c06426dedb5",
@@ -5839,19 +8745,16 @@
       "orcid": "0000-0002-6314-4736",
       "qualifications": [
         {
-          "id": "1c87f5ac-d2d7-476f-8aae-dd8d746161fe",
           "degree": "Doctor of Philosophy (Ph.D.)",
           "institute": "Indian Institute of Technology (IIT) Indore, MP",
           "year": 2018
         },
         {
-          "id": "de3f6b68-790e-4fbc-93a0-e30b641938a0",
           "degree": "Master of Technology (M.Tech.)",
           "institute": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV) Bhopal, MP",
           "year": 2011
         },
         {
-          "id": "bf38398e-5e96-4fa3-919d-3483d6e1f9b2",
           "degree": "Bachelor of Engineering (B.E.)",
           "institute": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV) Bhopal, MP",
           "year": 2008
@@ -5876,29 +8779,33 @@
       ],
       "honors": [
         {
-          "id": "0cda8afb-ed24-47b2-8abe-476d68ef1bbf",
           "title": "Academic Editor",
-          "awarding_body": "John Wiley & Sons, Inc. (USA)",
+          "organization": "John Wiley & Sons, Inc. (USA)",
           "year": 2023
+        },
+        {
+          "title": "University Gold Medal",
+          "organization": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV) Bhopal, MP",
+          "year": 2011
         }
       ],
       "expert_talks": [
         {
-          "id": "d34fa3c1-23f6-4f56-9aa4-b2db91c12e02",
           "title": "Artificial Intelligence in Education",
           "venue": "Government Polytechnic Hamirpur, Himachal Pradesh",
-          "start_date": "",
-          "end_date": "",
-          "session": "2024-2025",
+          "date": "",
           "description": "ATAL FDP on Advancement in AI: Trends, Tools and Techniques on 07th August 2024"
         },
         {
-          "id": "52835579-8ca3-4015-b2fe-9dd562e84b0f",
+          "title": "ICT enabled Teaching & Learning",
+          "venue": "Indira Gandhi National Tribal University (IGNTU), Amarkantak, Madhya Pradesh",
+          "date": "",
+          "description": "Faculty Induction Programme (Guru Dakshata),\u201d organized by the Malaviya Mission Teacher Training Centre (MMTTC) on 21st November 2024."
+        },
+        {
           "title": "Introduction to Internet of Things (Sensor & Wireless Sensor Networks)",
           "venue": "SD Bansal College of Technology, Indore, Madhya Pradesh",
-          "start_date": "",
-          "end_date": "",
-          "session": "2023-2024",
+          "date": "",
           "description": "ONE WEEK (Offline) ATAL FDP on \u201cNext Generation Robotics Enabled by IoT for Sustainable Development\u201d on 09th September 2024"
         }
       ],
@@ -5971,8 +8878,107 @@
           ]
         }
       ],
-      "supervisions": [],
-      "linkedin_url": "https://in.linkedin.com/in/dr-robin-singh-bhadoria-569214b6"
+      "supervisions": [
+        {
+          "id": 185,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Kapoor",
+          "roll_number": "22MCS012",
+          "thesis_title": "Energy Efficient Cluster Head Replacement algorithm in Wireless sensor networks",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Robin Singh Bhadoria"
+        },
+        {
+          "id": 186,
+          "level": "M.Tech / PG",
+          "student_name": "Anshul",
+          "roll_number": "22MCS005",
+          "thesis_title": "Relay Node placement in wireless body area Network using Ant colony Optimization with Game Theory",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Robin Singh Bhadoria"
+        },
+        {
+          "id": 204,
+          "level": "M.Tech / PG",
+          "student_name": "Arpita Naval",
+          "roll_number": "",
+          "thesis_title": "Image Steganography using Discrete Wavelet Transform",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 205,
+          "level": "M.Tech / PG",
+          "student_name": "Kishan Kumar",
+          "roll_number": "",
+          "thesis_title": "Feature Based Sentiment Analysis Using Stacked Meta- Ensemble Learner",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 206,
+          "level": "M.Tech / PG",
+          "student_name": "Abhijeet Gupta",
+          "roll_number": "",
+          "thesis_title": "Face Recognition Captcha",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 207,
+          "level": "M.Tech / PG",
+          "student_name": "Anshul Kumar",
+          "roll_number": "",
+          "thesis_title": "Combining Ant colony optimization with game theory for optimal placement of relay nodes in WBAN",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        },
+        {
+          "id": 208,
+          "level": "M.Tech / PG",
+          "student_name": "Abhishek Kapoor",
+          "roll_number": "",
+          "thesis_title": "Enhancing Energy Efficiency in IoT Networks",
+          "status": "Completed",
+          "year": 2024,
+          "co_supervisor": "Dr. Priyanka"
+        }
+      ],
+      "linkedin_url": "https://in.linkedin.com/in/dr-robin-singh-bhadoria-569214b6",
+      "admin_experiences": [
+        {
+          "position": "Assistant Faculty Incharge (AFI)",
+          "organization": "E-Cell (Entrepreneurship Cell)",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-04-16",
+          "full_end": "Present"
+        },
+        {
+          "position": "Officer In-charge (OIC)",
+          "organization": "Departmental Library",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-02-23",
+          "full_end": "Present"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=p2J4ye8AAAAJ&hl=en",
+        "scopus_url": "https://www.scopus.com/authid/detail.uri?authorId=54787398500",
+        "scopus_id": "54787398500",
+        "publons_url": "https://www.webofscience.com/wos/author/rid/H-4324-2013",
+        "orcid": "0000-0002-6314-4736",
+        "research_gate_url": "https://www.researchgate.net/profile/Robin-Bhadoria",
+        "vidwan_url": "https://vidwan.inflibnet.ac.in//profile/224383/MjI0Mzgz",
+        "linkedin_url": "https://in.linkedin.com/in/dr-robin-singh-bhadoria-569214b6"
+      }
     },
     {
       "id": "a9eafb31-0751-5ab7-a3a9-af7f2dbbf8e2",
@@ -5997,19 +9003,16 @@
       "orcid": "0000-0002-1851-2325",
       "qualifications": [
         {
-          "id": "37c637f9-ff11-42ea-bc9a-b9c8e4b2b3a8",
           "degree": "Ph.D",
           "institute": "Indian Institute of Technology, Indore, India",
           "year": 2020
         },
         {
-          "id": "cd1dc7a7-33de-43e8-b1d0-c3383e03a03a",
           "degree": "M.Tech",
           "institute": "University of Hyderabad, Hyderabad, India",
           "year": 2015
         },
         {
-          "id": "d0d9ccbe-65a3-4744-b25d-03b233a09014",
           "degree": "B.Tech",
           "institute": "Rajasthan Technical University, Kota, India",
           "year": 2012
@@ -6017,18 +9020,22 @@
       ],
       "teaching_experiences": [
         {
-          "id": "2d116af1-8e98-4006-84e6-14c2258ab3b4",
           "position": "Assistant Professor",
-          "organization": "Computer Science and Engineering",
-          "start_date": "2020-01-14",
-          "end_date": "2023-09-30"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering",
+          "start_date": "2020",
+          "end_date": "2023",
+          "full_start": "2020-01-14",
+          "full_end": "2023-09-30"
         },
         {
-          "id": "fdf6b94c-ee03-4cda-9dc6-7c06c0286edf",
           "position": "Assistant Professor G-II",
-          "organization": "Computer Science and Engineering",
-          "start_date": "2023-10-04",
-          "end_date": "Present"
+          "organization": "National Institute of Technology Hamirpur",
+          "department": "Computer Science and Engineering",
+          "start_date": "2023",
+          "end_date": "Present",
+          "full_start": "2023-10-04",
+          "full_end": "Present"
         }
       ],
       "administrative_experiences": [
@@ -6050,30 +9057,99 @@
       "honors": [],
       "expert_talks": [
         {
-          "id": "acf7dd3a-a653-498f-ba1e-3a69f6add3f4",
           "title": "AI and its Applications in Architecture",
           "venue": "Department of Architecture, NIT Hamirpur",
-          "start_date": "2024-10-13",
-          "end_date": "2024-10-17",
-          "session": "2024-2025",
+          "date": "2024-10-13",
           "description": "e-STC on Information Science for Building Design and Urban Planning"
         },
         {
-          "id": "01f348f2-5810-41a4-b2ed-ef117cdcb915",
           "title": "Advancements in Explainable Generative Adversarial Networks",
           "venue": "The LNMIIT Jaipur",
-          "start_date": "2025-03-10",
-          "end_date": "2025-03-15",
-          "session": "2024-2025",
+          "date": "2025-03-10",
           "description": "e-Workshop on Generative AI"
+        },
+        {
+          "title": "Looking Inside the Black-box: An Explainable AI approach",
+          "venue": "NIT Hamirpur",
+          "date": "2024-04-04",
+          "description": "Recent Advancements in Artificial Intelligence and Internet of Things (RAAI-2024)"
         }
       ],
       "exposures": [],
       "publications": [],
       "patents": [],
       "projects": [],
-      "supervisions": [],
-      "linkedin_url": "https://www.linkedin.com/in/ram-prakash-sharma-b3197a78/"
+      "supervisions": [
+        {
+          "id": 258,
+          "level": "M.Tech / PG",
+          "student_name": "Ankan Mondal",
+          "roll_number": "23MCS015",
+          "thesis_title": "Fingerprint Template Protection using Post-Quantum Cryptography",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 259,
+          "level": "M.Tech / PG",
+          "student_name": "Balram Singh",
+          "roll_number": "23MCS104",
+          "thesis_title": "An Explainable Deep Learning Framework for Plant Leaf Disease Detection",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 260,
+          "level": "M.Tech / PG",
+          "student_name": "Tanuj",
+          "roll_number": "23MCS116",
+          "thesis_title": "Contactless Fingerprint Presentation Attack Detection",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        },
+        {
+          "id": 261,
+          "level": "Ph.D.",
+          "student_name": "Ashutosh Sharma",
+          "roll_number": "25RCS001",
+          "thesis_title": "Explainable and Generative AI in Biometric Security",
+          "status": "Ongoing",
+          "year": 2025,
+          "co_supervisor": null
+        }
+      ],
+      "linkedin_url": "https://www.linkedin.com/in/ram-prakash-sharma-b3197a78/",
+      "admin_experiences": [
+        {
+          "position": "Faculty Incharge (FI) NAD",
+          "organization": "NIT Hamirpur",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-02-23",
+          "full_end": "Present"
+        },
+        {
+          "position": "OIC- Department Information",
+          "organization": "Computer Science and Engineering",
+          "start_date": "2024",
+          "end_date": "Present",
+          "full_start": "2024-02-23",
+          "full_end": "Present"
+        }
+      ],
+      "profile": {
+        "scholar_url": "https://scholar.google.com/citations?user=sH5WMDUAAAAJ&hl=en&gmla=AJ1KiT2cGGvXJDzWUS_8d_cu3kt_YIIUVug_RZDG4iT0DSIYqe6f4jW8g0rlts_NnxWGknrga2ohHzhT0R-s9jxh-nUzDp7NCYE1lYFzbWOe1g",
+        "scopus_url": null,
+        "scopus_id": "",
+        "publons_url": "https://www.webofscience.com/wos/author/record/IAN-9085-2023",
+        "orcid": "0000-0002-1851-2325",
+        "research_gate_url": null,
+        "vidwan_url": "https://nith.irins.org//profile/463491",
+        "linkedin_url": "https://www.linkedin.com/in/ram-prakash-sharma-b3197a78/"
+      }
     },
     {
       "id": "18f0d03c-bf43-559a-b7d1-bf4523d6c4e0",
