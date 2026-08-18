@@ -18,6 +18,7 @@ ARG NEXT_PUBLIC_API_URL=/api
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 
+ENV NODE_OPTIONS="--max-old-space-size=1024"
 RUN npm run build
 
 # 2. Production Runner Stage
