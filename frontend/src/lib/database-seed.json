@@ -22257,5 +22257,119 @@
       "photo_url": "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1744802170/eml63kocxmmelbpw5c4v.jpg",
       "image_url": "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1744802170/eml63kocxmmelbpw5c4v.jpg"
     }
+  ],
+  "consultancies": [
+    {
+      "id": "ec7a93a1-3196-55fa-a054-c49f2a272c68",
+      "legacy_id": 19,
+      "title": "Consultancy Service to Kangra Central Cooperative Bank for establishment of ATMs",
+      "client_organisation": "Kangra Central Cooperative Bank",
+      "amount": 545770.0,
+      "start_year": 2024,
+      "academic_session": "2021-2022",
+      "status": "Completed",
+      "author_text": "Dr. T.P. Sharma, Dr. Narottam Chand, Mr. K.S. Pandey, Dr. S.K. Soni, Dr. Ashok Kumar, Mr. Anil Kumar",
+      "faculty_ids": [
+        "c17e0191-445a-5f4d-961b-fb830ce9136c"
+      ]
+    },
+    {
+      "id": "3a806668-4462-5cea-b98a-1d4859c1f2c7",
+      "legacy_id": 20,
+      "title": "Consultancy Service to Kangra Central Cooperative Bank for establishment of CBS and Internet Banking",
+      "client_organisation": "Kangra Central Cooperative Bank, Dharamsala",
+      "amount": 4537086.0,
+      "start_year": 2024,
+      "academic_session": "2021-2022",
+      "status": "Completed",
+      "author_text": "Dr. T.P. Sharma, Dr. Narottam Chand, Mr. K.S. Pandey, Dr. S.K. Soni, Dr. Ashok Kumar, Mr. Anil Kumar",
+      "faculty_ids": [
+        "c17e0191-445a-5f4d-961b-fb830ce9136c"
+      ]
+    },
+    {
+      "id": "b7afe3ff-a10b-5d56-bcee-8f07430119c3",
+      "legacy_id": 21,
+      "title": "Consultancy Service to Kangra Central Cooperative Bank for establishment of surveillance and Biometric Attendance System",
+      "client_organisation": "Kangra Central Cooperative Bank",
+      "amount": 540569.0,
+      "start_year": 2024,
+      "academic_session": "2022-2023",
+      "status": "Completed",
+      "author_text": "Dr. T.P. Sharma, Dr. Narottam Chand, Mr. K.S. Pandey, Dr. S.K. Soni, Dr. Ashok Kumar, Mr. Anil Kumar",
+      "faculty_ids": [
+        "c17e0191-445a-5f4d-961b-fb830ce9136c"
+      ]
+    },
+    {
+      "id": "8ac48150-e963-5063-883c-15c40ecd6311",
+      "legacy_id": 22,
+      "title": "IPV6 Consultancy Services for RINL, Visakhapatnam Steel Plant",
+      "client_organisation": "RINL, Visakhapatnam Steel Plant",
+      "amount": 2000000.0,
+      "start_year": 2024,
+      "academic_session": "2022-2023",
+      "status": "Completed",
+      "author_text": "Dr. Kamlesh Dutta",
+      "faculty_ids": [
+        "5e12253b-db56-5e31-9e51-19ab6edac297"
+      ]
+    },
+    {
+      "id": "5b891618-875d-5c7d-b55c-9b0a0b83a979",
+      "legacy_id": 30,
+      "title": "Automation of Dr. Rajendra Prasad Govt. Medical College, Kangra",
+      "client_organisation": "DR.R.P.G.M.C Kangra at Tanda",
+      "amount": 5389000.0,
+      "start_year": 2025,
+      "academic_session": "2024-2025",
+      "status": "Ongoing",
+      "author_text": "Dr. Siddhartha Chauhan, Mr. Ashwini Sharma and Mr. Rajesh Sharma",
+      "faculty_ids": [
+        "6c4f2340-35a3-5b21-b580-081dad7f5ab1"
+      ]
+    },
+    {
+      "id": "069bc657-e78f-5e75-97a6-a3e091b0a834",
+      "legacy_id": 31,
+      "title": "Establishment of ATMs, EFT switching and Allied Services to Punjab State Cooperative Bank and DCCBs, PSCB Chandigarh",
+      "client_organisation": "PSCB, Chandigarh",
+      "amount": 4085000.0,
+      "start_year": 2025,
+      "academic_session": "2024-2025",
+      "status": "Completed",
+      "author_text": "Dr. Siddhartha Chauhan and Mr. Ashwini Sharma",
+      "faculty_ids": [
+        "6c4f2340-35a3-5b21-b580-081dad7f5ab1"
+      ]
+    },
+    {
+      "id": "c824f766-2147-5f1f-a66d-1a47ca164839",
+      "legacy_id": 32,
+      "title": "Migration from IPv4 to IPv6 of 27 LANs and Applications and websites of RINL, VIZAG Steel, Vishakhapatnam",
+      "client_organisation": "RINL VIZAG Steel",
+      "amount": 2000000.0,
+      "start_year": 2025,
+      "academic_session": "2024-2025",
+      "status": "Completed",
+      "author_text": "Dr. Mrs. Kamlesh Dutta, Dr. Siddhartha Chauhan and Mr. K.S. Pandey",
+      "faculty_ids": [
+        "6c4f2340-35a3-5b21-b580-081dad7f5ab1"
+      ]
+    },
+    {
+      "id": "62f1dc85-e8e5-58ba-b33c-2cbb2f7f3742",
+      "legacy_id": 33,
+      "title": "Providing Consultancy for IT Services (Setting up of Integrated Control Command Centre) for Dharamshala Smart City Project",
+      "client_organisation": "Dharamshala Smart City Limited, Dharmshala",
+      "amount": 10600000.0,
+      "start_year": 2025,
+      "academic_session": "2025-2026",
+      "status": "Completed",
+      "author_text": "Dr. Siddhartha Chauhan",
+      "faculty_ids": [
+        "6c4f2340-35a3-5b21-b580-081dad7f5ab1"
+      ]
+    }
   ]
 }
