@@ -930,7 +930,7 @@ func (r *pgRepository) ListEvents(ctx context.Context, deptID, facultyID, eventT
 		  AND ($2 = '' OR ec.faculty_id::text = $2)
 		  AND ($3 = '' OR e.event_type = $3)
 		  AND ($4::int IS NULL OR e.year = $4)
-		ORDER BY e.start_date DESC
+		ORDER BY e.start_date::text DESC
 	`
 	rows, err := r.pool.Query(ctx, querySQL, deptID, facultyID, eventType, year)
 	if err != nil {
