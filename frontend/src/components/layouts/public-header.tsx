@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import {
   Menu,
   X,
   ChevronDown,
+  ChevronRight,
   Lock,
   UserCheck,
   ExternalLink,
@@ -13,11 +15,14 @@ import {
   Check,
   Search,
   Layers,
+  Sparkles,
 } from "lucide-react";
 import { useDepartment } from "@/context/department-context";
 import { NavigationProgressBar } from "@/components/common/navigation-progress";
 
 export function PublicHeader() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/" || pathname === "";
   const { departments, activeDepartment, setActiveDepartment } = useDepartment();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -81,10 +86,10 @@ export function PublicHeader() {
       href: `/research/publications?dept=${activeDepartment.slug}`,
       children: [
         { label: "Publications", href: `/research/publications?dept=${activeDepartment.slug}` },
-        { label: "Patents & IP", href: `/research/patents?dept=${activeDepartment.slug}` },
-        { label: "Sponsored Projects", href: `/research/projects?dept=${activeDepartment.slug}` },
-        { label: "Consultancies", href: `/research/consultancy?dept=${activeDepartment.slug}` },
-        { label: "Events & STCs", href: `/research/events?dept=${activeDepartment.slug}` },
+        { label: "Patents", href: `/research/patents?dept=${activeDepartment.slug}` },
+        { label: "R&D Projects", href: `/research/projects?dept=${activeDepartment.slug}` },
+        { label: "Consultancy", href: `/research/consultancy?dept=${activeDepartment.slug}` },
+        { label: "Events & Workshops", href: `/research/events?dept=${activeDepartment.slug}` },
       ],
     },
     {
@@ -103,19 +108,14 @@ export function PublicHeader() {
 
   return (
     <>
-      {/* 1. Top Utility Bar (#33110e) - Scrolls with page */}
-      <div className="bg-[#33110e] text-neutral-100 text-xs py-1.5 px-4 sm:px-8 border-b border-[#4a1814]">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      {/* 1. Top Utility Notification Bar (#33110e) */}
+      <div className="bg-[#33110e] text-white text-xs py-1.5 px-4 sm:px-8 font-sans border-b border-[#4a1814]">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2 text-[11px]">
           <div className="flex items-center space-x-3 text-neutral-300">
-            <a
-              href="https://mail.google.com/a/nith.ac.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition flex items-center gap-1"
-            >
-              Web Mail <ExternalLink className="w-2.5 h-2.5 opacity-60" />
-            </a>
-            <span className="text-neutral-500">|</span>
+            <span className="text-amber-400 font-semibold hidden sm:inline">
+              National Institute of Technology Hamirpur
+            </span>
+            <span className="text-neutral-500 hidden sm:inline">|</span>
             <a
               href="https://portfolios.nith.ac.in"
               target="_blank"
@@ -160,10 +160,10 @@ export function PublicHeader() {
         {/* Dynamic Line Progress Loader Between Topbar and Header */}
         <NavigationProgressBar />
 
-        {/* Main Institutional Brand Header with SINGLE Department Selector at the Right */}
+        {/* Main Institutional Brand Header */}
         <div className="bg-white py-3 px-4 sm:px-8 border-b border-[#f4ece8]">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <Link href={`/?dept=${activeDepartment.slug}`} className="flex items-center gap-3.5 sm:gap-5 group">
+            <Link href="/" className="flex items-center gap-3.5 sm:gap-5 group">
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-22 md:h-22 flex-shrink-0 flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -174,95 +174,127 @@ export function PublicHeader() {
               </div>
               <div>
                 <p className="text-[11px] sm:text-[13px] font-semibold text-[#6b5c58] leading-tight">
-                  राष्ट्रीय प्रौद्योगिकी संस्थान हमीरपुर • {activeDepartment.hindi_name}
+                  {isHomePage
+                    ? "राष्ट्रीय प्रौद्योगिकी संस्थान हमीरपुर • हिमाचल प्रदेश"
+                    : `राष्ट्रीय प्रौद्योगिकी संस्थान हमीरपुर • ${activeDepartment.hindi_name}`}
                 </p>
                 <h1 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-[#33110e] tracking-tight leading-tight group-hover:text-[#85261e] transition">
                   National Institute of Technology Hamirpur
                 </h1>
-                <p className="text-xs sm:text-base font-bold text-[#85261e] tracking-wide flex items-center gap-2 mt-0.5">
-                  <span>Department of {activeDepartment.name}</span>
-                  <span className="bg-[#fff9f6] text-[#33110e] border border-[#eedfd8] text-[11px] font-extrabold px-2 py-0.5 rounded uppercase">
-                    {activeDepartment.code}
-                  </span>
-                </p>
+                {isHomePage ? (
+                  <p className="text-xs sm:text-sm font-semibold text-[#85261e] tracking-wide mt-0.5">
+                    An Institute of National Importance • Established 1986
+                  </p>
+                ) : (
+                  <p className="text-xs sm:text-base font-bold text-[#85261e] tracking-wide flex items-center gap-2 mt-0.5">
+                    <span>Department of {activeDepartment.name}</span>
+                    <span className="bg-[#fff9f6] text-[#33110e] border border-[#eedfd8] text-[11px] font-extrabold px-2 py-0.5 rounded uppercase">
+                      {activeDepartment.code}
+                    </span>
+                  </p>
+                )}
               </div>
             </Link>
 
-            {/* Dedicated Single Department Selector on the Right */}
-            <div className="hidden lg:flex items-center gap-3 relative" ref={deptDropdownRef}>
-              <button
-                onClick={() => setDeptModalOpen(!deptModalOpen)}
-                className="flex items-center gap-2.5 bg-[#fff9f6] hover:bg-[#eedfd8]/60 text-[#33110e] border-2 border-[#eedfd8] hover:border-[#85261e] px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs cursor-pointer"
-              >
-                <Building2 className="w-4 h-4 text-[#85261e]" />
-                <div className="text-left">
-                  <p className="text-[9px] uppercase tracking-wider text-neutral-500 font-bold leading-none">
-                    Select Department
-                  </p>
-                  <p className="text-xs font-extrabold text-[#33110e] leading-tight truncate max-w-[200px]">
-                    {activeDepartment.name}
-                  </p>
-                </div>
-                <ChevronDown className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${deptModalOpen ? "rotate-180" : ""}`} />
-              </button>
-
-              {/* Department Selector Dropdown Modal */}
-              {deptModalOpen && (
-                <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white rounded-xl shadow-2xl border border-[#eedfd8] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="flex items-center justify-between pb-2 border-b border-[#eedfd8] mb-2">
-                    <span className="text-xs font-bold text-[#33110e] uppercase tracking-wider flex items-center gap-1.5">
-                      <Layers className="w-3.5 h-3.5 text-[#85261e]" /> Select Department
-                    </span>
-                    <span className="text-[10px] text-neutral-500 font-semibold">
-                      13 Departments
-                    </span>
+            {/* Right Action: "Visit Departments" on Home page OR Department Selector on sub-pages */}
+            {isHomePage ? (
+              <div className="hidden lg:flex items-center gap-3">
+                <Link
+                  href="/aboutus?dept=cse"
+                  onClick={() => {
+                    const cse = departments.find((d) => d.slug === "cse");
+                    if (cse) setActiveDepartment(cse);
+                  }}
+                  className="flex items-center gap-2 bg-[#85261e] hover:bg-[#a63026] text-white border border-[#85261e] px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs cursor-pointer group"
+                >
+                  <Building2 className="w-4 h-4 text-amber-300 group-hover:scale-110 transition" />
+                  <div className="text-left">
+                    <p className="text-[9px] uppercase tracking-wider text-amber-200 font-bold leading-none">
+                      Academic Divisions
+                    </p>
+                    <p className="text-xs font-extrabold text-white leading-tight">
+                      Visit Departments
+                    </p>
                   </div>
-
-                  {/* Search Input */}
-                  <div className="relative mb-2">
-                    <Search className="w-3.5 h-3.5 text-neutral-400 absolute left-2.5 top-2" />
-                    <input
-                      type="text"
-                      placeholder="Search by department name or code..."
-                      value={deptSearch}
-                      onChange={(e) => setDeptSearch(e.target.value)}
-                      className="w-full pl-8 pr-2 py-1 text-xs rounded border border-[#eedfd8] bg-[#fff9f6] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
-                    />
+                  <ChevronRight className="w-4 h-4 text-amber-300 group-hover:translate-x-0.5 transition" />
+                </Link>
+              </div>
+            ) : (
+              <div className="hidden lg:flex items-center gap-3 relative" ref={deptDropdownRef}>
+                <button
+                  onClick={() => setDeptModalOpen(!deptModalOpen)}
+                  className="flex items-center gap-2.5 bg-[#fff9f6] hover:bg-[#eedfd8]/60 text-[#33110e] border-2 border-[#eedfd8] hover:border-[#85261e] px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs cursor-pointer"
+                >
+                  <Building2 className="w-4 h-4 text-[#85261e]" />
+                  <div className="text-left">
+                    <p className="text-[9px] uppercase tracking-wider text-neutral-500 font-bold leading-none">
+                      Select Department
+                    </p>
+                    <p className="text-xs font-extrabold text-[#33110e] leading-tight truncate max-w-[200px]">
+                      {activeDepartment.name}
+                    </p>
                   </div>
+                  <ChevronDown className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${deptModalOpen ? "rotate-180" : ""}`} />
+                </button>
 
-                  {/* Departments List */}
-                  <div className="max-h-64 overflow-y-auto space-y-1 no-scrollbar divide-y divide-neutral-50">
-                    {filteredDepts.map((d) => {
-                      const isSelected = d.id === activeDepartment.id;
-                      return (
-                        <button
-                          key={d.id}
-                          onClick={() => {
-                            setActiveDepartment(d);
-                            setDeptModalOpen(false);
-                          }}
-                          className={`w-full text-left p-2 rounded-lg text-xs transition flex items-center justify-between cursor-pointer ${
-                            isSelected
-                              ? "bg-[#33110e] text-white font-bold"
-                              : "hover:bg-[#fff9f6] text-neutral-800"
-                          }`}
-                        >
-                          <div className="truncate pr-2">
-                            <p className={`font-semibold truncate ${isSelected ? "text-white" : "text-[#33110e]"}`}>
-                              {d.name}
-                            </p>
-                            <p className={`text-[10px] ${isSelected ? "text-neutral-300" : "text-neutral-500"}`}>
-                              {d.code} • {d.hindi_name}
-                            </p>
-                          </div>
-                          {isSelected && <Check className="w-4 h-4 text-amber-400 flex-shrink-0" />}
-                        </button>
-                      );
-                    })}
+                {/* Department Selector Dropdown Modal */}
+                {deptModalOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white rounded-xl shadow-2xl border border-[#eedfd8] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <div className="flex items-center justify-between pb-2 border-b border-[#eedfd8] mb-2">
+                      <span className="text-xs font-bold text-[#33110e] uppercase tracking-wider flex items-center gap-1.5">
+                        <Layers className="w-3.5 h-3.5 text-[#85261e]" /> Select Department
+                      </span>
+                      <span className="text-[10px] text-neutral-500 font-semibold">
+                        {departments.length} Departments
+                      </span>
+                    </div>
+
+                    {/* Search Input */}
+                    <div className="relative mb-2">
+                      <Search className="w-3.5 h-3.5 text-neutral-400 absolute left-2.5 top-2" />
+                      <input
+                        type="text"
+                        placeholder="Search by department name or code..."
+                        value={deptSearch}
+                        onChange={(e) => setDeptSearch(e.target.value)}
+                        className="w-full pl-8 pr-2 py-1 text-xs rounded border border-[#eedfd8] bg-[#fff9f6] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
+                      />
+                    </div>
+
+                    {/* Departments List */}
+                    <div className="max-h-64 overflow-y-auto space-y-1 no-scrollbar divide-y divide-neutral-50">
+                      {filteredDepts.map((d) => {
+                        const isSelected = d.id === activeDepartment.id;
+                        return (
+                          <button
+                            key={d.id}
+                            onClick={() => {
+                              setActiveDepartment(d);
+                              setDeptModalOpen(false);
+                            }}
+                            className={`w-full text-left p-2 rounded-lg text-xs transition flex items-center justify-between cursor-pointer ${
+                              isSelected
+                                ? "bg-[#33110e] text-white font-bold"
+                                : "hover:bg-[#fff9f6] text-neutral-800"
+                            }`}
+                          >
+                            <div className="truncate pr-2">
+                              <p className={`font-semibold truncate ${isSelected ? "text-white" : "text-[#33110e]"}`}>
+                                {d.name}
+                              </p>
+                              <p className={`text-[10px] ${isSelected ? "text-neutral-300" : "text-neutral-500"}`}>
+                                {d.code} • {d.hindi_name}
+                              </p>
+                            </div>
+                            {isSelected && <Check className="w-4 h-4 text-amber-400 flex-shrink-0" />}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
 
             {/* Mobile menu trigger */}
             <button
@@ -315,55 +347,78 @@ export function PublicHeader() {
           </div>
         </nav>
 
-        {/* Mobile Drawer Menu */}
+        {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-b border-[#eedfd8] px-4 py-3 space-y-3">
-            {/* Mobile Department Selector */}
-            <div className="bg-[#fff9f6] p-2.5 rounded-lg border border-[#eedfd8]">
-              <label className="block text-[10px] font-bold uppercase text-[#85261e] mb-1">
-                Select Active Department:
-              </label>
-              <select
-                value={activeDepartment.slug}
-                onChange={(e) => {
-                  const found = departments.find((d) => d.slug === e.target.value);
-                  if (found) setActiveDepartment(found);
-                }}
-                className="w-full text-xs p-1.5 rounded border border-[#eedfd8] bg-white text-[#33110e] font-semibold"
-              >
-                {departments.map((d) => (
-                  <option key={d.id} value={d.slug}>
-                    {d.name} ({d.code})
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {navItems.map((item) => (
-              <div key={item.label} className="border-b border-neutral-100 pb-2">
+          <div className="lg:hidden bg-white border-b border-[#eedfd8] px-4 py-4 space-y-3">
+            {/* Mobile Department Selector or Visit CTA */}
+            {isHomePage ? (
+              <div className="pb-3 border-b border-[#eedfd8]">
                 <Link
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-bold text-sm text-[#33110e] block py-1"
+                  href="/aboutus?dept=cse"
+                  onClick={() => {
+                    const cse = departments.find((d) => d.slug === "cse");
+                    if (cse) setActiveDepartment(cse);
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center justify-between bg-[#85261e] text-white p-3 rounded-xl text-xs font-bold"
                 >
-                  {item.label}
-                </Link>
-                {item.children && (
-                  <div className="pl-4 space-y-1 mt-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        href={child.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block text-xs text-neutral-600 hover:text-[#33110e] py-1"
-                      >
-                        • {child.label}
-                      </Link>
-                    ))}
+                  <div className="flex items-center gap-2">
+                    <Building2 className="w-4 h-4 text-amber-300" />
+                    <span>Visit Departments (CSE Default)</span>
                   </div>
-                )}
+                  <ChevronRight className="w-4 h-4 text-amber-300" />
+                </Link>
               </div>
-            ))}
+            ) : (
+              <div className="pb-3 border-b border-[#eedfd8]">
+                <label className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider block mb-1">
+                  Active Department
+                </label>
+                <select
+                  value={activeDepartment.slug}
+                  onChange={(e) => {
+                    const found = departments.find((d) => d.slug === e.target.value);
+                    if (found) setActiveDepartment(found);
+                  }}
+                  className="w-full text-xs font-bold text-[#33110e] bg-[#fff9f6] border border-[#eedfd8] rounded-lg p-2"
+                >
+                  {departments.map((d) => (
+                    <option key={d.id} value={d.slug}>
+                      {d.name} ({d.code})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {/* Mobile Nav Links */}
+            <div className="space-y-1">
+              {navItems.map((item) => (
+                <div key={item.label} className="border-b border-neutral-100 last:border-0 pb-1">
+                  <Link
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block py-1.5 text-xs font-bold text-[#33110e] uppercase"
+                  >
+                    {item.label}
+                  </Link>
+                  {item.children && (
+                    <div className="pl-3 space-y-1 pb-1">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block py-1 text-xs text-neutral-600 hover:text-[#33110e]"
+                        >
+                          • {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </header>
