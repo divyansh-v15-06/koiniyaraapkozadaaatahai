@@ -6,12 +6,25 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { GraduationCap, Lock, User, Loader2, ArrowRight } from "lucide-react";
+import {
+  GraduationCap,
+  Lock,
+  User,
+  Loader2,
+  ArrowRight,
+  Eye,
+  EyeOff,
+  ShieldCheck,
+  Building2,
+  Sparkles,
+  ArrowLeft,
+} from "lucide-react";
+import Link from "next/link";
 import apiClient from "@/lib/api-client";
 import { MOCK_FACULTY } from "@/lib/mock-data";
 
 const facultyLoginSchema = z.object({
-  identifier: z.string().min(2, "Enter your faculty code (e.g., CS01) or institute email"),
+  identifier: z.string().min(2, "Enter your faculty code (e.g. CS01) or institute email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
@@ -20,6 +33,7 @@ type FacultyLoginInput = z.infer<typeof facultyLoginSchema>;
 export default function FacultyLoginPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -37,7 +51,7 @@ export default function FacultyLoginPage() {
   const onSubmit = async (data: FacultyLoginInput) => {
     setLoading(true);
     try {
-      // Try real backend API
+      // 1. Try real backend API
       try {
         const res = await apiClient.post("/auth/login", {
           identifier: data.identifier,
@@ -45,7 +59,10 @@ export default function FacultyLoginPage() {
         });
         if (res.data?.data?.access_token) {
           localStorage.setItem("auth_token", res.data.data.access_token);
-          localStorage.setItem("auth_user", JSON.stringify(res.data.data.user || { role: "FACULTY", email: data.identifier }));
+          localStorage.setItem(
+            "auth_user",
+            JSON.stringify(res.data.data.user || { role: "FACULTY", email: data.identifier })
+          );
           toast.success("Welcome to the Faculty Portal!");
           router.push("/faculty");
           return;
@@ -54,14 +71,20 @@ export default function FacultyLoginPage() {
         console.warn("Backend API unavailable, using client-side auth fallback:", err);
       }
 
-      // Check against mock faculty
+      // 2. Client-side authentication fallback against seeded faculty
       const match = MOCK_FACULTY.find(
         (f) =>
           f.employee_code.toLowerCase() === data.identifier.toLowerCase() ||
-          f.email.toLowerCase() === data.identifier.toLowerCase()
+          f.email.toLowerCase() === data.identifier.toLowerCase() ||
+          f.full_name.toLowerCase().includes(data.identifier.toLowerCase())
       );
 
-      if (match || data.identifier.toLowerCase().startsWith("cs") || data.identifier.includes("@")) {
+      if (
+        match ||
+        data.identifier.toLowerCase().startsWith("cs") ||
+        data.identifier.includes("@nith.ac.in") ||
+        data.identifier.includes("@")
+      ) {
         const facultyUser = match || MOCK_FACULTY[0];
         localStorage.setItem("auth_token", `mock-faculty-jwt-${facultyUser.id}`);
         localStorage.setItem(
@@ -78,114 +101,158 @@ export default function FacultyLoginPage() {
         toast.success(`Welcome back, ${facultyUser.full_name}!`);
         router.push("/faculty");
       } else {
-        toast.error("Faculty member not found. Try CS01 or rajesh@nith.ac.in with password Faculty@123");
+        toast.error("Faculty credentials not recognized. You can use the Quick Demo Logins below.");
       }
     } finally {
       setLoading(false);
     }
   };
 
-  const handleQuickFill = (code: string, email: string) => {
+  const handleQuickFill = (code: string, email: string, name: string) => {
     setValue("identifier", code);
     setValue("password", "Faculty@123456");
-    toast.info(`Filled credentials for ${code} (${email})`);
+    toast.info(`Filled credentials for ${name} (${code})`);
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-[hsl(224,30%,8%)] via-[hsl(217,35%,14%)] to-[hsl(220,40%,20%)] px-4 py-12 text-white">
-      <div className="pointer-events-none absolute -left-20 -top-20 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-teal-500/10 blur-3xl" />
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-[#1c110c] via-[#33110e] to-[#4a1814] px-4 py-12 text-neutral-900 font-sans selection:bg-[#85261e] selection:text-white">
+      {/* Decorative Ambient Background Blurs */}
+      <div className="pointer-events-none absolute -left-20 -top-20 h-96 w-96 rounded-full bg-[#85261e]/25 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-amber-500/15 blur-3xl" />
 
-      <div className="relative z-10 w-full max-w-md space-y-6 rounded-2xl border border-white/10 bg-card/95 p-8 text-card-foreground shadow-2xl backdrop-blur-xl">
-        <div className="text-center">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <GraduationCap className="h-6 w-6" />
+      <div className="relative z-10 w-full max-w-lg space-y-6 rounded-3xl border border-white/20 bg-white/95 p-6 sm:p-10 shadow-2xl backdrop-blur-2xl">
+        {/* Header Branding */}
+        <div className="text-center space-y-2">
+          <div className="mx-auto w-16 h-16 rounded-full bg-[#fff9f6] border border-[#eedfd8] p-2.5 shadow-xs flex items-center justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/nith.png"
+              alt="NIT Hamirpur"
+              className="w-full h-full object-contain filter drop-shadow-2xs"
+            />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">Faculty Academic Portal</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Manage your research CV, publications, patents &amp; portfolios
-          </p>
-        </div>
 
-        {/* Demo Fast Login Options */}
-        <div className="space-y-2 rounded-lg border border-border/60 bg-muted/40 p-3 text-xs">
-          <p className="font-semibold text-foreground">Quick Demo Faculty Logins:</p>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => handleQuickFill("CS01", "rajesh@nith.ac.in")}
-              className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 text-primary transition hover:bg-primary/20"
-            >
-              Dr. Rajesh (CS01 - HOD)
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickFill("CS02", "priya@nith.ac.in")}
-              className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 text-primary transition hover:bg-primary/20"
-            >
-              Dr. Priya (CS02 - AI)
-            </button>
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Faculty Code or Email
+            <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Faculty Academic Suite
+            </span>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#33110e] tracking-tight mt-1">
+              Faculty Portal Login
+            </h1>
+            <p className="text-xs text-neutral-600 max-w-sm mx-auto">
+              National Institute of Technology Hamirpur • Portfolio &amp; Research System
+            </p>
+          </div>
+        </div>
+
+        {/* Quick Demo Faculty Profiles */}
+        <div className="rounded-2xl border border-[#eedfd8] bg-[#fff9f6] p-3.5 space-y-2 text-xs">
+          <div className="flex items-center justify-between">
+            <span className="font-bold text-[#33110e] flex items-center gap-1.5 text-[11px] uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-[#85261e]" /> Quick Demo Faculty Logins:
+            </span>
+            <span className="text-[10px] text-neutral-500 font-mono">1-Click Fill</span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 pt-1">
+            {[
+              { code: "CS01", name: "Prof. Lalit Awasthi", email: "lalit@nith.ac.in" },
+              { code: "CS04", name: "Dr. Siddhartha (HOD)", email: "sid@nith.ac.in" },
+              { code: "CS02", name: "Dr. Kamlesh Dutta", email: "kmd@nith.ac.in" },
+              { code: "CS12", name: "Dr. Arun K. Yadav", email: "arun@nith.ac.in" },
+              { code: "CS17", name: "Dr. Khalid Pandit", email: "khalid@nith.ac.in" },
+              { code: "CS05", name: "Dr. Naveen Chauhan", email: "naveen@nith.ac.in" },
+            ].map((fac) => (
+              <button
+                key={fac.code}
+                type="button"
+                onClick={() => handleQuickFill(fac.code, fac.email, fac.name)}
+                className="text-left rounded-lg border border-[#eedfd8] bg-white p-2 text-[#33110e] hover:bg-[#33110e] hover:text-white transition duration-150 shadow-2xs group cursor-pointer"
+              >
+                <div className="font-bold text-[11px] truncate group-hover:text-amber-300">
+                  {fac.code}
+                </div>
+                <div className="text-[10px] text-neutral-600 group-hover:text-neutral-200 truncate">
+                  {fac.name}
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Login Form */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-1">
+          <div>
+            <label className="block text-[11px] font-bold uppercase tracking-wider text-[#33110e] mb-1.5">
+              Faculty Code or Institute Email
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <User className="absolute left-3.5 top-3 h-4 w-4 text-neutral-400" />
               <input
                 {...register("identifier")}
                 type="text"
-                placeholder="CS01 or name@nith.ac.in"
-                className="w-full rounded-lg border border-input bg-background py-2.5 pl-10 pr-3 text-sm transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                placeholder="e.g. CS01, CS04 or name@nith.ac.in"
+                className="w-full rounded-xl border border-[#eedfd8] bg-white py-2.5 pl-10 pr-3 text-xs text-[#1c110c] placeholder:text-neutral-400 transition focus:border-[#85261e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
               />
             </div>
             {errors.identifier && (
-              <p className="mt-1 text-xs text-destructive">{errors.identifier.message}</p>
+              <p className="mt-1 text-xs text-red-600 font-medium">{errors.identifier.message}</p>
             )}
           </div>
 
           <div>
-            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <label className="block text-[11px] font-bold uppercase tracking-wider text-[#33110e] mb-1.5">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <Lock className="absolute left-3.5 top-3 h-4 w-4 text-neutral-400" />
               <input
                 {...register("password")}
-                type="password"
-                placeholder="••••••••"
-                className="w-full rounded-lg border border-input bg-background py-2.5 pl-10 pr-3 text-sm transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••••••"
+                className="w-full rounded-xl border border-[#eedfd8] bg-white py-2.5 pl-10 pr-10 text-xs text-[#1c110c] placeholder:text-neutral-400 transition focus:border-[#85261e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3.5 top-3 text-neutral-400 hover:text-[#33110e] transition"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-xs text-destructive">{errors.password.message}</p>
+              <p className="mt-1 text-xs text-red-600 font-medium">{errors.password.message}</p>
             )}
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 disabled:opacity-50"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#33110e] hover:bg-[#85261e] py-3 text-xs font-bold text-white shadow-md hover:shadow-lg transition duration-150 disabled:opacity-50 cursor-pointer"
           >
             {loading ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Authenticating...
+                <Loader2 className="h-4 w-4 animate-spin text-amber-300" />
+                <span>Authenticating Credentials...</span>
               </>
             ) : (
               <>
-                Sign In to Faculty Portal <ArrowRight className="h-4 w-4" />
+                <span>Sign In to Faculty Portal</span>
+                <ArrowRight className="h-4 w-4 text-amber-300" />
               </>
             )}
           </button>
         </form>
 
-        <div className="pt-2 text-center text-xs text-muted-foreground">
-          <a href="/" className="text-primary hover:underline">
-            ← Back to Public Website
-          </a>
+        {/* Footer Navigation */}
+        <div className="pt-2 text-center border-t border-[#eedfd8]">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#85261e] hover:underline"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" /> Return to Institute Website
+          </Link>
         </div>
       </div>
     </div>
