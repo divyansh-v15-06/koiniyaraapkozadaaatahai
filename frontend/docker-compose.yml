@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    image: my-nextjs-app
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+    volumes:
+      - .:/app
+      - /app/node_modules  # Ensure node_modules inside the container is not overwritten
+    command: >
+      sh -c "yarn build && yarn start"
+
