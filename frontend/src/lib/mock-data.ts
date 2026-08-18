@@ -94,19 +94,22 @@ export const MOCK_PUBLICATIONS: (Publication & {
     })),
 }));
 
-export const MOCK_PATENTS: Patent[] = databaseSeed.patents.map((pat: any) => ({
-  id: pat.id,
-  title: pat.title,
-  application_number: pat.application_number || "202311091240",
-  patent_number: pat.patent_number || "",
-  status: (pat.status as any) || "Filed",
-  filing_date: pat.filing_date || "2023-05-10",
-  grant_date: pat.grant_date || "",
-  country: pat.country || "India",
-  patent_office: pat.patent_office || "Indian Patent Office (New Delhi)",
-  abstract_text: `Patented technology developed by CSE department inventors: ${pat.raw_inventors || 'Faculty'}.`,
-  faculty_ids: pat.faculty_ids || [],
-}));
+export const MOCK_PATENTS: (Patent & { raw_inventors?: string; year?: number })[] =
+  databaseSeed.patents.map((pat: any) => ({
+    id: pat.id,
+    title: pat.title,
+    application_number: pat.application_number || "202311091240",
+    patent_number: pat.patent_number || "",
+    status: (pat.status as any) || "Filed",
+    filing_date: pat.filing_date || "2023-05-10",
+    grant_date: pat.grant_date || "",
+    year: Number(pat.year) || 2023,
+    country: pat.country || "India",
+    patent_office: pat.patent_office || "Indian Patent Office (New Delhi)",
+    raw_inventors: pat.raw_inventors || "Faculty Inventors",
+    abstract_text: `Patented technology developed by CSE department inventors: ${pat.raw_inventors || "Faculty"}.`,
+    faculty_ids: pat.faculty_ids || [],
+  }));
 
 export const MOCK_PROJECTS: Project[] = databaseSeed.projects.map((prj: any) => ({
   id: prj.id,
