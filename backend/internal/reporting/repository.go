@@ -103,7 +103,7 @@ func (r *pgRepository) GetInstituteKPI(ctx context.Context, instID string) (*Ins
 		       canonical_publications_count, canonical_patents_count, canonical_projects_count,
 		       total_sanctioned_funding, total_received_funding, calculated_at
 		FROM v_institute_kpis
-		WHERE institution_id = $1 OR $1 = ''
+		WHERE $1 = '' OR institution_id::text = $1
 		LIMIT 1
 	`
 	var k InstituteKPI
