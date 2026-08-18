@@ -141,6 +141,22 @@ export const MOCK_CONSULTANCIES = (databaseSeed.consultancies || []).map((c: any
   faculty_ids: c.faculty_ids || [],
 }));
 
+export const MOCK_EVENTS = ((databaseSeed as any).events || []).map((e: any) => ({
+  id: e.id,
+  title: e.title,
+  category: e.category || "organized",
+  event_type: e.event_type || "FDP/STC",
+  venue: e.venue || "NIT Hamirpur",
+  sponsoring_agency: e.sponsoring_agency || "NIT Hamirpur",
+  start_date: e.start_date || "2024-06-01",
+  end_date: e.end_date || e.start_date,
+  academic_session: e.academic_session || "2024-2025",
+  convenor: e.convenor || "",
+  coordinator: e.coordinator || "",
+  link_url: e.link_url || "",
+  faculty_ids: e.faculty_ids || [],
+}));
+
 export const MOCK_STUDENTS: (Student & { programme_name?: string })[] =
   databaseSeed.students.map((s: any) => ({
     id: s.id,
