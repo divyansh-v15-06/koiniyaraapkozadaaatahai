@@ -24,8 +24,15 @@ export default function Dashboard2() {
   const [selectedFaculty, setSelectedFaculty] = useState<number | null>(null)
   const [publicationType, setPublicationType] = useState("all")
   const [fundingRange, setFundingRange] = useState<[number, number]>([0, 0])
-  const [username, setUsername] = useState<string>(sessionStorage.getItem('facultyName') || '')
-  const [userId, setUserId] = useState<string>(sessionStorage.getItem('userId') || '')
+  const [username, setUsername] = useState<string>('')
+  const [userId, setUserId] = useState<string>('')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.sessionStorage) {
+      setUsername(sessionStorage.getItem('facultyName') || '')
+      setUserId(sessionStorage.getItem('userId') || '')
+    }
+  }, [])
 
 
 

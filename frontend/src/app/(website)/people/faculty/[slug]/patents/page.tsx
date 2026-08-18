@@ -51,7 +51,7 @@ export default function PatentsAdmin() {
     ])
     const tableRef = useRef<HTMLDivElement>(null)
     const [username, setUsername] = useState('')
-    const [userId, setUserId] = useState(sessionStorage.getItem('userId') || '')
+    const [userId, setUserId] = useState('')
 
     useEffect(() => {
         // Read from sessionStorage after component mounts
