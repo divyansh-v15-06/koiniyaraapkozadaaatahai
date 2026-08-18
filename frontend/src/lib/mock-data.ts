@@ -139,6 +139,8 @@ export const MOCK_PHD_SCHOLARS: (PhdScholar & {
   co_supervisor?: string;
   last_qualification?: string;
   research_area?: string;
+  dissertation_title?: string;
+  registration_year?: string;
   end_date?: string;
   linkedin_url?: string;
   google_scholar_url?: string;
@@ -148,11 +150,13 @@ export const MOCK_PHD_SCHOLARS: (PhdScholar & {
   department_id: phd.department_id,
   name: phd.name,
   enrollment_number: phd.roll_number,
-  topic: phd.topic || "Computer Science & Engineering",
+  topic: phd.topic || phd.dissertation_title || "Computer Science & Engineering",
+  dissertation_title: phd.dissertation_title || phd.topic || "Computer Science & Engineering",
   supervisor_faculty_id: "f1",
   supervisor: phd.supervisor || "Faculty Supervisor",
   co_supervisor: phd.co_supervisor || "",
   status: phd.status || "pursuing",
+  registration_year: phd.registration_year || "2022",
   joining_date: `${phd.registration_year || "2022"}-08-01`,
   completion_date: phd.end_date || "",
   last_qualification: phd.last_qualification || "M.Tech",
@@ -198,10 +202,17 @@ export const MOCK_POSTS: Post[] = (databaseSeed.achievements || []).map((ach: an
   publish_date: ach.publish_date,
 }));
 
-export const MOCK_STAFF: Staff[] = [
-  { id: "st1", department_id: "22222222-2222-2222-2222-222222222222", name: "Sh. Ramesh Chand", designation: "Technical Officer (System Admin)", email: "ramesh@nith.ac.in", phone: "+91-1972-254120" },
-  { id: "st2", department_id: "22222222-2222-2222-2222-222222222222", name: "Sh. Anil Kumar", designation: "Senior Lab Assistant (Networking & Cloud Lab)", email: "anil.lab@nith.ac.in", phone: "+91-1972-254121" },
-];
+export const MOCK_STAFF: (Staff & { photo_url?: string; image_url?: string })[] =
+  (databaseSeed.staff || []).map((st: any) => ({
+    id: st.id,
+    department_id: st.department_id,
+    name: st.name || st.full_name,
+    designation: st.designation,
+    email: st.email,
+    phone: st.phone || "—",
+    photo_url: st.photo_url || st.image_url || "",
+    image_url: st.photo_url || st.image_url || "",
+  }));
 
 export const MOCK_DEPARTMENT_KPIS: DepartmentKPIs = {
   department_id: "22222222-2222-2222-2222-222222222222",
