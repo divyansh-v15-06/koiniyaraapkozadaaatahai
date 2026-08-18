@@ -41,11 +41,18 @@ jobs:
           NEXT_PUBLIC_API_URL: /api
           NEXT_TELEMETRY_DISABLED: 1
 
-      - name: Package Build Artifacts
+      - name: Install SSHPass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Deploy Pre-Compiled Artifacts over SSH Stream
         run: |
-          # Package compose setup, configs, prebuilt binary, and standalone frontend bundle
-          tar -czf deploy.tar.gz \
+          mkdir -p ~/.ssh/sockets
+          
+          # Stream the compressed artifacts directly through standard SSH stdin and extract on server
+          # This avoids using the SFTP subsystem (fixing "subsystem request failed on channel 0")
+          tar -czf - \
             docker-compose.prod.yml \
+            .env.production.example \
             nginx \
             backend/api \
             backend/migrations \
@@ -54,44 +61,14 @@ jobs:
             frontend/.next/static \
             frontend/public \
             frontend/Dockerfile.prod \
-            deploy
-
-      - name: Install SSHPass
-        run: sudo apt-get update && sudo apt-get install -y sshpass
-
-      - name: Upload and Extract Artifacts on Server
-        run: |
-          mkdir -p ~/.ssh/sockets
-          
-          # 1. Create target directory on server if it does not exist
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o ConnectTimeout=15 \
-            -o StrictHostKeyChecking=no \
-            -o ObscureKeystrokeTiming=no \
-            -o HostKeyAlgorithms=+ssh-rsa \
-            -o PubkeyAcceptedKeyTypes=+ssh-rsa \
-            -o KexAlgorithms=+diffie-hellman-group14-sha1 \
-            -p ${{ secrets.SSH_PORT || 22 }} \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "mkdir -p ${{ secrets.DEPLOY_PATH }}"
-
-          # 2. Upload the tarball
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -P ${{ secrets.SSH_PORT || 22 }} \
-            -o StrictHostKeyChecking=no \
-            -o ObscureKeystrokeTiming=no \
-            -o HostKeyAlgorithms=+ssh-rsa \
-            -o PubkeyAcceptedKeyTypes=+ssh-rsa \
-            -o KexAlgorithms=+diffie-hellman-group14-sha1 \
-            deploy.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/deploy.tar.gz
-
-          # 3. Extract and trigger local run
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o ConnectTimeout=15 \
-            -o StrictHostKeyChecking=no \
-            -o ObscureKeystrokeTiming=no \
-            -o HostKeyAlgorithms=+ssh-rsa \
-            -o PubkeyAcceptedKeyTypes=+ssh-rsa \
-            -o KexAlgorithms=+diffie-hellman-group14-sha1 \
-            -o ServerAliveInterval=15 \
-            -o ServerAliveCountMax=10 \
-            -p ${{ secrets.SSH_PORT || 22 }} \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "cd ${{ secrets.DEPLOY_PATH }} && tar -xzf deploy.tar.gz && rm -f deploy.tar.gz && bash deploy/deploy.sh --prebuilt"
+            deploy | sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o ConnectTimeout=15 \
+              -o StrictHostKeyChecking=no \
+              -o ObscureKeystrokeTiming=no \
+              -o HostKeyAlgorithms=+ssh-rsa \
+              -o PubkeyAcceptedKeyTypes=+ssh-rsa \
+              -o KexAlgorithms=+diffie-hellman-group14-sha1 \
+              -o ServerAliveInterval=15 \
+              -o ServerAliveCountMax=10 \
+              -p ${{ secrets.SSH_PORT || 22 }} \
+              ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+              "mkdir -p ${{ secrets.DEPLOY_PATH }} && tar -xzf - -C ${{ secrets.DEPLOY_PATH }} && cd ${{ secrets.DEPLOY_PATH }} && bash deploy/deploy.sh --prebuilt"
