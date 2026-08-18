@@ -1,0 +1,11 @@
+{
+  "name": "institute-portal-root",
+  "version": "1.0.0",
+  "description": "Unified Multi-Department Portal for NIT Hamirpur",
+  "scripts": {
+    "dev": "./dev.sh",
+    "start": "./dev.sh",
+    "stop": "make stop",
+    "build": "cd frontend && npm run build"
+  }
+}

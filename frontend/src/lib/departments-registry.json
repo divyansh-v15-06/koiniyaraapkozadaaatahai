@@ -1,0 +1,145 @@
+[
+  {
+    "id": "22222222-2222-2222-2222-222222222222",
+    "code": "CSE",
+    "name": "Computer Science & Engineering",
+    "hindi_name": "\u0938\u0902\u0917\u0923\u0915 \u0935\u093f\u091c\u094d\u091e\u093e\u0928 \u090f\u0935\u0902 \u0905\u092d\u093f\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915\u0940 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "cse",
+    "contact_email": "head.cse@nith.ac.in",
+    "contact_phone": "+91-1972-254400",
+    "about": "Established to provide cutting-edge education and foster high-impact research in artificial intelligence, distributed systems, networks, and data science.",
+    "hod_name": "Dr. Naveen Chauhan"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222223",
+    "code": "ECE",
+    "name": "Electronics & Communication Engineering",
+    "hindi_name": "\u0907\u0932\u0947\u0915\u094d\u091f\u094d\u0930\u0949\u0928\u093f\u0915\u094d\u0938 \u090f\u0935\u0902 \u0938\u0902\u091a\u093e\u0930 \u0905\u092d\u093f\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915\u0940 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "ece",
+    "contact_email": "head.ece@nith.ac.in",
+    "contact_phone": "+91-1972-254300",
+    "about": "Pioneering education and research in VLSI design, wireless communications, signal processing, optical networks, and embedded systems.",
+    "hod_name": "Dr. Gargi Khanna"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222224",
+    "code": "EE",
+    "name": "Electrical Engineering",
+    "hindi_name": "\u0935\u093f\u0926\u094d\u092f\u0941\u0924 \u0905\u092d\u093f\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915\u0940 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "ee",
+    "contact_email": "head.ee@nith.ac.in",
+    "contact_phone": "+91-1972-254500",
+    "about": "Focusing on smart grid technologies, renewable energy integration, power electronics, high voltage engineering, and control systems.",
+    "hod_name": "Dr. R. K. Jarial"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222225",
+    "code": "ME",
+    "name": "Mechanical Engineering",
+    "hindi_name": "\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915 \u0905\u092d\u093f\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915\u0940 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "me",
+    "contact_email": "head.me@nith.ac.in",
+    "contact_phone": "+91-1972-254600",
+    "about": "Excellence in thermal engineering, advanced manufacturing, robotics, computational fluid dynamics, and materials characterization.",
+    "hod_name": "Dr. Sunand Kumar"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222226",
+    "code": "CE",
+    "name": "Civil Engineering",
+    "hindi_name": "\u0938\u093f\u0935\u093f\u0932 \u0905\u092d\u093f\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915\u0940 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "ce",
+    "contact_email": "head.ce@nith.ac.in",
+    "contact_phone": "+91-1972-254700",
+    "about": "Delivering sustainable infrastructure solutions in structural engineering, geotechnical analysis, environmental engineering, and water resources.",
+    "hod_name": "Dr. R. K. Sharma"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222227",
+    "code": "CHE",
+    "name": "Chemical Engineering",
+    "hindi_name": "\u0930\u093e\u0938\u093e\u092f\u0928\u093f\u0915 \u0905\u092d\u093f\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915\u0940 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "che",
+    "contact_email": "head.che@nith.ac.in",
+    "contact_phone": "+91-1972-254800",
+    "about": "Advancing process optimization, biochemical systems, membrane separation, catalysis, and green energy technology.",
+    "hod_name": "Dr. Arvind Kumar"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222228",
+    "code": "MSE",
+    "name": "Materials Science & Engineering",
+    "hindi_name": "\u092a\u0926\u093e\u0930\u094d\u0925 \u0935\u093f\u091c\u094d\u091e\u093e\u0928 \u090f\u0935\u0902 \u0905\u092d\u093f\u092f\u093e\u0902\u0924\u094d\u0930\u093f\u0915\u0940 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "mse",
+    "contact_email": "head.mse@nith.ac.in",
+    "contact_phone": "+91-1972-254900",
+    "about": "Specializing in nanomaterials, biomaterials, smart coatings, energy storage materials, and functional composites.",
+    "hod_name": "Dr. Vishal Singh"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222229",
+    "code": "ARCH",
+    "name": "Department of Architecture & Planning",
+    "hindi_name": "\u0935\u093e\u0938\u094d\u0924\u0941\u0915\u0932\u093e \u090f\u0935\u0902 \u092f\u094b\u091c\u0928\u093e \u0935\u093f\u092d\u093e\u0917",
+    "slug": "arch",
+    "contact_email": "head.arch@nith.ac.in",
+    "contact_phone": "+91-1972-254200",
+    "about": "Nurturing creative architects and urban planners with focus on sustainable hill architecture, climate-responsive design, and smart city planning.",
+    "hod_name": "Dr. Bhanu M. Marwaha"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222230",
+    "code": "MATH",
+    "name": "Mathematics & Scientific Computing",
+    "hindi_name": "\u0917\u0923\u093f\u0924 \u090f\u0935\u0902 \u0935\u0948\u091c\u094d\u091e\u093e\u0928\u093f\u0915 \u0938\u0902\u0917\u0923\u0928\u093e \u0935\u093f\u092d\u093e\u0917",
+    "slug": "maths",
+    "contact_email": "head.math@nith.ac.in",
+    "contact_phone": "+91-1972-254150",
+    "about": "High-level computational mathematics, numerical simulation, cryptography, graph theory, and operations research.",
+    "hod_name": "Dr. R. K. Vats"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222231",
+    "code": "PHY",
+    "name": "Physics & Photonics Science",
+    "hindi_name": "\u092d\u094c\u0924\u093f\u0915\u0940 \u090f\u0935\u0902 \u092b\u094b\u091f\u094b\u0928\u093f\u0915\u094d\u0938 \u0935\u093f\u091c\u094d\u091e\u093e\u0928 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "physics",
+    "contact_email": "head.phy@nith.ac.in",
+    "contact_phone": "+91-1972-254160",
+    "about": "Research in quantum photonics, condensed matter physics, laser physics, and semiconductor device modeling.",
+    "hod_name": "Dr. Subhash Chand"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222232",
+    "code": "CHEM",
+    "name": "Chemistry & Chemical Sciences",
+    "hindi_name": "\u0930\u0938\u093e\u092f\u0928 \u0935\u093f\u091c\u094d\u091e\u093e\u0928 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "chemistry",
+    "contact_email": "head.chem@nith.ac.in",
+    "contact_phone": "+91-1972-254170",
+    "about": "Frontier research in synthetic organic chemistry, computational catalysis, polymer chemistry, and environmental monitoring.",
+    "hod_name": "Dr. Pamita Awasthi"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222233",
+    "code": "HSS",
+    "name": "Humanities & Social Sciences",
+    "hindi_name": "\u092e\u093e\u0928\u0935\u093f\u0915\u0940 \u090f\u0935\u0902 \u0938\u093e\u092e\u093e\u091c\u093f\u0915 \u0935\u093f\u091c\u094d\u091e\u093e\u0928 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "hss",
+    "contact_email": "head.hss@nith.ac.in",
+    "contact_phone": "+91-1972-254180",
+    "about": "Cultivating humanistic perspectives, professional communication, linguistics, technical ethics, and developmental economics.",
+    "hod_name": "Dr. Manoj Sharma"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222234",
+    "code": "DOMS",
+    "name": "Department of Management Studies",
+    "hindi_name": "\u092a\u094d\u0930\u092c\u0902\u0927\u0928 \u0905\u0927\u094d\u092f\u092f\u0928 \u0935\u093f\u092d\u093e\u0917",
+    "slug": "doms",
+    "contact_email": "head.doms@nith.ac.in",
+    "contact_phone": "+91-1972-254190",
+    "about": "Fostering strategic leadership, technology management, supply chain optimization, business analytics, and entrepreneurial ventures.",
+    "hod_name": "Dr. Somesh Sharma"
+  }
+]

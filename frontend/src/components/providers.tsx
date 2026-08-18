@@ -3,6 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import { Toaster } from "sonner";
+import { DepartmentProvider } from "@/context/department-context";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -10,6 +11,7 @@ interface ProvidersProps {
 
 /**
  * Root providers wrapper — wraps the entire application with:
+ * - DepartmentProvider for unified multi-department management & switching
  * - TanStack Query for server state management
  * - Sonner for toast notifications
  */
@@ -32,16 +34,18 @@ export function Providers({ children }: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
-      <Toaster
-        position="top-right"
-        richColors
-        closeButton
-        duration={4000}
-        toastOptions={{
-          className: "font-sans",
-        }}
-      />
+      <DepartmentProvider>
+        {children}
+        <Toaster
+          position="top-right"
+          richColors
+          closeButton
+          duration={4000}
+          toastOptions={{
+            className: "font-sans",
+          }}
+        />
+      </DepartmentProvider>
     </QueryClientProvider>
   );
 }

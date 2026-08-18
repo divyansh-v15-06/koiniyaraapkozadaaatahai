@@ -17,32 +17,33 @@ import {
   Building2,
   Calendar,
   ChevronRight,
-  ExternalLink,
   GraduationCap,
   Sparkles,
   Users,
-  FileText,
   Lightbulb,
+  Layers,
 } from "lucide-react";
+import { useDepartment } from "@/context/department-context";
 
 export default function HomePage() {
+  const { activeDepartment, departments, setActiveDepartment } = useDepartment();
   const [activeSlide, setActiveSlide] = useState(0);
 
   const heroSlides = [
     {
       src: "/nithbg12.jpg",
-      title: "Department of Computer Science & Engineering",
-      subtitle: "National Institute of Technology Hamirpur (HP)",
+      title: `Department of ${activeDepartment.name}`,
+      subtitle: `National Institute of Technology Hamirpur (HP) • ${activeDepartment.code}`,
     },
     {
       src: "/cseDepartmentPhoto.png",
-      title: "Advanced Research Laboratories & Computing Clusters",
-      subtitle: "Fostering Innovation, AI/ML, High-Performance Systems & Cyber Security",
+      title: "Advanced Laboratories & Specialized Research Centers",
+      subtitle: "Fostering Innovation, Scientific Research & Hands-on Engineering",
     },
     {
       src: "/17059155995973.jpg",
-      title: "Excellence in Technical Education & Research",
-      subtitle: "Top-Tier NIRF Ranking, NBA Accreditation, and 100% Core Placements",
+      title: "Excellence in Technical Education & Industry Collaboration",
+      subtitle: "Top-Tier NIRF Ranking, NBA Accreditation, and Outstanding Placements",
     },
   ];
 
@@ -55,35 +56,72 @@ export default function HomePage() {
 
   return (
     <div className="space-y-6 pb-16 bg-[#ffffff]">
-      {/* 1. Announcement Ticker (Signature tempcse Ribbon Style) */}
-      <div className="flex items-center bg-[#fff9f6] border-y border-[#eedfd8] overflow-hidden">
-        <div className="bg-[#1c110c] text-white py-2 px-5 font-semibold text-xs tracking-wider relative flex-shrink-0 flex items-center gap-2">
-          <span>Announcements</span>
-          <div className="absolute top-0 right-0 w-0 h-0 border-l-[16px] border-l-transparent border-t-[16px] border-t-[#fff9f6]"></div>
-          <div className="absolute bottom-0 right-0 w-0 h-0 border-l-[16px] border-l-transparent border-b-[16px] border-b-[#fff9f6]"></div>
-        </div>
-        <div className="flex-1 overflow-hidden py-1.5 px-3">
-          <div className="animate-marquee text-xs text-[#33110e] font-medium flex items-center gap-8">
-            <span className="flex items-center gap-2">
-              <span className="inline-block bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded font-bold uppercase animate-pulse">
-                New
-              </span>
-              Ph.D. Admissions Open for Autumn Session 2026-2027 — Applications close June 20, 2026.
+      {/* 1. Symmetrical Modern Announcement Bar */}
+      <div className="bg-[#fff9f6] border-y border-[#eedfd8] shadow-2xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center h-10 gap-3">
+          {/* Symmetrical Left Badge */}
+          <div className="flex items-center gap-1.5 bg-[#33110e] text-white px-3 py-1 rounded-md text-[11px] font-bold tracking-wider uppercase flex-shrink-0 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping mr-0.5 inline-block"></span>
+            <span>Announcements</span>
+            <span className="bg-[#85261e] text-amber-300 text-[10px] px-1.5 py-0.2 rounded font-mono ml-1">
+              {activeDepartment.code}
             </span>
-            <span className="text-neutral-400">|</span>
-            <span className="flex items-center gap-2">
-              <span className="inline-block bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded font-bold uppercase">
-                Notice
-              </span>
-              Schedule for B.Tech CSE Final Year Major Project Demonstrations (May 28–30).
-            </span>
-            <span className="text-neutral-400">|</span>
-            <span className="flex items-center gap-2">
-              <span className="inline-block bg-amber-600 text-white text-[10px] px-1.5 py-0.2 rounded font-bold uppercase">
-                Achievement
-              </span>
-              CSE Student Team Wins 1st Prize at Smart India Hackathon (Hardware Edition)!
-            </span>
+          </div>
+
+          {/* Smooth Marquee Scroller with Left/Right Fade Masks */}
+          <div className="relative flex-1 overflow-hidden h-full flex items-center">
+            {/* Left fade gradient mask */}
+            <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-[#fff9f6] to-transparent z-10 pointer-events-none"></div>
+
+            {/* Marquee Content */}
+            <div className="animate-marquee text-xs text-[#33110e] font-medium flex items-center gap-8 cursor-pointer">
+              <Link
+                href={`/news/announcements?dept=${activeDepartment.slug}`}
+                className="flex items-center gap-2 hover:text-[#85261e] transition"
+              >
+                <span className="bg-red-600 text-white text-[10px] px-1.5 py-0.2 rounded font-bold uppercase">
+                  Admissions
+                </span>
+                <span>Ph.D. Admissions Open for Autumn Session 2026-2027 in Department of {activeDepartment.name}.</span>
+              </Link>
+
+              <span className="text-neutral-300">•</span>
+
+              <Link
+                href={`/news/announcements?dept=${activeDepartment.slug}`}
+                className="flex items-center gap-2 hover:text-[#85261e] transition"
+              >
+                <span className="bg-[#85261e] text-white text-[10px] px-1.5 py-0.2 rounded font-bold uppercase">
+                  Notice
+                </span>
+                <span>Schedule for Final Year Major Project Demonstrations &amp; Capstone Reviews.</span>
+              </Link>
+
+              <span className="text-neutral-300">•</span>
+
+              <Link
+                href={`/news/achievements?dept=${activeDepartment.slug}`}
+                className="flex items-center gap-2 hover:text-[#85261e] transition"
+              >
+                <span className="bg-amber-600 text-white text-[10px] px-1.5 py-0.2 rounded font-bold uppercase">
+                  Achievement
+                </span>
+                <span>{activeDepartment.code} Student Team Wins 1st Prize at National Innovation Hackathon!</span>
+              </Link>
+            </div>
+
+            {/* Right fade gradient mask */}
+            <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-[#fff9f6] to-transparent z-10 pointer-events-none"></div>
+          </div>
+
+          {/* Right Action Button for Symmetry */}
+          <div className="flex-shrink-0 border-l border-[#eedfd8] pl-3 hidden sm:flex items-center">
+            <Link
+              href={`/news/announcements?dept=${activeDepartment.slug}`}
+              className="text-[11px] font-bold text-[#85261e] hover:text-[#33110e] transition flex items-center gap-1"
+            >
+              View All <ChevronRight className="w-3 h-3" />
+            </Link>
           </div>
         </div>
       </div>
@@ -94,7 +132,7 @@ export default function HomePage() {
           {/* Left Column: Announcements Box */}
           <div className="lg:col-span-3 bg-white rounded-lg border border-[#eedfd8] shadow-sm flex flex-col overflow-hidden h-[420px]">
             <div className="bg-[#33110e] text-white p-3 text-center font-bold text-xs uppercase tracking-wider">
-              News & Updates
+              {activeDepartment.code} News & Updates
             </div>
             <div className="p-3 divide-y divide-neutral-100 overflow-y-auto no-scrollbar flex-1 space-y-2">
               {MOCK_ANNOUNCEMENTS.map((ann, i) => (
@@ -122,16 +160,16 @@ export default function HomePage() {
                   <span>2026-04-15</span>
                 </div>
                 <h4 className="text-xs font-semibold text-neutral-800 line-clamp-2">
-                  Call for Papers: IEEE International Conference on Computing Networks & AI
+                  National Workshop on Emerging Frontiers in {activeDepartment.name}
                 </h4>
                 <p className="text-[11px] text-neutral-500 line-clamp-2 mt-1">
-                  Hosted by CSE Department, NIT Hamirpur. Authors are invited to submit original research manuscripts.
+                  Organized by Department of {activeDepartment.name}, NIT Hamirpur.
                 </p>
               </div>
             </div>
             <div className="p-2 bg-[#fff9f6] border-t border-[#eedfd8] text-center">
               <Link
-                href="/news/announcements"
+                href={`/news/announcements?dept=${activeDepartment.slug}`}
                 className="text-[11px] text-[#33110e] font-bold hover:underline flex items-center justify-center gap-1"
               >
                 View All Announcements <ChevronRight className="w-3 h-3" />
@@ -157,7 +195,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 text-white">
                   <span className="bg-[#85261e] text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded w-fit mb-2">
-                    Department of CSE
+                    Department of {activeDepartment.name}
                   </span>
                   <h2 className="text-xl sm:text-2xl font-bold tracking-tight leading-tight mb-1">
                     {slide.title}
@@ -196,7 +234,7 @@ export default function HomePage() {
                   <span>110+ Publications</span>
                 </div>
                 <p className="text-[11px] text-neutral-600">
-                  Published in top SCI/Scopus IEEE Transactions, ACM Journals & Springer Conferences.
+                  Published in top SCI/Scopus IEEE Transactions, Elsevier Journals & Springer Conferences.
                 </p>
               </div>
 
@@ -206,7 +244,7 @@ export default function HomePage() {
                   <span>14 Patents Filed & Granted</span>
                 </div>
                 <p className="text-[11px] text-neutral-600">
-                  Intellectual property spanning healthcare IoT, edge AI, and cryptography.
+                  Intellectual property spanning smart systems, sensors, and computing.
                 </p>
               </div>
 
@@ -222,7 +260,7 @@ export default function HomePage() {
             </div>
             <div className="p-2 bg-[#fff9f6] border-t border-[#eedfd8] text-center">
               <Link
-                href="/research/publications"
+                href={`/research/publications?dept=${activeDepartment.slug}`}
                 className="text-[11px] text-[#33110e] font-bold hover:underline flex items-center justify-center gap-1"
               >
                 Browse Research Output <ChevronRight className="w-3 h-3" />
@@ -232,7 +270,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 3. CSE Stats Counters (tempcse signature 4-card metric section) */}
+      {/* 3. Stats Counters (tempcse signature 4-card metric section) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-4">
         <div className="bg-[#1c110c] text-white rounded-lg p-6 shadow-md border border-[#33110e]">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-neutral-800">
@@ -272,22 +310,27 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 4. About Us & HOD Message Section (tempcse signature side-by-side) */}
+      {/* 4. About Department & HOD Message Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Department Overview */}
           <div className="lg:col-span-8 bg-white rounded-lg border border-[#eedfd8] p-6 shadow-sm space-y-4">
-            <div className="flex items-center gap-2 border-b border-[#eedfd8] pb-3">
-              <Building2 className="w-5 h-5 text-[#85261e]" />
-              <h3 className="text-lg font-bold text-[#33110e] tracking-tight uppercase">
-                Welcome to Department of CSE
-              </h3>
+            <div className="flex items-center justify-between border-b border-[#eedfd8] pb-3">
+              <div className="flex items-center gap-2">
+                <Building2 className="w-5 h-5 text-[#85261e]" />
+                <h3 className="text-lg font-bold text-[#33110e] tracking-tight uppercase">
+                  Welcome to Department of {activeDepartment.name}
+                </h3>
+              </div>
+              <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-xs font-bold px-2 py-0.5 rounded uppercase">
+                {activeDepartment.code}
+              </span>
             </div>
             <p className="text-xs sm:text-sm text-neutral-700 leading-relaxed">
-              The Department of Computer Science & Engineering at National Institute of Technology Hamirpur was established to provide cutting-edge education and foster high-impact research in computing technologies.
+              {activeDepartment.about}
             </p>
             <p className="text-xs sm:text-sm text-neutral-700 leading-relaxed">
-              We offer comprehensive undergraduate (B.Tech in CSE), postgraduate (M.Tech in CSE and Artificial Intelligence), Dual Degree, and Doctoral (Ph.D.) programmes designed to equip engineers with theoretical foundations and modern applied skills.
+              We offer comprehensive undergraduate (B.Tech), postgraduate (M.Tech), Dual Degree, and Doctoral (Ph.D.) programmes designed to equip engineers and researchers with strong foundational principles and state-of-the-art applied skills.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -295,21 +338,21 @@ export default function HomePage() {
                 <GraduationCap className="w-6 h-6 text-[#85261e]" />
                 <div>
                   <h4 className="text-xs font-bold text-[#33110e]">Academic Programmes</h4>
-                  <p className="text-[11px] text-neutral-600">B.Tech, M.Tech, Dual Degree & Ph.D.</p>
+                  <p className="text-[11px] text-neutral-600">B.Tech, M.Tech & Ph.D.</p>
                 </div>
               </div>
               <div className="p-3 bg-[#fff9f6] rounded border border-[#eedfd8] flex items-center gap-3">
                 <Users className="w-6 h-6 text-[#85261e]" />
                 <div>
-                  <h4 className="text-xs font-bold text-[#33110e]">Expert Faculty</h4>
-                  <p className="text-[11px] text-neutral-600">26 Renowned Professors & Researchers</p>
+                  <h4 className="text-xs font-bold text-[#33110e]">Faculty Expertise</h4>
+                  <p className="text-[11px] text-neutral-600">Renowned Professors & Researchers</p>
                 </div>
               </div>
             </div>
 
             <div className="pt-2">
               <Link
-                href="/aboutus"
+                href={`/aboutus?dept=${activeDepartment.slug}`}
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-[#33110e] hover:text-[#85261e]"
               >
                 Read More About Department <ChevronRight className="w-4 h-4" />
@@ -329,17 +372,17 @@ export default function HomePage() {
             </div>
             <div>
               <h4 className="font-bold text-sm text-[#33110e]">
-                Dr. Naveen Chauhan
+                {activeDepartment.hod_name}
               </h4>
               <p className="text-xs text-[#85261e] font-semibold">
-                Head of Department, CSE
+                Head of Department, {activeDepartment.code}
               </p>
             </div>
             <p className="text-xs text-neutral-600 italic leading-relaxed">
               &quot;Our mission is to nurture technical acumen, ethics, and innovation so our students can lead global technology transformations and solve critical societal problems.&quot;
             </p>
             <Link
-              href="/aboutus/hod"
+              href={`/aboutus/hod?dept=${activeDepartment.slug}`}
               className="inline-block bg-[#33110e] text-white text-xs font-semibold px-4 py-1.5 rounded hover:bg-[#85261e] transition shadow-xs"
             >
               Read Full Message
