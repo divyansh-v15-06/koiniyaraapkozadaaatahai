@@ -20,11 +20,13 @@ import {
 import { toast } from "sonner";
 import { MOCK_PUBLICATIONS, MOCK_FACULTY } from "@/lib/mock-data";
 import { useDepartment } from "@/context/department-context";
+import { DepartmentEmptyState } from "@/components/common/department-empty-state";
 
 const ITEMS_PER_PAGE = 20;
 
 export default function PublicationsPage() {
   const { activeDepartment } = useDepartment();
+  const hasData = activeDepartment.slug === "cse";
 
   // Filters State
   const [selectedType, setSelectedType] = useState<string>("ALL");
@@ -225,8 +227,12 @@ export default function PublicationsPage() {
         </div>
       </div>
 
-      {/* 1. Institutional Filter Bar (#33110e & #fff9f6 palette) */}
-      <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 shadow-xs space-y-3">
+      {!hasData ? (
+        <DepartmentEmptyState sectionTitle="Scholarly Publications" />
+      ) : (
+        <>
+          {/* 1. Institutional Filter Bar (#33110e & #fff9f6 palette) */}
+          <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 shadow-xs space-y-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {/* Publication Type Dropdown */}
           <div>
@@ -647,6 +653,8 @@ export default function PublicationsPage() {
           </div>
         </div>
       )}
-    </div>
+    </>
+  )}
+</div>
   );
 }

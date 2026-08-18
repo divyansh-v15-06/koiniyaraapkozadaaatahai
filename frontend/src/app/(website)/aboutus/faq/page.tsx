@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { ChevronDown, HelpCircle, Search, Sparkles, BookOpen, GraduationCap, Briefcase, Cpu } from "lucide-react";
 import { useDepartment } from "@/context/department-context";
+import { DepartmentEmptyState } from "@/components/common/department-empty-state";
 
 export default function FAQPage() {
   const { activeDepartment } = useDepartment();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [search, setSearch] = useState<string>("");
+  const hasData = activeDepartment.slug === "cse";
 
   const faqs = [
     {
@@ -81,83 +83,89 @@ export default function FAQPage() {
         </div>
       </div>
 
-      {/* Search and Category Filter Bar */}
-      <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 space-y-3">
-        <div className="relative">
-          <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-2.5" />
-          <input
-            type="text"
-            placeholder="Search question or topic (e.g., PhD admissions, fellowships, GPU labs)..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-[#eedfd8] bg-white text-[#33110e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
-          />
-        </div>
-
-        <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-[#eedfd8]/80">
-          {[
-            { id: "ALL", label: "All Questions" },
-            { id: "Admissions", label: "Admissions (UG/PG/PhD)" },
-            { id: "Academics", label: "NEP-2020 & Curriculum" },
-            { id: "Research", label: "Research & GPU Labs" },
-            { id: "Placements", label: "Placements & Internships" },
-          ].map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3 py-1 text-xs font-semibold rounded-md transition cursor-pointer ${
-                selectedCategory === cat.id
-                  ? "bg-[#33110e] text-white shadow-xs"
-                  : "bg-white border border-[#eedfd8] text-[#33110e] hover:bg-[#eedfd8]/50"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Accordion List */}
-      <div className="space-y-3">
-        {filteredFaqs.map((faq, i) => {
-          const isOpen = openIndex === i;
-          return (
-            <div
-              key={i}
-              className="overflow-hidden rounded-2xl border border-[#eedfd8] bg-white transition shadow-xs hover:border-[#85261e]/40"
-            >
-              <button
-                type="button"
-                onClick={() => setOpenIndex(isOpen ? null : i)}
-                className="flex w-full items-center justify-between p-5 text-left font-bold text-[#1c110c] transition hover:bg-[#fff9f6] cursor-pointer"
-              >
-                <span className="flex items-center gap-3 text-xs sm:text-sm">
-                  <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-[10px] font-bold px-2 py-0.5 rounded">
-                    {faq.category}
-                  </span>
-                  <span>{faq.q}</span>
-                </span>
-                <ChevronDown
-                  className={`h-4 w-4 text-[#85261e] transition duration-200 flex-shrink-0 ${
-                    isOpen ? "rotate-180 text-[#33110e]" : ""
-                  }`}
-                />
-              </button>
-              {isOpen && (
-                <div className="border-t border-[#eedfd8] bg-[#fff9f6]/40 px-5 py-4 text-xs sm:text-sm leading-relaxed text-neutral-700">
-                  {faq.a}
-                </div>
-              )}
+      {!hasData ? (
+        <DepartmentEmptyState sectionTitle="Frequently Asked Questions" />
+      ) : (
+        <>
+          {/* Search and Category Filter Bar */}
+          <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 space-y-3">
+            <div className="relative">
+              <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-2.5" />
+              <input
+                type="text"
+                placeholder="Search question or topic (e.g., PhD admissions, fellowships, GPU labs)..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-[#eedfd8] bg-white text-[#33110e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
+              />
             </div>
-          );
-        })}
 
-        {filteredFaqs.length === 0 && (
-          <div className="text-center py-12 text-neutral-500 text-xs bg-[#fff9f6] rounded-xl border border-[#eedfd8]">
-            No matching questions found for your query.
+            <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-[#eedfd8]/80">
+              {[
+                { id: "ALL", label: "All Questions" },
+                { id: "Admissions", label: "Admissions (UG/PG/PhD)" },
+                { id: "Academics", label: "NEP-2020 & Curriculum" },
+                { id: "Research", label: "Research & GPU Labs" },
+                { id: "Placements", label: "Placements & Internships" },
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-3 py-1 text-xs font-semibold rounded-md transition cursor-pointer ${
+                    selectedCategory === cat.id
+                      ? "bg-[#33110e] text-white shadow-xs"
+                      : "bg-white border border-[#eedfd8] text-[#33110e] hover:bg-[#eedfd8]/50"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
-        )}
-      </div>
+
+          {/* Accordion List */}
+          <div className="space-y-3">
+            {filteredFaqs.map((faq, i) => {
+              const isOpen = openIndex === i;
+              return (
+                <div
+                  key={i}
+                  className="overflow-hidden rounded-2xl border border-[#eedfd8] bg-white transition shadow-xs hover:border-[#85261e]/40"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between p-5 text-left font-bold text-[#1c110c] transition hover:bg-[#fff9f6] cursor-pointer"
+                  >
+                    <span className="flex items-center gap-3 text-xs sm:text-sm">
+                      <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-[10px] font-bold px-2 py-0.5 rounded">
+                        {faq.category}
+                      </span>
+                      <span>{faq.q}</span>
+                    </span>
+                    <ChevronDown
+                      className={`h-4 w-4 text-[#85261e] transition duration-200 flex-shrink-0 ${
+                        isOpen ? "rotate-180 text-[#33110e]" : ""
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="border-t border-[#eedfd8] bg-[#fff9f6]/40 px-5 py-4 text-xs sm:text-sm leading-relaxed text-neutral-700">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {filteredFaqs.length === 0 && (
+              <div className="text-center py-12 text-neutral-500 text-xs bg-[#fff9f6] rounded-xl border border-[#eedfd8]">
+                No matching questions found for your query.
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

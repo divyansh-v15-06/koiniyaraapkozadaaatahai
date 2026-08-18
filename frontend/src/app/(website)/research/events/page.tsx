@@ -1,67 +1,76 @@
-import { Calendar, Users, MapPin } from "lucide-react";
+"use client";
 
-const events = [
-  {
-    title: "IEEE International Conference on Advanced Computing & Intelligent Communication (ICACIC 2026)",
-    dates: "November 14-16, 2026",
-    type: "International Conference",
-    venue: "Auditorium, NIT Campus",
-    coordinator: "Dr. Rajesh Sharma & Dr. Priya Verma",
-  },
-  {
-    title: "One-Week National Workshop on Post-Quantum Cryptography and Blockchain",
-    dates: "July 20-25, 2026",
-    type: "National Workshop",
-    venue: "Lab 3 & Virtual",
-    coordinator: "Dr. Amit Kumar Gupta",
-  },
-  {
-    title: "Hands-on Winter School on Deep Generative Models & PyTorch",
-    dates: "December 18-22, 2025",
-    type: "Faculty Development Programme",
-    venue: "AI Research Lab",
-    coordinator: "Dr. Sunita Kapoor",
-  },
-];
+import { Calendar, Users, MapPin, Sparkles } from "lucide-react";
+import { MOCK_EVENTS } from "@/lib/mock-data";
+import { useDepartment } from "@/context/department-context";
+import { DepartmentEmptyState } from "@/components/common/department-empty-state";
 
 export default function EventsPage() {
+  const { activeDepartment } = useDepartment();
+  const hasData = activeDepartment.slug === "cse";
+
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">Academic Gatherings</span>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Events &amp; Conferences
-        </h1>
-        <p className="mt-2 text-base text-muted-foreground">
-          Conferences, short-term courses, and faculty development programmes organized by the department.
-        </p>
-      </div>
-
-      <div className="space-y-4">
-        {events.map((ev, i) => (
-          <div key={i} className="rounded-2xl border border-border bg-card p-6 shadow-sm transition hover:border-primary/40">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="rounded-md bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
-                {ev.type}
-              </span>
-              <span className="text-xs text-muted-foreground flex items-center gap-1">
-                <Calendar className="h-3.5 w-3.5 text-primary" /> {ev.dates}
-              </span>
-            </div>
-
-            <h3 className="mt-3 text-base font-bold text-foreground leading-snug">{ev.title}</h3>
-
-            <div className="mt-4 flex flex-wrap gap-4 border-t border-border/60 pt-3 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="h-3.5 w-3.5 text-primary" /> Venue: <strong className="text-foreground">{ev.venue}</strong>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Users className="h-3.5 w-3.5 text-primary" /> Coordinators: <strong className="text-foreground">{ev.coordinator}</strong>
-              </span>
-            </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-6 bg-white min-h-[85vh] font-sans">
+      {/* Title Header */}
+      <div className="border-b border-[#eedfd8] pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold text-[#33110e] tracking-tight uppercase flex items-center gap-2">
+              <Sparkles className="w-6 h-6 text-[#85261e]" />
+              Conferences, STCs, FDPs &amp; Workshops
+            </h1>
+            <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-xs font-bold px-2 py-0.5 rounded uppercase">
+              {activeDepartment.code}
+            </span>
           </div>
-        ))}
+          <p className="text-xs text-neutral-600 mt-1">
+            Academic conferences, short-term courses, and faculty development programmes organized by Department of {activeDepartment.name}.
+          </p>
+        </div>
       </div>
+
+      {!hasData ? (
+        <DepartmentEmptyState sectionTitle="Academic Event Records" />
+      ) : (
+        <div className="space-y-4">
+          {MOCK_EVENTS.map((ev: any, i: number) => (
+            <div
+              key={ev.id || i}
+              className="rounded-2xl border border-[#eedfd8] bg-white p-6 shadow-xs transition hover:border-[#85261e]/40 hover:shadow-md space-y-3"
+            >
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] px-2.5 py-0.5 text-xs font-bold rounded">
+                  {ev.event_type || ev.category}
+                </span>
+                <span className="text-xs text-neutral-500 font-semibold flex items-center gap-1">
+                  <Calendar className="h-3.5 w-3.5 text-[#85261e]" />{" "}
+                  {ev.start_date ? `${ev.start_date} – ${ev.end_date}` : ev.year || "2024-2025"}
+                </span>
+              </div>
+
+              <h3 className="text-[#1c110c] font-bold text-base leading-snug">{ev.title}</h3>
+
+              <div className="grid gap-2 sm:grid-cols-3 border-t border-[#eedfd8]/60 pt-3 text-xs text-neutral-600">
+                {ev.venue && (
+                  <span className="flex items-center gap-1.5 truncate">
+                    <MapPin className="h-3.5 w-3.5 text-[#85261e]" /> Venue: <strong className="text-[#1c110c]">{ev.venue}</strong>
+                  </span>
+                )}
+                {(ev.coordinator || ev.convenor) && (
+                  <span className="flex items-center gap-1.5 truncate">
+                    <Users className="h-3.5 w-3.5 text-[#85261e]" /> Organizers: <strong className="text-[#1c110c]">{ev.coordinator || ev.convenor}</strong>
+                  </span>
+                )}
+                {ev.sponsoring_agency && (
+                  <span className="truncate">
+                    Sponsor: <strong>{ev.sponsoring_agency}</strong>
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

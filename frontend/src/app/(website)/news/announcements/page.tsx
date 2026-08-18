@@ -17,9 +17,11 @@ import {
 import { toast } from "sonner";
 import { MOCK_ANNOUNCEMENTS } from "@/lib/mock-data";
 import { useDepartment } from "@/context/department-context";
+import { DepartmentEmptyState } from "@/components/common/department-empty-state";
 
 export default function AnnouncementsPage() {
   const { activeDepartment } = useDepartment();
+  const hasData = activeDepartment.slug === "cse";
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -95,8 +97,12 @@ export default function AnnouncementsPage() {
         </div>
       </div>
 
-      {/* Search Bar */}
-      <div className="bg-[#fff9f6] p-3 rounded-lg border border-[#eedfd8] flex items-center justify-between">
+      {!hasData ? (
+        <DepartmentEmptyState sectionTitle="Announcements & Circulars" />
+      ) : (
+        <>
+          {/* Search Bar */}
+          <div className="bg-[#fff9f6] p-3 rounded-lg border border-[#eedfd8] flex items-center justify-between">
         <div className="relative w-full sm:w-96">
           <Search className="w-4 h-4 text-neutral-400 absolute left-3 top-2.5" />
           <input
@@ -195,6 +201,8 @@ export default function AnnouncementsPage() {
           </div>
         )}
       </div>
-    </div>
+    </>
+  )}
+</div>
   );
 }

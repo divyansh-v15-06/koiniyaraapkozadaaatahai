@@ -17,10 +17,12 @@ import {
   Network,
 } from "lucide-react";
 import { useDepartment } from "@/context/department-context";
+import { DepartmentEmptyState } from "@/components/common/department-empty-state";
 
 export default function LabsPage() {
   const { activeDepartment } = useDepartment();
   const [search, setSearch] = useState("");
+  const hasData = activeDepartment.slug === "cse";
 
   const labs = [
     {
@@ -58,24 +60,24 @@ export default function LabsPage() {
       name: "Cloud Computing & Internet of Things (IoT) Lab",
       location: "Lab Room 202, First Floor",
       head: "Dr. Naveen Chauhan",
-      workstations: "40 IoT Workstations & Sensor Nodes",
-      hardware: "OpenStack private cloud testbed, Raspberry Pi 5 clusters, ESP32 nodes, LoRaWAN gateways, and Zigbee sensor kits.",
-      description: "Hands-on testbed for smart healthcare systems, sensor fusion, edge-fog-cloud orchestration, and low-power communication.",
+      workstations: "30 IoT Workstations + Sensor Kits",
+      hardware: "Raspberry Pi 4 / 5 clusters, ESP32 development boards, LoRaWAN gateways, and Zigbee sensor networks.",
+      description: "Smart edge computing architectures, wireless sensor networks, telemetry data pipelines, and IoT cloud integrations.",
       icon: Server,
     },
     {
       id: "lab-5",
-      name: "Image Processing & Biometrics Lab",
+      name: "Virtual Reality & Human Computer Interaction Lab",
       location: "Lab Room 203, First Floor",
       head: "Dr. Siddhartha Chauhan",
-      workstations: "28 Workstations",
-      hardware: "High-resolution iris scanners, multispectral fingerprint sensors, high-throughput medical image display monitors.",
-      description: "Specialized in medical image segmentation (MRI/CT), biometric authentication, facial recognition under varying lighting, and forensic imaging.",
+      workstations: "25 VR Stations + HMDs",
+      hardware: "Meta Quest Pro & HTC Vive VR Headsets, motion capture trackers, haptic feedback gloves, and 4K stereoscopic displays.",
+      description: "Spatial computing, metaverse environments, 3D anatomical simulations, and accessible gesture-based user interfaces.",
       icon: Monitor,
     },
     {
       id: "lab-6",
-      name: "Data Analytics & Big Data Systems Lab",
+      name: "Data Analytics & Knowledge Engineering Lab",
       location: "Lab Room 301, Second Floor",
       head: "Dr. Arun Kumar Yadav",
       workstations: "35 Enterprise Workstations",
@@ -126,6 +128,7 @@ export default function LabsPage() {
   ];
 
   const filteredLabs = useMemo(() => {
+    if (!hasData) return [];
     return labs.filter((l) => {
       const q = search.toLowerCase();
       return (
@@ -136,7 +139,7 @@ export default function LabsPage() {
         l.description.toLowerCase().includes(q)
       );
     });
-  }, [search]);
+  }, [search, hasData]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-6 bg-white min-h-[85vh] font-sans">
@@ -153,67 +156,75 @@ export default function LabsPage() {
             </span>
           </div>
           <p className="text-xs text-neutral-600 mt-1">
-            Specialized computing facilities, GPU clusters, sensor testbeds, and research spaces of Department of {activeDepartment.name}.
+            Specialized computing facilities, GPU clusters, sensor testbeds, and research spaces of Department of{" "}
+            {activeDepartment.name}.
           </p>
         </div>
       </div>
 
-      {/* Search & Stats Bar */}
-      <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-neutral-400 absolute left-3 top-2.5" />
-          <input
-            type="text"
-            placeholder="Search lab name, faculty in-charge, or area..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-[#eedfd8] bg-white text-[#33110e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
-          />
-        </div>
-
-        <span className="text-xs font-semibold text-neutral-600">
-          Showing {filteredLabs.length} of {labs.length} Research &amp; Teaching Labs
-        </span>
-      </div>
-
-      {/* Labs Grid */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {filteredLabs.map((lab) => (
-          <div
-            key={lab.id}
-            className="bg-white border border-[#eedfd8] rounded-2xl p-6 shadow-xs hover:shadow-md hover:border-[#85261e]/40 transition space-y-3 flex flex-col justify-between"
-          >
-            <div>
-              <div className="flex items-center justify-between gap-2 border-b border-[#eedfd8]/60 pb-3">
-                <span className="flex items-center gap-1.5 font-mono text-[11px] text-neutral-500">
-                  <Building2 className="w-3.5 h-3.5 text-[#85261e]" /> {lab.location}
-                </span>
-                <span className="bg-[#fff9f6] border border-[#eedfd8] text-[#85261e] text-[10px] font-bold px-2 py-0.5 rounded">
-                  {lab.workstations}
-                </span>
-              </div>
-
-              <h2 className="text-base font-bold text-[#1c110c] mt-3 leading-snug">
-                {lab.name}
-              </h2>
-
-              <p className="text-xs text-neutral-700 leading-relaxed mt-2">
-                {lab.description}
-              </p>
-
-              <div className="mt-3 bg-[#fff9f6] border border-[#eedfd8]/80 rounded-lg p-2.5 text-[11px] text-neutral-600">
-                <strong className="text-[#33110e] font-bold">Key Hardware &amp; Toolkits:</strong> {lab.hardware}
-              </div>
+      {!hasData ? (
+        <DepartmentEmptyState sectionTitle="Laboratory & Research Facilities" />
+      ) : (
+        <>
+          {/* Search & Stats Bar */}
+          <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="relative w-full sm:w-80">
+              <Search className="w-4 h-4 text-neutral-400 absolute left-3 top-2.5" />
+              <input
+                type="text"
+                placeholder="Search lab name, faculty in-charge, or area..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-[#eedfd8] bg-white text-[#33110e] focus:outline-hidden focus:ring-1 focus:ring-[#85261e]"
+              />
             </div>
 
-            <div className="pt-3 border-t border-[#eedfd8]/60 flex items-center justify-between text-xs">
-              <span className="flex items-center gap-1.5 text-neutral-600">
-                <UserCheck className="w-3.5 h-3.5 text-[#85261e]" /> Lab In-Charge: <strong className="text-[#1c110c]">{lab.head}</strong>
-              </span>
-            </div>
+            <span className="text-xs font-semibold text-neutral-600">
+              Showing {filteredLabs.length} of {labs.length} Research &amp; Teaching Labs
+            </span>
           </div>
-        ))}
-      </div>
+
+          {/* Labs Grid */}
+          <div className="grid gap-6 md:grid-cols-2">
+            {filteredLabs.map((lab) => (
+              <div
+                key={lab.id}
+                className="bg-white border border-[#eedfd8] rounded-2xl p-6 shadow-xs hover:shadow-md hover:border-[#85261e]/40 transition space-y-3 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 border-b border-[#eedfd8]/60 pb-3">
+                    <span className="flex items-center gap-1.5 font-mono text-[11px] text-neutral-500">
+                      <Building2 className="w-3.5 h-3.5 text-[#85261e]" /> {lab.location}
+                    </span>
+                    <span className="bg-[#fff9f6] border border-[#eedfd8] text-[#85261e] text-[10px] font-bold px-2 py-0.5 rounded">
+                      {lab.workstations}
+                    </span>
+                  </div>
+
+                  <h2 className="text-base font-bold text-[#1c110c] mt-3 leading-snug">
+                    {lab.name}
+                  </h2>
+
+                  <p className="text-xs text-neutral-700 leading-relaxed mt-2">
+                    {lab.description}
+                  </p>
+
+                  <div className="mt-3 bg-[#fff9f6] border border-[#eedfd8]/80 rounded-lg p-2.5 text-[11px] text-neutral-600">
+                    <strong className="text-[#33110e] font-bold">Key Hardware &amp; Toolkits:</strong> {lab.hardware}
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-[#eedfd8]/60 flex items-center justify-between text-xs">
+                  <span className="flex items-center gap-1.5 text-neutral-600">
+                    <UserCheck className="w-3.5 h-3.5 text-[#85261e]" /> Lab In-Charge:{" "}
+                    <strong className="text-[#1c110c]">{lab.head}</strong>
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

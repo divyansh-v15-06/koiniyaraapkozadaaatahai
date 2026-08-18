@@ -18,10 +18,12 @@ import {
   Calendar,
 } from "lucide-react";
 import { useDepartment } from "@/context/department-context";
+import { DepartmentEmptyState } from "@/components/common/department-empty-state";
 
 export default function ProgrammesPage() {
   const { activeDepartment } = useDepartment();
   const [selectedLevel, setSelectedLevel] = useState<string>("ALL");
+  const hasData = activeDepartment.slug === "cse";
 
   const programmes = [
     {
@@ -157,31 +159,37 @@ export default function ProgrammesPage() {
         </div>
 
         {/* Level Filter Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 bg-[#fff9f6] p-1 rounded-lg border border-[#eedfd8]">
-          {[
-            { id: "ALL", label: "All Programmes" },
-            { id: "UG", label: "Undergraduate (UG)" },
-            { id: "PG", label: "Postgraduate (PG)" },
-            { id: "DUAL", label: "Dual Degree" },
-            { id: "PHD", label: "Ph.D. Doctoral" },
-          ].map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedLevel(cat.id)}
-              className={`px-3 py-1 text-xs font-semibold rounded-md transition cursor-pointer ${
-                selectedLevel === cat.id
-                  ? "bg-[#33110e] text-white shadow-xs"
-                  : "text-[#33110e] hover:bg-[#eedfd8]/50"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        {hasData && (
+          <div className="flex flex-wrap items-center gap-1.5 bg-[#fff9f6] p-1 rounded-lg border border-[#eedfd8]">
+            {[
+              { id: "ALL", label: "All Programmes" },
+              { id: "UG", label: "Undergraduate (UG)" },
+              { id: "PG", label: "Postgraduate (PG)" },
+              { id: "DUAL", label: "Dual Degree" },
+              { id: "PHD", label: "Ph.D. Doctoral" },
+            ].map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedLevel(cat.id)}
+                className={`px-3 py-1 text-xs font-semibold rounded-md transition cursor-pointer ${
+                  selectedLevel === cat.id
+                    ? "bg-[#33110e] text-white shadow-xs"
+                    : "text-[#33110e] hover:bg-[#eedfd8]/50"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Overview Stat Badges */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      {!hasData ? (
+        <DepartmentEmptyState sectionTitle="Academic Programmes" />
+      ) : (
+        <>
+          {/* Overview Stat Badges */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div className="bg-[#fff9f6] border border-[#eedfd8] rounded-xl p-4 text-center">
           <span className="text-2xl font-extrabold text-[#33110e]">6</span>
           <p className="text-xs font-bold text-[#85261e] uppercase mt-0.5">Degree Programs</p>
@@ -293,6 +301,8 @@ export default function ProgrammesPage() {
           </div>
         ))}
       </div>
-    </div>
+    </>
+  )}
+</div>
   );
 }

@@ -2,9 +2,11 @@
 
 import { Download, FileText, Calendar, BookOpen, ExternalLink, Sparkles } from "lucide-react";
 import { useDepartment } from "@/context/department-context";
+import { DepartmentEmptyState } from "@/components/common/department-empty-state";
 
 export default function SyllabusPage() {
   const { activeDepartment } = useDepartment();
+  const hasData = activeDepartment.slug === "cse";
 
   const syllabusItems = [
     {
@@ -58,64 +60,70 @@ export default function SyllabusPage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-8 bg-white min-h-[85vh] font-sans">
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-6 bg-white min-h-[85vh] font-sans">
       {/* Title Header */}
       <div className="border-b border-[#eedfd8] pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl font-bold text-[#33110e] tracking-tight uppercase flex items-center gap-2">
               <FileText className="w-6 h-6 text-[#85261e]" />
-              Syllabus &amp; Academic Ordinances
+              Official Syllabi &amp; Curriculum Ordinances
             </h1>
             <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-xs font-bold px-2 py-0.5 rounded uppercase">
               {activeDepartment.code}
             </span>
           </div>
           <p className="text-xs text-neutral-600 mt-1">
-            Official curriculum schemes, NEP-2020 course outlines, credit charts, and downloadable PDFs for Department of {activeDepartment.name}.
+            Download approved NEP-2020 schemes, course structures, and examination ordinances for Department of {activeDepartment.name}.
           </p>
         </div>
       </div>
 
-      {/* Syllabus Grid */}
-      <div className="space-y-4">
-        {syllabusItems.map((item, i) => (
-          <div
-            key={i}
-            className="flex flex-col md:flex-row md:items-center justify-between gap-4 rounded-2xl border border-[#eedfd8] bg-white p-6 shadow-xs transition hover:border-[#85261e]/40 hover:shadow-md"
-          >
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[#fff9f6] border border-[#eedfd8] text-[#85261e]">
-                <FileText className="h-6 w-6" />
-              </div>
-              <div className="space-y-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <h2 className="font-bold text-[#1c110c] text-base">{item.programme}</h2>
-                  <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-[10px] font-bold px-2 py-0.5 rounded">
+      {!hasData ? (
+        <DepartmentEmptyState sectionTitle="Official Syllabi & Ordinances" />
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2">
+          {syllabusItems.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-white border border-[#eedfd8] rounded-2xl p-6 shadow-xs hover:shadow-md hover:border-[#85261e]/40 transition space-y-4 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-2 border-b border-[#eedfd8]/60 pb-3">
+                  <span className="bg-[#fff9f6] border border-[#eedfd8] text-[#85261e] text-[10px] font-bold px-2 py-0.5 rounded">
                     {item.version}
                   </span>
+                  <span className="font-mono text-[11px] text-neutral-500">{item.updated}</span>
                 </div>
+
+                <h2 className="text-base font-bold text-[#1c110c] leading-snug">
+                  {item.programme}
+                </h2>
+
                 <p className="text-xs text-neutral-600 leading-relaxed">
                   {item.description}
                 </p>
-                <div className="flex items-center gap-2 text-[11px] text-neutral-500 font-mono pt-1">
-                  <Calendar className="h-3.5 w-3.5 text-[#85261e]" /> Updated: {item.updated} • File: {item.size}
-                </div>
+              </div>
+
+              <div className="pt-3 border-t border-[#eedfd8]/60 flex items-center justify-between">
+                <span className="text-[11px] font-mono text-neutral-500 font-semibold">
+                  {item.size}
+                </span>
+
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 bg-[#33110e] hover:bg-[#85261e] text-white px-4 py-2 rounded-lg text-xs font-bold transition shadow-2xs"
+                >
+                  <Download className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Download PDF</span>
+                </a>
               </div>
             </div>
-
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noreferrer"
-              className="flex-shrink-0 flex items-center justify-center gap-2 rounded-xl bg-[#33110e] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#85261e] shadow-xs"
-            >
-              <Download className="h-4 w-4 text-amber-300" />
-              <span>Download Scheme PDF</span>
-            </a>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
