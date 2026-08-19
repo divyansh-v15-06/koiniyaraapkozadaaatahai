@@ -9,6 +9,7 @@ jobs:
   deploy:
     name: Build & Deploy to Server
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -44,13 +45,9 @@ jobs:
       - name: Install SSHPass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      - name: Deploy Pre-Compiled Artifacts over SSH Stream
+      - name: Package Artifacts
         run: |
-          mkdir -p ~/.ssh/sockets
-          
-          # Stream the compressed artifacts directly through standard SSH stdin and extract on server
-          # This avoids using the SFTP subsystem (fixing "subsystem request failed on channel 0")
-          tar -czf - \
+          tar -czf deploy.tar.gz \
             docker-compose.prod.yml \
             .env.production.example \
             nginx \
@@ -61,14 +58,38 @@ jobs:
             frontend/.next/static \
             frontend/public \
             frontend/Dockerfile.prod \
-            deploy | sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o ConnectTimeout=15 \
-              -o StrictHostKeyChecking=no \
-              -o ObscureKeystrokeTiming=no \
-              -o HostKeyAlgorithms=+ssh-rsa \
-              -o PubkeyAcceptedKeyTypes=+ssh-rsa \
-              -o KexAlgorithms=+diffie-hellman-group14-sha1 \
-              -o ServerAliveInterval=15 \
-              -o ServerAliveCountMax=10 \
-              -p ${{ secrets.SSH_PORT || 22 }} \
-              ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-              "mkdir -p ${{ secrets.DEPLOY_PATH }} && tar -xzf - -C ${{ secrets.DEPLOY_PATH }} && cd ${{ secrets.DEPLOY_PATH }} && bash deploy/deploy.sh --prebuilt"
+            deploy
+
+      - name: Upload Artifacts to Server
+        run: |
+          # Stream file cleanly into /tmp/deploy.tar.gz on server
+          # Direct file redirection (< deploy.tar.gz) guarantees clean EOF without needing SFTP
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
+            -o ConnectTimeout=20 \
+            -o ObscureKeystrokeTiming=no \
+            -o HostKeyAlgorithms=+ssh-rsa \
+            -o PubkeyAcceptedKeyTypes=+ssh-rsa \
+            -o KexAlgorithms=+diffie-hellman-group14-sha1 \
+            -p ${{ secrets.SSH_PORT || 22 }} \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "cat > /tmp/deploy.tar.gz" < deploy.tar.gz
+
+      - name: Extract & Launch Services
+        run: |
+          # Execute extract and deploy script in a clean session with stdin closed (-n)
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -n \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
+            -o ConnectTimeout=20 \
+            -o ObscureKeystrokeTiming=no \
+            -o HostKeyAlgorithms=+ssh-rsa \
+            -o PubkeyAcceptedKeyTypes=+ssh-rsa \
+            -o KexAlgorithms=+diffie-hellman-group14-sha1 \
+            -o ServerAliveInterval=15 \
+            -o ServerAliveCountMax=10 \
+            -p ${{ secrets.SSH_PORT || 22 }} \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "mkdir -p ${{ secrets.DEPLOY_PATH }} && tar -xzf /tmp/deploy.tar.gz -C ${{ secrets.DEPLOY_PATH }} && rm -f /tmp/deploy.tar.gz && cd ${{ secrets.DEPLOY_PATH }} && bash deploy/deploy.sh --prebuilt"
+

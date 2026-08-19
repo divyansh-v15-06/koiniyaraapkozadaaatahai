@@ -26,6 +26,16 @@ if [[ "${1:-}" == "--prebuilt" ]]; then
     PREBUILT=true
 fi
 
+# Detect docker compose CLI command
+if docker compose version >/dev/null 2>&1; then
+    DOCKER_COMPOSE="docker compose"
+elif command -v docker-compose >/dev/null 2>&1; then
+    DOCKER_COMPOSE="docker-compose"
+else
+    echo -e "${RED}Error: Neither 'docker compose' nor 'docker-compose' found!${NC}"
+    exit 1
+fi
+
 # 1. Pull latest git commits if inside a git repository
 if [ "$PREBUILT" = true ]; then
     echo -e "\n${YELLOW}[1/4] Using pre-compiled CI/CD build artifacts...${NC}"
@@ -51,18 +61,19 @@ fi
 
 # 3. Build & start containers
 echo -e "\n${YELLOW}[3/4] Building and launching production containers...${NC}"
-docker compose -f docker-compose.prod.yml down --remove-orphans || true
-docker compose -f docker-compose.prod.yml up -d --build --remove-orphans
+$DOCKER_COMPOSE -f docker-compose.prod.yml down --remove-orphans || true
+$DOCKER_COMPOSE -f docker-compose.prod.yml up -d --build --remove-orphans
 
 # 4. Verification & Status
 echo -e "\n${YELLOW}[4/4] Verifying service health...${NC}"
 sleep 8
-docker compose -f docker-compose.prod.yml ps
+$DOCKER_COMPOSE -f docker-compose.prod.yml ps
 
 # Cleanup unused images
 echo -e "\n${YELLOW}Cleaning up dangling Docker images...${NC}"
-docker image prune -f
+docker image prune -f || true
 
 echo -e "\n${GREEN}================================================================${NC}"
 echo -e "${GREEN}  ✅ Deployment Finished! Services are live on Ports 80 / 443   ${NC}"
 echo -e "${BLUE}================================================================${NC}\n"
+
