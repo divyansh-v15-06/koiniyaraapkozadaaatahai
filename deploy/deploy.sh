@@ -26,11 +26,26 @@ if [[ "${1:-}" == "--prebuilt" ]]; then
     PREBUILT=true
 fi
 
+# Detect if Docker requires sudo privilege
+SUDO_PREFIX=""
+if ! docker info >/dev/null 2>&1; then
+    if sudo -n docker info >/dev/null 2>&1; then
+        echo -e "${YELLOW}ℹ️  Using passwordless sudo for Docker commands...${NC}"
+        SUDO_PREFIX="sudo -E "
+    elif [ -n "${SUDO_PASS:-}" ] && echo "$SUDO_PASS" | sudo -S -E docker info >/dev/null 2>&1; then
+        echo -e "${YELLOW}ℹ️  Using authenticated sudo for Docker commands...${NC}"
+        SUDO_PREFIX="echo '$SUDO_PASS' | sudo -S -E "
+    else
+        echo -e "${YELLOW}⚠️  Docker daemon requires sudo permissions; attempting sudo...${NC}"
+        SUDO_PREFIX="sudo -E "
+    fi
+fi
+
 # Detect docker compose CLI command
-if docker compose version >/dev/null 2>&1; then
-    DOCKER_COMPOSE="docker compose"
-elif command -v docker-compose >/dev/null 2>&1; then
-    DOCKER_COMPOSE="docker-compose"
+if eval "${SUDO_PREFIX}docker compose version" >/dev/null 2>&1; then
+    COMPOSE_CMD="${SUDO_PREFIX}docker compose"
+elif eval "${SUDO_PREFIX}docker-compose version" >/dev/null 2>&1; then
+    COMPOSE_CMD="${SUDO_PREFIX}docker-compose"
 else
     echo -e "${RED}Error: Neither 'docker compose' nor 'docker-compose' found!${NC}"
     exit 1
@@ -61,19 +76,21 @@ fi
 
 # 3. Build & start containers
 echo -e "\n${YELLOW}[3/4] Building and launching production containers...${NC}"
-$DOCKER_COMPOSE -f docker-compose.prod.yml down --remove-orphans || true
-$DOCKER_COMPOSE -f docker-compose.prod.yml up -d --build --remove-orphans
+eval "$COMPOSE_CMD -f docker-compose.prod.yml down --remove-orphans" || true
+eval "$COMPOSE_CMD -f docker-compose.prod.yml build --progress=plain"
+eval "$COMPOSE_CMD -f docker-compose.prod.yml up -d --remove-orphans"
 
 # 4. Verification & Status
 echo -e "\n${YELLOW}[4/4] Verifying service health...${NC}"
-sleep 8
-$DOCKER_COMPOSE -f docker-compose.prod.yml ps
+sleep 5
+eval "$COMPOSE_CMD -f docker-compose.prod.yml ps"
 
 # Cleanup unused images
 echo -e "\n${YELLOW}Cleaning up dangling Docker images...${NC}"
-docker image prune -f || true
+eval "${SUDO_PREFIX}docker image prune -f" || true
 
 echo -e "\n${GREEN}================================================================${NC}"
 echo -e "${GREEN}  ✅ Deployment Finished! Services are live on Ports 80 / 443   ${NC}"
 echo -e "${BLUE}================================================================${NC}\n"
+
 

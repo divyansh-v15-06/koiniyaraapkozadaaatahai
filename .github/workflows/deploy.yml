@@ -91,5 +91,6 @@ jobs:
             -o ServerAliveCountMax=10 \
             -p ${{ secrets.SSH_PORT || 22 }} \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "mkdir -p ${{ secrets.DEPLOY_PATH }} && tar -xzf /tmp/deploy.tar.gz -C ${{ secrets.DEPLOY_PATH }} && rm -f /tmp/deploy.tar.gz && cd ${{ secrets.DEPLOY_PATH }} && bash deploy/deploy.sh --prebuilt"
+            "mkdir -p ${{ secrets.DEPLOY_PATH }} && tar -xzf /tmp/deploy.tar.gz -C ${{ secrets.DEPLOY_PATH }} && rm -f /tmp/deploy.tar.gz && cd ${{ secrets.DEPLOY_PATH }} && SUDO_PASS='${{ secrets.SSH_PASSWORD }}' bash deploy/deploy.sh --prebuilt"
+
 
