@@ -76,6 +76,7 @@ fi
 
 # 3. Build & start containers
 echo -e "\n${YELLOW}[3/4] Building and launching production containers...${NC}"
+eval "${SUDO_PREFIX}systemctl stop nginx apache2 2>/dev/null" || true
 eval "$COMPOSE_CMD -f docker-compose.prod.yml down --remove-orphans" || true
 eval "$COMPOSE_CMD -f docker-compose.prod.yml build --progress=plain"
 eval "$COMPOSE_CMD -f docker-compose.prod.yml up -d --remove-orphans"
@@ -92,5 +93,6 @@ eval "${SUDO_PREFIX}docker image prune -f" || true
 echo -e "\n${GREEN}================================================================${NC}"
 echo -e "${GREEN}  ✅ Deployment Finished! Services are live on Ports 80 / 443   ${NC}"
 echo -e "${BLUE}================================================================${NC}\n"
+
 
 

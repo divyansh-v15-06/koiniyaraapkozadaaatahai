@@ -6,6 +6,8 @@
     "dev": "./dev.sh",
     "start": "./dev.sh",
     "stop": "make stop",
-    "build": "cd frontend && npm run build"
+    "build": "make build",
+    "deploy": "bash deploy/deploy-local.sh"
   }
 }
+

@@ -54,6 +54,7 @@ jobs:
             backend/api \
             backend/migrations \
             backend/Dockerfile.prod \
+            frontend/.dockerignore \
             frontend/.next/standalone \
             frontend/.next/static \
             frontend/public \
@@ -62,9 +63,8 @@ jobs:
 
       - name: Upload Artifacts to Server
         run: |
-          # Stream file cleanly into /tmp/deploy.tar.gz on server
-          # Direct file redirection (< deploy.tar.gz) guarantees clean EOF without needing SFTP
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh \
+          # Use legacy SCP mode (-O) to bypass SFTP subsystem requirement
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp \
             -o StrictHostKeyChecking=no \
             -o UserKnownHostsFile=/dev/null \
             -o ConnectTimeout=20 \
@@ -72,9 +72,9 @@ jobs:
             -o HostKeyAlgorithms=+ssh-rsa \
             -o PubkeyAcceptedKeyTypes=+ssh-rsa \
             -o KexAlgorithms=+diffie-hellman-group14-sha1 \
-            -p ${{ secrets.SSH_PORT || 22 }} \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "cat > /tmp/deploy.tar.gz" < deploy.tar.gz
+            -O -P ${{ secrets.SSH_PORT || 22 }} \
+            deploy.tar.gz \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/deploy.tar.gz
 
       - name: Extract & Launch Services
         run: |
@@ -92,5 +92,6 @@ jobs:
             -p ${{ secrets.SSH_PORT || 22 }} \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
             "mkdir -p ${{ secrets.DEPLOY_PATH }} && tar -xzf /tmp/deploy.tar.gz -C ${{ secrets.DEPLOY_PATH }} && rm -f /tmp/deploy.tar.gz && cd ${{ secrets.DEPLOY_PATH }} && SUDO_PASS='${{ secrets.SSH_PASSWORD }}' bash deploy/deploy.sh --prebuilt"
+
 
 
