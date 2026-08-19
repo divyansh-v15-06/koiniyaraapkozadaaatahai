@@ -1,5 +1,4 @@
 node_modules
-.next
 out
 build
 dist
@@ -14,3 +13,4 @@ yarn-error.log*
 Dockerfile*
 docker-compose*.yml
 README.md
+

@@ -2,7 +2,9 @@ FROM alpine:3.19
 RUN apk add --no-cache ca-certificates curl
 WORKDIR /app
 COPY api .
+COPY migrations ./migrations
 RUN chmod +x ./api
 EXPOSE 8080
 CMD ["./api"]
+
 
