@@ -379,11 +379,11 @@ export default function HomePage() {
             <div className="lg:col-span-6 relative rounded-3xl overflow-hidden border border-[#eedfd8] shadow-2xl h-[420px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/nithbg12.jpg"
-                alt="NIT Hamirpur Campus"
-                className="w-full h-full object-cover"
+                src="/dhauladhar_panoramic_campus.jpg"
+                alt="NIT Hamirpur Panoramic Campus Overlooking Snow-Capped Dhauladhar Mountains"
+                className="w-full h-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
                 <span className="bg-[#85261e] text-white text-[10px] uppercase font-bold px-2.5 py-0.5 rounded w-fit mb-1">
                   Hamirpur, Himachal Pradesh
                 </span>
