@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
@@ -25,131 +26,253 @@ import {
   ClipboardList,
   Shield,
   LogOut,
+  ExternalLink,
+  ChevronDown,
+  ChevronRight,
+  Sparkles,
 } from "lucide-react";
+import { useDepartment } from "@/context/department-context";
 
-type SidebarLink =
-  | { label: string; href: string; icon: any }
-  | { section: string; items: { label: string; href: string; icon: any }[] };
+interface SidebarSection {
+  section: string;
+  id: string;
+  items: { label: string; href: string; icon: any; badge?: string }[];
+}
 
-const sidebarLinks: SidebarLink[] = [
+type SidebarItem =
+  | { label: string; href: string; icon: any; badge?: string }
+  | SidebarSection;
+
+const sidebarLinks: SidebarItem[] = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   {
-    section: "People",
+    section: "People Management",
+    id: "people",
     items: [
-      { label: "Faculty", href: "/admin/people/faculty", icon: Users },
-      { label: "Staff", href: "/admin/people/staff", icon: UserCog },
-      { label: "Students", href: "/admin/people/students", icon: GraduationCap },
+      { label: "Faculty Members", href: "/admin/people/faculty", icon: Users },
+      { label: "Staff Members", href: "/admin/people/staff", icon: UserCog },
+      { label: "Students Roster", href: "/admin/people/students", icon: GraduationCap },
       { label: "PhD Scholars", href: "/admin/people/phdscholars", icon: BookOpen },
     ],
   },
   {
-    section: "Research",
+    section: "Research & Output",
+    id: "research",
     items: [
       { label: "Publications", href: "/admin/research/publications", icon: FileText },
       { label: "Patents", href: "/admin/research/patents", icon: Shield },
-      { label: "Projects", href: "/admin/research/projects", icon: Lightbulb },
+      { label: "R&D Projects", href: "/admin/research/projects", icon: Lightbulb },
     ],
   },
   {
     section: "CMS & Content",
+    id: "cms",
     items: [
       { label: "Announcements", href: "/admin/news/announcements", icon: Megaphone },
       { label: "Achievements", href: "/admin/news/achievements", icon: Newspaper },
       { label: "Hero Carousel", href: "/admin/home/carousel", icon: Image },
-      { label: "About Us", href: "/admin/home/aboutus", icon: Info },
+      { label: "About Us Content", href: "/admin/home/aboutus", icon: Info },
       { label: "HOD Message", href: "/admin/hod", icon: MessageSquare },
       { label: "FAQ / Q&A", href: "/admin/qna", icon: HelpCircle },
-      { label: "Documents", href: "/admin/documents", icon: FolderOpen },
+      { label: "Documents & Files", href: "/admin/documents", icon: FolderOpen },
     ],
   },
   {
-    section: "Operations",
+    section: "Operations & Labs",
+    id: "operations",
     items: [
-      { label: "Courses", href: "/admin/academics/courses", icon: BookOpen },
-      { label: "Labs", href: "/admin/academics/labs", icon: FlaskConical },
-      { label: "Equipment", href: "/admin/equipments", icon: MonitorSmartphone },
-      { label: "Placement Stats", href: "/admin/placement", icon: BarChart3 },
+      { label: "Courses & Curricula", href: "/admin/academics/courses", icon: BookOpen },
+      { label: "Labs & Facilities", href: "/admin/academics/labs", icon: FlaskConical },
+      { label: "Equipment Inventory", href: "/admin/equipments", icon: MonitorSmartphone },
+      { label: "Placement Statistics", href: "/admin/placement", icon: BarChart3 },
     ],
   },
   {
-    section: "System",
+    section: "Administration & System",
+    id: "system",
     items: [
-      { label: "Credentials", href: "/admin/credentials/facultiescredentials", icon: Wrench },
-      { label: "Reports", href: "/admin/report", icon: ClipboardList },
-      { label: "Analytics", href: "/admin/analytics", icon: BarChart3 },
+      { label: "Faculty Credentials", href: "/admin/credentials/facultiescredentials", icon: Wrench },
+      { label: "Generate Reports", href: "/admin/report", icon: ClipboardList },
+      { label: "Visual Analytics", href: "/admin/analytics", icon: BarChart3 },
     ],
   },
 ];
 
 export function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { activeDepartment } = useDepartment();
+  const [adminUser, setAdminUser] = useState<any>(null);
+  const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    const raw = localStorage.getItem("auth_user");
+    if (raw) {
+      try {
+        setAdminUser(JSON.parse(raw));
+      } catch {}
+    }
+  }, []);
+
+  const toggleSection = (id: string) => {
+    setCollapsedSections((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("auth_user");
+    router.push("/admin/login");
+  };
 
   return (
-    <aside className="sticky top-0 flex h-screen w-64 flex-shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
-      <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-destructive text-destructive-foreground text-xs font-bold">
-          A
+    <aside className="sticky top-0 flex h-screen w-64 flex-shrink-0 flex-col border-r border-[#eedfd8] bg-white text-[#1c110c] font-sans shadow-xs select-none">
+      {/* Brand Header */}
+      <div className="flex h-16 items-center gap-3 border-b border-[#eedfd8] px-4 bg-[#fff9f6] flex-shrink-0">
+        <div className="w-10 h-10 rounded-full bg-white border border-[#eedfd8] p-1 shadow-2xs flex items-center justify-center flex-shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/nith.png"
+            alt="NIT Hamirpur"
+            className="w-full h-full object-contain filter drop-shadow-2xs"
+          />
         </div>
-        <span className="text-sm font-semibold">Admin Portal</span>
+        <div className="min-w-0">
+          <span className="text-xs font-extrabold text-[#33110e] tracking-tight block truncate uppercase">
+            Admin Control Panel
+          </span>
+          <span className="text-[10px] font-semibold text-[#85261e] block truncate">
+            NIT Hamirpur • {activeDepartment?.code || "CSE"} Dept
+          </span>
+        </div>
       </div>
 
-      <nav className="flex-1 overflow-y-auto px-3 py-4">
-        <ul className="space-y-1">
-          {sidebarLinks.map((item, i) => {
-            if ("section" in item) {
-              return (
-                <li key={i}>
-                  <p className="mb-1 mt-4 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-foreground/50">
-                    {item.section}
-                  </p>
-                  <ul className="space-y-0.5">
-                    {item.items.map((link) => (
-                      <li key={link.href}>
+      {/* Navigation Links with Collapsible Categories & Smooth Scroll */}
+      <nav className="flex-1 overflow-y-auto px-2.5 py-2.5 space-y-1 scrollbar-thin scrollbar-thumb-[#eedfd8] scrollbar-track-transparent">
+        {sidebarLinks.map((item, i) => {
+          if ("section" in item) {
+            const isCollapsed = !!collapsedSections[item.id];
+            const hasActiveChild = item.items.some(
+              (sub) => pathname === sub.href || pathname.startsWith(sub.href + "/")
+            );
+
+            return (
+              <div key={item.id || i} className="pt-1.5">
+                <button
+                  type="button"
+                  onClick={() => toggleSection(item.id)}
+                  className="flex w-full items-center justify-between px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#85261e]/70 hover:text-[#85261e] rounded-lg transition group cursor-pointer"
+                >
+                  <span className="truncate">{item.section}</span>
+                  {isCollapsed ? (
+                    <ChevronRight className="w-3 h-3 text-neutral-400 group-hover:text-[#85261e] transition" />
+                  ) : (
+                    <ChevronDown className="w-3 h-3 text-neutral-400 group-hover:text-[#85261e] transition" />
+                  )}
+                </button>
+
+                {!isCollapsed && (
+                  <div className="mt-0.5 space-y-0.5 pl-1">
+                    {item.items.map((link) => {
+                      const isActive =
+                        pathname === link.href || pathname.startsWith(link.href + "/");
+                      return (
                         <Link
+                          key={link.href}
                           href={link.href}
                           className={cn(
-                            "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition",
-                            pathname === link.href
-                              ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                              : "text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                            "flex items-center justify-between rounded-xl px-2.5 py-1.5 text-[11.5px] font-semibold transition-all duration-150 group",
+                            isActive
+                              ? "bg-[#33110e] text-white shadow-xs"
+                              : "text-[#6b5c58] hover:bg-[#fff9f6] hover:text-[#33110e]"
                           )}
                         >
-                          <link.icon className="h-4 w-4 flex-shrink-0" />
-                          {link.label}
+                          <div className="flex items-center gap-2.5 truncate">
+                            <link.icon
+                              className={cn(
+                                "h-3.5 w-3.5 flex-shrink-0 transition",
+                                isActive
+                                  ? "text-amber-300"
+                                  : "text-[#85261e]/60 group-hover:text-[#85261e]"
+                              )}
+                            />
+                            <span className="truncate">{link.label}</span>
+                          </div>
+                          {link.badge && (
+                            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-400/20 text-amber-300">
+                              {link.badge}
+                            </span>
+                          )}
                         </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              );
-            }
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition",
-                    pathname === item.href
-                      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                      : "text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                  )}
-                >
-                  <item.icon className="h-4 w-4 flex-shrink-0" />
-                  {item.label}
-                </Link>
-              </li>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             );
-          })}
-        </ul>
+          }
+
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-2.5 rounded-xl px-3 py-2 text-[12px] font-semibold transition-all duration-150",
+                isActive
+                  ? "bg-[#33110e] text-white shadow-xs"
+                  : "text-[#6b5c58] hover:bg-[#fff9f6] hover:text-[#33110e]"
+              )}
+            >
+              <item.icon
+                className={cn(
+                  "h-4 w-4 flex-shrink-0",
+                  isActive ? "text-amber-300" : "text-[#85261e]/60"
+                )}
+              />
+              <span className="truncate">{item.label}</span>
+            </Link>
+          );
+        })}
       </nav>
 
-      <div className="border-t border-sidebar-border p-3">
+      {/* Admin Profile & Logout Sticky Footer */}
+      <div className="border-t border-[#eedfd8] p-3 bg-[#fff9f6] space-y-2 flex-shrink-0">
+        {/* Public Website Link */}
+        <Link
+          href={`/?dept=${activeDepartment?.slug || "cse"}`}
+          target="_blank"
+          className="flex items-center justify-between rounded-lg px-2.5 py-1 text-[10px] font-bold text-[#85261e] hover:bg-white hover:shadow-2xs transition"
+        >
+          <span className="flex items-center gap-1.5">
+            <ExternalLink className="w-3 h-3 text-[#85261e]" />
+            Public Department Site
+          </span>
+          <span className="text-[9px] text-neutral-400 font-mono">↗</span>
+        </Link>
+
+        {/* Admin Info Card */}
+        <div className="flex items-center gap-2 rounded-xl bg-white border border-[#eedfd8] p-2 shadow-2xs">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#33110e] text-amber-300 text-[10px] font-extrabold flex-shrink-0">
+            {adminUser?.full_name?.charAt(0)?.toUpperCase() || "A"}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-bold text-[#33110e] truncate leading-tight">
+              {adminUser?.full_name || "Department Admin"}
+            </p>
+            <p className="text-[9px] text-[#6b5c58] truncate font-mono leading-tight">
+              {adminUser?.email || "admin@nith.ac.in"}
+            </p>
+          </div>
+        </div>
+
+        {/* Logout */}
         <button
           type="button"
-          className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-sidebar-foreground/70 transition hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+          onClick={handleLogout}
+          className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-[#eedfd8] bg-white py-1.5 text-[10.5px] font-bold text-[#85261e] hover:bg-[#85261e] hover:text-white transition cursor-pointer shadow-2xs"
         >
-          <LogOut className="h-4 w-4" />
-          Sign Out
+          <LogOut className="h-3 w-3" />
+          Sign Out of Console
         </button>
       </div>
     </aside>
