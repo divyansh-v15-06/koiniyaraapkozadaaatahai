@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY, MOCK_EVENTS } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 export default function FacultyEventsPage() {
   const [user, setUser] = useState<any>(null);
@@ -39,6 +40,7 @@ export default function FacultyEventsPage() {
   const [coordinator, setCoordinator] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -51,20 +53,23 @@ export default function FacultyEventsPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const lastName = match.full_name.toLowerCase().split(" ").pop() || "";
-          const userEvents = MOCK_EVENTS.filter((e: any) => {
-            if (e.faculty_ids && e.faculty_ids.includes(match.id)) return true;
-            if (e.convenor && e.convenor.toLowerCase().includes(lastName)) return true;
-            if (e.coordinator && e.coordinator.toLowerCase().includes(lastName)) return true;
-            return false;
-          });
-          setEvents(userEvents.length > 0 ? userEvents : MOCK_EVENTS);
         }
       } catch {}
-    } else {
-      setEvents(MOCK_EVENTS);
     }
+
+    const lastName = activeFaculty.full_name.toLowerCase().split(" ").pop() || "";
+    const userEvents = MOCK_EVENTS.filter((e: any) => {
+      if (e.faculty_ids && e.faculty_ids.includes(activeFaculty.id)) return true;
+      if (e.convenor && e.convenor.toLowerCase().includes(lastName)) return true;
+      if (e.coordinator && e.coordinator.toLowerCase().includes(lastName)) return true;
+      return false;
+    });
+
+    const fallback = userEvents.length > 0 ? userEvents : MOCK_EVENTS;
+    const stored = getStoredData(activeFaculty, "events", fallback);
+    setEvents(stored);
   }, []);
 
   const filteredEvents = useMemo(() => {
@@ -107,17 +112,21 @@ export default function FacultyEventsPage() {
       coordinator: coordinator.trim(),
       faculty_ids: [faculty.id],
     };
-    setEvents([newEntry, ...events]);
+    const updated = [newEntry, ...events];
+    setEvents(updated);
+    setStoredData(faculty, "events", updated);
     setShowModal(false);
     setTitle("");
     setConvenor("");
     setCoordinator("");
-    toast.success("Conference / Event record saved!");
+    toast.success("Conference / Event record saved and persisted!");
   };
 
   const handleDelete = (id: string) => {
-    setEvents(events.filter((x) => x.id !== id));
-    toast.success("Event record removed");
+    const updated = events.filter((x) => x.id !== id);
+    setEvents(updated);
+    setStoredData(faculty, "events", updated);
+    toast.success("Event record removed and storage updated");
   };
 
   return (

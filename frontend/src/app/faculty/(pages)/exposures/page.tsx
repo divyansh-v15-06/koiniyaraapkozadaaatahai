@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Globe, X, MapPin, Plane, Building2, Sparkles, Calendar, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 interface Exposure {
   title: string;
@@ -21,6 +22,7 @@ export default function ExposuresPage() {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -33,24 +35,25 @@ export default function ExposuresPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const facultyExposures = (match as any).exposures || [];
-          if (facultyExposures.length > 0) {
-            setItems(facultyExposures);
-          } else {
-            setItems([
-              {
-                title: "International Conference on Information Technology & Distributed Systems",
-                description: "Paper presentation and international collaborative research visit.",
-              },
-            ]);
-          }
         }
       } catch {}
-    } else {
-      const defaultExposures = (MOCK_FACULTY[0] as any).exposures || [];
-      setItems(defaultExposures);
     }
+
+    const facultyExposures = (activeFaculty as any).exposures || [];
+    const fallback =
+      facultyExposures.length > 0
+        ? facultyExposures
+        : [
+            {
+              title: "International Conference on Information Technology & Distributed Systems",
+              description: "Paper presentation and international collaborative research visit.",
+            },
+          ];
+
+    const stored = getStoredData<Exposure>(activeFaculty, "exposures", fallback);
+    setItems(stored);
   }, []);
 
   const handleAdd = (e: React.FormEvent) => {
@@ -63,16 +66,20 @@ export default function ExposuresPage() {
       title: title.trim(),
       description: description.trim(),
     };
-    setItems([newExposure, ...items]);
+    const updated = [newExposure, ...items];
+    setItems(updated);
+    setStoredData(faculty, "exposures", updated);
     setShowModal(false);
     setTitle("");
     setDescription("");
-    toast.success("Foreign visit & exposure record saved!");
+    toast.success("Foreign visit & exposure record saved and persisted!");
   };
 
   const handleDelete = (index: number) => {
-    setItems(items.filter((_, idx) => idx !== index));
-    toast.success("Exposure record removed");
+    const updated = items.filter((_, idx) => idx !== index);
+    setItems(updated);
+    setStoredData(faculty, "exposures", updated);
+    toast.success("Exposure record removed and storage updated");
   };
 
   return (

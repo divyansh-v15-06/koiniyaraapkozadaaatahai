@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY, MOCK_PUBLICATIONS } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 export default function FacultyPublicationsPage() {
   const [user, setUser] = useState<any>(null);
@@ -42,6 +43,7 @@ export default function FacultyPublicationsPage() {
   const [pages, setPages] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -54,23 +56,25 @@ export default function FacultyPublicationsPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const legacyId = match.legacy_id;
-          const lastName = match.full_name.toLowerCase().split(" ").pop() || "";
-
-          const userPapers = MOCK_PUBLICATIONS.filter((p: any) => {
-            if (legacyId && p.faculty_legacy_ids?.includes(legacyId)) return true;
-            if (p.author_text && typeof p.author_text === "string" && p.author_text.toLowerCase().includes(lastName)) return true;
-            if (Array.isArray(p.authors) && p.authors.some((a: any) => typeof a === "string" && a.toLowerCase().includes(lastName))) return true;
-            return false;
-          });
-
-          setPublications(userPapers.length > 0 ? userPapers : MOCK_PUBLICATIONS.slice(0, 15));
         }
       } catch {}
-    } else {
-      setPublications(MOCK_PUBLICATIONS.slice(0, 15));
     }
+
+    const legacyId = activeFaculty.legacy_id;
+    const lastName = activeFaculty.full_name.toLowerCase().split(" ").pop() || "";
+
+    const userPapers = MOCK_PUBLICATIONS.filter((p: any) => {
+      if (legacyId && p.faculty_legacy_ids?.includes(legacyId)) return true;
+      if (p.author_text && typeof p.author_text === "string" && p.author_text.toLowerCase().includes(lastName)) return true;
+      if (Array.isArray(p.authors) && p.authors.some((a: any) => typeof a === "string" && a.toLowerCase().includes(lastName))) return true;
+      return false;
+    });
+
+    const fallback = userPapers.length > 0 ? userPapers : MOCK_PUBLICATIONS.slice(0, 15);
+    const stored = getStoredData(activeFaculty, "publications", fallback);
+    setPublications(stored);
   }, []);
 
   const filteredPublications = useMemo(() => {
@@ -124,7 +128,9 @@ export default function FacultyPublicationsPage() {
       page_range: pages.trim() || undefined,
       faculty_legacy_ids: [faculty.legacy_id],
     };
-    setPublications([newPub, ...publications]);
+    const updated = [newPub, ...publications];
+    setPublications(updated);
+    setStoredData(faculty, "publications", updated);
     setShowModal(false);
     setTitle("");
     setVenue("");
@@ -133,12 +139,14 @@ export default function FacultyPublicationsPage() {
     setVolume("");
     setIssue("");
     setPages("");
-    toast.success("Publication recorded successfully in portfolio!");
+    toast.success("Publication recorded and saved permanently in portfolio!");
   };
 
   const handleDelete = (id: string) => {
-    setPublications(publications.filter((p) => p.id !== id));
-    toast.success("Publication removed from portfolio");
+    const updated = publications.filter((p) => p.id !== id);
+    setPublications(updated);
+    setStoredData(faculty, "publications", updated);
+    toast.success("Publication removed from portfolio and storage updated");
   };
 
   return (

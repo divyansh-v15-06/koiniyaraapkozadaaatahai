@@ -18,6 +18,7 @@ import {
 import { toast } from "sonner";
 import { formatINR } from "@/lib/utils";
 import { MOCK_FACULTY, MOCK_PROJECTS } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 export default function FacultyProjectsPage() {
   const [user, setUser] = useState<any>(null);
@@ -37,6 +38,7 @@ export default function FacultyProjectsPage() {
   const [investigators, setInvestigators] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -49,19 +51,22 @@ export default function FacultyProjectsPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const lastName = match.full_name.toLowerCase().split(" ").pop() || "";
-          const userProjects = MOCK_PROJECTS.filter((p: any) => {
-            if (p.faculty_ids && p.faculty_ids.includes(match.id)) return true;
-            if (p.raw_investigators && p.raw_investigators.toLowerCase().includes(lastName)) return true;
-            return false;
-          });
-          setProjects(userProjects.length > 0 ? userProjects : MOCK_PROJECTS);
         }
       } catch {}
-    } else {
-      setProjects(MOCK_PROJECTS);
     }
+
+    const lastName = activeFaculty.full_name.toLowerCase().split(" ").pop() || "";
+    const userProjects = MOCK_PROJECTS.filter((p: any) => {
+      if (p.faculty_ids && p.faculty_ids.includes(activeFaculty.id)) return true;
+      if (p.raw_investigators && p.raw_investigators.toLowerCase().includes(lastName)) return true;
+      return false;
+    });
+
+    const fallback = userProjects.length > 0 ? userProjects : MOCK_PROJECTS;
+    const stored = getStoredData(activeFaculty, "projects", fallback);
+    setProjects(stored);
   }, []);
 
   const filteredProjects = useMemo(() => {
@@ -110,7 +115,9 @@ export default function FacultyProjectsPage() {
       raw_investigators: investigators.trim() || faculty.full_name,
       faculty_ids: [faculty.id],
     };
-    setProjects([newPrj, ...projects]);
+    const updated = [newPrj, ...projects];
+    setProjects(updated);
+    setStoredData(faculty, "projects", updated);
     setShowModal(false);
     setTitle("");
     setAgency("");
@@ -118,12 +125,14 @@ export default function FacultyProjectsPage() {
     setInvestigators("");
     setBudget(2500000);
     setStatus("Ongoing");
-    toast.success("R&D Sponsored Project grant saved!");
+    toast.success("R&D Sponsored Project grant saved and persisted!");
   };
 
   const handleDelete = (id: string) => {
-    setProjects(projects.filter((x) => x.id !== id));
-    toast.success("Project record removed");
+    const updated = projects.filter((x) => x.id !== id);
+    setProjects(updated);
+    setStoredData(faculty, "projects", updated);
+    toast.success("Project record removed and storage updated");
   };
 
   return (

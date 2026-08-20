@@ -18,12 +18,14 @@ import {
   Building2,
 } from "lucide-react";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredObject, setStoredObject } from "@/lib/faculty-storage";
 
 export default function FacultyProfilePage() {
   const [user, setUser] = useState<any>(null);
   const [faculty, setFaculty] = useState<any>(MOCK_FACULTY[0]);
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -36,27 +38,33 @@ export default function FacultyProfilePage() {
             f.id === parsed.faculty_id
         );
         if (match) {
-          setFaculty({
-            ...match,
-            bio:
-              match.profile?.bio ||
-              `${match.full_name} is currently serving as ${match.designation} in the Department of Computer Science & Engineering at the National Institute of Technology Hamirpur (HP).`,
-            specializations:
-              match.research_interests?.join(", ") ||
-              match.profile?.specializations ||
-              "Computer Science & Engineering",
-            orcid: match.profile?.orcid || "0000-0002-1845-9231",
-            scopus_id: match.profile?.scopus_id || "57193829100",
-            google_scholar_id: match.profile?.google_scholar_id || "",
-            scholar_url: (match.profile as any)?.scholar_url || (match as any).portfolio_url || "",
-          });
+          activeFaculty = match;
         }
       } catch {}
     }
+
+    const defaultProfile = {
+      ...activeFaculty,
+      bio:
+        activeFaculty.profile?.bio ||
+        `${activeFaculty.full_name} is currently serving as ${activeFaculty.designation} in the Department of Computer Science & Engineering at the National Institute of Technology Hamirpur (HP).`,
+      specializations:
+        activeFaculty.research_interests?.join(", ") ||
+        activeFaculty.profile?.specializations ||
+        "Computer Science & Engineering",
+      orcid: activeFaculty.profile?.orcid || "0000-0002-1845-9231",
+      scopus_id: activeFaculty.profile?.scopus_id || "57193829100",
+      google_scholar_id: activeFaculty.profile?.google_scholar_id || "",
+      scholar_url: (activeFaculty.profile as any)?.scholar_url || (activeFaculty as any).portfolio_url || "",
+    };
+
+    const stored = getStoredObject(activeFaculty, "profile", defaultProfile);
+    setFaculty(stored);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setStoredObject(faculty, "profile", faculty);
     // Update local storage user if name or email changed
     if (user) {
       const updatedUser = {
@@ -66,7 +74,7 @@ export default function FacultyProfilePage() {
       };
       localStorage.setItem("auth_user", JSON.stringify(updatedUser));
     }
-    toast.success("Faculty profile updated successfully!");
+    toast.success("Faculty profile updated and saved permanently!");
   };
 
   return (

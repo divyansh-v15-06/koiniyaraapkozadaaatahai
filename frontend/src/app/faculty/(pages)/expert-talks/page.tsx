@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Mic2, X, Building2, Calendar, Sparkles, BookOpen, Clock, Presentation } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 interface ExpertTalk {
   title: string;
@@ -25,6 +26,7 @@ export default function ExpertTalksPage() {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -37,32 +39,33 @@ export default function ExpertTalksPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const facultyTalks = (match as any).expert_talks || [];
-          if (facultyTalks.length > 0) {
-            setItems(facultyTalks);
-          } else {
-            setItems([
-              {
-                title: "Emerging Trends in Artificial Intelligence and Cloud Systems",
-                venue: "National Institute of Technology Hamirpur",
-                date: "2024-04-12",
-                description: "Keynote lecture in One-Week Faculty Development Programme.",
-              },
-              {
-                title: "Wireless Sensor Networks & Distributed Security",
-                venue: "IEEE Delhi Section & IIT Roorkee",
-                date: "2023-11-20",
-                description: "Invited expert session for postgraduate researchers.",
-              },
-            ]);
-          }
         }
       } catch {}
-    } else {
-      const defaultTalks = (MOCK_FACULTY[0] as any).expert_talks || [];
-      setItems(defaultTalks);
     }
+
+    const facultyTalks = (activeFaculty as any).expert_talks || [];
+    const fallback =
+      facultyTalks.length > 0
+        ? facultyTalks
+        : [
+            {
+              title: "Emerging Trends in Artificial Intelligence and Cloud Systems",
+              venue: "National Institute of Technology Hamirpur",
+              date: "2024-04-12",
+              description: "Keynote lecture in One-Week Faculty Development Programme.",
+            },
+            {
+              title: "Wireless Sensor Networks & Distributed Security",
+              venue: "IEEE Delhi Section & IIT Roorkee",
+              date: "2023-11-20",
+              description: "Invited expert session for postgraduate researchers.",
+            },
+          ];
+
+    const stored = getStoredData<ExpertTalk>(activeFaculty, "expert_talks", fallback);
+    setItems(stored);
   }, []);
 
   const handleAdd = (e: React.FormEvent) => {
@@ -77,18 +80,22 @@ export default function ExpertTalksPage() {
       date: date.trim() || undefined,
       description: description.trim() || undefined,
     };
-    setItems([newTalk, ...items]);
+    const updated = [newTalk, ...items];
+    setItems(updated);
+    setStoredData(faculty, "expert_talks", updated);
     setShowModal(false);
     setTitle("");
     setVenue("");
     setDate("");
     setDescription("");
-    toast.success("Expert talk & keynote lecture saved!");
+    toast.success("Expert talk & keynote lecture saved and persisted!");
   };
 
   const handleDelete = (index: number) => {
-    setItems(items.filter((_, idx) => idx !== index));
-    toast.success("Talk record removed");
+    const updated = items.filter((_, idx) => idx !== index);
+    setItems(updated);
+    setStoredData(faculty, "expert_talks", updated);
+    toast.success("Talk record removed and storage updated");
   };
 
   return (

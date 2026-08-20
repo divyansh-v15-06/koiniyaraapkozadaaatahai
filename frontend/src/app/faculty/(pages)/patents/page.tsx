@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY, MOCK_PATENTS } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 export default function FacultyPatentsPage() {
   const [user, setUser] = useState<any>(null);
@@ -38,6 +39,7 @@ export default function FacultyPatentsPage() {
   const [inventors, setInventors] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -50,19 +52,22 @@ export default function FacultyPatentsPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const lastName = match.full_name.toLowerCase().split(" ").pop() || "";
-          const userPatents = MOCK_PATENTS.filter((p: any) => {
-            if (p.faculty_ids && p.faculty_ids.includes(match.id)) return true;
-            if (p.raw_inventors && p.raw_inventors.toLowerCase().includes(lastName)) return true;
-            return false;
-          });
-          setPatents(userPatents.length > 0 ? userPatents : MOCK_PATENTS);
         }
       } catch {}
-    } else {
-      setPatents(MOCK_PATENTS);
     }
+
+    const lastName = activeFaculty.full_name.toLowerCase().split(" ").pop() || "";
+    const userPatents = MOCK_PATENTS.filter((p: any) => {
+      if (p.faculty_ids && p.faculty_ids.includes(activeFaculty.id)) return true;
+      if (p.raw_inventors && p.raw_inventors.toLowerCase().includes(lastName)) return true;
+      return false;
+    });
+
+    const fallback = userPatents.length > 0 ? userPatents : MOCK_PATENTS;
+    const stored = getStoredData(activeFaculty, "patents", fallback);
+    setPatents(stored);
   }, []);
 
   const filteredPatents = useMemo(() => {
@@ -102,19 +107,23 @@ export default function FacultyPatentsPage() {
       abstract_text: `Patented technology developed by ${inventors || faculty.full_name}.`,
       faculty_ids: [faculty.id],
     };
-    setPatents([newPatent, ...patents]);
+    const updated = [newPatent, ...patents];
+    setPatents(updated);
+    setStoredData(faculty, "patents", updated);
     setShowModal(false);
     setTitle("");
     setAppNo("");
     setPatentNo("");
     setInventors("");
     setStatus("Filed");
-    toast.success("Intellectual property patent record saved!");
+    toast.success("Intellectual property patent record saved and persisted!");
   };
 
   const handleDelete = (id: string) => {
-    setPatents(patents.filter((x) => x.id !== id));
-    toast.success("Patent entry removed");
+    const updated = patents.filter((x) => x.id !== id);
+    setPatents(updated);
+    setStoredData(faculty, "patents", updated);
+    toast.success("Patent entry removed and storage updated");
   };
 
   const getStatusBadge = (st: string) => {

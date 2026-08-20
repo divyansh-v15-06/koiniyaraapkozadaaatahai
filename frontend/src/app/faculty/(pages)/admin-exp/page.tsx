@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, ShieldCheck, X, Building2, Calendar, Sparkles, CheckCircle2, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 interface AdminRole {
   position: string;
@@ -28,6 +29,7 @@ export default function AdminExpPage() {
   const [isCurrent, setIsCurrent] = useState(true);
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -40,42 +42,40 @@ export default function AdminExpPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const adminRoles =
-            (match as any).admin_experiences ||
-            (match as any).administrative_experiences ||
-            [];
-          if (adminRoles.length > 0) {
-            setItems(adminRoles);
-          } else {
-            setItems([
-              {
-                position: "Head of the Department (CSE)",
-                organization: "Department of Computer Science & Engineering, NIT Hamirpur",
-                start_date: "2024",
-                end_date: "Present",
-                full_start: "2024-04-01",
-                full_end: "Present",
-              },
-              {
-                position: "Faculty In-Charge (Departmental Laboratory)",
-                organization: "National Institute of Technology Hamirpur",
-                start_date: "2020",
-                end_date: "2024",
-                full_start: "2020-08-01",
-                full_end: "2024-03-31",
-              },
-            ]);
-          }
         }
       } catch {}
-    } else {
-      const defaultRoles =
-        (MOCK_FACULTY[0] as any).admin_experiences ||
-        (MOCK_FACULTY[0] as any).administrative_experiences ||
-        [];
-      setItems(defaultRoles);
     }
+
+    const adminRoles =
+      (activeFaculty as any).admin_experiences ||
+      (activeFaculty as any).administrative_experiences ||
+      [];
+    const fallback =
+      adminRoles.length > 0
+        ? adminRoles
+        : [
+            {
+              position: "Head of the Department (CSE)",
+              organization: "Department of Computer Science & Engineering, NIT Hamirpur",
+              start_date: "2024",
+              end_date: "Present",
+              full_start: "2024-04-01",
+              full_end: "Present",
+            },
+            {
+              position: "Faculty In-Charge (Departmental Laboratory)",
+              organization: "National Institute of Technology Hamirpur",
+              start_date: "2020",
+              end_date: "2024",
+              full_start: "2020-08-01",
+              full_end: "2024-03-31",
+            },
+          ];
+
+    const stored = getStoredData<AdminRole>(activeFaculty, "admin_experiences", fallback);
+    setItems(stored);
   }, []);
 
   const handleAdd = (e: React.FormEvent) => {
@@ -92,19 +92,23 @@ export default function AdminExpPage() {
       full_start: start.trim(),
       full_end: isCurrent ? "Present" : end.trim() || "Present",
     };
-    setItems([newRole, ...items]);
+    const updated = [newRole, ...items];
+    setItems(updated);
+    setStoredData(faculty, "admin_experiences", updated);
     setShowModal(false);
     setPosition("");
     setOrganization("National Institute of Technology Hamirpur");
     setStart("");
     setEnd("Present");
     setIsCurrent(true);
-    toast.success("Administrative appointment record saved!");
+    toast.success("Administrative appointment record saved and persisted!");
   };
 
   const handleDelete = (index: number) => {
-    setItems(items.filter((_, idx) => idx !== index));
-    toast.success("Administrative role record removed");
+    const updated = items.filter((_, idx) => idx !== index);
+    setItems(updated);
+    setStoredData(faculty, "admin_experiences", updated);
+    toast.success("Administrative role record removed and storage updated");
   };
 
   return (

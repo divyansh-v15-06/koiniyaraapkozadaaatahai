@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Briefcase, X, Building2, Calendar, BookOpen, Clock, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 interface TeachingExp {
   position: string;
@@ -30,6 +31,7 @@ export default function TeachingExperiencePage() {
   const [courses, setCourses] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -42,43 +44,36 @@ export default function TeachingExperiencePage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          if (match.teaching_experiences && match.teaching_experiences.length > 0) {
-            setItems(match.teaching_experiences);
-          } else {
-            setItems([
-              {
-                position: match.designation || "Associate Professor",
-                organization: "National Institute of Technology Hamirpur",
-                department: "Computer Science & Engineering",
-                start_date: "2018",
-                end_date: "Present",
-                courses_taught: ["Distributed Systems", "Wireless Sensor Networks", "Operating Systems"],
-              },
-              {
-                position: "Assistant Professor",
-                organization: "National Institute of Technology Hamirpur",
-                department: "Computer Science & Engineering",
-                start_date: "2012",
-                end_date: "2018",
-                courses_taught: ["Data Structures", "Computer Networks"],
-              },
-            ]);
-          }
         }
       } catch {}
-    } else {
-      setItems([
-        {
-          position: "Professor",
-          organization: "National Institute of Technology Hamirpur",
-          department: "Computer Science & Engineering",
-          start_date: "2016",
-          end_date: "Present",
-          courses_taught: ["Advanced Computer Architecture", "Cloud Computing"],
-        },
-      ]);
     }
+
+    const defaultTeaching =
+      activeFaculty.teaching_experiences && activeFaculty.teaching_experiences.length > 0
+        ? activeFaculty.teaching_experiences
+        : [
+            {
+              position: activeFaculty.designation || "Associate Professor",
+              organization: "National Institute of Technology Hamirpur",
+              department: "Computer Science & Engineering",
+              start_date: "2018",
+              end_date: "Present",
+              courses_taught: ["Distributed Systems", "Wireless Sensor Networks", "Operating Systems"],
+            },
+            {
+              position: "Assistant Professor",
+              organization: "National Institute of Technology Hamirpur",
+              department: "Computer Science & Engineering",
+              start_date: "2012",
+              end_date: "2018",
+              courses_taught: ["Data Structures", "Computer Networks"],
+            },
+          ];
+
+    const stored = getStoredData<TeachingExp>(activeFaculty, "teaching_experiences", defaultTeaching);
+    setItems(stored);
   }, []);
 
   const handleAdd = (e: React.FormEvent) => {
@@ -98,7 +93,9 @@ export default function TeachingExperiencePage() {
         .map((c) => c.trim())
         .filter(Boolean),
     };
-    setItems([newExp, ...items]);
+    const updated = [newExp, ...items];
+    setItems(updated);
+    setStoredData(faculty, "teaching_experiences", updated);
     setShowModal(false);
     setPosition("");
     setOrganization("National Institute of Technology Hamirpur");
@@ -107,12 +104,14 @@ export default function TeachingExperiencePage() {
     setEnd("Present");
     setIsCurrent(true);
     setCourses("");
-    toast.success("Teaching experience appointment saved!");
+    toast.success("Teaching experience added and saved permanently!");
   };
 
   const handleDelete = (index: number) => {
-    setItems(items.filter((_, idx) => idx !== index));
-    toast.success("Appointment record removed");
+    const updated = items.filter((_, i) => i !== index);
+    setItems(updated);
+    setStoredData(faculty, "teaching_experiences", updated);
+    toast.success("Teaching record removed and storage updated");
   };
 
   return (

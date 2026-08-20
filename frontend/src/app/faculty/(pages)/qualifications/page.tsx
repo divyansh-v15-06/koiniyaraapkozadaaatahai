@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, GraduationCap, X, Building2, Calendar, BookOpen, CheckCircle2, Award, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 interface Qualification {
   degree: string;
@@ -25,6 +26,7 @@ export default function QualificationsPage() {
   const [specialization, setSpecialization] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -37,37 +39,38 @@ export default function QualificationsPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          if (match.qualifications && match.qualifications.length > 0) {
-            setQualifications(match.qualifications);
-          } else {
-            // Default based on faculty
-            setQualifications([
-              {
-                degree: "Ph.D. in Computer Science & Engineering",
-                institute: "IIT Roorkee",
-                year: 2012,
-                specialization: "Wireless Networks & Distributed Systems",
-              },
-              {
-                degree: "M.Tech in Computer Science & Engineering",
-                institute: "National Institute of Technology Hamirpur",
-                year: 2006,
-                specialization: "Computer Systems",
-              },
-              {
-                degree: "B.Tech in Computer Science & Engineering",
-                institute: "Himachal Pradesh University",
-                year: 2002,
-                specialization: "Information Technology",
-              },
-            ]);
-          }
         }
       } catch {}
-    } else {
-      setQualifications(MOCK_FACULTY[0].qualifications || []);
     }
+
+    const defaultQuals =
+      activeFaculty.qualifications && activeFaculty.qualifications.length > 0
+        ? activeFaculty.qualifications
+        : [
+            {
+              degree: "Ph.D. in Computer Science & Engineering",
+              institute: "IIT Roorkee",
+              year: 2012,
+              specialization: "Wireless Networks & Distributed Systems",
+            },
+            {
+              degree: "M.Tech in Computer Science & Engineering",
+              institute: "National Institute of Technology Hamirpur",
+              year: 2006,
+              specialization: "Computer Systems",
+            },
+            {
+              degree: "B.Tech in Computer Science & Engineering",
+              institute: "Himachal Pradesh University",
+              year: 2002,
+              specialization: "Information Technology",
+            },
+          ];
+
+    const stored = getStoredData<Qualification>(activeFaculty, "qualifications", defaultQuals);
+    setQualifications(stored);
   }, []);
 
   const handleAdd = (e: React.FormEvent) => {
@@ -82,18 +85,22 @@ export default function QualificationsPage() {
       year: year || new Date().getFullYear(),
       specialization: specialization.trim() || undefined,
     };
-    setQualifications([newQual, ...qualifications]);
+    const updated = [newQual, ...qualifications];
+    setQualifications(updated);
+    setStoredData(faculty, "qualifications", updated);
     setShowModal(false);
     setDegree("");
     setInstitute("");
     setSpecialization("");
     setYear(new Date().getFullYear());
-    toast.success("Degree qualification added successfully!");
+    toast.success("Degree qualification added and saved permanently!");
   };
 
   const handleDelete = (index: number) => {
-    setQualifications(qualifications.filter((_, i) => i !== index));
-    toast.success("Qualification record removed");
+    const updated = qualifications.filter((_, i) => i !== index);
+    setQualifications(updated);
+    setStoredData(faculty, "qualifications", updated);
+    toast.success("Qualification record removed and storage updated");
   };
 
   return (

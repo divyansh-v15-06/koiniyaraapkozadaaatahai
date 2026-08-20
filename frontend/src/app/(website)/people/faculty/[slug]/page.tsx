@@ -27,7 +27,9 @@ import {
   Filter,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useEffect } from "react";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, getStoredObject } from "@/lib/faculty-storage";
 
 const PUBS_PER_PAGE = 10;
 
@@ -39,12 +41,36 @@ export default function FacultyPortfolioPage({
   const resolvedParams = use(params);
   const code = resolvedParams.slug.toUpperCase();
 
-  const faculty = MOCK_FACULTY.find(
+  const baseFaculty = MOCK_FACULTY.find(
     (f: any) =>
       f.employee_code?.toUpperCase() === code ||
       f.id?.toLowerCase() === resolvedParams.slug.toLowerCase() ||
       String(f.legacy_id) === resolvedParams.slug
   );
+
+  const [faculty, setFaculty] = useState<any>(baseFaculty);
+  const [allFacultyPubs, setAllFacultyPubs] = useState<any[]>(baseFaculty?.publications || []);
+  const [allFacultyPatents, setAllFacultyPatents] = useState<any[]>(baseFaculty?.patents || []);
+  const [allFacultyProjects, setAllFacultyProjects] = useState<any[]>(baseFaculty?.projects || []);
+  const [allQualifications, setAllQualifications] = useState<any[]>(baseFaculty?.qualifications || []);
+  const [allTeachingExp, setAllTeachingExp] = useState<any[]>(baseFaculty?.teaching_experiences || []);
+  const [allAdminExp, setAllAdminExp] = useState<any[]>(baseFaculty?.administrative_experiences || []);
+  const [allHonors, setAllHonors] = useState<any[]>(baseFaculty?.honors || []);
+  const [allTalks, setAllTalks] = useState<any[]>(baseFaculty?.expert_talks || []);
+
+  useEffect(() => {
+    if (baseFaculty) {
+      setFaculty(getStoredObject(baseFaculty, "profile", baseFaculty));
+      setAllFacultyPubs(getStoredData(baseFaculty, "publications", baseFaculty.publications || []));
+      setAllFacultyPatents(getStoredData(baseFaculty, "patents", baseFaculty.patents || []));
+      setAllFacultyProjects(getStoredData(baseFaculty, "projects", baseFaculty.projects || []));
+      setAllQualifications(getStoredData(baseFaculty, "qualifications", baseFaculty.qualifications || []));
+      setAllTeachingExp(getStoredData(baseFaculty, "teaching_experiences", baseFaculty.teaching_experiences || []));
+      setAllAdminExp(getStoredData(baseFaculty, "admin_experiences", baseFaculty.administrative_experiences || []));
+      setAllHonors(getStoredData(baseFaculty, "honors", baseFaculty.honors || []));
+      setAllTalks(getStoredData(baseFaculty, "expert_talks", baseFaculty.expert_talks || []));
+    }
+  }, [baseFaculty]);
 
   const [activeTab, setActiveTab] = useState<"publications" | "patents" | "projects" | "qualifications" | "experience">("publications");
   const [pubSearch, setPubSearch] = useState("");
@@ -65,15 +91,6 @@ export default function FacultyPortfolioPage({
       </div>
     );
   }
-
-  const allFacultyPubs = faculty.publications || [];
-  const allFacultyPatents = faculty.patents || [];
-  const allFacultyProjects = faculty.projects || [];
-  const allQualifications = faculty.qualifications || [];
-  const allTeachingExp = faculty.teaching_experiences || [];
-  const allAdminExp = faculty.administrative_experiences || [];
-  const allHonors = faculty.honors || [];
-  const allTalks = faculty.expert_talks || [];
 
   // Available Years for filter chips
   const pubYears = useMemo(() => {

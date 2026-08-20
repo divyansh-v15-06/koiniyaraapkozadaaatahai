@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Award, X, Building2, Calendar, Sparkles, Trophy, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 interface Honor {
   title: string;
@@ -23,6 +24,7 @@ export default function HonorsPage() {
   const [year, setYear] = useState<number | string>(new Date().getFullYear());
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -35,30 +37,31 @@ export default function HonorsPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const facultyHonors = (match as any).honors || [];
-          if (facultyHonors.length > 0) {
-            setHonors(facultyHonors);
-          } else {
-            setHonors([
-              {
-                title: "Best Research Paper Award",
-                organization: "IEEE International Conference on Advanced Networks",
-                year: 2022,
-              },
-              {
-                title: "Excellence in Teaching & Research Citation",
-                organization: "National Institute of Technology Hamirpur",
-                year: 2020,
-              },
-            ]);
-          }
         }
       } catch {}
-    } else {
-      const defaultHonors = (MOCK_FACULTY[0] as any).honors || [];
-      setHonors(defaultHonors);
     }
+
+    const facultyHonors = (activeFaculty as any).honors || [];
+    const fallback =
+      facultyHonors.length > 0
+        ? facultyHonors
+        : [
+            {
+              title: "Best Research Paper Award",
+              organization: "IEEE International Conference on Advanced Networks",
+              year: 2022,
+            },
+            {
+              title: "Excellence in Teaching & Research Citation",
+              organization: "National Institute of Technology Hamirpur",
+              year: 2020,
+            },
+          ];
+
+    const stored = getStoredData<Honor>(activeFaculty, "honors", fallback);
+    setHonors(stored);
   }, []);
 
   const handleAdd = (e: React.FormEvent) => {
@@ -72,17 +75,21 @@ export default function HonorsPage() {
       organization: organization.trim(),
       year: year || new Date().getFullYear(),
     };
-    setHonors([newHonor, ...honors]);
+    const updated = [newHonor, ...honors];
+    setHonors(updated);
+    setStoredData(faculty, "honors", updated);
     setShowModal(false);
     setTitle("");
     setOrganization("");
     setYear(new Date().getFullYear());
-    toast.success("Award / Honor record saved!");
+    toast.success("Award / Honor record saved and persisted!");
   };
 
   const handleDelete = (index: number) => {
-    setHonors(honors.filter((_, idx) => idx !== index));
-    toast.success("Award record removed");
+    const updated = honors.filter((_, idx) => idx !== index);
+    setHonors(updated);
+    setStoredData(faculty, "honors", updated);
+    toast.success("Award record removed and storage updated");
   };
 
   return (

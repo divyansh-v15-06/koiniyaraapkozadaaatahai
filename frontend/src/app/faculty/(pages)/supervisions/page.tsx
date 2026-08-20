@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 interface Supervision {
   id?: number | string;
@@ -48,6 +49,7 @@ export default function FacultySupervisionsPage() {
   const [coSupervisor, setCoSupervisor] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -60,29 +62,31 @@ export default function FacultySupervisionsPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const facultySupervisions = (match as any).supervisions || [];
-          if (facultySupervisions.length > 0) {
-            setItems(facultySupervisions);
-          } else {
-            setItems([
-              {
-                level: "Ph.D.",
-                student_name: "Praveen Prakash",
-                roll_number: "23RCS004",
-                thesis_title: "Lightweight Security Model of Internet of Things Systems",
-                status: "Ongoing",
-                year: 2023,
-                co_supervisor: null,
-              },
-            ]);
-          }
         }
       } catch {}
-    } else {
-      const defaultSups = (MOCK_FACULTY[0] as any).supervisions || [];
-      setItems(defaultSups);
     }
+
+    const facultySupervisions = (activeFaculty as any).supervisions || [];
+    const fallback =
+      facultySupervisions.length > 0
+        ? facultySupervisions
+        : [
+            {
+              id: "sup-default-1",
+              level: "Ph.D.",
+              student_name: "Praveen Prakash",
+              roll_number: "23RCS004",
+              thesis_title: "Lightweight Security Model of Internet of Things Systems",
+              status: "Ongoing",
+              year: 2023,
+              co_supervisor: null,
+            },
+          ];
+
+    const stored = getStoredData<Supervision>(activeFaculty, "supervisions", fallback);
+    setItems(stored);
   }, []);
 
   const filteredItems = useMemo(() => {
@@ -132,7 +136,9 @@ export default function FacultySupervisionsPage() {
       year: year,
       co_supervisor: coSupervisor.trim() || null,
     };
-    setItems([newEntry, ...items]);
+    const updated = [newEntry, ...items];
+    setItems(updated);
+    setStoredData(faculty, "supervisions", updated);
     setShowModal(false);
     setName("");
     setRollNo("");
@@ -140,12 +146,14 @@ export default function FacultySupervisionsPage() {
     setCoSupervisor("");
     setStatus("Ongoing");
     setLevel("Ph.D.");
-    toast.success("Research supervision record saved!");
+    toast.success("Research supervision record saved and persisted!");
   };
 
   const handleDelete = (index: number) => {
-    setItems(items.filter((_, idx) => idx !== index));
-    toast.success("Supervision record removed");
+    const updated = items.filter((_, idx) => idx !== index);
+    setItems(updated);
+    setStoredData(faculty, "supervisions", updated);
+    toast.success("Supervision record removed and storage updated");
   };
 
   return (

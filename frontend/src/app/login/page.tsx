@@ -1,11 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-    UserCircleIcon,
-    AcademicCapIcon,
-    HomeIcon,
-} from '@heroicons/react/24/outline'
+import { UserCircle, GraduationCap, Home } from "lucide-react";
 
 export default function LoginPage() {
     const [responseMessage, setResponseMessage] = useState('')
@@ -26,14 +22,14 @@ export default function LoginPage() {
                         className='flex items-center justify-center w-full p-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-200'
                         onClick={() => router.push('/admin/login')}
                     >
-                        <AcademicCapIcon className='w-6 h-6 mr-2' />
+                        <GraduationCap className='w-6 h-6 mr-2' />
                         Admin Login
                     </button>
                     <button
                         className='flex items-center justify-center w-full p-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-200'
                         onClick={() => router.push('/faculty/login')}
                     >
-                        <UserCircleIcon className='w-6 h-6 mr-2' />
+                        <UserCircle className='w-6 h-6 mr-2' />
                         Faculty Login
                     </button>
                 </div>
@@ -42,7 +38,7 @@ export default function LoginPage() {
                     className='flex items-center justify-center w-full p-3 mt-6 text-lg font-medium text-white bg-gray-600 rounded-lg hover:bg-gray-700 transition-all duration-200'
                     onClick={() => router.push('/')}
                 >
-                    <HomeIcon className='w-6 h-6 mr-2' />
+                    <Home className='w-6 h-6 mr-2' />
                     Return Home
                 </button>
             </div>

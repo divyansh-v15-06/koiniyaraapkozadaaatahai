@@ -17,6 +17,7 @@ import {
 import { toast } from "sonner";
 import { formatINR } from "@/lib/utils";
 import { MOCK_FACULTY, MOCK_CONSULTANCIES } from "@/lib/mock-data";
+import { getStoredData, setStoredData } from "@/lib/faculty-storage";
 
 export default function FacultyConsultanciesPage() {
   const [user, setUser] = useState<any>(null);
@@ -36,6 +37,7 @@ export default function FacultyConsultanciesPage() {
   const [consultants, setConsultants] = useState("");
 
   useEffect(() => {
+    let activeFaculty = MOCK_FACULTY[0];
     const raw = localStorage.getItem("auth_user");
     if (raw) {
       try {
@@ -48,19 +50,22 @@ export default function FacultyConsultanciesPage() {
             f.id === parsed.faculty_id
         );
         if (match) {
+          activeFaculty = match;
           setFaculty(match);
-          const lastName = match.full_name.toLowerCase().split(" ").pop() || "";
-          const userConsultancies = MOCK_CONSULTANCIES.filter((c: any) => {
-            if (c.faculty_ids && c.faculty_ids.includes(match.id)) return true;
-            if (c.author_text && c.author_text.toLowerCase().includes(lastName)) return true;
-            return false;
-          });
-          setConsultancies(userConsultancies.length > 0 ? userConsultancies : MOCK_CONSULTANCIES);
         }
       } catch {}
-    } else {
-      setConsultancies(MOCK_CONSULTANCIES);
     }
+
+    const lastName = activeFaculty.full_name.toLowerCase().split(" ").pop() || "";
+    const userConsultancies = MOCK_CONSULTANCIES.filter((c: any) => {
+      if (c.faculty_ids && c.faculty_ids.includes(activeFaculty.id)) return true;
+      if (c.author_text && c.author_text.toLowerCase().includes(lastName)) return true;
+      return false;
+    });
+
+    const fallback = userConsultancies.length > 0 ? userConsultancies : MOCK_CONSULTANCIES;
+    const stored = getStoredData(activeFaculty, "consultancies", fallback);
+    setConsultancies(stored);
   }, []);
 
   const filteredConsultancies = useMemo(() => {
@@ -103,19 +108,23 @@ export default function FacultyConsultanciesPage() {
       author_text: consultants.trim() || faculty.full_name,
       faculty_ids: [faculty.id],
     };
-    setConsultancies([newEntry, ...consultancies]);
+    const updated = [newEntry, ...consultancies];
+    setConsultancies(updated);
+    setStoredData(faculty, "consultancies", updated);
     setShowModal(false);
     setTitle("");
     setClient("");
     setConsultants("");
     setAmount(1500000);
     setStatus("Completed");
-    toast.success("Industrial consultancy engagement saved!");
+    toast.success("Industrial consultancy engagement saved and persisted!");
   };
 
   const handleDelete = (id: string) => {
-    setConsultancies(consultancies.filter((x) => x.id !== id));
-    toast.success("Consultancy project removed");
+    const updated = consultancies.filter((x) => x.id !== id);
+    setConsultancies(updated);
+    setStoredData(faculty, "consultancies", updated);
+    toast.success("Consultancy project removed and storage updated");
   };
 
   return (
