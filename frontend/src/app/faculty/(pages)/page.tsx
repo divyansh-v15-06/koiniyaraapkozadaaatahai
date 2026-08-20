@@ -28,6 +28,8 @@ import {
   MOCK_PHD_SCHOLARS,
 } from "@/lib/mock-data";
 
+import { resolveFacultyDepartment } from "@/lib/faculty-storage";
+
 export default function FacultyDashboardPage() {
   const [user, setUser] = useState<any>(null);
 
@@ -50,6 +52,8 @@ export default function FacultyDashboardPage() {
       ) || MOCK_FACULTY[0]
     );
   }, [user]);
+
+  const facultyDept = resolveFacultyDepartment(activeFaculty, user);
 
   // Publications associated with this faculty
   const facultyPublications = useMemo(() => {
@@ -88,10 +92,10 @@ export default function FacultyDashboardPage() {
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span className="rounded-full bg-white/20 px-3 py-0.5 font-mono text-xs font-bold text-amber-300 backdrop-blur-xs">
-                {activeFaculty.employee_code || "CS01"}
+                {activeFaculty.employee_code || "FACULTY"}
               </span>
               <span className="text-xs text-neutral-300">
-                Department of Computer Science &amp; Engineering
+                Department of {facultyDept.name} ({facultyDept.code})
               </span>
             </div>
 

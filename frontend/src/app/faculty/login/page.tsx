@@ -22,6 +22,8 @@ import {
 import Link from "next/link";
 import apiClient from "@/lib/api-client";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { resolveFacultyDepartment } from "@/lib/faculty-storage";
+import departmentsRegistry from "@/lib/departments-registry.json";
 
 const facultyLoginSchema = z.object({
   identifier: z.string().min(2, "Enter your faculty code (e.g. CS01) or institute email"),
@@ -71,7 +73,7 @@ export default function FacultyLoginPage() {
         console.warn("Backend API unavailable, using client-side auth fallback:", err);
       }
 
-      // 2. Client-side authentication fallback against seeded faculty
+      // 2. Client-side authentication fallback against seeded faculty or department code
       const match = MOCK_FACULTY.find(
         (f) =>
           f.employee_code.toLowerCase() === data.identifier.toLowerCase() ||
@@ -79,30 +81,47 @@ export default function FacultyLoginPage() {
           f.full_name.toLowerCase().includes(data.identifier.toLowerCase())
       );
 
-      if (
-        match ||
-        data.identifier.toLowerCase().startsWith("cs") ||
-        data.identifier.includes("@nith.ac.in") ||
-        data.identifier.includes("@")
-      ) {
-        const facultyUser = match || MOCK_FACULTY[0];
-        localStorage.setItem("auth_token", `mock-faculty-jwt-${facultyUser.id}`);
-        localStorage.setItem(
-          "auth_user",
-          JSON.stringify({
-            id: facultyUser.user_id,
-            faculty_id: facultyUser.id,
-            email: facultyUser.email,
-            full_name: facultyUser.full_name,
-            employee_code: facultyUser.employee_code,
-            roles: ["FACULTY"],
-          })
-        );
-        toast.success(`Welcome back, ${facultyUser.full_name}!`);
-        router.push("/faculty");
-      } else {
-        toast.error("Faculty credentials not recognized. You can use the Quick Demo Logins below.");
-      }
+      const resolvedDept = resolveFacultyDepartment(match, { employee_code: data.identifier, email: data.identifier });
+
+      const facultyUser = match || {
+        id: `fac-${data.identifier.toLowerCase()}`,
+        user_id: `usr-${data.identifier.toLowerCase()}`,
+        email: data.identifier.includes("@") ? data.identifier : `${data.identifier.toLowerCase()}@nith.ac.in`,
+        full_name: data.identifier.toUpperCase().startsWith("EC")
+          ? "Dr. Gargi Khanna (HOD, ECE)"
+          : data.identifier.toUpperCase().startsWith("EE")
+          ? "Dr. R. K. Jarial (HOD, EE)"
+          : data.identifier.toUpperCase().startsWith("ME")
+          ? "Dr. Sunand Kumar (HOD, ME)"
+          : data.identifier.toUpperCase().startsWith("CE")
+          ? "Dr. R. K. Sharma (HOD, CE)"
+          : `Faculty Member (${data.identifier.toUpperCase()})`,
+        employee_code: data.identifier.toUpperCase(),
+        designation: "Professor",
+        department_name: resolvedDept.name,
+        department_code: resolvedDept.code,
+        department_slug: resolvedDept.slug,
+        roles: ["FACULTY"],
+      };
+
+      localStorage.setItem("auth_token", `mock-faculty-jwt-${facultyUser.id}`);
+      localStorage.setItem("active_department_slug", resolvedDept.slug);
+      localStorage.setItem(
+        "auth_user",
+        JSON.stringify({
+          id: facultyUser.user_id,
+          faculty_id: facultyUser.id,
+          email: facultyUser.email,
+          full_name: facultyUser.full_name,
+          employee_code: facultyUser.employee_code,
+          department_name: resolvedDept.name,
+          department_code: resolvedDept.code,
+          department_slug: resolvedDept.slug,
+          roles: ["FACULTY"],
+        })
+      );
+      toast.success(`Welcome to the Department of ${resolvedDept.name} Portal!`);
+      router.push("/faculty");
     } finally {
       setLoading(false);
     }
@@ -156,21 +175,26 @@ export default function FacultyLoginPage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 pt-0.5">
             {[
-              { code: "CS01", name: "Prof. Lalit Awasthi", email: "lalit@nith.ac.in" },
-              { code: "CS04", name: "Dr. Siddhartha (HOD)", email: "sid@nith.ac.in" },
-              { code: "CS02", name: "Dr. Kamlesh Dutta", email: "kmd@nith.ac.in" },
-              { code: "CS12", name: "Dr. Arun K. Yadav", email: "arun@nith.ac.in" },
-              { code: "CS17", name: "Dr. Khalid Pandit", email: "khalid@nith.ac.in" },
-              { code: "CS05", name: "Dr. Naveen Chauhan", email: "naveen@nith.ac.in" },
+              { code: "CS04", name: "Dr. Siddhartha", dept: "CSE" },
+              { code: "EC01", name: "Dr. Gargi Khanna", dept: "ECE" },
+              { code: "ME01", name: "Dr. Sunand Kumar", dept: "ME" },
+              { code: "EE01", name: "Dr. R. K. Jarial", dept: "EE" },
+              { code: "CE01", name: "Dr. R. K. Sharma", dept: "Civil" },
+              { code: "CS01", name: "Prof. Lalit Awasthi", dept: "CSE" },
             ].map((fac) => (
               <button
                 key={fac.code}
                 type="button"
-                onClick={() => handleQuickFill(fac.code, fac.email, fac.name)}
+                onClick={() => handleQuickFill(fac.code, `${fac.code.toLowerCase()}@nith.ac.in`, `${fac.name} (${fac.dept})`)}
                 className="text-left rounded-lg border border-[#eedfd8] bg-white p-1.5 text-[#33110e] hover:bg-[#33110e] hover:text-white transition duration-150 shadow-2xs group cursor-pointer"
               >
-                <div className="font-bold text-[10px] truncate group-hover:text-amber-300">
-                  {fac.code}
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-[10px] truncate group-hover:text-amber-300">
+                    {fac.code}
+                  </span>
+                  <span className="text-[8px] font-bold px-1 rounded bg-[#fff9f6] text-[#85261e] group-hover:bg-[#4a1814] group-hover:text-amber-200">
+                    {fac.dept}
+                  </span>
                 </div>
                 <div className="text-[9px] text-neutral-600 group-hover:text-neutral-200 truncate">
                   {fac.name}

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { FacultySidebar } from "@/components/layouts/faculty-sidebar";
 import { useEffect, useState } from "react";
 import { MOCK_FACULTY } from "@/lib/mock-data";
+import { resolveFacultyDepartment } from "@/lib/faculty-storage";
 import Link from "next/link";
 import { Download, ExternalLink, GraduationCap, ShieldCheck } from "lucide-react";
 
@@ -27,6 +28,8 @@ export default function FacultyPagesLayout({ children }: { children: ReactNode }
         f.id === user?.faculty_id
     ) || MOCK_FACULTY[0];
 
+  const facultyDept = resolveFacultyDepartment(activeFaculty, user);
+
   return (
     <div className="flex min-h-screen bg-[#faf6f3] font-sans">
       <FacultySidebar />
@@ -35,7 +38,7 @@ export default function FacultyPagesLayout({ children }: { children: ReactNode }
         <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-[#eedfd8] bg-white px-6 shadow-2xs">
           <div className="flex items-center gap-3">
             <span className="bg-[#fff9f6] text-[#85261e] border border-[#eedfd8] text-xs font-bold px-2 py-0.5 rounded uppercase">
-              CSE Faculty Portal
+              {facultyDept.code} Faculty Portal
             </span>
             <span className="text-xs text-neutral-400 hidden sm:inline">•</span>
             <h2 className="text-xs sm:text-sm font-bold text-[#1c110c] hidden sm:block">
@@ -52,7 +55,7 @@ export default function FacultyPagesLayout({ children }: { children: ReactNode }
             </Link>
 
             <Link
-              href={`/people/faculty/${activeFaculty.employee_code || activeFaculty.id}?dept=cse`}
+              href={`/people/faculty/${activeFaculty.employee_code || activeFaculty.id}?dept=${facultyDept.slug}`}
               target="_blank"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#33110e] hover:bg-[#85261e] text-white text-xs font-bold transition shadow-2xs"
             >

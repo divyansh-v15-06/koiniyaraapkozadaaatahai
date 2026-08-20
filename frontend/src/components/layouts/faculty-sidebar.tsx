@@ -58,6 +58,8 @@ const sidebarLinks: SidebarLink[] = [
   { label: "Export Official CV", href: "/faculty/export", icon: Download },
 ];
 
+import { resolveFacultyDepartment } from "@/lib/faculty-storage";
+
 export function FacultySidebar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -79,6 +81,8 @@ export function FacultySidebar() {
         f.email?.toLowerCase() === currentUser?.email?.toLowerCase() ||
         f.id === currentUser?.faculty_id
     ) || MOCK_FACULTY[0];
+
+  const facultyDept = resolveFacultyDepartment(activeFaculty, currentUser);
 
   const handleLogout = () => {
     localStorage.removeItem("auth_token");
@@ -103,7 +107,7 @@ export function FacultySidebar() {
             Faculty Academic Portal
           </span>
           <span className="text-[10px] font-semibold text-[#85261e] block truncate">
-            NIT Hamirpur • CSE Dept
+            NIT Hamirpur • {facultyDept.code} Dept
           </span>
         </div>
       </div>
